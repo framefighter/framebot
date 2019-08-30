@@ -46,7 +46,7 @@ export class Commands implements command.Commands {
         if (raw) {
             const cleaned = raw.trim()
             if (cleaned) {
-                const removedSlash = raw.replace(/\//g, "");
+                const removedSlash = raw.startsWith("/") ? raw.replace("/", "") : raw;
                 if (removedSlash) {
                     const firstWord = removedSlash.split(" ")[0].trim();
                     const commandID = firstWord.split("@")[0];

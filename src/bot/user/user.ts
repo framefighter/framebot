@@ -21,8 +21,9 @@ export class User implements user.User, TelegramBot.User {
         this.settings = {
             alert: {},
             filter: [],
-            menu: [[]],
-            arbitration: []
+            menu: [],
+            arbitration: [],
+            songs: []
         };
     }
 }

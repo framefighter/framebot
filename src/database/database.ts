@@ -36,6 +36,11 @@ export class UsersDB extends DB implements db.UsersDB {
     }
 
     update(user: User) {
+        user.settings.alert = user.settings.alert || {}
+        user.settings.arbitration = user.settings.arbitration || []
+        user.settings.filter = user.settings.filter || []
+        user.settings.menu = user.settings.menu || []
+        user.settings.songs = user.settings.songs || []
         this.data.push(`/users/${user.id}`, user);
     }
 

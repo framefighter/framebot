@@ -46,4 +46,6 @@ declare namespace command {
         | "config"
         | "configSelection"
         | "clearConfig"
+        | "songs"
+        | "showSong"
 }

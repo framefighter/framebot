@@ -12,16 +12,16 @@ import { check } from '../../utils/check';
 import { CONFIG } from '../../utils/config';
 
 export const settings_suffix = "Setting";
-export const item_suffix = "Item";
+export const item_suffix = "ShowItem";
 export const remove_suffix = "ItemRemove";
-export const check_suffix = "Check";
-export const type_remove_suffix = "Remove";
-export const add_suffix = "Add";
+export const check_suffix = "ExecuteCheck";
+export const type_remove_suffix = "TypeRemove";
+export const add_suffix = "ItemAdd";
 export const add_config_suffix = "AddConfig";
 export const remove_config_suffix = "RemoveConfig";
 export const select_config_suffix = "SelectConfig";
-
-
+export const song_suffix = "ShowSong";
+export const remove_song_suffix = "RemoveSong";
 
 export const alert_setting = (id: command.ID): command.SettingsDefinitions => ({
     [id]: {
@@ -1465,6 +1465,62 @@ export const definitions: command.Definitions = {
             text: "Cleared your configuration!\nDefault menu will be used."
         }),
         keyboard: () => new Keyboard({ layout: [[{ id: "config", text: "< Back" }]] })
+    },
+    "songs": {
+        action: (active) => {
+            const args = active.args;
+            if (args[0] && args[0].length > 20) return "Song name to long!"
+            const songs = active.user.settings.songs;
+            const found = songs.map(s => s.name).indexOf(args[0])
+            if (args.length === 2) {
+                if (found !== -1) {
+                    active.user.settings.songs[found] = { name: args[0], string: args[1] };
+                    return `Song (${args[0]}) already exists, updated string!`
+                } else {
+                    active.user.settings.songs.push({
+                        name: args[0],
+                        string: args[1]
+                    })
+                }
+            } else if (args.length === 1) {
+                if (found !== -1) {
+                    active.user.settings.songs.splice(found, 1)
+                    return "Removing song: " + args[0]
+                } else {
+                    return "No song found to remove"
+                }
+            }
+            return "Showing all saved songs"
+        },
+        message: (active) => new Message({
+            title: active.command.name(active),
+            text: Formatter.format({
+                caption: active.execute_return,
+                description: "Add songs to this songs list:\n/songs <name>, <string>"
+            })
+        }),
+        keyboard: (active) => new Keyboard({
+            layout: active.user.settings.songs.map(song => [{
+                id: (song.name + song_suffix) as command.ID,
+                text: song.name
+            }])
+        })
+    },
+    "showSong": {
+        message: (active) => {
+            const found = active.user.settings.songs.find(song => song.name === active.args[0])
+            return new Message({
+                title: active.command.name(active) + " " + active.args[0],
+                text: Formatter.format({
+                    text: found ? found.string.code() : "No songs found!",
+                })
+            })
+        },
+        keyboard: (active) => new Keyboard({
+            layout: [
+                [{ id: (active.args[0] + remove_song_suffix) as command.ID, text: "🗑️ Remove" }],
+                [{ id: "songs", text: "< Songs" }]]
+        })
     }
 }
 

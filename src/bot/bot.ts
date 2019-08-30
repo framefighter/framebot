@@ -1,6 +1,6 @@
 import TelegramBot, { InlineQueryResult, InlineQuery } from "node-telegram-bot-api";
 import { Active } from './active/active';
-import { check_suffix, item_suffix, remove_suffix, type_remove_suffix, add_suffix, add_config_suffix, select_config_suffix, remove_config_suffix } from './command/definitions';
+import { check_suffix, item_suffix, remove_suffix, type_remove_suffix, add_suffix, add_config_suffix, select_config_suffix, remove_config_suffix, song_suffix, remove_song_suffix } from './command/definitions';
 import { Database } from '../database/database';
 import { User } from "./user/user";
 import { CONFIG } from '../utils/config';
@@ -230,6 +230,36 @@ export class Bot implements bot.Bot {
                                     user,
                                     command: menuCmd,
                                     args: [selection],
+                                    chatID: ids.chatID,
+                                })
+                                active.execute();
+                                active.edit(ids);
+                            }
+                        }
+                    } else if (cbq.data.endsWith(song_suffix)) {
+                        const song = cbq.data.replace(song_suffix, "");
+                        if (song) {
+                            const songCmd = this.commands.find("showSong");
+                            if (songCmd) {
+                                const active = new Active({
+                                    user,
+                                    command: songCmd,
+                                    args: [song],
+                                    chatID: ids.chatID,
+                                })
+                                active.execute();
+                                active.edit(ids);
+                            }
+                        }
+                    } else if (cbq.data.endsWith(remove_song_suffix)) {
+                        const song = cbq.data.replace(remove_song_suffix, "");
+                        if (song) {
+                            const songsCmd = this.commands.find("songs");
+                            if (songsCmd) {
+                                const active = new Active({
+                                    user,
+                                    command: songsCmd,
+                                    args: [song],
                                     chatID: ids.chatID,
                                 })
                                 active.execute();
