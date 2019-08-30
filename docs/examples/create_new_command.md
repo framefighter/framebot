@@ -4,7 +4,6 @@
 1. Add the `definition` of your command to the definitions variable in [definitions.ts](https://github.com/framefighter/framebot/blob/master/src/bot/command/definitions.ts)
 1. Possible **properties** of a single definition:
 ```typescript 
-    interface Constructor {
         alt?: string[];
         help?: string;
         emoji?: string;
@@ -18,7 +17,6 @@
         action?: (active: active.Active) => any;
         name?: (active: active.Active) => string;
         count?: (active: active.Active) => number;
-    }
 ```
 
 
