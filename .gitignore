@@ -1,0 +1,15 @@
+*
+!.gitignore
+!README.md
+!/src/
+!/src/**
+!/docs/
+!/docs/**
+!/icons/
+!/icons/**
+!package.json
+!tsconfig.json
+!/.vscode/
+!/.vscode/**
+!/bash/
+!/bash/**
