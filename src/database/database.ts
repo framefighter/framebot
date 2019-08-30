@@ -109,7 +109,6 @@ export class TimesDB extends DB implements db.TimesDB {
         })
         return allTimes
     }
-
 }
 
 export class NotificationsDB extends DB implements db.NotificationsDB {
