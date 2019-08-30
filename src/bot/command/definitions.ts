@@ -1468,6 +1468,8 @@ export const definitions: command.Definitions = {
         keyboard: () => new Keyboard({ layout: [[{ id: "config", text: "< Back" }]] })
     },
     "songs": {
+        help: "Show list of all saved songs",
+        emoji: "🎶",
         action: (active) => {
             const args = active.args;
             if (args[0] && args[0].length > 20) return "Song name to long!"
@@ -1508,6 +1510,8 @@ export const definitions: command.Definitions = {
         })
     },
     "showSong": {
+        help: "Show song string of a saved song",
+        emoji: "🎵",
         message: (active) => {
             const found = active.user.settings.songs.find(song => song.name === active.args[0])
             return new Message({
