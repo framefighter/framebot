@@ -18,7 +18,7 @@
     - build typescript
     - create new `tmux` session called `teleframe` with the bot  
     **(You need to have `tmux` installed on your system)**
-5. After that you can just restart and update the bot with the `/restart` command right from Telegram  
+5. After that you can update the bot with the `/restart` command right from Telegram  
     - You will see the update progress in Telegram as well
 
 # Updating
