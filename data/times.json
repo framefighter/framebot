@@ -1,0 +1,3591 @@
+{
+    "times": [
+        {
+            "mission": "spy",
+            "minutes": 3,
+            "seconds": 12,
+            "stage": 1
+        },
+        {
+            "mission": "defection",
+            "minutes": 10,
+            "seconds": 7,
+            "stage": 2
+        },
+        {
+            "mission": "assassination",
+            "boss": "mutalist alad v",
+            "minutes": 2,
+            "seconds": 32,
+            "stage": 3
+        },
+        {
+            "mission": "assault",
+            "minutes": 7,
+            "seconds": 5,
+            "stage": 1
+        },
+        {
+            "mission": "mobile defense",
+            "minutes": 5,
+            "seconds": 42,
+            "stage": 2
+        },
+        {
+            "mission": "assassination",
+            "boss": "tyl regor",
+            "minutes": 8,
+            "seconds": 31,
+            "stage": 3
+        },
+        {
+            "mission": "rescue",
+            "minutes": 2,
+            "seconds": 17,
+            "stage": 1
+        },
+        {
+            "mission": "spy",
+            "minutes": 3,
+            "seconds": 21,
+            "stage": 2
+        },
+        {
+            "mission": "defense",
+            "minutes": 11,
+            "seconds": 49,
+            "stage": 3
+        },
+        {
+            "mission": "sabotage",
+            "minutes": 2,
+            "seconds": 35,
+            "stage": 1
+        },
+        {
+            "mission": "extermination",
+            "minutes": 2,
+            "seconds": 55,
+            "stage": 2
+        },
+        {
+            "mission": "assassination",
+            "minutes": 8,
+            "seconds": 33,
+            "boss": "phorid",
+            "stage": 3
+        },
+        {
+            "mission": "sabotage",
+            "minutes": 2,
+            "seconds": 37,
+            "stage": 1
+        },
+        {
+            "mission": "rescue",
+            "minutes": 2,
+            "seconds": 34,
+            "stage": 2
+        },
+        {
+            "mission": "defense",
+            "minutes": 11,
+            "seconds": 8,
+            "stage": 3
+        },
+        {
+            "mission": "extermination",
+            "minutes": 3,
+            "seconds": 32,
+            "stage": 1
+        },
+        {
+            "mission": "spy",
+            "minutes": 2,
+            "seconds": 57,
+            "stage": 2
+        },
+        {
+            "mission": "sabotage",
+            "minutes": 3,
+            "seconds": 1,
+            "stage": 3
+        },
+        {
+            "mission": "assassination",
+            "minutes": 3,
+            "seconds": 10,
+            "boss": "tyl regor",
+            "stage": 3
+        },
+        {
+            "mission": "sabotage",
+            "minutes": 3,
+            "seconds": 32,
+            "stage": 2
+        },
+        {
+            "mission": "interception",
+            "minutes": 8,
+            "seconds": 30,
+            "stage": 3
+        },
+        {
+            "mission": "mobile defense",
+            "minutes": 5,
+            "seconds": 43,
+            "stage": 1
+        },
+        {
+            "mission": "spy",
+            "minutes": 4,
+            "seconds": 34,
+            "stage": 2
+        },
+        {
+            "mission": "sabotage",
+            "minutes": 2,
+            "seconds": 14,
+            "stage": 3
+        },
+        {
+            "mission": "defense",
+            "minutes": 12,
+            "seconds": 28,
+            "stage": 1
+        },
+        {
+            "mission": "hive",
+            "minutes": 3,
+            "seconds": 2,
+            "stage": 2
+        },
+        {
+            "mission": "mobile defense",
+            "minutes": 5,
+            "seconds": 38,
+            "stage": 3
+        },
+        {
+            "mission": "spy",
+            "minutes": 2,
+            "seconds": 31,
+            "stage": 1
+        },
+        {
+            "mission": "hijack",
+            "minutes": 4,
+            "seconds": 17,
+            "stage": 2
+        },
+        {
+            "mission": "sabotage",
+            "minutes": 2,
+            "seconds": 51,
+            "stage": 3
+        },
+        {
+            "mission": "assassination",
+            "minutes": 1,
+            "seconds": 41,
+            "boss": "hyena pack",
+            "stage": 3
+        },
+        {
+            "mission": "free roam",
+            "minutes": 5,
+            "seconds": 56,
+            "stage": 2
+        },
+        {
+            "mission": "rescue",
+            "minutes": 3,
+            "seconds": 23,
+            "stage": 3
+        },
+        {
+            "mission": "mobile defense",
+            "minutes": 6,
+            "seconds": 2,
+            "stage": 1
+        },
+        {
+            "mission": "rescue",
+            "minutes": 2,
+            "seconds": 28,
+            "stage": 2
+        },
+        {
+            "mission": "assault",
+            "minutes": 5,
+            "seconds": 57,
+            "stage": 3
+        },
+        {
+            "mission": "survival",
+            "minutes": 10,
+            "seconds": 54,
+            "stage": 1
+        },
+        {
+            "mission": "mobile defense",
+            "minutes": 5,
+            "seconds": 50,
+            "stage": 2
+        },
+        {
+            "mission": "defense",
+            "minutes": 11,
+            "seconds": 23,
+            "stage": 3
+        },
+        {
+            "mission": "rescue",
+            "minutes": 2,
+            "seconds": 30,
+            "stage": 1
+        },
+        {
+            "mission": "sabotage",
+            "minutes": 2,
+            "seconds": 46,
+            "stage": 2
+        },
+        {
+            "mission": "rescue",
+            "minutes": 2,
+            "seconds": 9,
+            "stage": 3
+        },
+        {
+            "mission": "survival",
+            "minutes": 10,
+            "seconds": 54,
+            "stage": 1
+        },
+        {
+            "mission": "assassination",
+            "minutes": 12,
+            "seconds": 44,
+            "boss": "ambulas",
+            "stage": 3
+        },
+        {
+            "mission": "interception",
+            "minutes": 8,
+            "seconds": 23,
+            "stage": 3
+        },
+        {
+            "mission": "assassination",
+            "minutes": 2,
+            "seconds": 6,
+            "boss": "captain vor",
+            "stage": 3
+        },
+        {
+            "mission": "mobile defense",
+            "minutes": 5,
+            "seconds": 38,
+            "stage": 2
+        },
+        {
+            "mission": "extermination",
+            "minutes": 3,
+            "seconds": 41,
+            "stage": 3
+        },
+        {
+            "mission": "rescue",
+            "minutes": 2,
+            "seconds": 20,
+            "stage": 1
+        },
+        {
+            "mission": "spy",
+            "minutes": 5,
+            "seconds": 55,
+            "stage": 2
+        },
+        {
+            "mission": "mobile defense",
+            "minutes": 5,
+            "seconds": 58,
+            "stage": 3
+        },
+        {
+            "mission": "survival",
+            "minutes": 11,
+            "seconds": 18,
+            "stage": 1
+        },
+        {
+            "mission": "survival",
+            "minutes": 10,
+            "seconds": 38,
+            "stage": 2
+        },
+        {
+            "mission": "rescue",
+            "minutes": 1,
+            "seconds": 20,
+            "stage": 3
+        },
+        {
+            "mission": "Assault",
+            "minutes": 5,
+            "seconds": 42,
+            "stage": 1
+        },
+        {
+            "mission": "Defection",
+            "minutes": 9,
+            "seconds": 31,
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 1,
+            "boss": "Lech Kril",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 15,
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 40,
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 3,
+            "stage": 3
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 3,
+            "seconds": 4,
+            "stage": 1
+        },
+        {
+            "mission": "Free Roam",
+            "minutes": 4,
+            "seconds": 39,
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 19,
+            "boss": "General Sargas Ruk",
+            "stage": 3
+        },
+        {
+            "mission": "Hive",
+            "minutes": 2,
+            "seconds": 52,
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 52,
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 38,
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 52,
+            "stage": 1
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 30,
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 14,
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 28,
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 29,
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 1,
+            "seconds": 36,
+            "boss": "Nef Anyo",
+            "stage": 3
+        },
+        {
+            "mission": "Hive",
+            "minutes": 3,
+            "seconds": 4,
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 32,
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 3,
+            "seconds": 4,
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 15,
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 5,
+            "seconds": 15,
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 4,
+            "seconds": 31,
+            "boss": "General Sargas Ruk",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 12,
+            "stage": 1
+        },
+        {
+            "mission": "Survival",
+            "minutes": 10,
+            "seconds": 39,
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 47,
+            "stage": 3
+        },
+        {
+            "mission": "Survival",
+            "minutes": 10,
+            "seconds": 54,
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 33,
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 41,
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 15,
+            "boss": "Hyena Pack",
+            "stage": 1
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 25,
+            "boss": "Hyena Pack",
+            "stage": 2
+        },
+        {
+            "mission": "Defense",
+            "minutes": 13,
+            "seconds": 53,
+            "boss": "Hyena Pack",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 4,
+            "seconds": 1,
+            "boss": "Corrupted Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Interception",
+            "minutes": 9,
+            "seconds": 7,
+            "boss": "Corrupted Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 26,
+            "boss": "Corrupted Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 8,
+            "seconds": 7,
+            "boss": "Lephantis",
+            "stage": 1
+        },
+        {
+            "mission": "Defense",
+            "minutes": 9,
+            "seconds": 49,
+            "boss": "Lephantis",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 20,
+            "boss": "Lephantis",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 3,
+            "seconds": 26,
+            "boss": "Kela De Thaym",
+            "stage": 1
+        },
+        {
+            "mission": "Survival",
+            "minutes": 11,
+            "seconds": 8,
+            "boss": "Kela De Thaym",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 6,
+            "seconds": 20,
+            "boss": "Kela De Thaym",
+            "stage": 3
+        },
+        {
+            "mission": "Survival",
+            "minutes": 10,
+            "seconds": 16,
+            "boss": "Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 24,
+            "boss": "Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 3,
+            "seconds": 37,
+            "boss": "Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 37,
+            "boss": "Phorid",
+            "stage": 1
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 32,
+            "boss": "Phorid",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 8,
+            "boss": "Phorid",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 20,
+            "boss": "Lech Kril",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 49,
+            "boss": "Lech Kril",
+            "stage": 2
+        },
+        {
+            "mission": "Survival",
+            "minutes": 11,
+            "seconds": 7,
+            "boss": "Lech Kril",
+            "stage": 3
+        },
+        {
+            "mission": "Survival",
+            "minutes": 11,
+            "seconds": 5,
+            "boss": "Jackal",
+            "stage": 1
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 2,
+            "boss": "Jackal",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 40,
+            "boss": "Jackal",
+            "stage": 3
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 32,
+            "boss": "Councilor Vay Hek",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 7,
+            "boss": "Councilor Vay Hek",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 5,
+            "seconds": 32,
+            "boss": "Councilor Vay Hek",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 28,
+            "boss": "Nef Anyo",
+            "stage": 1
+        },
+        {
+            "mission": "Interception",
+            "minutes": 11,
+            "seconds": 0,
+            "boss": "Nef Anyo",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 53,
+            "boss": "Nef Anyo",
+            "stage": 3
+        },
+        {
+            "mission": "Hive",
+            "minutes": 3,
+            "seconds": 0,
+            "boss": "Mutalist Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Excavation",
+            "minutes": 8,
+            "seconds": 49,
+            "boss": "Mutalist Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 59,
+            "boss": "Mutalist Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 5,
+            "seconds": 3,
+            "boss": "Tyl Regor",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 50,
+            "boss": "Tyl Regor",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 0,
+            "boss": "Tyl Regor",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 8,
+            "boss": "Raptor",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 3,
+            "seconds": 7,
+            "boss": "Raptor",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 40,
+            "boss": "Raptor",
+            "stage": 3
+        },
+        {
+            "mission": "Defense",
+            "minutes": 10,
+            "seconds": 49,
+            "boss": "Captain Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 26,
+            "boss": "Captain Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 31,
+            "boss": "Captain Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 7,
+            "boss": "Lephantis",
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 44,
+            "boss": "Lephantis",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 5,
+            "seconds": 32,
+            "boss": "Lephantis",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 41,
+            "boss": "Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 54,
+            "boss": "Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Defense",
+            "minutes": 12,
+            "seconds": 53,
+            "boss": "Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 32,
+            "boss": "Corrupted Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 4,
+            "seconds": 26,
+            "boss": "Corrupted Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 4,
+            "seconds": 19,
+            "boss": "Corrupted Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 33,
+            "boss": "Ambulas",
+            "stage": 1
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 30,
+            "boss": "Ambulas",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 28,
+            "boss": "Ambulas",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 45,
+            "boss": "Hyena Pack",
+            "stage": 1
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 46,
+            "boss": "Hyena Pack",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 53,
+            "boss": "Hyena Pack",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 47,
+            "boss": "Nef Anyo",
+            "stage": 1
+        },
+        {
+            "mission": "Defense",
+            "minutes": 11,
+            "seconds": 26,
+            "boss": "Nef Anyo",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 30,
+            "boss": "Nef Anyo",
+            "stage": 3
+        },
+        {
+            "mission": "Hive",
+            "minutes": 2,
+            "seconds": 30,
+            "boss": "Lephantis",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 40,
+            "boss": "Lephantis",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 8,
+            "boss": "Lephantis",
+            "stage": 3
+        },
+        {
+            "mission": "Interception",
+            "minutes": 9,
+            "seconds": 14,
+            "boss": "Tyl Regor",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 16,
+            "boss": "Tyl Regor",
+            "stage": 2
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 5,
+            "seconds": 25,
+            "boss": "Tyl Regor",
+            "stage": 3
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 3,
+            "boss": "Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 38,
+            "boss": "Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 20,
+            "boss": "Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Survival",
+            "minutes": 10,
+            "seconds": 32,
+            "boss": "Captain Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 7,
+            "boss": "Captain Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 23,
+            "boss": "Captain Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Hive",
+            "minutes": 3,
+            "seconds": 18,
+            "boss": "Phorid",
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 6,
+            "seconds": 6,
+            "boss": "Phorid",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 16,
+            "boss": "Phorid",
+            "stage": 3
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 35,
+            "boss": "Hyena Pack",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 0,
+            "boss": "Hyena Pack",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 26,
+            "boss": "Hyena Pack",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 39,
+            "boss": "General Sargas Ruk",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 18,
+            "boss": "General Sargas Ruk",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 1,
+            "seconds": 25,
+            "boss": "General Sargas Ruk",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 0,
+            "boss": "Raptor",
+            "stage": 1
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 1,
+            "seconds": 49,
+            "boss": "Raptor",
+            "stage": 2
+        },
+        {
+            "mission": "Survival",
+            "minutes": 10,
+            "seconds": 50,
+            "boss": "Raptor",
+            "stage": 3
+        },
+        {
+            "mission": "Defense",
+            "minutes": 7,
+            "seconds": 28,
+            "boss": "Kela De Thaym",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 49,
+            "boss": "Kela De Thaym",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 35,
+            "boss": "Kela De Thaym",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 50,
+            "boss": "Jackal",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 41,
+            "boss": "Jackal",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 29,
+            "boss": "Jackal",
+            "stage": 3
+        },
+        {
+            "mission": "Hive",
+            "minutes": 2,
+            "seconds": 49,
+            "boss": "Mutalist Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Survival",
+            "minutes": 11,
+            "seconds": 1,
+            "boss": "Mutalist Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 9,
+            "boss": "Mutalist Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 45,
+            "boss": "Corrupted Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Survival",
+            "minutes": 10,
+            "seconds": 57,
+            "boss": "Corrupted Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 35,
+            "boss": "Corrupted Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Free Roam",
+            "minutes": 7,
+            "seconds": 43,
+            "boss": "Councilor Vay Hek",
+            "stage": 1
+        },
+        {
+            "mission": "Defense",
+            "minutes": 14,
+            "seconds": 50,
+            "boss": "Councilor Vay Hek",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 49,
+            "boss": "Councilor Vay Hek",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 46,
+            "boss": "Ambulas",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 32,
+            "boss": "Ambulas",
+            "stage": 2
+        },
+        {
+            "mission": "Defense",
+            "minutes": 17,
+            "seconds": 4,
+            "boss": "Ambulas",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 44,
+            "boss": "Lech Kril",
+            "stage": 1
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 3,
+            "seconds": 59,
+            "boss": "Lech Kril",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 29,
+            "boss": "Lech Kril",
+            "stage": 3
+        },
+        {
+            "mission": "Hive",
+            "minutes": 3,
+            "seconds": 10,
+            "boss": "Mutalist Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 34,
+            "boss": "Mutalist Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Excavation",
+            "minutes": 7,
+            "seconds": 53,
+            "boss": "Mutalist Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Survival",
+            "minutes": 10,
+            "seconds": 34,
+            "boss": "Councilor Vay Hek",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 33,
+            "boss": "Councilor Vay Hek",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 4,
+            "seconds": 27,
+            "boss": "Councilor Vay Hek",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 21,
+            "boss": "Raptor",
+            "stage": 1
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 22,
+            "boss": "Raptor",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 4,
+            "seconds": 0,
+            "boss": "Raptor",
+            "stage": 3
+        },
+        {
+            "mission": "Defense",
+            "minutes": 9,
+            "seconds": 53,
+            "boss": "Hyena Pack",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 58,
+            "boss": "Hyena Pack",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 37,
+            "boss": "Hyena Pack",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 18,
+            "boss": "Kela De Thaym",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 44,
+            "boss": "Kela De Thaym",
+            "stage": 2
+        },
+        {
+            "mission": "Defection",
+            "minutes": 10,
+            "seconds": 12,
+            "boss": "Kela De Thaym",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 30,
+            "boss": "General Sargas Ruk",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 23,
+            "boss": "General Sargas Ruk",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 30,
+            "boss": "General Sargas Ruk",
+            "stage": 3
+        },
+        {
+            "mission": "Hive",
+            "minutes": 3,
+            "seconds": 12,
+            "boss": "Lephantis",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 14,
+            "boss": "Lephantis",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 7,
+            "boss": "Lephantis",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 8,
+            "seconds": 54,
+            "boss": "Tyl Regor",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 56,
+            "boss": "Tyl Regor",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 54,
+            "boss": "Tyl Regor",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 44,
+            "boss": "Raptor",
+            "stage": 1
+        },
+        {
+            "mission": "Survival",
+            "minutes": 11,
+            "seconds": 7,
+            "boss": "Raptor",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 44,
+            "boss": "Raptor",
+            "stage": 3
+        },
+        {
+            "mission": "Hive",
+            "minutes": 4,
+            "seconds": 37,
+            "boss": "Mutalist Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 15,
+            "boss": "Mutalist Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Excavation",
+            "minutes": 11,
+            "seconds": 24,
+            "boss": "Mutalist Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Defection",
+            "minutes": 8,
+            "seconds": 50,
+            "boss": "Kela De Thaym",
+            "stage": 1
+        },
+        {
+            "mission": "Free Roam",
+            "minutes": 4,
+            "seconds": 2,
+            "boss": "Kela De Thaym",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 7,
+            "seconds": 4,
+            "boss": "Kela De Thaym",
+            "stage": 3
+        },
+        {
+            "mission": "Defense",
+            "minutes": 11,
+            "seconds": 33,
+            "boss": "Councilor Vay Hek",
+            "stage": 1
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 3,
+            "seconds": 1,
+            "boss": "Councilor Vay Hek",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 4,
+            "seconds": 7,
+            "boss": "Councilor Vay Hek",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 4,
+            "seconds": 55,
+            "boss": "Nef Anyo",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 36,
+            "boss": "Nef Anyo",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 1,
+            "seconds": 40,
+            "boss": "Nef Anyo",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 0,
+            "boss": "Kela De Thaym",
+            "stage": 1
+        },
+        {
+            "mission": "Excavation",
+            "minutes": 9,
+            "seconds": 43,
+            "boss": "Kela De Thaym",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 4,
+            "seconds": 55,
+            "boss": "Kela De Thaym",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 2,
+            "boss": "Mutalist Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 38,
+            "boss": "Mutalist Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 33,
+            "boss": "Mutalist Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 29,
+            "boss": "Raptor",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 12,
+            "boss": "Raptor",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 59,
+            "boss": "Raptor",
+            "stage": 3
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 31,
+            "boss": "Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 58,
+            "boss": "Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 30,
+            "boss": "Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 14,
+            "boss": "Ambulas",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 38,
+            "boss": "Ambulas",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 13,
+            "seconds": 32,
+            "boss": "Ambulas",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 12,
+            "boss": "General Sargas Ruk",
+            "stage": 1
+        },
+        {
+            "mission": "Defense",
+            "minutes": 10,
+            "seconds": 46,
+            "boss": "General Sargas Ruk",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 48,
+            "boss": "General Sargas Ruk",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 37,
+            "boss": "Nef Anyo",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 41,
+            "boss": "Nef Anyo",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 41,
+            "boss": "Nef Anyo",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 50,
+            "boss": "Lephantis",
+            "stage": 1
+        },
+        {
+            "mission": "Interception",
+            "minutes": 9,
+            "seconds": 0,
+            "boss": "Lephantis",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 33,
+            "boss": "Lephantis",
+            "stage": 3
+        },
+        {
+            "mission": "Free Roam",
+            "minutes": 5,
+            "seconds": 55,
+            "boss": "Tyl Regor",
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 16,
+            "boss": "Tyl Regor",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 4,
+            "seconds": 24,
+            "boss": "Tyl Regor",
+            "stage": 3
+        },
+        {
+            "mission": "Excavation",
+            "minutes": 11,
+            "seconds": 46,
+            "boss": "Captain Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 22,
+            "boss": "Captain Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 15,
+            "boss": "Captain Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 32,
+            "boss": "Phorid",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 44,
+            "boss": "Phorid",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 54,
+            "boss": "Phorid",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 4,
+            "boss": "Hyena Pack",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 20,
+            "boss": "Hyena Pack",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 24,
+            "boss": "Hyena Pack",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 20,
+            "boss": "Raptor",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 17,
+            "boss": "Raptor",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 48,
+            "boss": "Raptor",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 4,
+            "seconds": 58,
+            "boss": "Kela De Thaym",
+            "stage": 1
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 33,
+            "boss": "Kela De Thaym",
+            "stage": 2
+        },
+        {
+            "mission": "Assault",
+            "minutes": 5,
+            "seconds": 41,
+            "boss": "Kela De Thaym",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 46,
+            "boss": "Mutalist Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Defection",
+            "minutes": 11,
+            "seconds": 1,
+            "boss": "Mutalist Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 4,
+            "seconds": 22,
+            "boss": "Mutalist Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 20,
+            "boss": "Corrupted Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 30,
+            "boss": "Corrupted Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 28,
+            "boss": "Corrupted Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Free Roam",
+            "minutes": 4,
+            "seconds": 27,
+            "boss": "Councilor Vay Hek",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 22,
+            "boss": "Councilor Vay Hek",
+            "stage": 2
+        },
+        {
+            "mission": "Defense",
+            "minutes": 17,
+            "seconds": 23,
+            "boss": "Councilor Vay Hek",
+            "stage": 3
+        },
+        {
+            "mission": "Excavation",
+            "minutes": 7,
+            "seconds": 14,
+            "boss": "Ambulas",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 3,
+            "seconds": 14,
+            "boss": "Ambulas",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 13,
+            "seconds": 49,
+            "boss": "Ambulas",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 26,
+            "boss": "Councilor Vay Hek",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 48,
+            "boss": "Councilor Vay Hek",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 45,
+            "boss": "Councilor Vay Hek",
+            "stage": 3
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 3,
+            "seconds": 33,
+            "boss": "Raptor",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 9,
+            "boss": "Raptor",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 45,
+            "boss": "Raptor",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 16,
+            "boss": "Ambulas",
+            "stage": 1
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 28,
+            "boss": "Ambulas",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 24,
+            "boss": "Ambulas",
+            "stage": 3
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 1,
+            "seconds": 45,
+            "boss": "Captain Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 6,
+            "boss": "Captain Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 10,
+            "boss": "Captain Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 54,
+            "boss": "Jackal",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 56,
+            "boss": "Jackal",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 13,
+            "boss": "Jackal",
+            "stage": 3
+        },
+        {
+            "mission": "Defense",
+            "minutes": 10,
+            "seconds": 33,
+            "boss": "Phorid",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 0,
+            "boss": "Phorid",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 1,
+            "seconds": 32,
+            "boss": "Phorid",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 22,
+            "boss": "Tyl Regor",
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 40,
+            "boss": "Tyl Regor",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 39,
+            "boss": "Tyl Regor",
+            "stage": 3
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 1,
+            "seconds": 40,
+            "boss": "Nef Anyo",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 17,
+            "boss": "Nef Anyo",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 1,
+            "seconds": 31,
+            "boss": "Nef Anyo",
+            "stage": 3
+        },
+        {
+            "mission": "Survival",
+            "minutes": 11,
+            "seconds": 1,
+            "boss": "Corrupted Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 33,
+            "boss": "Corrupted Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 4,
+            "seconds": 3,
+            "boss": "Corrupted Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Defense",
+            "minutes": 13,
+            "seconds": 40,
+            "boss": "Lech Kril",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 12,
+            "boss": "Lech Kril",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 59,
+            "boss": "Lech Kril",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 16,
+            "boss": "Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Defense",
+            "minutes": 9,
+            "seconds": 57,
+            "boss": "Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 14,
+            "boss": "Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 4,
+            "seconds": 21,
+            "boss": "General Sargas Ruk",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 55,
+            "boss": "General Sargas Ruk",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 4,
+            "seconds": 20,
+            "boss": "General Sargas Ruk",
+            "stage": 3
+        },
+        {
+            "mission": "Hive",
+            "minutes": 2,
+            "seconds": 47,
+            "boss": "Lephantis",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 0,
+            "boss": "Lephantis",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 15,
+            "boss": "Lephantis",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 36,
+            "boss": "Captain Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 15,
+            "boss": "Captain Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 4,
+            "boss": "Captain Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Defense",
+            "minutes": 11,
+            "seconds": 19,
+            "boss": "Phorid",
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 19,
+            "boss": "Phorid",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 15,
+            "boss": "Phorid",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 29,
+            "boss": "General Sargas Ruk",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 0,
+            "boss": "General Sargas Ruk",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 31,
+            "boss": "General Sargas Ruk",
+            "stage": 3
+        },
+        {
+            "mission": "Defection",
+            "minutes": 11,
+            "seconds": 32,
+            "boss": "Tyl Regor",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 5,
+            "seconds": 38,
+            "boss": "Tyl Regor",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 4,
+            "seconds": 6,
+            "boss": "Tyl Regor",
+            "stage": 3
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 3,
+            "seconds": 34,
+            "boss": "Raptor",
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 39,
+            "boss": "Raptor",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 22,
+            "boss": "Raptor",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 54,
+            "boss": "Mutalist Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 31,
+            "boss": "Mutalist Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 32,
+            "boss": "Mutalist Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 5,
+            "boss": "Lech Kril",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 8,
+            "boss": "Lech Kril",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 4,
+            "seconds": 37,
+            "boss": "Lech Kril",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 36,
+            "boss": "Councilor Vay Hek",
+            "stage": 1
+        },
+        {
+            "mission": "Defense",
+            "minutes": 8,
+            "seconds": 49,
+            "boss": "Councilor Vay Hek",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 13,
+            "boss": "Councilor Vay Hek",
+            "stage": 3
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 32,
+            "boss": "Corrupted Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 58,
+            "boss": "Corrupted Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 8,
+            "boss": "Corrupted Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 16,
+            "boss": "Lephantis",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 10,
+            "boss": "Lephantis",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 9,
+            "seconds": 35,
+            "boss": "Lephantis",
+            "stage": 3
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 3,
+            "seconds": 11,
+            "boss": "Kela De Thaym",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 9,
+            "boss": "Kela De Thaym",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 21,
+            "boss": "Kela De Thaym",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 40,
+            "boss": "Jackal",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 52,
+            "boss": "Jackal",
+            "stage": 2
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 23,
+            "boss": "Jackal",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 59,
+            "boss": "Nef Anyo",
+            "stage": 1
+        },
+        {
+            "mission": "Defense",
+            "minutes": 14,
+            "seconds": 19,
+            "boss": "Nef Anyo",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 45,
+            "boss": "Nef Anyo",
+            "stage": 3
+        },
+        {
+            "mission": "Hive",
+            "minutes": 2,
+            "seconds": 26,
+            "boss": "Mutalist Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 6,
+            "seconds": 18,
+            "boss": "Mutalist Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Excavation",
+            "minutes": 8,
+            "seconds": 15,
+            "boss": "Mutalist Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 0,
+            "boss": "Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 7,
+            "boss": "Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Excavation",
+            "minutes": 9,
+            "seconds": 57,
+            "boss": "Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 30,
+            "boss": "Corrupted Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 24,
+            "boss": "Corrupted Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 30,
+            "boss": "Corrupted Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 32,
+            "boss": "Ambulas",
+            "stage": 1
+        },
+        {
+            "mission": "Defense",
+            "minutes": 10,
+            "seconds": 52,
+            "boss": "Ambulas",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 12,
+            "seconds": 45,
+            "boss": "Ambulas",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 25,
+            "boss": "General Sargas Ruk",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 20,
+            "boss": "General Sargas Ruk",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 22,
+            "boss": "General Sargas Ruk",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 21,
+            "boss": "Hyena Pack",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 35,
+            "boss": "Hyena Pack",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 9,
+            "boss": "Hyena Pack",
+            "stage": 3
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 40,
+            "boss": "Nef Anyo",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 15,
+            "boss": "Nef Anyo",
+            "stage": 2
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 4,
+            "seconds": 21,
+            "boss": "Nef Anyo",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 38,
+            "boss": "Tyl Regor",
+            "stage": 1
+        },
+        {
+            "mission": "Excavation",
+            "minutes": 8,
+            "seconds": 12,
+            "boss": "Tyl Regor",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 5,
+            "seconds": 0,
+            "boss": "Tyl Regor",
+            "stage": 3
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 2,
+            "seconds": 38,
+            "boss": "Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 12,
+            "boss": "Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 5,
+            "seconds": 0,
+            "boss": "Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Defense",
+            "minutes": 10,
+            "seconds": 31,
+            "boss": "Captain Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 34,
+            "boss": "Captain Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 50,
+            "boss": "Captain Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 3,
+            "seconds": 38,
+            "boss": "Raptor",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 59,
+            "boss": "Raptor",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 20,
+            "boss": "Raptor",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 19,
+            "boss": "Jackal",
+            "stage": 1
+        },
+        {
+            "mission": "Excavation",
+            "minutes": 9,
+            "seconds": 57,
+            "boss": "Jackal",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 29,
+            "boss": "Jackal",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 23,
+            "boss": "Corrupted Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Survival",
+            "minutes": 11,
+            "seconds": 1,
+            "boss": "Corrupted Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 34,
+            "boss": "Corrupted Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 43,
+            "boss": "Ambulas",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 28,
+            "boss": "Ambulas",
+            "stage": 2
+        },
+        {
+            "mission": "Survival",
+            "minutes": 10,
+            "seconds": 28,
+            "boss": "Ambulas",
+            "stage": 3
+        },
+        {
+            "mission": "Hive",
+            "minutes": 4,
+            "seconds": 6,
+            "boss": "Mutalist Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 4,
+            "boss": "Mutalist Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 40,
+            "boss": "Mutalist Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 51,
+            "boss": "Tyl Regor",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 35,
+            "boss": "Tyl Regor",
+            "stage": 2
+        },
+        {
+            "mission": "Interception",
+            "minutes": 13,
+            "seconds": 13,
+            "boss": "Tyl Regor",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 7,
+            "boss": "Nef Anyo",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 16,
+            "boss": "Nef Anyo",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 45,
+            "boss": "Nef Anyo",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 36,
+            "boss": "Corrupted Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 35,
+            "boss": "Corrupted Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Defense",
+            "minutes": 13,
+            "seconds": 54,
+            "boss": "Corrupted Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Excavation",
+            "minutes": 8,
+            "seconds": 16,
+            "boss": "Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 16,
+            "boss": "Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 11,
+            "boss": "Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Assault",
+            "minutes": 5,
+            "seconds": 37,
+            "boss": "General Sargas Ruk",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 36,
+            "boss": "General Sargas Ruk",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 15,
+            "boss": "General Sargas Ruk",
+            "stage": 3
+        },
+        {
+            "mission": "Free Roam",
+            "minutes": 4,
+            "seconds": 16,
+            "boss": "Captain Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 35,
+            "boss": "Captain Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 38,
+            "boss": "Captain Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Survival",
+            "minutes": 12,
+            "seconds": 14,
+            "boss": "Nef Anyo",
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 19,
+            "boss": "Nef Anyo",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 37,
+            "boss": "Nef Anyo",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 30,
+            "boss": "Phorid",
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 8,
+            "boss": "Phorid",
+            "stage": 2
+        },
+        {
+            "mission": "Excavation",
+            "minutes": 12,
+            "seconds": 28,
+            "boss": "Phorid",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 5,
+            "boss": "Ambulas",
+            "stage": 1
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 3,
+            "seconds": 41,
+            "boss": "Ambulas",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 13,
+            "seconds": 54,
+            "boss": "Ambulas",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 15,
+            "boss": "Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 25,
+            "boss": "Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 2,
+            "boss": "Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Interception",
+            "minutes": 9,
+            "seconds": 13,
+            "boss": "Phorid",
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 11,
+            "boss": "Phorid",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 1,
+            "seconds": 48,
+            "boss": "Phorid",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 50,
+            "boss": "Nef Anyo",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 35,
+            "boss": "Nef Anyo",
+            "stage": 2
+        },
+        {
+            "mission": "Defense",
+            "minutes": 9,
+            "seconds": 50,
+            "boss": "Nef Anyo",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 4,
+            "seconds": 9,
+            "boss": "Kela De Thaym",
+            "stage": 1
+        },
+        {
+            "mission": "Survival",
+            "minutes": 10,
+            "seconds": 52,
+            "boss": "Kela De Thaym",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 4,
+            "seconds": 39,
+            "boss": "Kela De Thaym",
+            "stage": 3
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 3,
+            "seconds": 42,
+            "boss": "Raptor",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 12,
+            "boss": "Raptor",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 28,
+            "boss": "Raptor",
+            "stage": 3
+        },
+        {
+            "mission": "Assault",
+            "minutes": 4,
+            "seconds": 44,
+            "boss": "Captain Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 45,
+            "boss": "Captain Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 1,
+            "seconds": 42,
+            "boss": "Captain Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 51,
+            "boss": "Corrupted Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 58,
+            "boss": "Corrupted Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 33,
+            "boss": "Corrupted Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 23,
+            "boss": "Nef Anyo",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 49,
+            "boss": "Nef Anyo",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 7,
+            "boss": "Nef Anyo",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 18,
+            "boss": "Lephantis",
+            "stage": 1
+        },
+        {
+            "mission": "Defection",
+            "minutes": 10,
+            "seconds": 13,
+            "boss": "Lephantis",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 25,
+            "boss": "Lephantis",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 51,
+            "boss": "Tyl Regor",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 57,
+            "boss": "Tyl Regor",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 50,
+            "boss": "Tyl Regor",
+            "stage": 3
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 4,
+            "seconds": 5,
+            "boss": "Captain Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 4,
+            "seconds": 51,
+            "boss": "Captain Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 1,
+            "seconds": 45,
+            "boss": "Captain Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 38,
+            "boss": "General Sargas Ruk",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 7,
+            "seconds": 31,
+            "boss": "General Sargas Ruk",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 51,
+            "boss": "General Sargas Ruk",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 4,
+            "seconds": 20,
+            "boss": "Raptor",
+            "stage": 1
+        },
+        {
+            "mission": "Defense",
+            "minutes": 12,
+            "seconds": 52,
+            "boss": "Raptor",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 4,
+            "seconds": 2,
+            "boss": "Raptor",
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 33,
+            "boss": "Kela De Thaym",
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 58,
+            "boss": "Kela De Thaym",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 5,
+            "seconds": 41,
+            "boss": "Kela De Thaym",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 39,
+            "boss": "Jackal",
+            "stage": 1
+        },
+        {
+            "mission": "Defense",
+            "minutes": 16,
+            "seconds": 3,
+            "boss": "Jackal",
+            "stage": 2
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 12,
+            "boss": "Jackal",
+            "stage": 3
+        },
+        {
+            "mission": "Hive",
+            "minutes": 2,
+            "seconds": 49,
+            "boss": "Mutalist Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 32,
+            "boss": "Mutalist Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 0,
+            "boss": "Mutalist Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Survival",
+            "minutes": 11,
+            "seconds": 14,
+            "boss": "Corrupted Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 20,
+            "boss": "Corrupted Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 1,
+            "boss": "Corrupted Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 11,
+            "boss": "Mutalist Alad V",
+            "stage": 1
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 45,
+            "boss": "Mutalist Alad V",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 2,
+            "boss": "Mutalist Alad V",
+            "stage": 3
+        },
+        {
+            "mission": "Defense",
+            "minutes": 9,
+            "seconds": 41,
+            "boss": "Ambulas",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 19,
+            "boss": "Ambulas",
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 12,
+            "seconds": 32,
+            "boss": "Ambulas",
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 8,
+            "boss": "Captain Vor",
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 5,
+            "boss": "Captain Vor",
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 37,
+            "boss": "Captain Vor",
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 25,
+            "boss": "Kela De Thaym",
+            "date": 1562708587,
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 40,
+            "boss": "Kela De Thaym",
+            "date": 1562709205,
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 46,
+            "boss": "Kela De Thaym",
+            "date": 1562709205,
+            "stage": 3
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 9,
+            "boss": "Mutalist Alad V",
+            "date": 1562782724,
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 3,
+            "boss": "Mutalist Alad V",
+            "date": 1562782724,
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 31,
+            "boss": "Tyl Regor",
+            "date": 1562877196,
+            "stage": 2
+        },
+        {
+            "mission": "Defection",
+            "minutes": 9,
+            "seconds": 12,
+            "boss": "Tyl Regor",
+            "date": 1562877196,
+            "stage": 3
+        },
+        {
+            "mission": "Defense",
+            "minutes": 10,
+            "seconds": 31,
+            "boss": "Raptor",
+            "date": 1562960882,
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 49,
+            "boss": "Raptor",
+            "date": 1562960882,
+            "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 10,
+            "boss": "Captain Vor",
+            "date": 1563044708,
+            "stage": 1
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 3,
+            "seconds": 11,
+            "boss": "Captain Vor",
+            "date": 1563044708,
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 40,
+            "boss": "Captain Vor",
+            "date": 1563044708,
+            "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 32,
+            "boss": "Lephantis",
+            "date": 1563132962,
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 47,
+            "boss": "Lephantis",
+            "date": 1563132962,
+            "stage": 2
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 9,
+            "boss": "Lephantis",
+            "date": 1563132962,
+            "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 8,
+            "boss": "Alad V",
+            "date": 1563214497,
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 38,
+            "boss": "Alad V",
+            "date": 1563214497,
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 34,
+            "boss": "Alad V",
+            "date": 1563214497,
+            "stage": 3
+        },
+        {
+            "mission": "Defense",
+            "minutes": 11,
+            "seconds": 39,
+            "boss": "Ambulas",
+            "date": 1563392891,
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 47,
+            "boss": "Ambulas",
+            "date": 1563392891,
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 21,
+            "boss": "Ambulas",
+            "date": 1563392891,
+            "stage": 3
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 33,
+            "boss": "General Sargas Ruk",
+            "date": 1563481201,
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 4,
+            "boss": "General Sargas Ruk",
+            "date": 1563481201,
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 2,
+            "boss": "General Sargas Ruk",
+            "date": 1563481201,
+            "stage": 3
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 4,
+            "boss": "Hyena Pack",
+            "date": 1563572141,
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 4,
+            "seconds": 47,
+            "boss": "Hyena Pack",
+            "date": 1563572141,
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 12,
+            "boss": "Hyena Pack",
+            "date": 1563572141,
+            "stage": 3
+        }
+    ]
+}

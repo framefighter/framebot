@@ -14,3 +14,5 @@
 !/.vscode/**
 !/bash/
 !/bash/**
+!/data/
+!/data/times.json
