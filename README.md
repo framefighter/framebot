@@ -1,9 +1,7 @@
-# Installation
+# Quick Setup
 
 1. **clone** this repo
-1. **create** `config.json` containing token and password in root directory
-1. **run** `npm i`
-1. **compile** typescript: `tsc`
-1. **start** bot with `./bash/start.sh`
+1. **create** [`config.json`](https://github.com/framefighter/framebot/blob/master/docs/setup.md) and a `/data` directory
+1. **run** `./bash/restart.sh`
 
 #### Done! Bot should run on given token.
