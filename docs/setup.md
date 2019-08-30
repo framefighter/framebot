@@ -11,7 +11,6 @@
 - `token`: Bot token from _@BotFather_ 
 - `password`: Used for declaring a user as admin  
     **Careful! Everyone with the `password` can make any users admin**
-3. create a `data` directory also in home directory
 4. run `./bash/restart.sh`  
     - this will pull new git versions
     - install missing npm packages
