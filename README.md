@@ -5,3 +5,7 @@
 1. **run** `./bash/restart.sh`
 
 #### Done! Bot should run on given token.
+
+# Debug
+
+- On **VSCode**: `F5`
