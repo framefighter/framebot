@@ -8,6 +8,7 @@
 !/icons/
 !/icons/**
 !package.json
+!package-lock.json
 !tsconfig.json
 !/.vscode/
 !/.vscode/**
