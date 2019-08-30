@@ -547,6 +547,7 @@ export const definitions: command.Definitions = {
                 [{ id: "filter" }],
                 [{ id: "arbitrationFilter" }],
                 [{ id: "config" }],
+                [{ id: "songs" }],
                 [active.user.admin ? ({ id: "restart" }) : { id: "none" }],
                 [{ id: "sortie", text: "< Back" }],
             ]
