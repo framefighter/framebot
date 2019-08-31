@@ -43,7 +43,7 @@ export class Message implements message.Message {
             }
             return msg;
         }
-        return ""
+        return this.text || ""
     }
 
 }

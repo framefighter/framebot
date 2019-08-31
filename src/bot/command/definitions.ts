@@ -1529,11 +1529,8 @@ export const definitions: command.Definitions = {
         message: (active) => {
             const found = BOT.database.songs.getByName(active.args[0])
             return new Message({
-                title: active.command.name(active),
-                text: Formatter.format({
-                    caption: found ? found.name : "No song found",
-                    text: found ? found.string.code() : "",
-                })
+                title: found ? found.name : active.command.name(active),
+                text: found ? found.string.clean() : ""
             })
         },
         keyboard: (active) => {
