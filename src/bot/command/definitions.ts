@@ -1268,8 +1268,8 @@ export const definitions: command.Definitions = {
             })
         }),
         keyboard: () => new Keyboard({
-            layout: [[{ id: "help" }],
-            [{ text: "Inline Mode", search: "find " }]]
+            layout: [[{ id: "sortie" }, { id: "help" }],
+            [{ id: "settings" }, { text: "Inline Mode", search: "find " }]]
         })
     },
     "help": {
@@ -1281,7 +1281,7 @@ export const definitions: command.Definitions = {
             text: BOT.commands.list
                 .map(cmd => Formatter.format({
                     caption: ["/" + cmd.id.clean(), ...cmd.alt].join(" | /"),
-                    description: cmd.help
+                    subCaption: cmd.help
                 })).join("\n")
         })
     },
@@ -1506,7 +1506,7 @@ export const definitions: command.Definitions = {
             layout: active.user.settings.songs.map(song => [{
                 id: (song.name + song_suffix) as command.ID,
                 text: song.name
-            }])
+            }]).concat([[{ id: "settings", text: "< Back" }]])
         })
     },
     "showSong": {

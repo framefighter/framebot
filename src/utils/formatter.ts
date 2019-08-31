@@ -207,11 +207,8 @@ export class Formatter {
             if (trader.active && trader.inventory) {
                 return Formatter.format({
                     caption: (trader.character || "").end("is at").end(trader.location),
-                    description: trader.inventory.length > 20
-                        ? "To many items!\nUse inline mode to get all items!"
-                        : undefined,
-                    list: trader.inventory.slice(0, 10)
-                        .map(inv => `${inv.item}: ${inv.ducats}d | ${inv.credits}c`),
+                    list: trader.inventory.map(inv =>
+                        `${inv.item}: ${inv.ducats}d | ${inv.credits}c`),
                     time: "in".end(trader.endString),
                 })
             } else {
