@@ -1548,7 +1548,16 @@ export const definitions: command.Definitions = {
             return new Keyboard({
                 layout: [remove, [{ id: "songs", text: "< Songs" }]]
             })
-        }
+        },
+        inline: (active) => BOT.database.songs.list
+            .filter(song =>
+                compare.loose(song.name, active.args[0]))
+            .map(song =>
+                new Inline({
+                    title: song.name,
+                    description: song.string.substr(0, 25) + "...",
+                    text: song.string,
+                }))
     }
 }
 
