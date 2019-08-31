@@ -1486,7 +1486,7 @@ export const definitions: command.Definitions = {
                     if (updated) {
                         return `Song (${song.name}) already exists, updated string!`
                     } else {
-                        return `Song (${song.name}) is not yours or does not exist!`
+                        return `Song (${song.name}) is not your song or does not exist!`
                     }
                 } else {
                     BOT.database.songs.add(song)
@@ -1525,16 +1525,24 @@ export const definitions: command.Definitions = {
             return new Message({
                 title: active.command.name(active),
                 text: Formatter.format({
-                    caption:  found ? found.name : "No song found",
+                    caption: found ? found.name : "No song found",
                     text: found ? found.string.code() : "",
                 })
             })
         },
-        keyboard: (active) => new Keyboard({
-            layout: [
-                [{ id: (active.args[0] + remove_song_suffix) as command.ID, text: "🗑️ Remove" }],
-                [{ id: "songs", text: "< Songs" }]]
-        })
+        keyboard: (active) => {
+            const found = BOT.database.songs.getByName(active.args[0]);
+            let remove: keyboard.Button[] = [];
+            if (found && found.user === active.user.id) {
+                remove = [{
+                    id: (active.args[0] + remove_song_suffix) as command.ID,
+                    text: "🗑️ Remove"
+                }]
+            };
+            return new Keyboard({
+                layout: [remove, [{ id: "songs", text: "< Songs" }]]
+            })
+        }
     }
 }
 
