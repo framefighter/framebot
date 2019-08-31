@@ -11,7 +11,6 @@ export class Keyboard implements keyboard.Board {
     constructor(keyboardConstructor: Readonly<keyboard.Constructor>) {
         this.add = keyboardConstructor.add;
         this.layout = keyboardConstructor.layout.concat(this.add || []);
-
     }
 
     toInline(active: Active): InlineKeyboardMarkup {

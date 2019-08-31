@@ -1,5 +1,5 @@
 import { Compare } from '../../utils/compare';
-import { definitions, settings_suffix } from './definitions';
+import { definitions, suffix } from './definitions';
 import { Command } from './command';
 import { alert_setting } from './definitions';
 import { BOT } from '../..';
@@ -15,8 +15,8 @@ export class Commands implements command.Commands {
         const settings = Object.keys(definitions).filter(key =>
             definitions[key as command.ID].jsonKey)
             .map(key =>
-                new Command(key + settings_suffix as command.ID,
-                    alert_setting((key + settings_suffix) as command.ID)[key + settings_suffix]))
+                new Command(key + suffix().setting as command.ID,
+                    alert_setting((key + suffix().setting) as command.ID)[key + suffix().setting]))
         this.list = commands.concat(settings);
         this.settings_list = settings;
         this.ids = commands.map(cmd => cmd.id);

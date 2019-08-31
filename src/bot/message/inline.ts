@@ -2,7 +2,7 @@ import { InlineQueryResultArticle } from 'node-telegram-bot-api';
 import { BOT } from '../..';
 import { Message } from './message';
 import { Keyboard } from '../keyboard/keyboard';
-import { add_suffix } from '../command/definitions';
+import { suffix, sep } from '../command/definitions';
 import { Generator } from '../../utils/generator';
 import { Active } from '../active/active';
 
@@ -30,7 +30,7 @@ export class Inline extends Message implements message.Inline {
                     layout: active.command.keyboard(active).layout,
                     add: [[
                         {
-                            id: (this.item + add_suffix as command.ID),
+                            id: (this.item + suffix(sep).addItem as command.ID),
                             text: "Save"
                         }
                     ]]

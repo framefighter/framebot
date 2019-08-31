@@ -48,4 +48,18 @@ declare namespace command {
         | "clearConfig"
         | "songs"
         | "showSong"
+
+    type Suffix = {
+        setting: string,
+        askRemoveItem: string,
+        removeItem: string,
+        executeCheck: string,
+        arbitrationRemove: string,
+        addItem: string,
+        addMenuButton: string,
+        removeMenuButton: string,
+        selectMenuButton: string,
+        showSong: string,
+        removeSong: string
+    }
 }

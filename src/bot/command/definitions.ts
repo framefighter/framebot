@@ -11,17 +11,21 @@ import moment from 'moment';
 import { Check } from '../../utils/check';
 import { CONFIG } from '../../utils/config';
 
-export const settings_suffix = "Setting";
-export const item_suffix = "ShowItem";
-export const remove_suffix = "ItemRemove";
-export const check_suffix = "ExecuteCheck";
-export const type_remove_suffix = "TypeRemove";
-export const add_suffix = "ItemAdd";
-export const add_config_suffix = "AddConfig";
-export const remove_config_suffix = "RemoveConfig";
-export const select_config_suffix = "SelectConfig";
-export const song_suffix = "ShowSong";
-export const remove_song_suffix = "RemoveSong";
+export const sep = "+"
+
+export const suffix: ((sep?: string) => command.Suffix) = (sep = "") => ({
+    setting: sep + "Setting",
+    askRemoveItem: sep + "askRemove",
+    removeItem: sep + "remove",
+    executeCheck: sep + "check",
+    arbitrationRemove: sep + "arbitrationFilter",
+    addItem: sep + "add",
+    addMenuButton: sep + "configSelection",
+    removeMenuButton: sep + "config",
+    selectMenuButton: sep + "config",
+    showSong: sep + "showSong",
+    removeSong: sep + "songs"
+})
 
 export const alert_setting = (id: command.ID): command.SettingsDefinitions => ({
     [id]: {
@@ -44,8 +48,8 @@ export const alert_setting = (id: command.ID): command.SettingsDefinitions => ({
                 [{ id: "alertSettings", text: "🔊 On" }, { id: "alertSettings", text: "🔈 Off" }],
                 ...BOT.commands.settings_list.map(setting => {
                     const toggleBtn = {
-                        id: setting.id.replace(settings_suffix, "") as command.ID,
-                        text: setting.id.replace(settings_suffix, "")
+                        id: setting.id.replace(suffix().setting, "") as command.ID,
+                        text: setting.id.replace(suffix().setting, "")
                     };
                     return active.user.settings.alert[setting.id]
                         ? [toggleBtn, { id: setting.id, text: ">" }]
@@ -472,14 +476,12 @@ export const definitions: command.Definitions = {
                 } else {
                     return new Message()
                 }
-
             } else {
                 return new Message({
                     title: active.command.name(active),
                     text: Formatter.arbitration(BOT.extra.arbitration)
                 })
             }
-
         },
         rewards: (active) => [{
             id: BOT.database.notifications.generateID(BOT.extra.arbitration, active.command.id),
@@ -561,7 +563,7 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => new Keyboard({
             layout: active.user.settings.filter.map(item => [{
-                id: (item + check_suffix) as command.ID,
+                id: (item + suffix(sep).executeCheck) as command.ID,
                 text: item
             }]).concat([[{
                 id: "settings",
@@ -597,7 +599,7 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => new Keyboard({
             layout: active.user.settings.filter.map(item => [{
-                id: (item + check_suffix) as command.ID,
+                id: (item + suffix(sep).executeCheck) as command.ID,
                 text: item
             }]).concat([[{
                 id: "settings",
@@ -631,7 +633,7 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => new Keyboard({
             layout: active.user.settings.filter.map(item => [{
-                id: (item + item_suffix) as command.ID,
+                id: (item + suffix(sep).askRemoveItem) as command.ID,
                 text: item
             }]).concat([[{
                 id: "filter",
@@ -652,7 +654,7 @@ export const definitions: command.Definitions = {
         keyboard: (active) => new Keyboard({
             layout: [[
                 {
-                    id: (active.args[0] + remove_suffix) as command.ID,
+                    id: (active.args[0] + suffix(sep).removeItem) as command.ID,
                     text: "🗑️️️️ Remove"
                 },
                 {
@@ -708,7 +710,7 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => new Keyboard({
             layout: active.user.settings.arbitration.map(item => [{
-                id: (item + type_remove_suffix) as command.ID,
+                id: (item + suffix(sep).arbitrationRemove) as command.ID,
                 text: item
             }]).concat([[{
                 id: "settings",
@@ -1367,21 +1369,21 @@ export const definitions: command.Definitions = {
                 layout: active.user.settings.menu.map((row, y) =>
                     row.map((btn, x) =>
                         ({
-                            id: (btn + remove_config_suffix) as command.ID,
+                            id: (btn + suffix(sep).removeMenuButton) as command.ID,
                             text: "➖ | " + btn
                         } as keyboard.Button))
                         .concat([{
                             id: (y
                                 + "."
                                 + row.length
-                                + add_config_suffix) as command.ID,
+                                + suffix(sep).addMenuButton) as command.ID,
                             text: "➕"
                         }]))
                     .concat([[{
                         id: (active.user.settings.menu.length
                             + "."
                             + 0
-                            + add_config_suffix) as command.ID,
+                            + suffix(sep).addMenuButton) as command.ID,
                         text: "➕"
                     }], [{
                         id: "settings",
@@ -1427,16 +1429,16 @@ export const definitions: command.Definitions = {
                 if (cmd_s[i].id === "none") continue;
                 if (cmd_s[i + 1] && cmd_s[i + 1].id !== "none") {
                     layout.push([{
-                        id: (cmd_s[i].id + select_config_suffix) as command.ID,
+                        id: (cmd_s[i].id + suffix(sep).selectMenuButton) as command.ID,
                         text: cmd_s[i].name(active)
                     },
                     {
-                        id: (cmd_s[i + 1].id + select_config_suffix) as command.ID,
+                        id: (cmd_s[i + 1].id + suffix(sep).selectMenuButton) as command.ID,
                         text: cmd_s[i + 1].name(active)
                     }])
                 } else {
                     layout.push([{
-                        id: (cmd_s[i].id + select_config_suffix) as command.ID,
+                        id: (cmd_s[i].id + suffix(sep).selectMenuButton) as command.ID,
                         text: cmd_s[i].name(active)
                     }])
                 }
@@ -1499,7 +1501,7 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => new Keyboard({
             layout: BOT.database.songs.list.map(song => [{
-                id: (song.name + song_suffix) as command.ID,
+                id: (song.name + suffix(sep).showSong) as command.ID,
                 text: song.name
             }]).concat([[{ id: "settings", text: "< Back" }]])
         }),
@@ -1526,7 +1528,7 @@ export const definitions: command.Definitions = {
             let remove: keyboard.Button[] = [];
             if (found && found.user === active.user.id) {
                 remove = [{
-                    id: (active.args[0] + remove_song_suffix) as command.ID,
+                    id: (active.args[0] + suffix(sep).removeSong) as command.ID,
                     text: "🗑️ Remove"
                 }]
             };

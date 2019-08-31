@@ -1,6 +1,6 @@
 import { Active } from '../active/active';
 import { Check } from '../../utils/check';
-import { settings_suffix } from '../command/definitions';
+import { suffix } from '../command/definitions';
 import { BOT } from '../..';
 
 export default class StateCheck implements checker.StateCheck {
@@ -33,7 +33,7 @@ export default class StateCheck implements checker.StateCheck {
             } else {
                 if (BOT.database.notifications.add(
                     BOT.database.notifications.generateID(obj, command))) {
-                        newObject.push(obj)
+                    newObject.push(obj)
                 }
             }
             if (newObject.length > 0) this.sendToUser(command, newObject);
@@ -44,7 +44,7 @@ export default class StateCheck implements checker.StateCheck {
         BOT.database.users.list.forEach(user => {
             if (user.settings
                 && user.settings.alert
-                && user.settings.alert[commandID + settings_suffix]) {
+                && user.settings.alert[commandID + suffix().setting]) {
                 const command = BOT.commands.find(commandID);
                 if (command) {
                     const active = new Active({

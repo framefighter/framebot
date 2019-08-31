@@ -1,6 +1,6 @@
 import TelegramBot, { InlineQueryResult, InlineQuery } from "node-telegram-bot-api";
 import { Active } from './active/active';
-import { check_suffix, item_suffix, remove_suffix, type_remove_suffix, add_suffix, add_config_suffix, select_config_suffix, remove_config_suffix, song_suffix, remove_song_suffix } from './command/definitions';
+import { suffix, sep } from './command/definitions';
 import { Database } from '../database/database';
 import { User } from "./user/user";
 import { CONFIG } from '../utils/config';
@@ -11,6 +11,7 @@ import { Keyboard } from './keyboard/keyboard';
 import { Formatter } from '../utils/formatter';
 import { Searchable } from '../warframe/state/searchable';
 import { Extra } from '../warframe/state/extra';
+import { Command } from './command/command';
 
 
 export class Bot implements bot.Bot {
@@ -120,168 +121,73 @@ export class Bot implements bot.Bot {
                             ? cbq.message.message_id
                             : undefined
                     };
-                    if (cbq.data.endsWith(item_suffix)) {
-                        const item = cbq.data.replace(item_suffix, "");
-                        if (user.settings.filter.includes(item)) {
-                            const askRemoveCmd = this.commands.find("askRemove");
-                            if (askRemoveCmd) {
-                                const active = new Active({
-                                    user,
-                                    command: askRemoveCmd,
-                                    args: [item],
-                                    chatID: ids.chatID,
-                                })
-                                active.execute();
-                                active.edit(ids);
+
+                    const split = cbq.data.split(sep);
+                    const cbqPrefix = split[0]
+                    const cbqSuffix = split[1]
+                    let args: string[] = [cbqPrefix];
+                    let find: command.ID = "none";
+
+                    switch (cbqSuffix) {
+                        case suffix().askRemoveItem:
+                            if (user.settings.filter.includes(cbqPrefix)) {
+                                find = "askRemove"
                             }
-                        }
-                    } else if (cbq.data.endsWith(add_suffix)) {
-                        const item = cbq.data.replace(add_suffix, "");
-                        const addCmd = this.commands.find("add");
-                        if (addCmd) {
-                            const active = new Active({
-                                user,
-                                command: addCmd,
-                                args: [item],
-                                chatID: ids.chatID,
-                            })
-                            active.execute();
-                            active.edit(ids);
-                        }
-                    } else if (cbq.data.endsWith(remove_suffix)) {
-                        const item = cbq.data.replace(remove_suffix, "");
-                        if (user.settings.filter.includes(item)) {
-                            const removeCmd = this.commands.find("remove");
-                            if (removeCmd) {
-                                const active = new Active({
-                                    user,
-                                    command: removeCmd,
-                                    args: [item],
-                                    chatID: ids.chatID,
-                                })
-                                active.execute();
-                                active.edit(ids);
+                            break;
+                        case suffix().addItem:
+                            find = "add"
+                            break;
+                        case suffix().removeItem:
+                            if (user.settings.filter.includes(cbqPrefix)) {
+                                find = "remove"
                             }
-                        }
-                    } else if (cbq.data.endsWith(check_suffix)) {
-                        const item = cbq.data.replace(check_suffix, "");
-                        if (user.settings.filter.includes(item)) {
-                            const checkCmd = this.commands.find("check");
-                            if (checkCmd) {
-                                const active = new Active({
-                                    user,
-                                    command: checkCmd,
-                                    args: [item],
-                                    chatID: ids.chatID,
-                                })
-                                active.execute();
-                                active.edit(ids);
+                            break;
+                        case suffix().executeCheck:
+                            if (user.settings.filter.includes(cbqPrefix)) {
+                                find = "check"
                             }
-                        }
-                    } else if (cbq.data.endsWith(type_remove_suffix)) {
-                        const item = cbq.data.replace(type_remove_suffix, "");
-                        if (user.settings.arbitration.includes(item)) {
-                            const arbitrationCmd = this.commands.find("arbitrationFilter");
-                            if (arbitrationCmd) {
-                                const active = new Active({
-                                    user,
-                                    command: arbitrationCmd,
-                                    args: [item],
-                                    chatID: ids.chatID,
-                                })
-                                active.execute();
-                                active.edit(ids);
+                            break;
+                        case suffix().arbitrationRemove:
+                            if (user.settings.arbitration.includes(cbqPrefix)) {
+                                find = "arbitrationFilter"
                             }
-                        }
-                    } else if (cbq.data.endsWith(add_config_suffix)) {
-                        const pos = cbq.data.replace(add_config_suffix, "").split(".");
-                        if (pos[0] !== undefined && pos[1] !== undefined) {
-                            const menuSelection = this.commands.find("configSelection");
-                            if (menuSelection) {
-                                const active = new Active({
-                                    user,
-                                    command: menuSelection,
-                                    args: [pos[0], pos[1]],
-                                    chatID: ids.chatID,
-                                })
-                                active.execute();
-                                active.edit(ids);
+                            break;
+                        case suffix().addMenuButton:
+                            const pos = cbqPrefix.split(".").clean()
+                            if (pos.length === 2
+                                && pos[0] !== undefined
+                                && pos[1] !== undefined) {
+                                args = pos;
+                                find = "configSelection"
                             }
-                        }
-                    } else if (cbq.data.endsWith(remove_config_suffix)) {
-                        const config = cbq.data.replace(remove_config_suffix, "");
-                        if (config) {
-                            const menuSelection = this.commands.find("config");
-                            if (menuSelection) {
-                                const active = new Active({
-                                    user,
-                                    command: menuSelection,
-                                    args: [config],
-                                    chatID: ids.chatID,
-                                })
-                                active.execute();
-                                active.edit(ids);
-                            }
-                        }
-                    } else if (cbq.data.endsWith(select_config_suffix)) {
-                        const selection = cbq.data.replace(select_config_suffix, "");
-                        if (selection) {
-                            const menuCmd = this.commands.find("config");
-                            if (menuCmd) {
-                                const active = new Active({
-                                    user,
-                                    command: menuCmd,
-                                    args: [selection],
-                                    chatID: ids.chatID,
-                                })
-                                active.execute();
-                                active.edit(ids);
-                            }
-                        }
-                    } else if (cbq.data.endsWith(song_suffix)) {
-                        const song = cbq.data.replace(song_suffix, "");
-                        if (song) {
-                            const songCmd = this.commands.find("showSong");
-                            if (songCmd) {
-                                const active = new Active({
-                                    user,
-                                    command: songCmd,
-                                    args: [song],
-                                    chatID: ids.chatID,
-                                })
-                                active.execute();
-                                active.edit(ids);
-                            }
-                        }
-                    } else if (cbq.data.endsWith(remove_song_suffix)) {
-                        const song = cbq.data.replace(remove_song_suffix, "");
-                        if (song) {
-                            const songsCmd = this.commands.find("songs");
-                            if (songsCmd) {
-                                const active = new Active({
-                                    user,
-                                    command: songsCmd,
-                                    args: [song],
-                                    chatID: ids.chatID,
-                                })
-                                active.execute();
-                                active.edit(ids);
-                            }
-                        }
-                    } else {
-                        const parsedCmd = this.commands.parse(cbq.data);
-                        if (parsedCmd) {
-                            const { command, args } = parsedCmd
-                            const active = new Active({
-                                user,
-                                command,
-                                args,
-                                chatID: ids.chatID,
-                            })
-                            active.execute();
-                            active.edit(ids);
-                        }
+                            break;
+                        case suffix().removeMenuButton:
+                        case suffix().selectMenuButton:
+                            find = "config"
+                            break;
+                        case suffix().showSong:
+                            find = "showSong"
+                            break;
+                        case suffix().removeSong:
+                            find = "songs"
+                            break;
+                        default:
+                            break;
                     }
+                    const pc = this.commands.parse(cbqPrefix)
+                    if (find === "none" && pc) {
+                        args = pc.args
+                        find = pc.command.id
+                    }
+                    const command = this.commands.find(find)
+                    if (command) {
+                        const active = new Active({
+                            user, command, args, chatID: ids.chatID,
+                        })
+                        active.execute();
+                        active.edit(ids);
+                    }
+
                     this.database.users.update(user);
                 }
             }
@@ -330,7 +236,7 @@ export class Bot implements bot.Bot {
                                                 message_text: Formatter.format({
                                                     caption: cmd.id,
                                                     addCaption: cmd.alt.join(" | "),
-                                                    subCaption: "/" + cmd.id + " " + args.join(", "),
+                                                    subCaption: "/" + cmd.id.space() + args.join(", "),
                                                     description: "Click below to execute!"
                                                 }),
                                                 parse_mode: this.defaults.parse_mode,
