@@ -1,9 +1,9 @@
 import { Active } from '../active/active';
-import { check } from '../../utils/check';
+import { Check } from '../../utils/check';
 import { settings_suffix } from '../command/definitions';
 import { BOT } from '../..';
 
-export default class Checker implements checker.Checker {
+export default class StateCheck implements checker.StateCheck {
     check() {
         BOT.commands.list
             .forEach(cmd => {
@@ -56,7 +56,7 @@ export default class Checker implements checker.Checker {
                     const possibleRewards = command.rewards(active).filter(rew =>
                         newObjs.map(o => o.id).includes(rew.id));
                     if (possibleRewards.length > 0) {
-                        const message = check.rewards(possibleRewards, user.settings.filter)
+                        const message = Check.rewards(possibleRewards, user.settings.filter)
                             .map(reward => command.name(active)
                                 .nl()
                                 .concat(reward.text))

@@ -1,6 +1,6 @@
-import { compare } from './compare';
+import { Compare } from './compare';
 
-export class check {
+export class Check implements utils.Check {
     static string(any: any): any is string {
         return typeof any === 'string' || any instanceof String;
     }
@@ -20,7 +20,7 @@ export class check {
             .filter(reward => !!reward.text)
             .filter(reward =>
                 items.some(item =>
-                    compare.loose(item, reward.rewards))
+                    Compare.loose(item, reward.rewards))
             )
     }
 }

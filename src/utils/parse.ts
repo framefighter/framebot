@@ -1,6 +1,6 @@
 import { BOT } from '..';
 
-export class Parse {
+export class Parse implements utils.Parse {
     static time(raw: string): utils.Time {
         let min = 0
         let sec = 0

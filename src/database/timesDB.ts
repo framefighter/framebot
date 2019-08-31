@@ -1,4 +1,4 @@
-import { check } from '../utils/check';
+import { Check } from '../utils/check';
 import { DB } from './DB';
 
 export class TimesDB extends DB<time.Record[]> implements db.TimesDB {
@@ -19,7 +19,7 @@ export class TimesDB extends DB<time.Record[]> implements db.TimesDB {
     }
 
     generateID(mission?: string, boss?: string): string {
-        if (check.assassination(mission || "") && boss) {
+        if (Check.assassination(mission || "") && boss) {
             return boss.toUpperCase()
         }
         return (mission || "").toUpperCase()

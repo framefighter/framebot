@@ -1,10 +1,10 @@
-import { check } from './check';
+import { Check } from './check';
 import { BOT } from '..';
 import moment from 'moment';
 import striptags from "striptags"
-import { compare } from './compare';
+import { Compare } from './compare';
 
-export class Formatter {
+export class Formatter implements utils.Formatter {
     static MAX_WIDTH = 50;
     static IDEAL_WIDTH = 40;
 
@@ -38,7 +38,7 @@ export class Formatter {
                     addCaption: Formatter.sortieLevel(i + 1),
                     text: "Mission:".end(mission.missionType).bold()
                         .space()
-                        .concat(check.assassination(mission.missionType)
+                        .concat(Check.assassination(mission.missionType)
                             ? (sortie.boss || "") : ""),
                     description: "Conditions:"
                         .end(mission.modifier || "")
@@ -181,7 +181,7 @@ export class Formatter {
             + "Total Sortie Average: " + total_avg.code() + "\n"
             + Object.keys(avg_times)
                 .filter(key => filter.length > 0
-                    ? compare.loose(key, filter) : true)
+                    ? Compare.loose(key, filter) : true)
                 .sort((a, b) => avg_times[a].stage - avg_times[b].stage)
                 .map(key => Formatter.sortieTime(avg_times[key])).join("\n")
     }
@@ -267,7 +267,7 @@ export class Formatter {
         return "No weapon found!"
     }
 
-    static dmgTypes(dmgTypes: number[]) {
+    static dmgTypes(dmgTypes: number[]): string[] {
 
         const lookup = [
             "Impact",
@@ -434,7 +434,6 @@ export class Formatter {
     }
 
     static format(format: Partial<utils.Format>): string {
-
         let fixed: utils.Format = {
             boss: format.boss || "",
             caption: format.caption || "",
@@ -469,7 +468,7 @@ export class Formatter {
             + this.end(fixed.end)
     }
 
-    static link(link?: string) {
+    static link(link?: string): string {
         if (!link) return "";
         return link.nl()
     }
@@ -591,7 +590,7 @@ export class Formatter {
             .join("\n").nl()
     }
 
-    static cut(str?: string) {
+    static cut(str?: string): string[] {
         if (!str) return []
         let idealSplit = this.IDEAL_WIDTH,
             maxSplit = this.MAX_WIDTH,
@@ -770,7 +769,7 @@ Array.prototype.diff = function (arr: any[]) {
 };
 
 Array.prototype.clean = function () {
-    return this.filter(e => check.array(e)
+    return this.filter(e => Check.array(e)
         ? Boolean(e.length)
         : Boolean(e));
 }

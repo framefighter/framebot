@@ -1,4 +1,4 @@
-import { compare } from '../../utils/compare';
+import { Compare } from '../../utils/compare';
 import { definitions, settings_suffix } from './definitions';
 import { Command } from './command';
 import { alert_setting } from './definitions';
@@ -32,13 +32,13 @@ export class Commands implements command.Commands {
         if (!a2) {
             return Array
                 .from(this.list.values())
-                .find(e => compare.exact(e.id, a1)
-                    || compare.exact(e.alt, a1));
+                .find(e => Compare.exact(e.id, a1)
+                    || Compare.exact(e.alt, a1));
         }
         const matches = Array
             .from(this.list.values())
-            .filter(e => compare.loose(e.id, a1)
-                || compare.loose(e.alt, a1));
+            .filter(e => Compare.loose(e.id, a1)
+                || Compare.loose(e.alt, a1));
         return matches.clean();
     }
 

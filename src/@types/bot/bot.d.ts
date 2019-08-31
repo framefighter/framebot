@@ -14,7 +14,7 @@ declare namespace bot {
         database: db.Base;
         info: wf.Searchable;
         defaults: Defaults;
-        checker: checker.Checker;
+        checker: checker.StateCheck;
     }
 
     interface Defaults {

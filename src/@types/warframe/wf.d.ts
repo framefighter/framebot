@@ -24,4 +24,18 @@ declare namespace wf {
         kuva?: wf.extra.Arbitration[];
         update(): Promise<void>;
     }
+
+    class Parser {
+        static state(state: any): wf.Ws
+        static parse(jsonStr: any): any
+        static groupDrops(drops?: wf.drops.Drop[]): wf.drops.GroupedDrop[]
+        static groupPlaces(drops?: wf.drops.Drop[]): wf.drops.GroupedPlace[]
+        static cleanJSON(json: string): string
+        static parseExtra(data: wf.extra.RawKuva[]): ParsedExtra
+    }
+
+    interface ParsedExtra {
+        kuva: wf.extra.Arbitration[];
+        arbitration: wf.extra.Arbitration;
+    }
 }

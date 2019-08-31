@@ -2,7 +2,7 @@ import { Keyboard } from '../keyboard/keyboard';
 import { Inline } from '../message/inline';
 import { Message } from '../message/message';
 import { BOT } from '../..';
-import { check } from '../../utils/check';
+import { Check } from '../../utils/check';
 import { Formatter } from '../../utils/formatter';
 import { Active } from '../active/active';
 
@@ -63,7 +63,7 @@ export class Command implements command.Command {
             : (() => {
                 if (this.jsonKey) {
                     const obj = BOT.ws[this.jsonKey]
-                    if (obj && check.array(obj)) {
+                    if (obj && Check.array(obj)) {
                         return obj.length || 0
                     }
                 }

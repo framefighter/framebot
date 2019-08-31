@@ -1,5 +1,5 @@
 import { InlineKeyboardButton, InlineKeyboardMarkup } from 'node-telegram-bot-api';
-import { compare } from '../../utils/compare';
+import { Compare } from '../../utils/compare';
 import { BOT } from '../..';
 import { Formatter } from '../../utils/formatter';
 import { Active } from '../active/active';
@@ -22,7 +22,7 @@ export class Keyboard implements keyboard.Board {
                 if (!btn) continue;
                 const cmd = BOT.commands.find(btn.id || "none");
                 if (btn.id && cmd && cmd.id === "none") continue;
-                const selected = compare.exact(btn.id, active.command.id);
+                const selected = Compare.exact(btn.id, active.command.id);
                 let name = Formatter.camelToString(btn.text) || "-";
                 if (cmd && !btn.text) {
                     if (selected) continue;

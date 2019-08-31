@@ -1,11 +1,11 @@
-import { check } from '../../utils/check';
+import { Check } from '../../utils/check';
 
 export class Message implements message.Message {
     title: string;
     text?: string;
     showUser?: boolean;
     constructor(messageConstructor?: Readonly<message.Constructor | string>) {
-        if (check.string(messageConstructor)) {
+        if (Check.string(messageConstructor)) {
             this.title = "";
             this.text = messageConstructor;
         } else if (messageConstructor) {

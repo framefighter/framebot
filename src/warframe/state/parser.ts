@@ -1,5 +1,5 @@
 import WorldState from "warframe-worldstate-parser"
-import { check } from '../../utils/check';
+import { Check } from '../../utils/check';
 import idx from 'idx';
 
 export class Parser {
@@ -13,7 +13,7 @@ export class Parser {
 
     static parse(jsonStr: any): any {
         try {
-            if (check.string(jsonStr)) {
+            if (Check.string(jsonStr)) {
                 return JSON.parse(this.cleanJSON(jsonStr)) || {};
             } else {
                 return jsonStr || {};
@@ -74,10 +74,7 @@ export class Parser {
     }
 
     static parseExtra(data: wf.extra.RawKuva[]) {
-        const parsed: {
-            kuva: wf.extra.Arbitration[],
-            arbitration: wf.extra.Arbitration
-        } = {
+        const parsed: wf.ParsedExtra = {
             kuva: [],
             arbitration: {},
         };

@@ -1,6 +1,6 @@
 import idx from 'idx';
 import { BOT } from '../..';
-import { compare } from '../../utils/compare';
+import { Compare } from '../../utils/compare';
 import { Formatter } from '../../utils/formatter';
 import { Inline } from '../message/inline';
 import { Message } from '../message/message';
@@ -8,7 +8,7 @@ import { Keyboard } from '../keyboard/keyboard';
 import { Parse } from '../../utils/parse';
 import { spawn } from 'child_process';
 import moment from 'moment';
-import { check } from '../../utils/check';
+import { Check } from '../../utils/check';
 import { CONFIG } from '../../utils/config';
 
 export const settings_suffix = "Setting";
@@ -463,7 +463,7 @@ export const definitions: command.Definitions = {
         emoji: "💀",
         message: (active) => {
             if (active.args.length > 0) {
-                if (compare.exact(active.user.settings.arbitration,
+                if (Compare.exact(active.user.settings.arbitration,
                     idx(BOT.extra, _ => _.arbitration.type) || "")) {
                     return new Message({
                         title: active.command.name(active),
@@ -727,7 +727,7 @@ export const definitions: command.Definitions = {
         }),
         inline: (active) => Object.keys(BOT.database.times.avg())
             .filter(key => active.args.length > 0
-                ? compare.loose(key, active.args) : true)
+                ? Compare.loose(key, active.args) : true)
             .map(key => {
                 const avg = BOT.database.times.avg()[key];
                 return new Inline({
@@ -1043,7 +1043,7 @@ export const definitions: command.Definitions = {
         message: (active) => new Message({
             title: active.command.name(active),
             text: BOT.commands.list
-                .map(cmd => check.rewards(cmd.rewards(active),
+                .map(cmd => Check.rewards(cmd.rewards(active),
                     active.args.length > 0
                         ? active.args
                         : active.user.settings.filter
@@ -1072,11 +1072,11 @@ export const definitions: command.Definitions = {
                     .filter(reward =>
                         active.args.length > 0
                             ? active.args.some(arg =>
-                                compare.loose(arg, reward.rewards))
+                                Compare.loose(arg, reward.rewards))
                             : active.user.settings.filter
                                 .concat(active.user.settings.arbitration)
                                 .some(item =>
-                                    compare.loose(item, reward.rewards))
+                                    Compare.loose(item, reward.rewards))
                     )
                     .map(reward => new Inline({
                         title: cmd.name(active),
@@ -1139,7 +1139,7 @@ export const definitions: command.Definitions = {
                                 mission: mission.missionType,
                                 minutes: min,
                                 seconds: sec,
-                                boss: check.assassination(mission.missionType)
+                                boss: Check.assassination(mission.missionType)
                                     ? sortie.boss
                                     : undefined,
                                 date: moment().unix(),
@@ -1171,7 +1171,7 @@ export const definitions: command.Definitions = {
                 const missionStr = " | "
                     + "Stage: " + (i + 1) + ": "
                     + mission.missionType
-                    + (check.assassination(mission.missionType)
+                    + (Check.assassination(mission.missionType)
                         ? idx(active, _ => " > " + _.ws.sortie.boss) || ""
                         : "");
                 if (min || sec) {
@@ -1179,7 +1179,7 @@ export const definitions: command.Definitions = {
                         mission: mission.missionType,
                         minutes: min || 0,
                         seconds: sec || 0,
-                        boss: check.assassination(mission.missionType)
+                        boss: Check.assassination(mission.missionType)
                             ? (idx(active, _ => _.ws.sortie.boss) || "")
                             : undefined,
                         date: moment().unix(),
@@ -1536,7 +1536,7 @@ export const definitions: command.Definitions = {
         },
         inline: (active) => BOT.database.songs.list
             .filter(song =>
-                compare.loose(song.name, active.args[0]))
+                Compare.loose(song.name, active.args[0]))
             .map(song =>
                 new Inline({
                     title: song.name,

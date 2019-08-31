@@ -4,11 +4,13 @@ import { check_suffix, item_suffix, remove_suffix, type_remove_suffix, add_suffi
 import { Database } from '../database/database';
 import { User } from "./user/user";
 import { CONFIG } from '../utils/config';
-import { Searchable, World, Extra } from '../warframe/state/state';
-import Checker from './checker/checker';
+import { World } from '../warframe/state/world';
+import StateCheck from './checker/stateCheck';
 import { Commands } from './command/commands';
 import { Keyboard } from './keyboard/keyboard';
 import { Formatter } from '../utils/formatter';
+import { Searchable } from '../warframe/state/searchable';
+import { Extra } from '../warframe/state/extra';
 
 
 export class Bot implements bot.Bot {
@@ -21,7 +23,7 @@ export class Bot implements bot.Bot {
     info: Searchable;
     extra: Extra;
     defaults: bot.Defaults;
-    checker: Checker;
+    checker: StateCheck;
 
     constructor(botConstructor: bot.Constructor) {
         this.token = CONFIG.token;
@@ -41,7 +43,7 @@ export class Bot implements bot.Bot {
                 this.api.sendMessage(user.id, "Bot started and ready!")
             }
         });
-        this.checker = new Checker();
+        this.checker = new StateCheck();
     }
 
     private initEmitters() {

@@ -5,7 +5,9 @@ declare namespace user {
         admin: boolean;
     }
 
-    interface User extends Constructor {
+    class User implements Constructor {
+        id: number;
+        admin: boolean;
         is_bot: boolean;
         first_name: string;
         last_name?: string | undefined;

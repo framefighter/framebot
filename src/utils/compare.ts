@@ -1,6 +1,6 @@
-import { check } from './check';
+import { Check } from './check';
 
-export class compare {
+export class Compare implements utils.Compare {
     static loose(a: any, b: any): boolean {
         return this.compare(a, b, this.includes);
     }
@@ -12,31 +12,31 @@ export class compare {
     static compare(a: any, b: any, comparator: (a: string, b: string) => boolean): boolean {
         if (!a || !b) return false;
         if (a === b) return true;
-        if (check.string(a) && check.string(b)) {
+        if (Check.string(a) && Check.string(b)) {
             const aStr = (a as String).toUpperCase();
             const bStr = (b as String).toUpperCase();
             if (comparator(aStr, bStr)) return true;
-        } else if (check.string(a)) {
+        } else if (Check.string(a)) {
             const aStr = (a as String).toUpperCase();
-            if (check.array(b)) {
+            if (Check.array(b)) {
                 const bArr = (b as Array<any>);
                 for (let bEl of bArr) {
                     if (!bEl) continue;
                     if (aStr === bEl) return true;
-                    if (check.string(bEl)) {
+                    if (Check.string(bEl)) {
                         const bStr = (bEl as String).toUpperCase();
                         if (comparator(aStr, bStr)) return true;
                     }
                 }
             }
-        } else if (check.string(b)) {
+        } else if (Check.string(b)) {
             const bStr = (b as String).toUpperCase();
-            if (check.array(a)) {
+            if (Check.array(a)) {
                 const aArr = (a as Array<any>);
                 for (let aEl of aArr) {
                     if (!aEl) continue;
                     if (bStr === aEl) return true;
-                    if (check.string(aEl)) {
+                    if (Check.string(aEl)) {
                         const aStr = (aEl as String).toUpperCase();
                         if (comparator(aStr, bStr)) return true;
                     }
