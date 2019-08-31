@@ -51,9 +51,11 @@ export class SongsDB extends DB<Song[]> implements db.SongsDB {
     }
 
     remove(song: Song) {
-        const found = this.data().map(s => s.name).indexOf(song.name)
-        if (found !== -1) {
-            this.data().splice(found, 1)
+        const ind = this.data().map(s => s.name).indexOf(song.name)
+        if (ind !== -1) {
+            if (this.data()[ind].user === song.user) {
+                this.data().splice(ind, 1)
+            }
         }
         this.db.save()
     }
