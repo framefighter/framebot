@@ -28,7 +28,7 @@ export class Message implements message.Message {
                 const subS = msg.substr(0, 4090);
                 const rMsg = subS.split("").reverse().join("");
                 for (let c of rMsg) {
-                    const mc = ["*", "(", "[", "`", "_"]
+                    const mc = ["*", "`", "_"]
                     const fo = mc.indexOf(c);
                     if (fo !== -1) {
                         const mcCount = (subS.split(mc[fo]).length - 1);

@@ -52,8 +52,8 @@ export class Bot implements bot.Bot {
     }
 
     private getUser(from: TelegramBot.User): User {
-        if (this.database.users.data.exists(`/users/${from.id}`)) {
-            return this.database.users.data.getData(`/users/${from.id}`);
+        if (this.database.users.db.exists(`/users/${from.id}`)) {
+            return this.database.users.db.getData(`/users/${from.id}`);
         } else {
             const newUser = new User({
                 admin: false,

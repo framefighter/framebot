@@ -3,16 +3,26 @@ declare namespace db {
         users: db.UsersDB;
         times: db.TimesDB;
         notifications: db.NotificationsDB;
+        songs: db.SongsDB;
     }
 
     interface DB {
-        data: any;
+        db: any;
+        key: string;
+        data(): any;
     }
 
     interface UsersDB extends DB {
         list: user.User[];
         update(user: user.User): void;
         getByName(username: string): user.User | undefined;
+    }
+
+    interface SongsDB extends DB {
+        list: song.Song[];
+        add(song: song.Song): void;
+        update(song: song.Song): boolean;
+        getByName(songname: string): song.Song | undefined;
     }
 
     interface TimesDB extends DB {

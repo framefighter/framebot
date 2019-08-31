@@ -1473,22 +1473,29 @@ export const definitions: command.Definitions = {
         action: (active) => {
             const args = active.args;
             if (args[0] && args[0].length > 20) return "Song name to long!"
-            const songs = active.user.settings.songs;
+            const songs = BOT.database.songs.list;
             const found = songs.map(s => s.name).indexOf(args[0])
+            const song = {
+                name: args[0],
+                string: args[1],
+                user: active.user.id
+            }
             if (args.length === 2) {
                 if (found !== -1) {
-                    active.user.settings.songs[found] = { name: args[0], string: args[1] };
-                    return `Song (${args[0]}) already exists, updated string!`
+                    const updated = BOT.database.songs.update(song);
+                    if (updated) {
+                        return `Song (${song.name}) already exists, updated string!`
+                    } else {
+                        return `Song (${song.name}) is not yours or does not exist!`
+                    }
                 } else {
-                    active.user.settings.songs.push({
-                        name: args[0],
-                        string: args[1]
-                    })
+                    BOT.database.songs.add(song)
+                    return `Saved new song (${song.name})!`
                 }
             } else if (args.length === 1) {
                 if (found !== -1) {
-                    active.user.settings.songs.splice(found, 1)
-                    return "Removing song: " + args[0]
+                    BOT.database.songs.remove(song)
+                    return "Removing song: " + song.name
                 } else {
                     return "No song found to remove"
                 }
@@ -1499,25 +1506,26 @@ export const definitions: command.Definitions = {
             title: active.command.name(active),
             text: Formatter.format({
                 caption: active.execute_return,
-                description: "Add songs to this songs list:\n/songs <name>, <string>"
+                description: active.args.length > 0 ? "" : "Add songs to this songs list:\n/songs <name>, <string>"
             })
         }),
         keyboard: (active) => new Keyboard({
-            layout: active.user.settings.songs.map(song => [{
+            layout: BOT.database.songs.list.map(song => [{
                 id: (song.name + song_suffix) as command.ID,
                 text: song.name
             }]).concat([[{ id: "settings", text: "< Back" }]])
         })
     },
     "showSong": {
+        alt: ["song"],
         help: "Show song string of a saved song",
         emoji: "🎵",
         message: (active) => {
-            const found = active.user.settings.songs.find(song => song.name === active.args[0])
+            const found = BOT.database.songs.getByName(active.args[0])
             return new Message({
                 title: active.command.name(active) + " " + active.args[0],
                 text: Formatter.format({
-                    text: found ? found.string.code() : "No songs found!",
+                    text: found ? found.string.code() : "No song found!",
                 })
             })
         },

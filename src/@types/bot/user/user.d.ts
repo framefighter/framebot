@@ -1,4 +1,3 @@
-
 declare namespace user {
     type ID = number;
     interface Constructor {
@@ -20,11 +19,6 @@ declare namespace user {
         arbitration: string[];
         filter: string[];
         menu: command.ID[][];
-        songs: Song[]
-    }
-    interface Song {
-        name: string;
-        string: string;
     }
 
     interface AlertSettings {

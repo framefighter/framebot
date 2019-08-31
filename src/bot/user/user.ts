@@ -23,7 +23,6 @@ export class User implements user.User, TelegramBot.User {
             filter: [],
             menu: [],
             arbitration: [],
-            songs: []
         };
     }
 }
