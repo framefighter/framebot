@@ -59,9 +59,6 @@ export const alert_setting = (id: command.ID): command.SettingsDefinitions => ({
 })
 
 export const definitions: command.Definitions = {
-    /**
-    * WORLD STATE COMMANDS
-    */
     "none": {},
     "sortie": {
         alt: ["s"],
@@ -526,9 +523,6 @@ export const definitions: command.Definitions = {
             [{ id: "sortie", text: "< Back" }]]
         })
     },
-    /**
-      * USER COMMANDS
-      */
     "settings": {
         alt: ["options"],
         help: "Change all settings",
@@ -742,9 +736,6 @@ export const definitions: command.Definitions = {
                 })
             })
     },
-    /**
-    * QUERIy COMMANDS
-    */
     "findWeapon": {
         alt: ["weapon"],
         help: "Search for any weapon",
@@ -1099,10 +1090,6 @@ export const definitions: command.Definitions = {
             .clean()
             .flat()
     },
-
-    /**
-    * ADMIN ONLY COMMANDS
-    */
     "admin": {
         alt: ["op"],
         help: "[PASSWORD PROTECTED] Make user to admin",
@@ -1468,9 +1455,9 @@ export const definitions: command.Definitions = {
         keyboard: () => new Keyboard({ layout: [[{ id: "config", text: "< Back" }]] })
     },
     "songs": {
-        count: (active) => BOT.database.songs.list.length,
         help: "Show list of all saved songs",
         emoji: "🎶",
+        count: () => BOT.database.songs.list.length,
         action: (active) => {
             const args = active.args;
             if (args[0] && args[0].length > 20) return "Song name to long!"
