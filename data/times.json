@@ -3586,6 +3586,28 @@
             "boss": "Hyena Pack",
             "date": 1563572141,
             "stage": 3
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 26,
+            "date": 1567207190,
+            "stage": 1
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 39,
+            "date": 1567207190,
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 18,
+            "boss": "Jackal",
+            "date": 1567207190,
+            "stage": 3
         }
     ]
 }
