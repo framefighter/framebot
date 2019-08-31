@@ -3608,6 +3608,27 @@
             "boss": "Jackal",
             "date": 1567207190,
             "stage": 3
+        },
+        {
+            "mission": "Free Roam",
+            "minutes": 6,
+            "seconds": 23,
+            "date": 1567277173,
+            "stage": 1
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 3,
+            "seconds": 1,
+            "date": 1567277173,
+            "stage": 2
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 41,
+            "date": 1567277173,
+            "stage": 3
         }
     ]
 }
