@@ -1514,7 +1514,13 @@ export const definitions: command.Definitions = {
                 id: (song.name + song_suffix) as command.ID,
                 text: song.name
             }]).concat([[{ id: "settings", text: "< Back" }]])
-        })
+        }),
+        inline: (active) => BOT.database.songs.list.map(song =>
+            new Inline({
+                title: song.name,
+                description: song.string.substr(0, 25) + "...",
+                text: song.string,
+            }))
     },
     "showSong": {
         alt: ["song"],
