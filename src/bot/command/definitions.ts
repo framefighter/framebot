@@ -1468,6 +1468,7 @@ export const definitions: command.Definitions = {
         keyboard: () => new Keyboard({ layout: [[{ id: "config", text: "< Back" }]] })
     },
     "songs": {
+        count: (active) => BOT.database.songs.list.length,
         help: "Show list of all saved songs",
         emoji: "🎶",
         action: (active) => {
