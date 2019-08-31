@@ -10,6 +10,14 @@ import { spawn } from 'child_process';
 import moment from 'moment';
 import { Check } from '../../utils/check';
 import { CONFIG } from '../../utils/config';
+import { Active } from '../active/active';
+
+export const back = "< Back"
+
+export const menuBtn = (active: Active): command.ID =>
+    active.user.settings.menu[0]
+        ? active.user.settings.menu[0][0]
+        : "sortie"
 
 export const sep = "+"
 
@@ -56,7 +64,7 @@ export const alert_setting = (id: command.ID): command.SettingsDefinitions => ({
                         : [{ id: setting.id, text: "<" }, toggleBtn]
 
                 }),
-                [{ id: "settings", text: "< Back" }]
+                [{ id: "settings", text: back }]
             ]
         })
     }
@@ -127,7 +135,9 @@ export const definitions: command.Definitions = {
             })),
         keyboard: (active) => new Keyboard({
             layout: [[{ id: "invasions" }, { id: "events" }, { id: "alerts" }],
-            [{ id: "sortie", text: "< Back" }]]
+            [{
+                id: menuBtn(active), text: back
+            }]]
         })
     },
     "events": {
@@ -158,7 +168,7 @@ export const definitions: command.Definitions = {
             })),
         keyboard: (active) => new Keyboard({
             layout: [[{ id: "invasions" }, { id: "events" }, { id: "alerts" }],
-            [{ id: "sortie", text: "< Back" }]]
+            [{ id: menuBtn(active), text: back }]]
         })
     },
     "news": {
@@ -210,7 +220,7 @@ export const definitions: command.Definitions = {
                 description: "Try again later!"
             })],
         keyboard: (active) => new Keyboard({
-            layout: [[{ id: "updates" }], [{ id: "sortie", text: "< Back" }]]
+            layout: [[{ id: "updates" }], [{ id: menuBtn(active), text: back }]]
         })
     },
     "updates": {
@@ -261,7 +271,7 @@ export const definitions: command.Definitions = {
                 description: "Try again later"
             })],
         keyboard: (active) => new Keyboard({
-            layout: [[{ id: "news" }], [{ id: "sortie", text: "< Back" }]]
+            layout: [[{ id: "news" }], [{ id: menuBtn(active), text: back }]]
         })
     },
     "trader": {
@@ -386,7 +396,7 @@ export const definitions: command.Definitions = {
         keyboard: (active) => new Keyboard({
             layout: [
                 [{ id: "cetus" }, { id: "vallis" }, { id: "earth" }],
-                [{ text: "< Back", id: "sortie" }]]
+                [{ text: back, id: menuBtn(active) }]]
         })
     },
     "vallis": {
@@ -408,7 +418,7 @@ export const definitions: command.Definitions = {
         keyboard: (active) => new Keyboard({
             layout: [
                 [{ id: "cetus" }, { id: "vallis" }, { id: "earth" }],
-                [{ text: "< Back", id: "sortie" }]]
+                [{ text: back, id: menuBtn(active) }]]
         })
     },
     "earth": {
@@ -428,7 +438,7 @@ export const definitions: command.Definitions = {
         keyboard: (active) => new Keyboard({
             layout: [
                 [{ id: "cetus" }, { id: "vallis" }, { id: "earth" }],
-                [{ text: "< Back", id: "sortie" }]]
+                [{ text: back, id: menuBtn(active) }]]
         })
     },
     "cycles": {
@@ -457,7 +467,7 @@ export const definitions: command.Definitions = {
         keyboard: (active) => new Keyboard({
             layout: [
                 [{ id: "cetus" }, { id: "vallis" }, { id: "earth" }],
-                [{ text: "< Back", id: "sortie" }]]
+                [{ text: back, id: menuBtn(active) }]]
         })
     },
     "arbitration": {
@@ -522,7 +532,7 @@ export const definitions: command.Definitions = {
             })).clean(),
         keyboard: (active) => new Keyboard({
             layout: [[{ id: "invasions" }, { id: "events" }, { id: "alerts" }],
-            [{ id: "sortie", text: "< Back" }]]
+            [{ id: menuBtn(active), text: back }]]
         })
     },
     "settings": {
@@ -545,7 +555,7 @@ export const definitions: command.Definitions = {
                 [{ id: "config" }],
                 [{ id: "songs" }],
                 [active.user.admin ? ({ id: "restart" }) : { id: "none" }],
-                [{ id: "sortie", text: "< Back" }],
+                [{ id: menuBtn(active), text: back }],
             ]
         })
     },
@@ -567,7 +577,7 @@ export const definitions: command.Definitions = {
                 text: item
             }]).concat([[{
                 id: "settings",
-                text: "< Back"
+                text: back
             }, { id: "remove", text: "🗑️️️️ Remove Items" }]])
         })
     },
@@ -603,7 +613,7 @@ export const definitions: command.Definitions = {
                 text: item
             }]).concat([[{
                 id: "settings",
-                text: "< Back"
+                text: back
             }, { id: "remove", text: "🗑️️️️ Remove Items" }]])
         })
     },
@@ -637,7 +647,7 @@ export const definitions: command.Definitions = {
                 text: item
             }]).concat([[{
                 id: "filter",
-                text: "< Back"
+                text: back
             }]])
         })
     },
@@ -714,7 +724,7 @@ export const definitions: command.Definitions = {
                 text: item
             }]).concat([[{
                 id: "settings",
-                text: "< Back"
+                text: back
             }]])
         })
     },
@@ -1256,8 +1266,8 @@ export const definitions: command.Definitions = {
                 ],
             })
         }),
-        keyboard: () => new Keyboard({
-            layout: [[{ id: "sortie" }, { id: "help" }],
+        keyboard: (active) => new Keyboard({
+            layout: [[{ id: menuBtn(active) }, { id: "help" }],
             [{ id: "settings" }, { text: "Inline Mode", search: "find " }]]
         })
     },
@@ -1292,7 +1302,7 @@ export const definitions: command.Definitions = {
                     layout.push([{ id: cmd_s[i].id }])
                 }
             }
-            layout.push([{ id: "sortie", text: "< Back" }])
+            layout.push([{ id: menuBtn(active), text: back }])
             return new Keyboard({ layout })
         }
     },
@@ -1314,7 +1324,7 @@ export const definitions: command.Definitions = {
                 [{ text: "Location", search: "place " }, { text: "Drop", search: "drop " }],
                 [{ text: "Price Check", search: "price " }, { text: "Check", search: "check " }],
                 ...[active.user.admin ? [{ text: "Time", search: "time " }] : []],
-                [{ id: "sortie", text: "< Back" }]
+                [{ id: menuBtn(active), text: back }]
             ]
         })
     },
@@ -1387,7 +1397,7 @@ export const definitions: command.Definitions = {
                         text: "➕"
                     }], [{
                         id: "settings",
-                        text: "< Back"
+                        text: back
                     }, {
                         id: "clearConfig",
                         text: "❌ Clear All"
@@ -1454,7 +1464,7 @@ export const definitions: command.Definitions = {
             title: active.command.name(active),
             text: "Cleared your configuration!\nDefault menu will be used."
         }),
-        keyboard: () => new Keyboard({ layout: [[{ id: "config", text: "< Back" }]] })
+        keyboard: () => new Keyboard({ layout: [[{ id: "config", text: back }]] })
     },
     "songs": {
         help: "Show list of all saved songs",
@@ -1503,7 +1513,7 @@ export const definitions: command.Definitions = {
             layout: BOT.database.songs.list.map(song => [{
                 id: (song.name + suffix(sep).showSong) as command.ID,
                 text: song.name
-            }]).concat([[{ id: "settings", text: "< Back" }]])
+            }]).concat([[{ id: "settings", text: back }]])
         }),
         inline: (active) => BOT.database.songs.list.map(song =>
             new Inline({
