@@ -2,14 +2,14 @@ import { Parser } from './parser';
 import axios from "axios"
 
 export class Searchable implements wf.Searchable {
-    weapons?: wf.weapons.Weapons;
-    warframes?: wf.warframes.Warframes;
-    mods?: wf.mods.Mods;
-    prices?: wf.prices.Price[];
-    drops?: wf.drops.GroupedDrop[];
-    places?: wf.drops.GroupedPlace[];
-    sentinels?: wf.warframes.Sentinels;
-    manifest?: wf.manifest.Manifest;
+    weapons?: wf.searchable.Weapons;
+    warframes?: wf.searchable.Warframes;
+    mods?: wf.searchable.Mods;
+    prices?: wf.searchable.Price[];
+    drops?: wf.searchable.GroupedDrop[];
+    places?: wf.searchable.GroupedPlace[];
+    sentinels?: wf.searchable.Sentinels;
+    manifest?: wf.searchable.Manifest;
     baseUrl: string = "http://content.warframe.com/MobileExport";
     path: string = "/Manifest";
     constructor(frequency?: number) {

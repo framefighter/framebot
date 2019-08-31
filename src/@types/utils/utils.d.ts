@@ -62,25 +62,25 @@ declare namespace utils {
         static timesString(args?: string[]): string
         static sortieTime(average: time.AvgTime): string
         static trader(trader?: wf.VoidTrader): string
-        static weapon(weapon?: wf.weapons.ExportWeaponsEntity): string
+        static weapon(weapon?: wf.searchable.ExportWeaponsEntity): string
         static dmgTypes(dmgTypes: number[]): string[];
         static camelToString(str?: string): string
-        static warframe(warframe?: wf.warframes.ExportWarframesEntity): string
-        static sentinel(sentinel?: wf.warframes.ExportSentinelsEntity): string
-        static mod(mod?: wf.mods.ExportUpgradesEntity): string
+        static warframe(warframe?: wf.searchable.ExportWarframesEntity): string
+        static sentinel(sentinel?: wf.searchable.ExportSentinelsEntity): string
+        static mod(mod?: wf.searchable.ExportUpgradesEntity): string
         static polarity(polarityID: string): string
-        static price(price?: wf.prices.Price): string
-        static drop(drop?: wf.drops.GroupedDrop): string
-        static dropInfo(dropInfo?: wf.drops.DropInfo): string
-        static place(place?: wf.drops.GroupedPlace): string
-        static placeInfo(placeInfo?: wf.drops.PlaceInfo): string
-        static warframeTitle(warframe: wf.warframes.ExportWarframesEntity): string
-        static sentinelTitle(sentinel: wf.warframes.ExportSentinelsEntity): string
-        static weaponTitle(weapon: wf.weapons.ExportWeaponsEntity): string
-        static modTitle(mod: wf.mods.ExportUpgradesEntity): string
-        static priceTitle(price: wf.prices.Price): string
-        static dropTitle(drop: wf.drops.GroupedDrop): string
-        static placeTitle(drop: wf.drops.GroupedPlace): string
+        static price(price?: wf.searchable.Price): string
+        static drop(drop?: wf.searchable.GroupedDrop): string
+        static dropInfo(dropInfo?: wf.searchable.DropInfo): string
+        static place(place?: wf.searchable.GroupedPlace): string
+        static placeInfo(placeInfo?: wf.searchable.PlaceInfo): string
+        static warframeTitle(warframe: wf.searchable.ExportWarframesEntity): string
+        static sentinelTitle(sentinel: wf.searchable.ExportSentinelsEntity): string
+        static weaponTitle(weapon: wf.searchable.ExportWeaponsEntity): string
+        static modTitle(mod: wf.searchable.ExportUpgradesEntity): string
+        static priceTitle(price: wf.searchable.Price): string
+        static dropTitle(drop: wf.searchable.GroupedDrop): string
+        static placeTitle(drop: wf.searchable.GroupedPlace): string
         static format(format: Partial<utils.Format>): string
         static link(link?: string): string;
         static clock(seconds?: number): string

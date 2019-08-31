@@ -23,10 +23,10 @@ export class Parser {
         }
     }
 
-    static groupDrops(drops?: wf.drops.Drop[]): wf.drops.GroupedDrop[] {
+    static groupDrops(drops?: wf.searchable.Drop[]): wf.searchable.GroupedDrop[] {
         return (drops || [])
             .sort((a, b) => parseFloat(b.chance.toString()) - parseFloat(a.chance.toString()))
-            .reduce((arr: wf.drops.GroupedDrop[], drop) => {
+            .reduce((arr: wf.searchable.GroupedDrop[], drop) => {
                 const ind = arr.findIndex(drop2 => drop2.item === drop.item)
                 const dropInfo = {
                     chance: drop.chance,
@@ -46,10 +46,10 @@ export class Parser {
             }, [])
     }
 
-    static groupPlaces(drops?: wf.drops.Drop[]): wf.drops.GroupedPlace[] {
+    static groupPlaces(drops?: wf.searchable.Drop[]): wf.searchable.GroupedPlace[] {
         return (drops || [])
             .sort((a, b) => parseFloat(b.chance.toString()) - parseFloat(a.chance.toString()))
-            .reduce((arr: wf.drops.GroupedPlace[], drop) => {
+            .reduce((arr: wf.searchable.GroupedPlace[], drop) => {
                 const ind = arr.findIndex(drop2 => drop2.place === drop.place)
                 const dropInfo = {
                     chance: drop.chance,

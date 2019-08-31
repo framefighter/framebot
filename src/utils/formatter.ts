@@ -221,7 +221,7 @@ export class Formatter implements utils.Formatter {
         return "No void trader found!"
     }
 
-    static weapon(weapon?: wf.weapons.ExportWeaponsEntity): string {
+    static weapon(weapon?: wf.searchable.ExportWeaponsEntity): string {
         if (weapon) {
             const info = {
                 speed: weapon.fireRate || "",
@@ -300,7 +300,7 @@ export class Formatter implements utils.Formatter {
         } return ""
     }
 
-    static warframe(warframe?: wf.warframes.ExportWarframesEntity): string {
+    static warframe(warframe?: wf.searchable.ExportWarframesEntity): string {
         if (!warframe) return "Warframe not found!";
         return Formatter.format({
             caption: Formatter.warframeTitle(warframe),
@@ -314,7 +314,7 @@ export class Formatter implements utils.Formatter {
         })
     }
 
-    static sentinel(sentinel?: wf.warframes.ExportSentinelsEntity): string {
+    static sentinel(sentinel?: wf.searchable.ExportSentinelsEntity): string {
         if (!sentinel) return "Sentinel not found!";
         return Formatter.format({
             caption: Formatter.sentinelTitle(sentinel),
@@ -326,7 +326,7 @@ export class Formatter implements utils.Formatter {
         })
     }
 
-    static mod(mod?: wf.mods.ExportUpgradesEntity): string {
+    static mod(mod?: wf.searchable.ExportUpgradesEntity): string {
         if (!mod) return "Mod not found!";
         return Formatter.format({
             caption: Formatter.modTitle(mod),
@@ -359,7 +359,7 @@ export class Formatter implements utils.Formatter {
         }
     }
 
-    static price(price?: wf.prices.Price): string {
+    static price(price?: wf.searchable.Price): string {
         if (price) {
             return Formatter.format({
                 caption: Formatter.priceTitle(price),
@@ -373,7 +373,7 @@ export class Formatter implements utils.Formatter {
         } return "No Price found!"
     }
 
-    static drop(drop?: wf.drops.GroupedDrop): string {
+    static drop(drop?: wf.searchable.GroupedDrop): string {
         if (drop) {
             return Formatter.format({
                 caption: Formatter.dropTitle(drop),
@@ -381,14 +381,14 @@ export class Formatter implements utils.Formatter {
             })
         } return "No Drop found!"
     }
-    static dropInfo(dropInfo?: wf.drops.DropInfo): string {
+    static dropInfo(dropInfo?: wf.searchable.DropInfo): string {
         if (dropInfo) {
             return "[".concat(dropInfo.chance.toString()).concat("%]")
                 .end(dropInfo.place)
         } return "No Drop Info found!"
     }
 
-    static place(place?: wf.drops.GroupedPlace): string {
+    static place(place?: wf.searchable.GroupedPlace): string {
         if (place) {
             return Formatter.format({
                 caption: Formatter.placeTitle(place),
@@ -396,7 +396,7 @@ export class Formatter implements utils.Formatter {
             })
         } return "No Place found!"
     }
-    static placeInfo(placeInfo?: wf.drops.PlaceInfo): string {
+    static placeInfo(placeInfo?: wf.searchable.PlaceInfo): string {
         if (placeInfo) {
             return "[".concat(placeInfo.chance.toString()).concat("%]")
                 .end(placeInfo.item)
@@ -405,31 +405,31 @@ export class Formatter implements utils.Formatter {
 
 
 
-    static warframeTitle(warframe: wf.warframes.ExportWarframesEntity): string {
+    static warframeTitle(warframe: wf.searchable.ExportWarframesEntity): string {
         return "WARFRAME |".end(warframe.name.replace("<ARCHWING>", "💸").clean().capitalize())
     }
 
-    static sentinelTitle(sentinel: wf.warframes.ExportSentinelsEntity): string {
+    static sentinelTitle(sentinel: wf.searchable.ExportSentinelsEntity): string {
         return "SENTINEL |".end(sentinel.name.replace("<ARCHWING>", "💸").clean().capitalize())
     }
 
-    static weaponTitle(weapon: wf.weapons.ExportWeaponsEntity): string {
+    static weaponTitle(weapon: wf.searchable.ExportWeaponsEntity): string {
         return "WEAPON |".end(weapon.name.replace("<ARCHWING>", "💸").clean().capitalize())
     }
 
-    static modTitle(mod: wf.mods.ExportUpgradesEntity): string {
+    static modTitle(mod: wf.searchable.ExportUpgradesEntity): string {
         return "MOD |".end(mod.name.replace("<ARCHWING>", "💸").clean().capitalize())
     }
 
-    static priceTitle(price: wf.prices.Price): string {
+    static priceTitle(price: wf.searchable.Price): string {
         return "PRICE |".end(price.Title.replace("<ARCHWING>", "💸").clean().capitalize())
     }
 
-    static dropTitle(drop: wf.drops.GroupedDrop): string {
+    static dropTitle(drop: wf.searchable.GroupedDrop): string {
         return "DROP |".end(drop.item.replace("<ARCHWING>", "💸").clean().capitalize())
     }
 
-    static placeTitle(drop: wf.drops.GroupedPlace): string {
+    static placeTitle(drop: wf.searchable.GroupedPlace): string {
         return "PLACE |".end(drop.place)
     }
 

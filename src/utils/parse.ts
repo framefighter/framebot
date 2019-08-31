@@ -17,7 +17,7 @@ export class Parse implements utils.Parse {
     static thumbUrl(uniqueName: string): string | undefined {
         const manifest = BOT.info.manifest;
         if (manifest && manifest.Manifest) {
-            const entry = manifest.Manifest.find(entry =>
+            const entry = manifest.Manifest.find((entry: wf.searchable.ManifestEntity) =>
                 entry.uniqueName === uniqueName)
             if (entry) {
                 return BOT.info.baseUrl + entry.textureLocation.replace(/\\/g, "/")

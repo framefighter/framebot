@@ -1,4 +1,9 @@
 declare namespace wf {
+    class World {
+        ws?: wf.Ws;
+        update(): Promise<void>;
+    }
+
     interface Ws {
         timestamp?: string;
         news?: News[];

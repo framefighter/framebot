@@ -1,4 +1,9 @@
 declare namespace wf {
+    class Extra {
+        arbitration?: wf.extra.Arbitration;
+        kuva?: wf.extra.Arbitration[];
+        update(): Promise<void>;
+    }
     namespace extra {
         interface RawKuva {
             start?: string;

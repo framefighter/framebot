@@ -20,27 +20,27 @@ export default class StateCheck implements checker.StateCheck {
 
     checkCmd<T extends any>(command: command.ID, obj?: T | null) {
         if (obj) {
-            let newObjs = [];
+            let newObject = [];
             if (Array.isArray(obj)) {
                 const arrObj = obj as Array<any>;
                 arrObj.map((n: any) => {
                     if (BOT.database.notifications.add(
                         BOT.database.notifications.generateID(n, command)
                     )) {
-                        newObjs.push(n)
+                        newObject.push(n)
                     }
                 })
             } else {
                 if (BOT.database.notifications.add(
                     BOT.database.notifications.generateID(obj, command))) {
-                    newObjs.push(obj)
+                        newObject.push(obj)
                 }
             }
-            if (newObjs.length > 0) this.sendToUser(command, newObjs);
+            if (newObject.length > 0) this.sendToUser(command, newObject);
         }
     }
 
-    sendToUser(commandID: command.ID, newObjs: any[]) {
+    sendToUser(commandID: command.ID, newObject: any[]) {
         BOT.database.users.list.forEach(user => {
             if (user.settings
                 && user.settings.alert
@@ -50,11 +50,11 @@ export default class StateCheck implements checker.StateCheck {
                     const active = new Active({
                         user,
                         command,
-                        args: newObjs.map(o => o.id),
+                        args: newObject.map(o => o.id),
                         chatID: user.id,
                     });
                     const possibleRewards = command.rewards(active).filter(rew =>
-                        newObjs.map(o => o.id).includes(rew.id));
+                        newObject.map(o => o.id).includes(rew.id));
                     if (possibleRewards.length > 0) {
                         const message = Check.rewards(possibleRewards, user.settings.filter)
                             .map(reward => command.name(active)
