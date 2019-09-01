@@ -55,20 +55,18 @@ export default class StateCheck implements checker.StateCheck {
                     });
                     const possibleRewards = command.rewards(active).filter(rew =>
                         newObject.map(o => o.id).includes(rew.id));
+                    let message = undefined;
                     if (possibleRewards.length > 0) {
-                        const message = Check.rewards(possibleRewards, user.settings.filter)
+                        message = Check.rewards(possibleRewards, user.settings.filter)
                             .map(reward => command.name(active)
                                 .nl()
                                 .concat(reward.text))
                             .clean()
                             .join("\n");
-                        active.send(message)
-                    } else {
-                        active.send()
                     }
+                    active.send(message)
                 }
             }
         })
     }
-
 }

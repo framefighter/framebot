@@ -1,6 +1,9 @@
 import { Parser } from './parser';
 import { EventEmitter } from 'events';
 import axios from "axios"
+import { Active } from '../../bot/active/active';
+import { Check } from '../../utils/check';
+import { BOT } from '../..';
 
 export class World extends EventEmitter implements wf.World {
     ws?: wf.Ws;
@@ -8,6 +11,19 @@ export class World extends EventEmitter implements wf.World {
         super();
         this.update();
         setInterval(() => this.update(), frequency || 10000);
+    }
+
+    filteredByID<T>(ids: string[], jsonKey?: keyof wf.Ws): T[] {
+        if (this.ws && jsonKey) {
+            const el = this.ws[jsonKey] || [];
+            if (Check.array(el)) {
+                return el.filter(fissure => ids.length > 0
+                    ? ids.includes(fissure.id
+                        || BOT.database.notifications.generateID(fissure))
+                    : true)
+            }
+        }
+        return []
     }
 
     async update() {

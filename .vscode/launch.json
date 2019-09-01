@@ -6,11 +6,11 @@
         "request": "launch",
         "name": "Debug",
         "preLaunchTask": "build",
-        "program": "${workspaceFolder}/src/index.ts",
+        "program": "${workspaceFolder}\\src\\index.ts",
         "cwd": "${workspaceFolder}",
         "protocol": "inspector",
         "outFiles": [
-          "${workspaceFolder}/build/**/*.js"
+          "${workspaceFolder}\\build\\**\\*.js"
         ]
       }
     ]

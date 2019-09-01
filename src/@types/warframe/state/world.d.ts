@@ -1,6 +1,7 @@
 declare namespace wf {
     class World {
         ws?: wf.Ws;
+        filteredByID<T>(ids: string[], jsonKey: keyof wf.Ws): T[];
         update(): Promise<void>;
     }
 

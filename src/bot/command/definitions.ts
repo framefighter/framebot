@@ -60,7 +60,7 @@ export const alert_setting = (id: command.ID): command.SettingsDefinitions => ({
         }),
         keyboard: (active) => new Keyboard({
             layout: [
-                [{ id: "alertSettings", text: "🔊 On" }, { id: "alertSettings", text: "🔈 Off" }],
+                [{ id: "allOn", text: "🔊 On" }, { id: "allOff", text: "🔈 Off" }],
                 ...BOT.commands.settings_list.map(setting => {
                     const toggleBtn = {
                         id: setting.id.replace(suffix().setting, "") as command.ID,
@@ -69,7 +69,6 @@ export const alert_setting = (id: command.ID): command.SettingsDefinitions => ({
                     return active.user.settings.alert[setting.id]
                         ? [toggleBtn, { id: setting.id, text: ">" }]
                         : [{ id: setting.id, text: "<" }, toggleBtn]
-
                 }),
                 [{ id: "settings", text: back }]
             ]
@@ -105,7 +104,7 @@ export const definitions: command.Definitions = {
         message: (active) => new Message({
             title: active.command.name(active),
             text: (active.ws.fissures || []).length > 0
-                ? (active.ws.fissures || [])
+                ? BOT.state.filteredByID<wf.Fissure>(active.args, active.command.jsonKey)
                     .sort((a, b) => (a.tierNum || 0) - (b.tierNum || 0))
                     .map(Formatter.fissure)
                     .join("\n")
@@ -125,11 +124,7 @@ export const definitions: command.Definitions = {
         message: (active) => new Message({
             title: active.command.name(active),
             text: (active.ws.invasions || []).length > 0
-                ? (active.ws.invasions || [])
-                    .filter(inv => active.args.length > 0
-                        ? active.args.includes(inv.id
-                            || BOT.database.notifications.generateID(inv))
-                        : true)
+                ? BOT.state.filteredByID<wf.Invasion>(active.args, active.command.jsonKey)
                     .map(Formatter.invasion)
                     .clean()
                     .join("\n\n")
@@ -157,11 +152,7 @@ export const definitions: command.Definitions = {
         message: (active) => new Message({
             title: active.command.name(active),
             text: (active.ws.events || []).length > 0
-                ? (active.ws.events || [])
-                    .filter(event => active.args.length > 0
-                        ? active.args.includes(event.id
-                            || BOT.database.notifications.generateID(event))
-                        : true)
+                ? BOT.state.filteredByID<wf.Event>(active.args, active.command.jsonKey)
                     .map(Formatter.event)
                     .clean()
                     .join("\n\n")
@@ -191,15 +182,11 @@ export const definitions: command.Definitions = {
         message: (active) => new Message({
             title: active.command.name(active),
             text: (active.ws.news || []).length > 0
-                ? (active.ws.news || [])
+                ? BOT.state.filteredByID<wf.News>(active.args, active.command.jsonKey)
                     .sort((a, b) => Compare.dates(a.date, b.date))
                     .filter(n =>
                         Object.keys(n.translations || {})
                             .includes("en"))
-                    .filter(n => active.args.length > 0
-                        ? active.args.includes(n.id
-                            || BOT.database.notifications.generateID(event))
-                        : true)
                     .map(Formatter.newsEvent)
                     .clean()
                     .slice(0, 10)
@@ -238,7 +225,7 @@ export const definitions: command.Definitions = {
         message: (active) => new Message({
             title: active.command.name(active),
             text: (active.ws.news || []).length > 0
-                ? (active.ws.news || [])
+                ? BOT.state.filteredByID<wf.News>(active.args, active.command.jsonKey)
                     .sort((a, b) => Compare.dates(a.date, b.date))
                     .filter(n =>
                         Object.keys(n.translations || {})
@@ -313,7 +300,7 @@ export const definitions: command.Definitions = {
         message: (active) => new Message({
             title: active.command.name(active),
             text: (active.ws.globalUpgrades || []).length > 0
-                ? (active.ws.globalUpgrades || [])
+                ? BOT.state.filteredByID<wf.GlobalUpgrade>(active.args, active.command.jsonKey)
                     .filter(boost => !boost.expired)
                     .map(boost =>
                         Formatter.format({
@@ -360,8 +347,8 @@ export const definitions: command.Definitions = {
                         .start("Ends")
                         .italics().nl().nl()
                     + (_.ws.nightwave.activeChallenges || [])
-                        .filter(inv => active.args.length > 0
-                            ? active.args.includes(inv.id)
+                        .filter(challenge => active.args.length > 0
+                            ? active.args.includes(challenge.id)
                             : true)
                         .map(Formatter.nightwave).join("\n")))
                     || "No Nightwave found!"
@@ -506,8 +493,8 @@ export const definitions: command.Definitions = {
         message: (active) => new Message({
             title: active.command.name(active),
             text: (active.ws.alerts || []).length > 0
-                ? (active.ws.alerts || [])
-                    .map(alert => Formatter.alert(alert)).join("\n")
+                ? BOT.state.filteredByID<wf.Alert>(active.args, active.command.jsonKey)
+                    .map(Formatter.alert).join("\n")
                 : "No Alerts found!"
         }),
         inline: (active) => (active.ws.alerts || []).length > 0
@@ -666,6 +653,22 @@ export const definitions: command.Definitions = {
             })
         }),
         keyboard: alert_setting("none")["none"].keyboard
+    },
+    "allOn": {
+        action: (active) => {
+            BOT.commands.settings_list.map(set =>
+                active.user.settings.alert[set.id] = true)
+        },
+        message: (active) => BOT.commands.find("alertSettings")!.message(active),
+        keyboard: (active) => BOT.commands.find("alertSettings")!.keyboard(active)
+    },
+    "allOff": {
+        action: (active) => {
+            BOT.commands.settings_list.map(set =>
+                active.user.settings.alert[set.id] = false)
+        },
+        message: (active) => BOT.commands.find("alertSettings")!.message(active),
+        keyboard: (active) => BOT.commands.find("alertSettings")!.keyboard(active)
     },
     "arbitrationFilter": {
         alt: ["adda", "rma"],
