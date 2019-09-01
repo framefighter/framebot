@@ -3629,6 +3629,28 @@
             "seconds": 41,
             "date": 1567277173,
             "stage": 3
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 23,
+            "date": 1567367566,
+            "stage": 1
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 31,
+            "date": 1567367567,
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 1,
+            "seconds": 18,
+            "boss": "Hyena Pack",
+            "date": 1567367567,
+            "stage": 3
         }
     ]
 }
