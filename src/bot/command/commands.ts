@@ -19,7 +19,7 @@ export class Commands implements command.Commands {
                     alert_setting((key + suffix().setting) as command.ID)[key + suffix().setting]))
         this.list = commands.concat(settings).sort((a, b) => Compare.alphabet(a.id, b.id));
         this.settings_list = settings.sort((a, b) => Compare.alphabet(a.id, b.id));
-        this.ids = commands.map(cmd => cmd.idf);
+        this.ids = commands.map(cmd => cmd.id);
         this.triggers = Array.from(new Set<string>(commands.map(cmd => cmd.alt).flat()));
         if (this.triggers.length !== commands.map(cmd => cmd.alt).flat().length) {
             console.warn("Some alternative triggers have duplicates!")
