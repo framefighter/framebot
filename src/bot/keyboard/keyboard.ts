@@ -3,6 +3,7 @@ import { Compare } from '../../utils/compare';
 import { BOT } from '../..';
 import { Formatter } from '../../utils/formatter';
 import { Active } from '../active/active';
+import { Command } from '../command/command';
 
 export class Keyboard implements keyboard.Board {
     layout: keyboard.Button[][];
@@ -13,6 +14,13 @@ export class Keyboard implements keyboard.Board {
         this.layout = keyboardConstructor.layout.concat(this.add || []);
     }
 
+    buttonText(active: Active, cmd: Command): string {
+        return cmd.emoji.space()
+            + (Formatter.camelToString(cmd.name(active)))
+            + (cmd.count(active) > 0 ? " [" + cmd.count(active) + "]" : "")
+            + (cmd.adminOnly ? " [Admin]" : "")
+    }
+
     toInline(active: Active): InlineKeyboardMarkup {
         let inlineLayout: InlineKeyboardButton[][] = [];
         for (let row of this.layout) {
@@ -20,15 +28,12 @@ export class Keyboard implements keyboard.Board {
             for (let btn of row) {
                 if (!btn) continue;
                 const cmd = BOT.commands.find(btn.id || "none");
-                if (btn.id && cmd && cmd.id === "none") continue;
+                if (btn.id && cmd && cmd.hidden) continue;
                 const selected = Compare.exact(btn.id, active.command.id);
                 let name = Formatter.camelToString(btn.text) || "-";
                 if (cmd && !btn.text) {
                     if (selected) continue;
-                    name = cmd.emoji.space()
-                        + (Formatter.camelToString(cmd.name(active)))
-                        + (cmd.count(active) > 0 ? " [" + cmd.count(active) + "]" : "")
-                        + (cmd.adminOnly ? " [Admin]" : "")
+                    name = this.buttonText(active, cmd);
                 }
                 const text = name;
                 let inlineBtn: InlineKeyboardButton;

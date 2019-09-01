@@ -11,7 +11,7 @@ export class Parser {
         return parsed
     }
 
-    static parse(jsonStr: any): any {
+    static parse<T>(jsonStr: any): T {
         try {
             if (Check.string(jsonStr)) {
                 return JSON.parse(this.cleanJSON(jsonStr)) || {};
@@ -19,7 +19,7 @@ export class Parser {
                 return jsonStr || {};
             }
         } catch (error) {
-            return {}
+            return {} as T
         }
     }
 

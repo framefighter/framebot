@@ -17,9 +17,16 @@ export const back = "< Back"
 export const menuBtn = (active: Active): command.ID =>
     active.user.settings.menu[0]
         ? active.user.settings.menu[0][0]
-        : "sortie"
+        : "sortie";
+
+export const moreBtn = (active: Active): keyboard.Button => ({
+    text: "More",
+    search: active.command.id.space().concat(active.args.join(", "))
+})
+
 
 export const sep = "+"
+export const sec_sep = "."
 
 export const suffix: ((sep?: string) => command.Suffix) = (sep = "") => ({
     setting: sep + "Setting",
@@ -71,7 +78,9 @@ export const alert_setting = (id: command.ID): command.SettingsDefinitions => ({
 })
 
 export const definitions: command.Definitions = {
-    "none": {},
+    "none": {
+        hidden: true,
+    },
     "sortie": {
         alt: ["s"],
         help: "Get current Sortie with average completion time",
@@ -183,10 +192,7 @@ export const definitions: command.Definitions = {
             title: active.command.name(active),
             text: (active.ws.news || []).length > 0
                 ? (active.ws.news || [])
-                    .sort((a, b) =>
-                        new Date(a.date || "").getTime()
-                            < new Date(b.date || "").getTime() ? 1 : -1
-                    )
+                    .sort((a, b) => Compare.dates(a.date, b.date))
                     .filter(n =>
                         Object.keys(n.translations || {})
                             .includes("en"))
@@ -202,10 +208,7 @@ export const definitions: command.Definitions = {
         }),
         inline: (active) => (active.ws.news || []).length > 0
             ? (active.ws.news || [])
-                .sort((a, b) =>
-                    new Date(a.date || "").getTime()
-                        < new Date(b.date || "").getTime() ? 1 : -1
-                )
+                .sort((a, b) => Compare.dates(a.date, b.date))
                 .filter(n =>
                     Object.keys(n.translations || {})
                         .includes("en"))
@@ -236,10 +239,7 @@ export const definitions: command.Definitions = {
             title: active.command.name(active),
             text: (active.ws.news || []).length > 0
                 ? (active.ws.news || [])
-                    .sort((a, b) =>
-                        new Date(a.date || "").getTime()
-                            < new Date(b.date || "").getTime() ? 1 : -1
-                    )
+                    .sort((a, b) => Compare.dates(a.date, b.date))
                     .filter(n =>
                         Object.keys(n.translations || {})
                             .includes("en")
@@ -252,10 +252,7 @@ export const definitions: command.Definitions = {
         }),
         inline: (active) => (active.ws.news || []).length > 0
             ? (active.ws.news || [])
-                .sort((a, b) =>
-                    new Date(a.date || "").getTime()
-                        < new Date(b.date || "").getTime() ? 1 : -1
-                )
+                .sort((a, b) => Compare.dates(a.date, b.date))
                 .filter(n =>
                     Object.keys(n.translations || {})
                         .includes("en")
@@ -450,9 +447,9 @@ export const definitions: command.Definitions = {
             const earth = BOT.commands.find("earth");
 
             if (cetus && vallis && earth) {
-                const cetusMSg = cetus.message(active).text;
-                const vallisMSg = vallis.message(active).text;
-                const earthMSg = earth.message(active).text;
+                const cetusMSg = cetus.message ? cetus.message(active).text : "";
+                const vallisMSg = vallis.message ? vallis.message(active).text : "";
+                const earthMSg = earth.message ? earth.message(active).text : "";
                 if (cetusMSg && vallisMSg && earthMSg) {
                     return new Message({
                         title: active.command.name(active),
@@ -560,30 +557,10 @@ export const definitions: command.Definitions = {
         })
     },
     "filter": {
-        alt: ["items"],
+        alt: ["items", "add"],
         help: "Lists all filter keywords",
         emoji: "💡",
         count: (active) => active.user.settings.filter.length,
-        message: (active) => new Message({
-            title: active.command.name(active),
-            text: Formatter.format({
-                caption: "Stored filter keywords",
-                description: "Add with /add <item>\nRemove with /remove <item>\n\nClick below to filter active happenings with selected keyword!",
-            }),
-        }),
-        keyboard: (active) => new Keyboard({
-            layout: active.user.settings.filter.map(item => [{
-                id: (item + suffix(sep).executeCheck) as command.ID,
-                text: item
-            }]).concat([[{
-                id: "settings",
-                text: back
-            }, { id: "remove", text: "🗑️️️️ Remove Items" }]])
-        })
-    },
-    "add": {
-        help: "Add filter keywords to your storage",
-        emoji: "➕",
         action: (active) =>
             active.args.filter(arg => {
                 if (arg.length > 50) {
@@ -599,10 +576,11 @@ export const definitions: command.Definitions = {
         message: (active) => new Message({
             title: active.command.name(active),
             text: Formatter.format({
+                caption: "Stored filter keywords",
                 description: (active.execute_return || []).length !== 0
                     ? "Newly added:"
                     : active.user.settings.filter.length > 0
-                        ? "Click below to filter active happenings with selected keyword!"
+                        ? "Add with /add <item>\nRemove with /remove <item>\n\nClick below to filter active happenings with selected keyword!"
                         : "No filter keywords to add",
                 list: active.execute_return
             }),
@@ -652,6 +630,7 @@ export const definitions: command.Definitions = {
         })
     },
     "askRemove": {
+        hidden: true,
         help: "Ask if you want to delete filter keyword",
         emoji: "🗑️",
         message: (active) => new Message({
@@ -756,18 +735,18 @@ export const definitions: command.Definitions = {
             title: active.command.name(active),
             text: active.args.map(arg =>
                 BOT.info.weapons
-                    ? (BOT.info.weapons.ExportWeapons || [])
+                    ? (BOT.info.weapons || [])
                         .filter(weapon =>
                             weapon.name.toUpperCase().includes(arg.toUpperCase()))
                         .slice(0, 2)
                         .map(Formatter.weapon)
                         .join("\n")
                     : ""
-            ).slice(0, 2).join("\n")
+            ).slice(0, 2).join("\n") || "No Weapons found!"
         }),
         inline: (active) => active.args.map(arg =>
             BOT.info.weapons
-                ? (BOT.info.weapons.ExportWeapons || [])
+                ? (BOT.info.weapons || [])
                     .filter(weapon =>
                         weapon.name.toUpperCase().includes(arg.toUpperCase()))
                     .map(weapon => new Inline({
@@ -780,10 +759,7 @@ export const definitions: command.Definitions = {
                 : ""
         ).flat(),
         keyboard: (active) => new Keyboard({
-            layout: [[{
-                text: "More",
-                search: active.command.id.end(active.args.join(", "))
-            }]]
+            layout: [[moreBtn(active)]]
         })
     },
     "findWarframe": {
@@ -794,18 +770,18 @@ export const definitions: command.Definitions = {
             title: active.command.name(active),
             text: active.args.map(arg =>
                 BOT.info.warframes
-                    ? (BOT.info.warframes.ExportWarframes || [])
+                    ? (BOT.info.warframes || [])
                         .filter(warframe =>
                             warframe.name.toUpperCase().includes(arg.toUpperCase()))
                         .slice(0, 2)
                         .map(Formatter.warframe)
                         .join("\n")
                     : ""
-            ).slice(0, 2).join("\n")
+            ).slice(0, 2).join("\n") || "No Warframes found!"
         }),
         inline: (active) => active.args.map(arg =>
             BOT.info.warframes
-                ? (BOT.info.warframes.ExportWarframes || [])
+                ? (BOT.info.warframes || [])
                     .filter(warframe =>
                         warframe.name.toUpperCase().includes(arg.toUpperCase()))
                     .map(warframe => new Inline({
@@ -818,10 +794,7 @@ export const definitions: command.Definitions = {
                 : ""
         ).flat(),
         keyboard: (active) => new Keyboard({
-            layout: [[{
-                text: "More",
-                search: active.command.id.end(active.args.join(", "))
-            }]]
+            layout: [[moreBtn(active)]]
         })
     },
     "findMod": {
@@ -832,18 +805,18 @@ export const definitions: command.Definitions = {
             title: active.command.name(active),
             text: active.args.map(arg =>
                 BOT.info.mods
-                    ? (BOT.info.mods.ExportUpgrades || [])
+                    ? (BOT.info.mods || [])
                         .filter(mod =>
                             mod.name.toUpperCase().includes(arg.toUpperCase()))
                         .slice(0, 2)
                         .map(Formatter.mod)
                         .join("\n")
                     : ""
-            ).slice(0, 2).join("\n")
+            ).slice(0, 2).join("\n") || "No Mods found!"
         }),
         inline: (active) => active.args.map(arg =>
             BOT.info.mods
-                ? (BOT.info.mods.ExportUpgrades || [])
+                ? (BOT.info.mods || [])
                     .filter(mod =>
                         mod.name.toUpperCase().includes(arg.toUpperCase()))
                     .map(mod => new Inline({
@@ -856,10 +829,7 @@ export const definitions: command.Definitions = {
                 : ""
         ).flat(),
         keyboard: (active) => new Keyboard({
-            layout: [[{
-                text: "More",
-                search: active.command.id.end(active.args.join(", "))
-            }]]
+            layout: [[moreBtn(active)]]
         })
     },
     "findSentinel": {
@@ -870,18 +840,18 @@ export const definitions: command.Definitions = {
             title: active.command.name(active),
             text: active.args.map(arg =>
                 BOT.info.sentinels
-                    ? (BOT.info.sentinels.ExportSentinels || [])
+                    ? (BOT.info.sentinels || [])
                         .filter(sentinel =>
                             sentinel.name.toUpperCase().includes(arg.toUpperCase()))
                         .slice(0, 2)
                         .map(Formatter.sentinel)
                         .join("\n")
                     : ""
-            ).slice(0, 2).join("\n")
+            ).slice(0, 2).join("\n") || "No Sentinels found!"
         }),
         inline: (active) => active.args.map(arg =>
             BOT.info.sentinels
-                ? (BOT.info.sentinels.ExportSentinels || [])
+                ? (BOT.info.sentinels || [])
                     .filter(sentinel =>
                         sentinel.name.toUpperCase().includes(arg.toUpperCase()))
                     .map(sentinel => new Inline({
@@ -894,10 +864,7 @@ export const definitions: command.Definitions = {
                 : ""
         ).flat(),
         keyboard: (active) => new Keyboard({
-            layout: [[{
-                text: "More",
-                search: active.command.id.end(active.args.join(", "))
-            }]]
+            layout: [[moreBtn(active)]]
         })
     },
     "price": {
@@ -913,7 +880,7 @@ export const definitions: command.Definitions = {
                     .slice(0, 2)
                     .map(Formatter.price)
                     .join("\n")
-            ).slice(0, 2).join("\n"),
+            ).slice(0, 2).join("\n") || "No Prices found!"
         }),
         inline: (active) => active.args.map(arg =>
             (BOT.info.prices || [])
@@ -929,10 +896,7 @@ export const definitions: command.Definitions = {
                 }))
         ).flat(),
         keyboard: (active) => new Keyboard({
-            layout: [[{
-                text: "More",
-                search: active.command.id.end(active.args.join(", "))
-            }]]
+            layout: [[moreBtn(active)]]
         })
     },
     "drop": {
@@ -948,7 +912,7 @@ export const definitions: command.Definitions = {
                     .slice(0, 2)
                     .map(Formatter.drop)
                     .join("\n")
-            ).slice(0, 2).join("\n"),
+            ).slice(0, 2).join("\n") || "No Drops found!"
         }),
         inline: (active) => active.args.map(arg =>
             (BOT.info.drops || [])
@@ -963,10 +927,7 @@ export const definitions: command.Definitions = {
                 }))
         ).flat(),
         keyboard: (active) => new Keyboard({
-            layout: [[{
-                text: "More",
-                search: active.command.id.end(active.args.join(", "))
-            }]]
+            layout: [[moreBtn(active)]]
         })
     },
     "place": {
@@ -982,7 +943,7 @@ export const definitions: command.Definitions = {
                     .slice(0, 2)
                     .map(Formatter.place)
                     .join("\n")
-            ).slice(0, 2).join("\n"),
+            ).slice(0, 2).join("\n") || "No Places found!"
         }),
         inline: (active) => active.args.map(arg =>
             (BOT.info.places || [])
@@ -997,10 +958,7 @@ export const definitions: command.Definitions = {
                 }))
         ).flat(),
         keyboard: (active) => new Keyboard({
-            layout: [[{
-                text: "More",
-                search: active.command.id.end(active.args.join(", "))
-            }]]
+            layout: [[moreBtn(active)]]
         })
     },
     "find": {
@@ -1037,10 +995,7 @@ export const definitions: command.Definitions = {
             return []
         },
         keyboard: (active) => new Keyboard({
-            layout: [[{
-                text: "More",
-                search: active.command.id.end(active.args.join(", "))
-            }]]
+            layout: [[moreBtn(active)]]
         })
     },
     "check": {
@@ -1294,12 +1249,21 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => {
             const cmd_s = BOT.commands.list;
-            let layout: keyboard.Button[][] = []
-            for (let i = 0; i < cmd_s.length; i += 2) {
-                if (cmd_s[i + 1]) {
-                    layout.push([{ id: cmd_s[i].id }, { id: cmd_s[i + 1].id }])
-                } else {
-                    layout.push([{ id: cmd_s[i].id }])
+            const layout: keyboard.Button[][] = [];
+            const width = 3;
+            for (let cmd of cmd_s) {
+                if (cmd.privileged(active.user)) {
+                    const last = layout.pop()
+                    const curr = { id: cmd.id };
+                    if (!last) {
+                        layout.push([curr]);
+                    } else if (last.length === width) {
+                        layout.push(last);
+                        layout.push([curr]);
+                    } else if (last.length < width) {
+                        last.push(curr);
+                        layout.push(last);
+                    }
                 }
             }
             layout.push([{ id: menuBtn(active), text: back }])
@@ -1374,38 +1338,36 @@ export const definitions: command.Definitions = {
                 description: active.execute_return
             })
         }),
-        keyboard: (active) => {
-            return new Keyboard({
-                layout: active.user.settings.menu.map((row, y) =>
-                    row.map((btn, x) =>
-                        ({
-                            id: (btn + suffix(sep).removeMenuButton) as command.ID,
-                            text: "➖ | " + btn
-                        } as keyboard.Button))
-                        .concat([{
-                            id: (y
-                                + "."
-                                + row.length
-                                + suffix(sep).addMenuButton) as command.ID,
-                            text: "➕"
-                        }]))
-                    .concat([[{
-                        id: (active.user.settings.menu.length
-                            + "."
-                            + 0
+        keyboard: (active) => new Keyboard({
+            layout: active.user.settings.menu.map((row, y) =>
+                row.map((btn, x) =>
+                    ({
+                        id: (btn + suffix(sep).removeMenuButton) as command.ID,
+                        text: "➖ | " + btn
+                    } as keyboard.Button))
+                    .concat([{
+                        id: (y + sec_sep + row.length
                             + suffix(sep).addMenuButton) as command.ID,
                         text: "➕"
-                    }], [{
-                        id: "settings",
-                        text: back
-                    }, {
-                        id: "clearConfig",
-                        text: "❌ Clear All"
-                    }]])
-            })
-        }
+                    }]))
+                .concat([[{
+                    id: (active.user.settings.menu.length + sec_sep + 0
+                        + suffix(sep).addMenuButton) as command.ID,
+                    text: "➕"
+                }], [{
+                    id: "settings",
+                    text: back
+                }, {
+                    id: "clearConfig",
+                    args: active.user.settings.menu.flat(),
+                    text: "❌ Clear All"
+                }]])
+        })
+
     },
     "configSelection": {
+        hidden: true,
+        emoji: "🆔",
         alt: ["select"],
         action: (active) => {
             const args = active.args;
@@ -1421,36 +1383,30 @@ export const definitions: command.Definitions = {
 
             }
         },
+        message: (active) => new Message({
+            title: active.command.name(active),
+            text: "Select Button to add to row " + (parseInt(active.args[0]) + 1),
+        }),
         keyboard: (active) => {
             let cmd_s = BOT.commands.list;
-            cmd_s.sort(function (a, b) {
-                var nameA = a.id.toUpperCase();
-                var nameB = b.id.toUpperCase();
-                if (nameA < nameB) {
-                    return -1;
-                }
-                if (nameA > nameB) {
-                    return 1;
-                }
-                return 0;
-            })
             let layout: keyboard.Button[][] = []
-            for (let i = 0; i < cmd_s.length; i += 2) {
-                if (cmd_s[i].id === "none") continue;
-                if (cmd_s[i + 1] && cmd_s[i + 1].id !== "none") {
-                    layout.push([{
-                        id: (cmd_s[i].id + suffix(sep).selectMenuButton) as command.ID,
-                        text: cmd_s[i].name(active)
-                    },
-                    {
-                        id: (cmd_s[i + 1].id + suffix(sep).selectMenuButton) as command.ID,
-                        text: cmd_s[i + 1].name(active)
-                    }])
-                } else {
-                    layout.push([{
-                        id: (cmd_s[i].id + suffix(sep).selectMenuButton) as command.ID,
-                        text: cmd_s[i].name(active)
-                    }])
+            const width = 3;
+            for (let cmd of cmd_s) {
+                if (cmd.privileged(active.user) && cmd.id !== "none") {
+                    const last = layout.pop()
+                    const curr = {
+                        id: (cmd.id + suffix(sep).selectMenuButton) as command.ID,
+                        text: cmd.id
+                    };
+                    if (!last) {
+                        layout.push([curr]);
+                    } else if (last.length === width) {
+                        layout.push(last);
+                        layout.push([curr]);
+                    } else if (last.length < width) {
+                        last.push(curr);
+                        layout.push(last);
+                    }
                 }
             }
             layout.push([{ id: "config", text: "< Cancel" }])
@@ -1459,12 +1415,13 @@ export const definitions: command.Definitions = {
 
     },
     "clearConfig": {
-        action: (active) => active.user.settings.menu = [],
-        message: (active) => new Message({
-            title: active.command.name(active),
-            text: "Cleared your configuration!\nDefault menu will be used."
-        }),
-        keyboard: () => new Keyboard({ layout: [[{ id: "config", text: back }]] })
+        emoji: "❌",
+        action: (active) => {
+            active.user.settings.menu = []
+            return "Cleared all buttons, default keyboard will be used!"
+        },
+        message: (active) => BOT.commands.find("config")!.message(active),
+        keyboard: (active) => BOT.commands.find("config")!.keyboard(active)
     },
     "songs": {
         help: "Show list of all saved songs",
@@ -1523,6 +1480,7 @@ export const definitions: command.Definitions = {
             }))
     },
     "showSong": {
+        hidden: true,
         alt: ["song"],
         help: "Show song string of a saved song",
         emoji: "🎵",

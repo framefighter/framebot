@@ -21,7 +21,6 @@ declare namespace active {
         message: string;
         inline: any[];
         executed: boolean;
-        privileged(): boolean;
         send(msg?: string): void;
         edit(IDs: active.IDs, msg?: string): void;
         execute(): void;

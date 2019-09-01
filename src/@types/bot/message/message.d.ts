@@ -6,10 +6,12 @@ declare namespace message {
     }
 
     interface InlineConstructor extends Constructor {
-        description?: string;
-        thumb_url?: string;
-        url?: string;
-        item?: string;
+        title: string;
+        description?: string | undefined;
+        thumb_url?: string | undefined;
+        url?: string | undefined;
+        item?: string | undefined;
+        text?: string;
     }
 
     class Message implements Constructor {
@@ -20,15 +22,17 @@ declare namespace message {
         toString(user?: user.User): string;
     }
 
-    class Inline extends Message implements InlineConstructor {
-        description?: string | undefined;
-        thumb_url?: string | undefined;
-        url?: string | undefined;
-        item?: string | undefined;
+    class Inline implements InlineConstructor {
         title: string;
-        text?: string | undefined;
-        showUser?: boolean | undefined;
+        showUser?: boolean;
+        description?: string;
+        thumb_url?: string;
+        url?: string;
+        item?: string;
+        text?: string;
+        id: string;
         toInline(active: active.Active): any;
+        keyboard(active: active.Active): any;
     }
 
     interface Reward {

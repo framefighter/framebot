@@ -1,12 +1,12 @@
 declare namespace wf {
     class Searchable {
         constructor(frequency?: number);
-        weapons?: searchable.Weapons;
-        mods?: searchable.Mods;
-        warframes?: searchable.Warframes;
+        weapons?: searchable.ExportWeaponsEntity[];
+        mods?: searchable.ExportUpgradesEntity[];
+        warframes?: searchable.ExportWarframesEntity[];
         prices?: searchable.Price[];
         drops?: searchable.GroupedDrop[];
-        sentinels?: searchable.Sentinels;
+        sentinels?: searchable.ExportSentinelsEntity[];
         manifest?: searchable.Manifest;
         baseUrl: string;
         places?: searchable.GroupedPlace[];
@@ -24,30 +24,30 @@ declare namespace wf {
             codexSecret: boolean;
             secondsPerShot?: number | null;
             /**
-             * [0,1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9,2]
-             * [i,p,s,h,c,e,t,b,r,g,m,v,c,0,0,0,0,0,0,0]
+             * `[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]`
+             * `[i,p,s,h,c,e,t,b,r,g,m,v,c,?,?,?,?,?,?,?]`
              * 
-             * 0: impact
-             * 1: puncture
-             * 2: slash
-             * 3: heat
-             * 4: cold
-             * 5: electricity
-             * 6: toxic
-             * 7: blast
-             * 8: radiation
-             * 9: gas
-             * 10: magnetic
-             * 11: viral
-             * 12: corrosive
-             * 13: ? (true)
-             * 14: ? (void)
-             * 15: ?
-             * 16: ?
-             * 17: ?
-             * 18: ?
-             * 19: ?
-             * 20: ?
+             * index | type
+             * 0. impact
+             * 1. puncture
+             * 2. slash
+             * 3. heat
+             * 4. cold
+             * 5. electricity
+             * 6. toxic
+             * 7. blast
+             * 8. radiation
+             * 9. gas
+             * 10. magnetic
+             * 11. viral
+             * 12. corrosive
+             * 13. ? (true)
+             * 14. ? (void)
+             * 15. ?
+             * 16. ?
+             * 17. ?
+             * 18. ?
+             * 19. ?
              */
             damagePerShot?: (number)[] | null;
             magazineSize?: number | null;
@@ -101,7 +101,7 @@ declare namespace wf {
             power: number;
             codexSecret: boolean;
         }
-        
+
         interface Price {
             Title: string;
             Type?: string | null;

@@ -21,7 +21,6 @@ declare namespace command {
         | "arbitration"
         | "alerts"
         | "filter"
-        | "add"
         | "remove"
         | "askRemove"
         | "settings"

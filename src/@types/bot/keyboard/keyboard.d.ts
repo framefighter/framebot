@@ -5,9 +5,10 @@ declare namespace keyboard {
         add?: Button[][];
     }
 
-    class Board implements Constructor  {
+    class Board implements Constructor {
         layout: Button[][];
         add?: Button[][];
+        buttonText(active: active.Active, cmd: command.Command): string
         toInline(active: active.Active): any;
     }
 
@@ -16,6 +17,7 @@ declare namespace keyboard {
         text?: string;
         search?: string;
         url?: string;
+        args?: string[]
     }
 
 }

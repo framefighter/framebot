@@ -5,6 +5,8 @@ import { BOT } from '../..';
 import { Check } from '../../utils/check';
 import { Formatter } from '../../utils/formatter';
 import { Active } from '../active/active';
+import { menuBtn } from './definitions';
+import { User } from '../user/user';
 
 export class Command implements command.Command {
     emoji: string;
@@ -13,6 +15,7 @@ export class Command implements command.Command {
     help: string;
     adminOnly: boolean;
     jsonKey?: keyof wf.Ws;
+    hidden: boolean;
     message: (active: Active) => Message;
     inline: (active: Active) => Inline[];
     keyboard: (active: Active) => keyboard.Board;
@@ -26,27 +29,29 @@ export class Command implements command.Command {
     constructor(id: command.ID, cmdConstructor: Readonly<command.Constructor>) {
         this.id = id;
         this.message = cmdConstructor.message
-            || (() => new Message({ title: "No Message" }));
+            || (() => new Message());
         this.inline = cmdConstructor.inline
             || (() => []);
-        this.keyboard = cmdConstructor.keyboard
-            || ((active) => {
-                if (active.user.settings.menu.length > 0) {
-                    return new Keyboard({
-                        layout: active.user.settings.menu.map(row =>
-                            row.map(config => ({ id: config })))
-                    })
-                }
+        this.keyboard = ((active) => {
+            if (cmdConstructor.keyboard && menuBtn(active) !== active.command.id) {
+                return cmdConstructor.keyboard(active)
+            }
+            if (active.user.settings.menu.length > 0) {
                 return new Keyboard({
-                    layout: [[{ id: "sortie" }, { id: "nightwave" }],
-                    [{ id: "arbitration" }, { id: "news" }],
-                    [{ id: "events", text: "🗞️ Happenings" }, { id: "check" }],
-                    [{ id: "cycles" }, { id: "trader" }],
-                    [{ id: "all" }, { id: "search" }],
-                    [{ id: "settings" }, { text: "🔎 Find", search: "find " },
-                    ...(active.user.admin ? [{ text: "⏱️ Time", search: "time " }] : []),]],
+                    layout: active.user.settings.menu.map(row =>
+                        row.map(config => ({ id: config })))
                 })
-            });
+            }
+            return new Keyboard({
+                layout: [[{ id: "sortie" }, { id: "nightwave" }],
+                [{ id: "arbitration" }, { id: "news" }],
+                [{ id: "events", text: "🗞️ Happenings" }, { id: "check" }],
+                [{ id: "cycles" }, { id: "trader" }],
+                [{ id: "all" }],
+                [{ id: "settings" }, { text: "🔎 Find", search: "find " },
+                ...(active.user.admin ? [{ text: "⏱️ Time", search: "time " }] : []),]],
+            })
+        });
         this.answerCbText = cmdConstructor.answerCbText
             || (() => `Loading ${this.id.replace(/_/g, " ").clean()}...`);
         this.rewards = cmdConstructor.rewards
@@ -71,7 +76,13 @@ export class Command implements command.Command {
             });
         this.name = cmdConstructor.name
             || (() => Formatter.camelToString(this.id))
+        this.hidden = cmdConstructor.hidden || false
+    }
 
+    privileged(user?: User): boolean {
+        if (user) {
+            return !this.adminOnly || user.admin
+        } return false;
     }
 }
 

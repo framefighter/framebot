@@ -50,4 +50,27 @@ export class Compare implements utils.Compare {
         return a.toUpperCase().includes(b.toUpperCase())
             || b.toUpperCase().includes(a.toUpperCase());
     }
+    static dates(a?: string, b?: string): number {
+        const aTime = new Date(a || "").getTime();
+        const BTime = new Date(b || "").getTime();
+        if (aTime < BTime) {
+            return 1
+        }
+        if (aTime > BTime) {
+            return -1
+        }
+        return 0
+    }
+
+    static alphabet(a?: string, b?: string): number {
+        const A = (a || "").toUpperCase();
+        const B = (b || "").toUpperCase();
+        if (A < B) {
+            return -1;
+        }
+        if (A > B) {
+            return 1;
+        }
+        return 0;
+    }
 }

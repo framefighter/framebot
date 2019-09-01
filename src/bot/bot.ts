@@ -1,6 +1,6 @@
 import TelegramBot, { InlineQueryResult, InlineQuery } from "node-telegram-bot-api";
 import { Active } from './active/active';
-import { suffix, sep } from './command/definitions';
+import { suffix, sep, sec_sep } from './command/definitions';
 import { Database } from '../database/database';
 import { User } from "./user/user";
 import { CONFIG } from '../utils/config';
@@ -108,8 +108,7 @@ export class Bot implements bot.Bot {
     private initCallbackQueryEmitter() {
         this.api.on("callback_query",
             async cbq => {
-                if (cbq.from
-                    && cbq.data) {
+                if (cbq.from && cbq.data && cbq.message) {
                     const user = this.getUser(cbq.from);
                     const ids = {
                         CbqID: cbq.id,
@@ -126,56 +125,19 @@ export class Bot implements bot.Bot {
                     const cbqPrefix = split[0]
                     const cbqSuffix = split[1]
                     let args: string[] = [cbqPrefix];
-                    let find: command.ID = "none";
+                    let find: command.ID = cbqSuffix as command.ID;
 
-                    switch (cbqSuffix) {
-                        case suffix().askRemoveItem:
-                            if (user.settings.filter.includes(cbqPrefix)) {
-                                find = "askRemove"
-                            }
-                            break;
-                        case suffix().addItem:
-                            find = "add"
-                            break;
-                        case suffix().removeItem:
-                            if (user.settings.filter.includes(cbqPrefix)) {
-                                find = "remove"
-                            }
-                            break;
-                        case suffix().executeCheck:
-                            if (user.settings.filter.includes(cbqPrefix)) {
-                                find = "check"
-                            }
-                            break;
-                        case suffix().arbitrationRemove:
-                            if (user.settings.arbitration.includes(cbqPrefix)) {
-                                find = "arbitrationFilter"
-                            }
-                            break;
-                        case suffix().addMenuButton:
-                            const pos = cbqPrefix.split(".").clean()
-                            if (pos.length === 2
-                                && pos[0] !== undefined
-                                && pos[1] !== undefined) {
-                                args = pos;
-                                find = "configSelection"
-                            }
-                            break;
-                        case suffix().removeMenuButton:
-                        case suffix().selectMenuButton:
-                            find = "config"
-                            break;
-                        case suffix().showSong:
-                            find = "showSong"
-                            break;
-                        case suffix().removeSong:
-                            find = "songs"
-                            break;
-                        default:
-                            break;
+                    if (find === suffix().addMenuButton) {
+                        const pos = cbqPrefix.split(sec_sep).clean()
+                        if (pos.length === 2
+                            && pos[0] !== undefined
+                            && pos[1] !== undefined) {
+                            args = pos;
+                        }
                     }
+
                     const pc = this.commands.parse(cbqPrefix)
-                    if (find === "none" && pc) {
+                    if (!find && pc) {
                         args = pc.args
                         find = pc.command.id
                     }

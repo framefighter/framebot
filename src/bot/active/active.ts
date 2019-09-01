@@ -54,44 +54,38 @@ export class Active implements active.Active {
         const message = msg || this.message;
 
         const onErr = (err: any) => { console.warn(err) }
+        let options = {}
 
         if (message) {
             if (IDs.inlineMsgID) {
-                BOT.api.editMessageText(
-                    message, {
-                        inline_message_id: IDs.inlineMsgID,
-                        parse_mode: BOT.defaults.parse_mode,
-                        reply_markup: this.keyboard,
-                    }).catch(onErr);
+                options = {
+                    inline_message_id: IDs.inlineMsgID,
+                    parse_mode: BOT.defaults.parse_mode,
+                    reply_markup: this.keyboard,
+                }
             } else if (IDs.msgID) {
-                BOT.api.editMessageText(
-                    message, {
-                        message_id: IDs.msgID,
-                        chat_id: this.chatID,
-                        parse_mode: BOT.defaults.parse_mode,
-                        reply_markup: this.keyboard,
-                    }).catch(onErr);
+                options = {
+                    message_id: IDs.msgID,
+                    chat_id: this.chatID,
+                    parse_mode: BOT.defaults.parse_mode,
+                    reply_markup: this.keyboard,
+                }
             } else {
-                BOT.api.sendMessage(
-                    this.chatID,
-                    message, {
-                        parse_mode: BOT.defaults.parse_mode,
-                        reply_markup: this.keyboard,
-                    }).catch(onErr);
+                options = {
+                    parse_mode: BOT.defaults.parse_mode,
+                    reply_markup: this.keyboard,
+                };
             }
+            BOT.api.editMessageText(message, options).catch(onErr);
         }
         if (IDs.CbqID) {
-            BOT.api.answerCallbackQuery(IDs.CbqID)
+            BOT.api.answerCallbackQuery(IDs.CbqID).catch(onErr)
         }
-    }
-
-    privileged(): boolean {
-        return !this.command.adminOnly || this.user.admin
     }
 
     execute() {
         if (this.command.action && !this.executed) {
-            if (this.privileged()) {
+            if (this.command.privileged(this.user)) {
                 this.executed = true;
                 this.execute_return = this.command.action(this);
                 this.updateText()

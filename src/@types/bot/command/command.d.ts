@@ -3,6 +3,7 @@ declare namespace command {
         alt?: string[];
         help?: string;
         emoji?: string;
+        hidden?: boolean;
         adminOnly?: boolean;
         jsonKey?: keyof wf.Ws;
         answerCbText?: (active: active.Active) => string | string;
@@ -30,6 +31,7 @@ declare namespace command {
         alt: string[];
         help: string;
         emoji: string;
+        hidden: boolean;
         adminOnly: boolean;
         jsonKey?: keyof wf.Ws;
         answerCbText: (active: active.Active) => string | string;
@@ -40,6 +42,7 @@ declare namespace command {
         action: (active: active.Active) => any;
         name: (active: active.Active) => string;
         count: (active: active.Active) => number;
+        privileged(user: user.User): boolean;
     }
 
     class Commands {
