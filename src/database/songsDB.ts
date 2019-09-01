@@ -1,5 +1,5 @@
 import { Song } from '../bot/song/song';
-import { DB } from './DB';
+import { DB } from './db';
 
 export class SongsDB extends DB<Song[]> implements db.SongsDB {
     constructor(path: string) {

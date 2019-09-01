@@ -1,6 +1,6 @@
 import { UsersDB } from './userDB';
 import { TimesDB } from './TimesDB';
-import { NotificationsDB } from './notifications.DB';
+import { NotificationsDB } from './notificationsDB';
 import { SongsDB } from './songsDB';
 
 

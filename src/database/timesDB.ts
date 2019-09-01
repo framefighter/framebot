@@ -1,5 +1,5 @@
 import { Check } from '../utils/check';
-import { DB } from './DB';
+import { DB } from './db';
 
 export class TimesDB extends DB<time.Record[]> implements db.TimesDB {
     constructor(path: string) {

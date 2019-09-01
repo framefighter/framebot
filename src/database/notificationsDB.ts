@@ -1,4 +1,4 @@
-import { DB } from './DB';
+import { DB } from './db';
 
 export class NotificationsDB extends DB<string[]> implements db.NotificationsDB {
     constructor(path: string) {

@@ -1,5 +1,5 @@
 import { User } from '../bot/user/user';
-import { DB } from './DB';
+import { DB } from './db';
 
 export class UsersDB extends DB<{ [key: string]: User }> implements db.UsersDB {
     constructor(path: string) {
