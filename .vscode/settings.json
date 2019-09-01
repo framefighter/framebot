@@ -19,5 +19,8 @@
         "warframe",
         "worldstate",
         "zenurik"
-    ]
+    ],
+    "files.exclude": {
+        "*": true
+    }
 }
