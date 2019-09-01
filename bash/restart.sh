@@ -1,3 +1,4 @@
+set -e
 bash bash/pull.sh
 echo installing possible new npm modules
 npm i
