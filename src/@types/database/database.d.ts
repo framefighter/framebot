@@ -23,6 +23,7 @@ declare namespace db {
         add(song: song.Song): void;
         update(song: song.Song): boolean;
         getByName(songname: string): song.Song | undefined;
+        exists(songname: string | number): boolean;
     }
 
     class TimesDB extends DB {
