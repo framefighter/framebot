@@ -1,9 +1,6 @@
 #!/bin/bash
 
-echo "Pushing any changes"
-git add .
-git commit -qm "new database recordings"
-git push
+set -e
 echo "Pulling new git version"
 git pull -q
 echo "Installing possible new npm modules"
