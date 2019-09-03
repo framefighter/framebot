@@ -49,6 +49,7 @@ declare namespace command {
         | "showSong"
         | "allAlertsSettingsOn"
         | "allAlertsSettingsOff"
+        | "about"
 
     type Suffix = {
         setting: string,

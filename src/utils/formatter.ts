@@ -140,7 +140,7 @@ export class Formatter implements utils.Formatter {
         if (newsEvent) {
             return Formatter.format({
                 caption: newsEvent.message,
-                link: "Click for more info!".link(newsEvent.link),
+                link: { text: "Click for more info!", url: newsEvent.link },
                 time: newsEvent.eta
             })
         }
@@ -468,7 +468,7 @@ export class Formatter implements utils.Formatter {
             start: format.start || "",
             subCaption: format.subCaption || "",
             time: format.time || "",
-            link: format.link || "",
+            link: format.link || {},
             text: format.text || "",
         };
 
@@ -488,9 +488,9 @@ export class Formatter implements utils.Formatter {
             + this.end(fixed.end)
     }
 
-    static link(link?: string): string {
+    static link(link?: { url?: string, text?: string }): string {
         if (!link) return "";
-        return link.nl()
+        return (link.text || "").link(link.url).indent(6).nl()
     }
 
     static clock(seconds?: number): string {

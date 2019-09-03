@@ -31,6 +31,23 @@ export const definitions: command.Definitions = {
     "none": {
         hidden: true,
     },
+    "about": {
+        emoji: "ℹ️",
+        message: (active) => new Message({
+            title: active.command.name(active),
+            text: [Formatter.format({
+                caption: "Creator",
+                addCaption: "@ifyoureadthishaveagooddaysmile",
+            }), Formatter.format({
+                caption: "Bot",
+                addCaption: "Source Code",
+                link: { url: "https://github.com/framefighter/framebot", text: "GitHub Repo" }
+            }), Formatter.format({
+                caption: "Feedback",
+                link: { url: "https://github.com/framefighter/framebot/issues", text: "Report Issues" }
+            })].join("\n")
+        })
+    },
     "sortie": {
         alt: ["s"],
         help: "Get current Sortie with average completion time",
@@ -322,7 +339,10 @@ export const definitions: command.Definitions = {
                 text: idx(active, _ => Formatter.format({
                     caption: `It is currently ${_.ws.cetusCycle.state.toUpperCase()} on the Plains of Eidolon!`,
                     subCaption: _.ws.cetusCycle.shortString,
-                    link: "Fishing Map".link("https://vignette.wikia.nocookie.net/warframe/images/4/4b/Fishingmap.png/revision/latest?cb=20181111120029")
+                    link: {
+                        text: "Fishing Map",
+                        url: "https://vignette.wikia.nocookie.net/warframe/images/4/4b/Fishingmap.png/revision/latest?cb=20181111120029"
+                    }
                 })) || "No Cetus Information Found!"
             })
         },
@@ -345,7 +365,10 @@ export const definitions: command.Definitions = {
             text: idx(active, _ => Formatter.format({
                 caption: `It is currently ${_.ws.vallisCycle.state.toUpperCase()} in Orb Vallis!`,
                 subCaption: _.ws.vallisCycle.shortString,
-                link: "Fishing Map".link("https://vignette.wikia.nocookie.net/warframe/images/6/6f/FortunaFishingMap.jpg/revision/latest?cb=20181113071342")
+                link: {
+                    text: "Fishing Map",
+                    url: "https://vignette.wikia.nocookie.net/warframe/images/6/6f/FortunaFishingMap.jpg/revision/latest?cb=20181113071342"
+                }
             })) || "No Vallis Information Found!"
         }),
         keyboard: (active) => new Keyboard({
@@ -1228,7 +1251,7 @@ export const definitions: command.Definitions = {
     "help": {
         alt: ["h"],
         help: "Lists all commands and help text",
-        emoji: "ℹ️",
+        emoji: "🆘",
         message: (active) => new Message({
             title: active.command.name(active),
             text: BOT.commands.list

@@ -28,7 +28,7 @@ declare namespace utils {
         boss: string;
         start: string | number;
         end: string | number;
-        link: string;
+        link: { url?: string, text?: string };
         text: string;
     }
     class Check {
