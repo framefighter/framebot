@@ -1,4 +1,5 @@
-set -e
+#!/bin/bash
+
 echo "Pushing any changes"
 git add .
 git commit -qm "new database recordings"
