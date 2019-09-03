@@ -3651,6 +3651,27 @@
             "boss": "Hyena Pack",
             "date": 1567367567,
             "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 40,
+            "date": 1567442553,
+            "stage": 1
+        },
+        {
+            "mission": "Defense",
+            "minutes": 14,
+            "seconds": 18,
+            "date": 1567442553,
+            "stage": 2
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 37,
+            "date": 1567442553,
+            "stage": 3
         }
     ]
 }
