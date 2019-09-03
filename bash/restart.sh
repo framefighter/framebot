@@ -1,12 +1,11 @@
 #!/bin/bash
 
-set -e
 echo "Pulling new git version"
 git pull -q
 echo "Installing possible new npm modules"
-npm i -q
+npm i -qe
 echo "Compiling new typescript build"
-tsc
+tsc -e
 echo "Preparing to restart bot"
 echo "This may take a few seconds"
 echo "Killing sessions"
