@@ -2,6 +2,7 @@ set -e
 echo "Commiting any changes"
 git add .
 git commit -qm "new database recordings"
+git push
 echo "Pulling new git version"
 git pull -q
 echo "Installing possible new npm modules"
