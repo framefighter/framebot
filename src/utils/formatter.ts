@@ -437,6 +437,22 @@ export class Formatter implements utils.Formatter {
         return "PLACE |".end(drop.place)
     }
 
+    static timeRecord(rec: time.Record): string {
+        return Formatter.format({
+            caption: rec.mission + ":",
+            addCaption: Formatter.clock(rec.minutes * 60 + rec.seconds)
+                .end(("[" + Formatter.clock(
+                    (rec.minutes * 60 + rec.seconds)
+                    - BOT.database.times.missionInSeconds(rec.mission, rec.boss)) + "]")
+                    .code()),
+            boss: rec.boss,
+            subCaption: "Avg: " + Formatter.clock(
+                BOT.database.times.missionInSeconds(
+                    rec.mission, rec.boss)),
+            position: rec.stage
+        })
+    }
+
     static format(format: Partial<utils.Format>): string {
         let fixed: utils.Format = {
             boss: format.boss || "",

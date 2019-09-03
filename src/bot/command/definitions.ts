@@ -1093,25 +1093,16 @@ export const definitions: command.Definitions = {
         message: (active) => new Message({
             title: active.command.name(active),
             text: (active.execute_return as time.Record[] || []).length > 0
-                ? (active.execute_return as time.Record[] || []).map(rec =>
-                    Formatter.format({
-                        caption: rec.mission + ":",
-                        addCaption: Formatter.clock(rec.minutes * 60 + rec.seconds)
-                            .end(("[" + Formatter.clock(
-                                (rec.minutes * 60 + rec.seconds)
-                                - BOT.database.times.missionInSeconds(rec.mission, rec.boss)) + "]")
-                                .code()),
-                        boss: rec.boss,
-                        subCaption: "Avg: " + Formatter.clock(
-                            BOT.database.times.missionInSeconds(
-                                rec.mission, rec.boss)),
-                        position: rec.stage
-                    })
-                ).join("\n")
+                ? (active.execute_return as time.Record[] || [])
+                    .map(Formatter.timeRecord)
+                    .join("\n")
                 : active.user.admin ? "No Times to add!" : "Admin rights required!"
         }),
-        inline: (active) => (idx(active, _ => _.ws.sortie.variants) || []).map((mission, i) => {
-            if (mission.missionType) {
+        inline: (active) => {
+            const missions = (idx(active, _ => _.ws.sortie.variants) || []);
+            const recorded: boolean[] = []
+            const recs: Inline[] = []
+            missions.map((mission, i) => {
                 const { min, sec } = Parse.time(active.args[i])
                 const missionStr = " | "
                     + "Stage: " + (i + 1) + ": "
@@ -1120,7 +1111,7 @@ export const definitions: command.Definitions = {
                         ? idx(active, _ => " > " + _.ws.sortie.boss) || ""
                         : "");
                 if (min || sec) {
-                    const time: time.Record = {
+                    const rec: time.Record = {
                         mission: mission.missionType,
                         minutes: min || 0,
                         seconds: sec || 0,
@@ -1130,52 +1121,56 @@ export const definitions: command.Definitions = {
                         date: moment().unix(),
                         stage: i + 1
                     }
-                    return new Inline({
-                        title: Formatter.clock(time.seconds + time.minutes * 60) + missionStr,
+                    const args: string[] = []
+                    args[i] = active.args[i]
+                    recs.push(new Inline({
+                        title: Formatter.clock(rec.seconds + rec.minutes * 60) + missionStr,
                         description: "Click to save only this time!",
-                        text: Formatter.format({
-                            caption: "Click below to Save times to database!",
-                            subCaption: "Times that will be saved:",
-                            text: active.args.map((arg, i) => `Stage ${i + 1}: ${arg}`).join("\n").clean()
-                        }),
+                        text: Formatter.timeRecord(rec),
                         keyboard: new Keyboard({
                             layout: [[{
-                                callback_data: "/time " + "-,".repeat(i) + active.args[i] as command.ID,
+                                callback_data: "time",
+                                args: args,
                                 text: "Save"
                             }], [menuBtn(active)]]
                         })
-                    });
+                    }));
+                    recorded.push(true)
                 } else {
-                    return new Inline({
+                    recs.push(new Inline({
                         title: Formatter.clock() + missionStr,
                         description: mission.modifier,
-                        text: "No Time to add!",
+                        text: `No Time for stage ${i + 1}!`,
                         keyboard: new Keyboard({
                             layout: [[{
                                 switch_inline_query_current_chat: "time ",
                                 text: "Go Again!"
-                            }], [menuBtn(active)]]
+                            }]]
                         })
-                    });
+                    }));
+                    recorded.push(false)
                 }
-            }
-        }).clean().concat([
-            new Inline({
+            })
+            const saveAll = new Inline({
                 title: "Save all times!",
                 description: "Click here to save all recorded times!",
                 text: Formatter.format({
-                    caption: "Click below to Save times to database!",
-                    subCaption: "Times that will be saved:",
-                    text: active.args.map((arg, i) => `Stage ${i + 1}: ${arg}`).join("\n").clean()
+                    caption: "Click below to Save these times to database!",
+                    text: recs.map(inl => inl.text).join("\n")
                 }),
                 keyboard: new Keyboard({
                     layout: [[{
-                        callback_data: "/time " + active.args.join(", ").clean() as command.ID,
+                        callback_data: "time",
+                        args: active.args,
                         text: "Save All"
                     }], [menuBtn(active)]]
                 })
             })
-        ])
+            if (recorded.every(r => r)) {
+                recs.push(saveAll)
+            }
+            return recs;
+        }
     },
     "restart": {
         help: "[ADMIN] Restart bot",
@@ -1475,8 +1470,9 @@ export const definitions: command.Definitions = {
             })
         }),
         keyboard: (active) => new Keyboard({
-            layout: BOT.database.songs.list.map(song => [{
-                callback_data: "/song " + song.name as command.ID,
+            layout: BOT.database.songs.list.map<keyboard.Button[]>(song => [{
+                callback_data: "showSong",
+                args: [song.name],
                 text: song.name
             }]).concat([[{ callback_data: "settings", text: back }]])
         }),
