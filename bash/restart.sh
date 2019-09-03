@@ -1,5 +1,5 @@
 set -e
-echo "Commiting any changes"
+echo "Pushing any changes"
 git add .
 git commit -qm "new database recordings"
 git push
