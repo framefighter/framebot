@@ -1,5 +1,5 @@
 import { Compare } from '../../utils/compare';
-import { definitions, suffix } from './definitions';
+import { definitions } from './definitions';
 import { Command } from './command';
 import { alert_setting } from './definitions';
 import { BOT } from '../..';
@@ -7,23 +7,19 @@ import { BOT } from '../..';
 export class Commands implements command.Commands {
     triggers: string[];
     ids: command.ID[];
-    settings_list: command.Command[];
     list: command.Command[];
     constructor() {
-        let commands = Object.keys(definitions).map((key) =>
-            new Command(key as command.ID, definitions[key as command.ID]));
-        const settings = Object.keys(definitions).filter(key =>
-            definitions[key as command.ID].jsonKey)
-            .map(key =>
-                new Command(key + suffix().setting as command.ID,
-                    alert_setting((key + suffix().setting) as command.ID)[key + suffix().setting]))
-        this.list = commands.concat(settings).sort((a, b) => Compare.alphabet(a.id, b.id));
-        this.settings_list = settings.sort((a, b) => Compare.alphabet(a.id, b.id));
+        let commands = Object.keys(definitions).map((key) =>this.fromID(key as command.ID));
+        this.list = commands.sort((a, b) => Compare.alphabet(a.id, b.id));
         this.ids = commands.map(cmd => cmd.id);
         this.triggers = Array.from(new Set<string>(commands.map(cmd => cmd.alt).flat()));
         if (this.triggers.length !== commands.map(cmd => cmd.alt).flat().length) {
             console.warn("Some alternative triggers have duplicates!")
         }
+    }
+
+    fromID(id: command.ID): Command {
+        return new Command(id, definitions[id]);
     }
 
     find(cmdID: command.ID): Command | undefined;

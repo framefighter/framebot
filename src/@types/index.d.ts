@@ -4,7 +4,7 @@ declare interface String {
     bold(): string;
     italics(): string;
     link(url?: string): string;
-    indent(tabs?: number): string;
+    indent(tabs?: number, start?: string): string;
     alignRight(): string;
     capitalize(): string;
     clean(): string;

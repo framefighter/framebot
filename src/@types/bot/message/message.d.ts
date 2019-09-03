@@ -3,6 +3,7 @@ declare namespace message {
         title: string;
         text?: string;
         showUser?: boolean;
+        keyboard?: keyboard.Board;
     }
 
     interface InlineConstructor extends Constructor {
@@ -25,6 +26,7 @@ declare namespace message {
     class Inline implements InlineConstructor {
         title: string;
         showUser?: boolean;
+        keyboard?: keyboard.Board;
         description?: string;
         thumb_url?: string;
         url?: string;
@@ -32,7 +34,7 @@ declare namespace message {
         text?: string;
         id: string;
         toInline(active: active.Active): any;
-        keyboard(active: active.Active): any;
+        toKeyboard(active: active.Active): any;
     }
 
     interface Reward {

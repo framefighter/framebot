@@ -1,7 +1,8 @@
 import { Active } from '../active/active';
 import { Check } from '../../utils/check';
-import { suffix } from '../command/definitions';
 import { BOT } from '../..';
+import { User } from '../user/user';
+import { fromJSON } from 'tough-cookie';
 
 export default class StateCheck implements checker.StateCheck {
     check() {
@@ -44,11 +45,11 @@ export default class StateCheck implements checker.StateCheck {
         BOT.database.users.list.forEach(user => {
             if (user.settings
                 && user.settings.alert
-                && user.settings.alert[commandID + suffix().setting]) {
+                && user.settings.alert[commandID]) {
                 const command = BOT.commands.find(commandID);
                 if (command) {
                     const active = new Active({
-                        user,
+                        user: new User(user),
                         command,
                         args: newObject.map(o => o.id),
                         chatID: user.id,

@@ -14,66 +14,17 @@ import { Active } from '../active/active';
 
 export const back = "< Back"
 
-export const menuBtn = (active: Active): command.ID =>
-    active.user.settings.menu[0]
+export const menuBtn = (active: Active): keyboard.Button => ({
+    callback_data: active.user.settings.menu[0]
         ? active.user.settings.menu[0][0]
-        : "sortie";
+        : "sortie",
+    text: back,
+    alwaysShow: true,
+})
 
 export const moreBtn = (active: Active): keyboard.Button => ({
     text: "More",
-    search: active.command.id.space().concat(active.args.join(", "))
-})
-
-
-export const sep = "+"
-export const sec_sep = "."
-
-export const suffix: ((sep?: string) => command.Suffix) = (sep = "") => ({
-    setting: sep + "Setting",
-    askRemoveItem: sep + "askRemove",
-    removeItem: sep + "remove",
-    executeCheck: sep + "check",
-    arbitrationRemove: sep + "arbitrationFilter",
-    addItem: sep + "add",
-    addMenuButton: sep + "configSelection",
-    removeMenuButton: sep + "config",
-    selectMenuButton: sep + "config",
-    showSong: sep + "showSong",
-    removeSong: sep + "songs"
-})
-
-export const alert_setting = (id: command.ID): command.SettingsDefinitions => ({
-    [id]: {
-        emoji: "⚙️",
-        help: "Enables/Disables notification for " + id.capitalize(),
-        action: (active) => {
-            active.user.settings.alert[id] = !active.user.settings.alert[id];
-            return active.user.settings.alert[id];
-        },
-        message: (active) => new Message({
-            title: "Alert settings",
-            text: Formatter.format({
-                caption: "Available alert settings",
-                subCaption: `Turned ${Formatter.camelToString(id)} ${active.execute_return ? "ON" : "OFF"}`,
-                description: "Use the buttons below to change your settings!",
-            })
-        }),
-        keyboard: (active) => new Keyboard({
-            layout: [
-                [{ id: "allOn", text: "🔊 On" }, { id: "allOff", text: "🔈 Off" }],
-                ...BOT.commands.settings_list.map(setting => {
-                    const toggleBtn = {
-                        id: setting.id.replace(suffix().setting, "") as command.ID,
-                        text: setting.id.replace(suffix().setting, "")
-                    };
-                    return active.user.settings.alert[setting.id]
-                        ? [toggleBtn, { id: setting.id, text: ">" }]
-                        : [{ id: setting.id, text: "<" }, toggleBtn]
-                }),
-                [{ id: "settings", text: back }]
-            ]
-        })
-    }
+    switch_inline_query_current_chat: active.command.id.space().concat(active.args.join(", "))
 })
 
 export const definitions: command.Definitions = {
@@ -138,10 +89,8 @@ export const definitions: command.Definitions = {
                 rewards: Formatter.invasionRewards(invasion)
             })),
         keyboard: (active) => new Keyboard({
-            layout: [[{ id: "invasions" }, { id: "events" }, { id: "alerts" }],
-            [{
-                id: menuBtn(active), text: back
-            }]]
+            layout: [[{ callback_data: "invasions" }, { callback_data: "events" }, { callback_data: "alerts" }],
+            [menuBtn(active)]]
         })
     },
     "events": {
@@ -167,8 +116,8 @@ export const definitions: command.Definitions = {
                 rewards: (event.rewards || []).map(reward => reward.asString).clean()
             })),
         keyboard: (active) => new Keyboard({
-            layout: [[{ id: "invasions" }, { id: "events" }, { id: "alerts" }],
-            [{ id: menuBtn(active), text: back }]]
+            layout: [[{ callback_data: "invasions" }, { callback_data: "events" }, { callback_data: "alerts" }],
+            [menuBtn(active)]]
         })
     },
     "news": {
@@ -210,7 +159,7 @@ export const definitions: command.Definitions = {
                 description: "Try again later!"
             })],
         keyboard: (active) => new Keyboard({
-            layout: [[{ id: "updates" }], [{ id: menuBtn(active), text: back }]]
+            layout: [[{ callback_data: "updates" }], [menuBtn(active)]]
         })
     },
     "updates": {
@@ -255,7 +204,7 @@ export const definitions: command.Definitions = {
                 description: "Try again later"
             })],
         keyboard: (active) => new Keyboard({
-            layout: [[{ id: "news" }], [{ id: menuBtn(active), text: back }]]
+            layout: [[{ callback_data: "news" }], [menuBtn(active)]]
         })
     },
     "trader": {
@@ -379,8 +328,8 @@ export const definitions: command.Definitions = {
         },
         keyboard: (active) => new Keyboard({
             layout: [
-                [{ id: "cetus" }, { id: "vallis" }, { id: "earth" }],
-                [{ text: back, id: menuBtn(active) }]]
+                [{ callback_data: "cetus" }, { callback_data: "vallis" }, { callback_data: "earth" }],
+                [menuBtn(active)]]
         })
     },
     "vallis": {
@@ -401,8 +350,8 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => new Keyboard({
             layout: [
-                [{ id: "cetus" }, { id: "vallis" }, { id: "earth" }],
-                [{ text: back, id: menuBtn(active) }]]
+                [{ callback_data: "cetus" }, { callback_data: "vallis" }, { callback_data: "earth" }],
+                [menuBtn(active)]]
         })
     },
     "earth": {
@@ -421,37 +370,31 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => new Keyboard({
             layout: [
-                [{ id: "cetus" }, { id: "vallis" }, { id: "earth" }],
-                [{ text: back, id: menuBtn(active) }]]
+                [{ callback_data: "cetus" }, { callback_data: "vallis" }, { callback_data: "earth" }],
+                [menuBtn(active)]]
         })
     },
     "cycles": {
         emoji: "☀️|🌒",
         help: "Get All day/night cycle information",
         message: (active) => {
-            const cetus = BOT.commands.find("cetus");
-            const vallis = BOT.commands.find("vallis");
-            const earth = BOT.commands.find("earth");
-
-            if (cetus && vallis && earth) {
-                const cetusMSg = cetus.message ? cetus.message(active).text : "";
-                const vallisMSg = vallis.message ? vallis.message(active).text : "";
-                const earthMSg = earth.message ? earth.message(active).text : "";
-                if (cetusMSg && vallisMSg && earthMSg) {
-                    return new Message({
-                        title: active.command.name(active),
-                        text: cetusMSg.nl()
-                            + vallisMSg.nl()
-                            + earthMSg.nl()
-                    })
-                }
-            }
-            return new Message()
+            const cetus = BOT.commands.fromID("cetus");
+            const vallis = BOT.commands.fromID("vallis");
+            const earth = BOT.commands.fromID("earth");
+            const cetusMSg = cetus.message(active).text;
+            const vallisMSg = vallis.message(active).text;
+            const earthMSg = earth.message(active).text;
+            return new Message({
+                title: active.command.name(active),
+                text: (cetusMSg || "").nl()
+                    + (vallisMSg || "").nl()
+                    + (earthMSg || "").nl()
+            })
         },
         keyboard: (active) => new Keyboard({
             layout: [
-                [{ id: "cetus" }, { id: "vallis" }, { id: "earth" }],
-                [{ text: back, id: menuBtn(active) }]]
+                [{ callback_data: "cetus" }, { callback_data: "vallis" }, { callback_data: "earth" }],
+                [menuBtn(active)]]
         })
     },
     "arbitration": {
@@ -515,15 +458,15 @@ export const definitions: command.Definitions = {
                 rewards: idx(alert, _ => [_.mission.reward.asString]) || []
             })).clean(),
         keyboard: (active) => new Keyboard({
-            layout: [[{ id: "invasions" }, { id: "events" }, { id: "alerts" }],
-            [{ id: menuBtn(active), text: back }]]
+            layout: [[{ callback_data: "invasions" }, { callback_data: "events" }, { callback_data: "alerts" }],
+            [menuBtn(active)]]
         })
     },
     "settings": {
         alt: ["options"],
         help: "Change all settings",
         emoji: "⚙️",
-        count: () => BOT.commands.settings_list.length,
+        count: (active) => BOT.commands.fromID("settings").keyboard(active).layout.length - 1,
         message: (active) => new Message({
             title: active.command.name(active),
             text: Formatter.format({
@@ -533,13 +476,13 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => new Keyboard({
             layout: [
-                [{ id: "alertSettings" }],
-                [{ id: "filter" }],
-                [{ id: "arbitrationFilter" }],
-                [{ id: "config" }],
-                [{ id: "songs" }],
-                [active.user.admin ? ({ id: "restart" }) : { id: "none" }],
-                [{ id: menuBtn(active), text: back }],
+                [{ callback_data: "alertSettings" }],
+                [{ callback_data: "filter" }],
+                [{ callback_data: "arbitrationFilter" }],
+                [{ callback_data: "config" }],
+                [{ callback_data: "songs" }],
+                [active.user.admin ? ({ callback_data: "restart" }) : { callback_data: "none" }],
+                [menuBtn(active)],
             ]
         })
     },
@@ -573,13 +516,14 @@ export const definitions: command.Definitions = {
             }),
         }),
         keyboard: (active) => new Keyboard({
-            layout: active.user.settings.filter.map(item => [{
-                id: (item + suffix(sep).executeCheck) as command.ID,
+            layout: active.user.settings.filter.map<keyboard.Button[]>(item => [{
+                callback_data: "check",
+                args: [item],
                 text: item
             }]).concat([[{
-                id: "settings",
+                callback_data: "settings",
                 text: back
-            }, { id: "remove", text: "🗑️️️️ Remove Items" }]])
+            }, { callback_data: "remove", text: "🗑️️️️ Remove Items" }]])
         })
     },
     "remove": {
@@ -607,11 +551,12 @@ export const definitions: command.Definitions = {
             }),
         }),
         keyboard: (active) => new Keyboard({
-            layout: active.user.settings.filter.map(item => [{
-                id: (item + suffix(sep).askRemoveItem) as command.ID,
+            layout: active.user.settings.filter.map<keyboard.Button[]>(item => [{
+                callback_data: "askRemove",
+                args: [item],
                 text: item
             }]).concat([[{
-                id: "filter",
+                callback_data: "filter",
                 text: back
             }]])
         })
@@ -630,11 +575,12 @@ export const definitions: command.Definitions = {
         keyboard: (active) => new Keyboard({
             layout: [[
                 {
-                    id: (active.args[0] + suffix(sep).removeItem) as command.ID,
+                    callback_data: "remove",
+                    args: [active.args[0]],
                     text: "🗑️️️️ Remove"
                 },
                 {
-                    id: "remove",
+                    callback_data: "remove",
                     text: "❌ Cancel"
                 }
             ]]
@@ -644,7 +590,17 @@ export const definitions: command.Definitions = {
         alt: ["alertOptions"],
         help: "Change all alert settings",
         emoji: "🔔",
-        count: (active) => Object.keys(active.user.settings.alert).length,
+        count: (active) => BOT.commands.list
+            .filter(c => c.jsonKey)
+            .filter(c => active.user.settings.alert[c.id])
+            .length,
+        action: (active) => {
+            const id = active.args[0];
+            if (id) {
+                active.user.settings.alert[id] = !active.user.settings.alert[id];
+                return active.user.settings.alert[id];
+            }
+        },
         message: () => new Message({
             title: "Alert settings",
             text: Formatter.format({
@@ -652,23 +608,45 @@ export const definitions: command.Definitions = {
                 description: "Use the buttons below to change your settings!",
             })
         }),
-        keyboard: alert_setting("none")["none"].keyboard
+        keyboard: (active) => new Keyboard({
+            layout: [
+                [{ callback_data: "allAlertsSettingsOn", alwaysShow: true },
+                { callback_data: "allAlertsSettingsOff", alwaysShow: true }],
+                ...BOT.commands.list.filter(c => c.jsonKey).map<keyboard.Button[]>(cmd => {
+                    const toggleBtn: keyboard.Button = {
+                        callback_data: "alertSettings",
+                        args: [cmd.id],
+                        text: cmd.id
+                    };
+                    return active.user.settings.alert[cmd.id]
+                        ? [toggleBtn, { callback_data: "alertSettings", args: [cmd.id], text: ">" }]
+                        : [{ callback_data: "alertSettings", args: [cmd.id], text: "<" }, toggleBtn]
+                }),
+                [{ callback_data: "settings", text: back }]
+            ]
+        })
     },
-    "allOn": {
+    "allAlertsSettingsOn": {
+        emoji: "🔊",
+        name: () => "On",
         action: (active) => {
-            BOT.commands.settings_list.map(set =>
-                active.user.settings.alert[set.id] = true)
+            BOT.commands.list.filter(c => c.jsonKey).forEach(cmd =>
+                active.user.settings.alert[cmd.id] = true
+            )
         },
-        message: (active) => BOT.commands.find("alertSettings")!.message(active),
-        keyboard: (active) => BOT.commands.find("alertSettings")!.keyboard(active)
+        message: "alertSettings",
+        keyboard: "alertSettings",
     },
-    "allOff": {
+    "allAlertsSettingsOff": {
+        emoji: "🔈",
+        name: () => "Off",
         action: (active) => {
-            BOT.commands.settings_list.map(set =>
-                active.user.settings.alert[set.id] = false)
+            BOT.commands.list.filter(c => c.jsonKey).forEach(cmd =>
+                active.user.settings.alert[cmd.id] = false
+            )
         },
-        message: (active) => BOT.commands.find("alertSettings")!.message(active),
-        keyboard: (active) => BOT.commands.find("alertSettings")!.keyboard(active)
+        message: "alertSettings",
+        keyboard: "alertSettings",
     },
     "arbitrationFilter": {
         alt: ["adda", "rma"],
@@ -701,11 +679,12 @@ export const definitions: command.Definitions = {
             }),
         }),
         keyboard: (active) => new Keyboard({
-            layout: active.user.settings.arbitration.map(item => [{
-                id: (item + suffix(sep).arbitrationRemove) as command.ID,
+            layout: active.user.settings.arbitration.map<keyboard.Button[]>(item => [{
+                callback_data: "arbitrationFilter",
+                args: [item],
                 text: item
             }]).concat([[{
-                id: "settings",
+                callback_data: "settings",
                 text: back
             }]])
         })
@@ -973,29 +952,21 @@ export const definitions: command.Definitions = {
             text: "Only usable in inline Mode"
         }),
         inline: (active) => {
-            const modCmd = BOT.commands.find("findMod")
-            const warframeCmd = BOT.commands.find("findWarframe")
-            const weaponCmd = BOT.commands.find("findWeapon")
-            const priceCmd = BOT.commands.find("price")
-            const dropCmd = BOT.commands.find("drop")
-            const sentinelCmd = BOT.commands.find("findSentinel")
-            const placeCmd = BOT.commands.find("place")
-            if (weaponCmd
-                && modCmd
-                && warframeCmd
-                && priceCmd
-                && dropCmd
-                && sentinelCmd
-                && placeCmd) {
-                return warframeCmd.inline(active)
-                    .concat(weaponCmd.inline(active))
-                    .concat(modCmd.inline(active))
-                    .concat(dropCmd.inline(active))
-                    .concat(priceCmd.inline(active))
-                    .concat(sentinelCmd.inline(active))
-                    .concat(placeCmd.inline(active))
-            }
-            return []
+            const modCmd = BOT.commands.fromID("findMod")
+            const warframeCmd = BOT.commands.fromID("findWarframe")
+            const weaponCmd = BOT.commands.fromID("findWeapon")
+            const priceCmd = BOT.commands.fromID("price")
+            const dropCmd = BOT.commands.fromID("drop")
+            const sentinelCmd = BOT.commands.fromID("findSentinel")
+            const placeCmd = BOT.commands.fromID("place")
+            return warframeCmd.inline(active)
+                .concat(weaponCmd.inline(active))
+                .concat(modCmd.inline(active))
+                .concat(dropCmd.inline(active))
+                .concat(priceCmd.inline(active))
+                .concat(sentinelCmd.inline(active))
+                .concat(placeCmd.inline(active))
+
         },
         keyboard: (active) => new Keyboard({
             layout: [[moreBtn(active)]]
@@ -1005,10 +976,7 @@ export const definitions: command.Definitions = {
         help: "Check if filter keywords are rewards from any active happenings",
         emoji: "☑️",
         count: (active) => {
-            const cmd = BOT.commands.find("check")
-            if (cmd) {
-                return cmd.inline(active).length
-            } return 0
+            return BOT.commands.fromID("check").inline(active).length
         },
         message: (active) => new Message({
             title: active.command.name(active),
@@ -1127,9 +1095,16 @@ export const definitions: command.Definitions = {
             text: (active.execute_return as time.Record[] || []).length > 0
                 ? (active.execute_return as time.Record[] || []).map(rec =>
                     Formatter.format({
-                        caption: rec.mission,
+                        caption: rec.mission + ":",
+                        addCaption: Formatter.clock(rec.minutes * 60 + rec.seconds)
+                            .end(("[" + Formatter.clock(
+                                (rec.minutes * 60 + rec.seconds)
+                                - BOT.database.times.missionInSeconds(rec.mission, rec.boss)) + "]")
+                                .code()),
                         boss: rec.boss,
-                        time: Formatter.clock(rec.minutes * 60 + rec.seconds),
+                        subCaption: "Avg: " + Formatter.clock(
+                            BOT.database.times.missionInSeconds(
+                                rec.mission, rec.boss)),
                         position: rec.stage
                     })
                 ).join("\n")
@@ -1158,13 +1133,29 @@ export const definitions: command.Definitions = {
                     return new Inline({
                         title: Formatter.clock(time.seconds + time.minutes * 60) + missionStr,
                         description: "Click to save only this time!",
-                        text: "/time " + ",skip,".repeat(i) + active.args[i]
+                        text: Formatter.format({
+                            caption: "Click below to Save times to database!",
+                            subCaption: "Times that will be saved:",
+                            text: active.args.map((arg, i) => `Stage ${i + 1}: ${arg}`).join("\n").clean()
+                        }),
+                        keyboard: new Keyboard({
+                            layout: [[{
+                                callback_data: "/time " + "-,".repeat(i) + active.args[i] as command.ID,
+                                text: "Save"
+                            }], [menuBtn(active)]]
+                        })
                     });
                 } else {
                     return new Inline({
-                        title: "--m --s" + missionStr,
+                        title: Formatter.clock() + missionStr,
                         description: mission.modifier,
-                        text: "No Time to add!"
+                        text: "No Time to add!",
+                        keyboard: new Keyboard({
+                            layout: [[{
+                                switch_inline_query_current_chat: "time ",
+                                text: "Go Again!"
+                            }], [menuBtn(active)]]
+                        })
                     });
                 }
             }
@@ -1172,7 +1163,17 @@ export const definitions: command.Definitions = {
             new Inline({
                 title: "Save all times!",
                 description: "Click here to save all recorded times!",
-                text: "/time " + active.args.join(", ").clean()
+                text: Formatter.format({
+                    caption: "Click below to Save times to database!",
+                    subCaption: "Times that will be saved:",
+                    text: active.args.map((arg, i) => `Stage ${i + 1}: ${arg}`).join("\n").clean()
+                }),
+                keyboard: new Keyboard({
+                    layout: [[{
+                        callback_data: "/time " + active.args.join(", ").clean() as command.ID,
+                        text: "Save All"
+                    }], [menuBtn(active)]]
+                })
             })
         ])
     },
@@ -1225,8 +1226,8 @@ export const definitions: command.Definitions = {
             })
         }),
         keyboard: (active) => new Keyboard({
-            layout: [[{ id: menuBtn(active) }, { id: "help" }],
-            [{ id: "settings" }, { text: "Inline Mode", search: "find " }]]
+            layout: [[menuBtn(active), { callback_data: "help" }],
+            [{ callback_data: "settings" }, { text: "Inline Mode", switch_inline_query_current_chat: "find " }]]
         })
     },
     "help": {
@@ -1255,9 +1256,9 @@ export const definitions: command.Definitions = {
             const layout: keyboard.Button[][] = [];
             const width = 3;
             for (let cmd of cmd_s) {
-                if (cmd.privileged(active.user)) {
+                if (cmd.privileged(active.user.from)) {
                     const last = layout.pop()
-                    const curr = { id: cmd.id };
+                    const curr: keyboard.Button = { callback_data: cmd.id };
                     if (!last) {
                         layout.push([curr]);
                     } else if (last.length === width) {
@@ -1269,7 +1270,7 @@ export const definitions: command.Definitions = {
                     }
                 }
             }
-            layout.push([{ id: menuBtn(active), text: back }])
+            layout.push([menuBtn(active)])
             return new Keyboard({ layout })
         }
     },
@@ -1285,20 +1286,20 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => new Keyboard({
             layout: [
-                [{ text: "Find", search: "find " }],
-                [{ text: "Mod", search: "findMod " }, { text: "Weapon", search: "findWeapon " }],
-                [{ text: "Warframe", search: "findWarframe " }, { text: "Sentinel", search: "findSentinel " }],
-                [{ text: "Location", search: "place " }, { text: "Drop", search: "drop " }],
-                [{ text: "Price Check", search: "price " }, { text: "Check", search: "check " }],
-                ...[active.user.admin ? [{ text: "Time", search: "time " }] : []],
-                [{ id: menuBtn(active), text: back }]
+                [{ text: "Find", switch_inline_query_current_chat: "find " }],
+                [{ text: "Mod", switch_inline_query_current_chat: "findMod " }, { text: "Weapon", switch_inline_query_current_chat: "findWeapon " }],
+                [{ text: "Warframe", switch_inline_query_current_chat: "findWarframe " }, { text: "Sentinel", switch_inline_query_current_chat: "findSentinel " }],
+                [{ text: "Location", switch_inline_query_current_chat: "place " }, { text: "Drop", switch_inline_query_current_chat: "drop " }],
+                [{ text: "Price Check", switch_inline_query_current_chat: "price " }, { text: "Check", switch_inline_query_current_chat: "check " }],
+                ...[active.user.admin ? [{ text: "Time", switch_inline_query_current_chat: "time " }] : []],
+                [menuBtn(active)]
             ]
         })
     },
     "config": {
         alt: ["configure"],
         emoji: "🔳",
-        help: "Configure your menu",
+        help: "Configure your menu layout",
         name: () => "Menu Config",
         count: (a) => a.user.settings.menu.flat().length,
         action: (active) => {
@@ -1345,26 +1346,29 @@ export const definitions: command.Definitions = {
             layout: active.user.settings.menu.map((row, y) =>
                 row.map((btn, x) =>
                     ({
-                        id: (btn + suffix(sep).removeMenuButton) as command.ID,
+                        callback_data: "config",
+                        args: [btn],
                         text: "➖ | " + btn
                     } as keyboard.Button))
                     .concat([{
-                        id: (y + sec_sep + row.length
-                            + suffix(sep).addMenuButton) as command.ID,
+                        callback_data: "configSelection",
+                        args: [y, row.length],
                         text: "➕"
                     }]))
                 .concat([[{
-                    id: (active.user.settings.menu.length + sec_sep + 0
-                        + suffix(sep).addMenuButton) as command.ID,
+                    callback_data: "configSelection",
+                    args: [active.user.settings.menu.length, 0],
                     text: "➕"
                 }], [{
-                    id: "settings",
+                    callback_data: "settings",
                     text: back
-                }, {
-                    id: "clearConfig",
-                    args: active.user.settings.menu.flat(),
-                    text: "❌ Clear All"
-                }]])
+                }, (active.user.settings.menu.length > 0
+                    ? {
+                        callback_data: "clearConfig",
+                        text: "❌ Clear All"
+                    }
+                    : {})
+                ]])
         })
 
     },
@@ -1395,10 +1399,11 @@ export const definitions: command.Definitions = {
             let layout: keyboard.Button[][] = []
             const width = 3;
             for (let cmd of cmd_s) {
-                if (cmd.privileged(active.user) && cmd.id !== "none") {
+                if (cmd.privileged(active.user.from) && cmd.id !== "none") {
                     const last = layout.pop()
-                    const curr = {
-                        id: (cmd.id + suffix(sep).selectMenuButton) as command.ID,
+                    const curr: keyboard.Button = {
+                        callback_data: "config",
+                        args: [cmd.id],
                         text: cmd.id
                     };
                     if (!last) {
@@ -1412,7 +1417,7 @@ export const definitions: command.Definitions = {
                     }
                 }
             }
-            layout.push([{ id: "config", text: "< Cancel" }])
+            layout.push([{ callback_data: "config", text: "< Cancel" }])
             return new Keyboard({ layout })
         }
 
@@ -1423,8 +1428,8 @@ export const definitions: command.Definitions = {
             active.user.settings.menu = []
             return "Cleared all buttons, default keyboard will be used!"
         },
-        message: (active) => BOT.commands.find("config")!.message(active),
-        keyboard: (active) => BOT.commands.find("config")!.keyboard(active)
+        message: "config",
+        keyboard: "config"
     },
     "songs": {
         help: "Show list of all saved songs",
@@ -1471,9 +1476,9 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => new Keyboard({
             layout: BOT.database.songs.list.map(song => [{
-                id: (song.name + suffix(sep).showSong) as command.ID,
+                callback_data: "/song " + song.name as command.ID,
                 text: song.name
-            }]).concat([[{ id: "settings", text: back }]])
+            }]).concat([[{ callback_data: "settings", text: back }]])
         }),
         inline: (active) => BOT.database.songs.list.map(song =>
             new Inline({
@@ -1499,12 +1504,13 @@ export const definitions: command.Definitions = {
             let remove: keyboard.Button[] = [];
             if (found && found.user === active.user.id) {
                 remove = [{
-                    id: (active.args[0] + suffix(sep).removeSong) as command.ID,
+                    callback_data: "songs",
+                    args: [active.args[0]],
                     text: "🗑️ Remove"
                 }]
             };
             return new Keyboard({
-                layout: [remove, [{ id: "songs", text: "< Songs" }]]
+                layout: [remove, [{ callback_data: "songs", text: "< Songs" }]]
             })
         },
         inline: (active) => BOT.database.songs.list
@@ -1519,3 +1525,16 @@ export const definitions: command.Definitions = {
     }
 }
 
+
+export const alert_setting = (id: command.ID): command.SettingsDefinitions => ({
+    [id]: {
+        emoji: "⚙️",
+        help: "Enables/Disables notification for " + id.capitalize(),
+        action: (active) => {
+            active.user.settings.alert[id] = !active.user.settings.alert[id];
+            return active.user.settings.alert[id];
+        },
+        message: "alertSettings",
+        keyboard: "alertSettings",
+    }
+})

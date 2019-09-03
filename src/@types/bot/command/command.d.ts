@@ -6,10 +6,9 @@ declare namespace command {
         hidden?: boolean;
         adminOnly?: boolean;
         jsonKey?: keyof wf.Ws;
-        answerCbText?: (active: active.Active) => string | string;
-        message?: (active: active.Active) => message.Message;
+        message?: ((active: active.Active) => message.Message) | ID;
+        keyboard?: ((active: active.Active) => keyboard.Board) | ID;
         inline?: (active: active.Active) => message.Inline[];
-        keyboard?: (active: active.Active) => keyboard.Board;
         rewards?: (active: active.Active) => message.Reward[];
         action?: (active: active.Active) => any;
         name?: (active: active.Active) => string;
@@ -34,7 +33,6 @@ declare namespace command {
         hidden: boolean;
         adminOnly: boolean;
         jsonKey?: keyof wf.Ws;
-        answerCbText: (active: active.Active) => string | string;
         message: (active: active.Active) => message.Message;
         inline: (active: active.Active) => message.Inline[];
         keyboard: (active: active.Active) => keyboard.Board;
@@ -42,17 +40,17 @@ declare namespace command {
         action: (active: active.Active) => any;
         name: (active: active.Active) => string;
         count: (active: active.Active) => number;
-        privileged(user: user.User): boolean;
+        privileged(user: user.From): boolean;
     }
 
     class Commands {
         constructor();
         list: Command[];
-        settings_list: Command[];
         ids: ID[];
         triggers: string[];
         find(cmdID: command.ID): Command | undefined;
         find(cmd: string, match: true): Command[];
         parse(raw: string | undefined, match?: boolean): utils.Command | undefined;
+        fromID(id: ID): Command;
     }
 }

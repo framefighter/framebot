@@ -1,6 +1,5 @@
 import TelegramBot, { InlineQueryResult, InlineQuery } from "node-telegram-bot-api";
 import { Active } from './active/active';
-import { suffix, sep, sec_sep } from './command/definitions';
 import { Database } from '../database/database';
 import { User } from "./user/user";
 import { CONFIG } from '../utils/config';
@@ -11,7 +10,6 @@ import { Keyboard } from './keyboard/keyboard';
 import { Formatter } from '../utils/formatter';
 import { Searchable } from '../warframe/state/searchable';
 import { Extra } from '../warframe/state/extra';
-import { Command } from './command/command';
 
 
 export class Bot implements bot.Bot {
@@ -25,6 +23,7 @@ export class Bot implements bot.Bot {
     extra: Extra;
     defaults: bot.Defaults;
     checker: StateCheck;
+    users: { [key: number]: User }
 
     constructor(botConstructor: bot.Constructor) {
         this.token = CONFIG.token;
@@ -45,6 +44,7 @@ export class Bot implements bot.Bot {
             }
         });
         this.checker = new StateCheck();
+        this.users = {}
     }
 
     private initEmitters() {
@@ -55,14 +55,21 @@ export class Bot implements bot.Bot {
     }
 
     private getUser(from: TelegramBot.User): User {
-        if (this.database.users.db.exists(`/users/${from.id}`)) {
-            return this.database.users.db.getData(`/users/${from.id}`);
+        if (this.users[from.id]) {
+            return this.users[from.id];
+        } else if (this.database.users.db.exists(`/users/${from.id}`)) {
+            const fromDB = this.database.users.db.getData(`/users/${from.id}`);
+            const user = new User(fromDB);
+            this.users[user.id] = user;
+            return user;
         } else {
             const newUser = new User({
+                ...from,
                 admin: false,
-                ...from
+                settings: User.default.settings
             });
-            this.database.users.update(newUser);
+            this.users[newUser.id] = newUser;
+            this.database.users.update(newUser.from);
             return newUser;
         }
     }
@@ -98,7 +105,8 @@ export class Bot implements bot.Bot {
                         })
                         active.execute()
                         active.send();
-                        this.database.users.update(user);
+                        user.lastActive = active;
+                        this.database.users.update(user.from);
                     }
                 }
             }
@@ -108,7 +116,7 @@ export class Bot implements bot.Bot {
     private initCallbackQueryEmitter() {
         this.api.on("callback_query",
             async cbq => {
-                if (cbq.from && cbq.data && cbq.message) {
+                if (cbq.from && cbq.data) {
                     const user = this.getUser(cbq.from);
                     const ids = {
                         CbqID: cbq.id,
@@ -121,36 +129,22 @@ export class Bot implements bot.Bot {
                             : undefined
                     };
 
-                    const split = cbq.data.split(sep);
-                    const cbqPrefix = split[0]
-                    const cbqSuffix = split[1]
-                    let args: string[] = [cbqPrefix];
-                    let find: command.ID = cbqSuffix as command.ID;
-
-                    if (find === suffix().addMenuButton) {
-                        const pos = cbqPrefix.split(sec_sep).clean()
-                        if (pos.length === 2
-                            && pos[0] !== undefined
-                            && pos[1] !== undefined) {
-                            args = pos;
+                    const pc = this.commands.parse(cbq.data)
+                    if (pc) {
+                        const args = pc.args
+                        const find = pc.command.id
+                        const command = this.commands.find(find)
+                        if (command) {
+                            const active = new Active({
+                                user, command, args, chatID: ids.chatID,
+                            })
+                            active.execute();
+                            active.edit(ids);
+                            user.lastActive = active;
                         }
+                        this.database.users.update(user.from);
                     }
 
-                    const pc = this.commands.parse(cbqPrefix)
-                    if (!find && pc) {
-                        args = pc.args
-                        find = pc.command.id
-                    }
-                    const command = this.commands.find(find)
-                    if (command) {
-                        const active = new Active({
-                            user, command, args, chatID: ids.chatID,
-                        })
-                        active.execute();
-                        active.edit(ids);
-                    }
-
-                    this.database.users.update(user);
                 }
             }
         );
@@ -204,7 +198,7 @@ export class Bot implements bot.Bot {
                                                 parse_mode: this.defaults.parse_mode,
                                             },
                                             reply_markup: new Keyboard({
-                                                layout: [[{ id: cmd.id, text: "Execute!" }]]
+                                                layout: [[{ callback_data: cmd.id, text: "Execute!" }]]
                                             }).toInline(active)
                                         }
                                     });
@@ -229,8 +223,8 @@ export class Bot implements bot.Bot {
                                 args,
                                 chatID: user.id,
                             })
-                            // this.inlineResult(active, iq)
                             active.results(iq);
+                            user.lastActive = active;
                         }
 
                     } else if (!query) {
@@ -259,7 +253,7 @@ export class Bot implements bot.Bot {
                                             parse_mode: this.defaults.parse_mode,
                                         },
                                         reply_markup: new Keyboard({
-                                            layout: [[{ id: cmd.id, text: "Execute!" }]]
+                                            layout: [[{ callback_data: cmd.id, text: "Execute!" }]]
                                         }).toInline(active)
                                     }
                                 });
@@ -296,9 +290,10 @@ export class Bot implements bot.Bot {
                             }
                         );
                     }
-                    this.database.users.update(user);
+                    this.database.users.update(user.from);
                 }
             }
         );
     }
+
 }

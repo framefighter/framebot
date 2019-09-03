@@ -6,7 +6,6 @@ import { Check } from '../../utils/check';
 import { Formatter } from '../../utils/formatter';
 import { Active } from '../active/active';
 import { menuBtn } from './definitions';
-import { User } from '../user/user';
 
 export class Command implements command.Command {
     emoji: string;
@@ -19,52 +18,61 @@ export class Command implements command.Command {
     message: (active: Active) => Message;
     inline: (active: Active) => Inline[];
     keyboard: (active: Active) => keyboard.Board;
-    answerCbText: (active: Active) => string;
     rewards: (active: Active) => message.Reward[];
     action: (active: Active) => any;
     name: (active: Active) => string;
     count: (active: Active) => number;
 
 
-    constructor(id: command.ID, cmdConstructor: Readonly<command.Constructor>) {
+    constructor(id: command.ID, c: Readonly<command.Constructor>) {
         this.id = id;
-        this.message = cmdConstructor.message
-            || (() => new Message());
-        this.inline = cmdConstructor.inline
-            || (() => []);
-        this.keyboard = ((active) => {
-            if (cmdConstructor.keyboard && menuBtn(active) !== active.command.id) {
-                return cmdConstructor.keyboard(active)
-            }
-            if (active.user.settings.menu.length > 0) {
+        const anyMsg = c.message; 
+        if (Check.id(anyMsg)) {
+            this.message = (active) =>  BOT.commands.fromID(anyMsg).message(active)
+        } else {
+            this.message = anyMsg || (() => new Message())
+        }
+
+        const anyBoard = c.keyboard;
+        if (Check.id(anyBoard)) {
+            this.keyboard = (active) => BOT.commands.fromID(anyBoard).keyboard(active)
+        } else {
+            this.keyboard = ((active) => {
+                if (anyBoard && menuBtn(active) !== active.command.id) {
+                    return anyBoard(active)
+                }
+                if (active.user.settings.menu.length > 0) {
+                    return new Keyboard({
+                        layout: active.user.settings.menu.map(row =>
+                            row.map(config => ({ callback_data: config })))
+                    })
+                }
                 return new Keyboard({
-                    layout: active.user.settings.menu.map(row =>
-                        row.map(config => ({ id: config })))
+                    layout: [[{ callback_data: "sortie" }, { callback_data: "nightwave" }],
+                    [{ callback_data: "arbitration" }, { callback_data: "news" }],
+                    [{ callback_data: "events", text: "🗞️ Happenings" }, { callback_data: "check" }],
+                    [{ callback_data: "cycles" }, { callback_data: "trader" }],
+                    [{ callback_data: "all" }],
+                    [{ callback_data: "settings" }, { text: "🔎 Find", switch_inline_query_current_chat: "find " },
+                    ...(active.user.admin ? [{ text: "⏱️ Time", switch_inline_query_current_chat: "time " }] : []),]],
                 })
-            }
-            return new Keyboard({
-                layout: [[{ id: "sortie" }, { id: "nightwave" }],
-                [{ id: "arbitration" }, { id: "news" }],
-                [{ id: "events", text: "🗞️ Happenings" }, { id: "check" }],
-                [{ id: "cycles" }, { id: "trader" }],
-                [{ id: "all" }],
-                [{ id: "settings" }, { text: "🔎 Find", search: "find " },
-                ...(active.user.admin ? [{ text: "⏱️ Time", search: "time " }] : []),]],
-            })
-        });
-        this.answerCbText = cmdConstructor.answerCbText
-            || (() => `Loading ${this.id.replace(/_/g, " ").clean()}...`);
-        this.rewards = cmdConstructor.rewards
+            });
+        }
+
+
+        this.inline = c.inline
             || (() => []);
-        this.action = cmdConstructor.action
+        this.rewards = c.rewards
+            || (() => []);
+        this.action = c.action
             || (() => null);
-        this.emoji = cmdConstructor.emoji || "";
-        this.jsonKey = cmdConstructor.jsonKey;
-        this.adminOnly = cmdConstructor.adminOnly || false;
-        this.help = cmdConstructor.help || "";
-        this.alt = cmdConstructor.alt || [];
-        this.count = cmdConstructor.count !== undefined
-            ? cmdConstructor.count
+        this.emoji = c.emoji || "";
+        this.jsonKey = c.jsonKey;
+        this.adminOnly = c.adminOnly || false;
+        this.help = c.help || "";
+        this.alt = c.alt || [];
+        this.count = c.count !== undefined
+            ? c.count
             : (() => {
                 if (this.jsonKey) {
                     const obj = BOT.ws[this.jsonKey]
@@ -74,12 +82,12 @@ export class Command implements command.Command {
                 }
                 return 0
             });
-        this.name = cmdConstructor.name
+        this.name = c.name
             || (() => Formatter.camelToString(this.id))
-        this.hidden = cmdConstructor.hidden || false
+        this.hidden = c.hidden || false
     }
 
-    privileged(user?: User): boolean {
+    privileged(user?: user.From): boolean {
         if (user) {
             return !this.adminOnly || user.admin
         } return false;

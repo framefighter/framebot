@@ -1,11 +1,21 @@
 declare namespace user {
     type ID = number;
     interface Constructor {
-        id: ID;
-        admin: boolean;
+        admin?: boolean;
+        settings?: Settings;
     }
 
     class User implements Constructor {
+        id: number;
+        username?: string | undefined;
+        admin: boolean;
+        _settings: Settings;
+        settings: Settings;
+        lastActive?: active.Active;
+        from: From;
+    }
+
+    interface From {
         id: number;
         admin: boolean;
         is_bot: boolean;

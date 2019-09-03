@@ -27,22 +27,40 @@ export class Keyboard implements keyboard.Board {
             let inlineRow: InlineKeyboardButton[] = []
             for (let btn of row) {
                 if (!btn) continue;
-                const cmd = BOT.commands.find(btn.id || "none");
-                if (btn.id && cmd && cmd.hidden) continue;
-                const selected = Compare.exact(btn.id, active.command.id);
+                const cmd = BOT.commands.find(btn.callback_data || "none");
+                if (btn.callback_data && cmd && cmd.hidden && !btn.args) continue;
+                const selected = Compare.exact(btn.callback_data, active.command.id);
                 let name = Formatter.camelToString(btn.text) || "-";
                 if (cmd && !btn.text) {
-                    if (selected) continue;
+                    if (selected && !btn.alwaysShow) continue;
                     name = this.buttonText(active, cmd);
                 }
                 const text = name;
                 let inlineBtn: InlineKeyboardButton;
-                if (btn.id) {
-                    inlineBtn = { text, callback_data: btn.id }
-                } else if (btn.search !== undefined) {
-                    inlineBtn = { text, switch_inline_query_current_chat: btn.search }
+                if (btn.callback_data) {
+                    if (btn.args && btn.args.length > 0) {
+                        const cbD = `/${btn.callback_data} ${btn.args.join(",")}`;
+                        inlineBtn = {
+                            text,
+                            callback_data: cbD
+                        }
+                    } else {
+                        inlineBtn = {
+                            text,
+                            callback_data: btn.callback_data
+                        }
+                    }
+
+                } else if (btn.switch_inline_query_current_chat !== undefined) {
+                    inlineBtn = {
+                        text,
+                        switch_inline_query_current_chat: btn.switch_inline_query_current_chat
+                    }
                 } else if (btn.url !== undefined) {
-                    inlineBtn = { text, url: btn.url }
+                    inlineBtn = {
+                        text,
+                        url: btn.url
+                    }
                 } else {
                     continue;
                 }

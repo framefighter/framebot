@@ -13,9 +13,9 @@ declare namespace db {
     }
 
     class UsersDB extends DB {
-        list: user.User[];
-        update(user: user.User): void;
-        getByName(username: string): user.User | undefined;
+        list: user.From[];
+        update(user: user.From): void;
+        getByName(username: string): user.From | undefined;
     }
 
     class SongsDB extends DB {

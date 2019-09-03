@@ -1,9 +1,10 @@
 import { InlineKeyboardMarkup, InlineQuery, InlineQueryResult, Message } from 'node-telegram-bot-api';
 import { BOT } from '../..';
 import { Generator } from '../../utils/generator';
+import { User } from '../user/user';
 
 export class Active implements active.Active {
-    user: user.User;
+    user: User;
     chatID: number | string;
     execute_return?: any;
     command: command.Command;
@@ -77,6 +78,14 @@ export class Active implements active.Active {
                 };
             }
             BOT.api.editMessageText(message, options).catch(onErr);
+        } else if (this.keyboard) {
+            if (this.chatID && IDs.msgID) {
+                BOT.api.editMessageReplyMarkup(this.keyboard, {
+                    message_id: IDs.msgID,
+                    chat_id: this.chatID,
+                    inline_message_id: IDs.inlineMsgID
+                })
+            }
         }
         if (IDs.CbqID) {
             BOT.api.answerCallbackQuery(IDs.CbqID).catch(onErr)
@@ -85,7 +94,7 @@ export class Active implements active.Active {
 
     execute() {
         if (this.command.action && !this.executed) {
-            if (this.command.privileged(this.user)) {
+            if (this.command.privileged(this.user.from)) {
                 this.executed = true;
                 this.execute_return = this.command.action(this);
                 this.updateText()

@@ -40,9 +40,7 @@ export class Formatter implements utils.Formatter {
                         .space()
                         .concat(Check.assassination(mission.missionType)
                             ? (sortie.boss || "") : ""),
-                    description: "Conditions:"
-                        .end(mission.modifier || "")
-                        .replace(/:/g, ":\n"),
+                    description: (mission.modifier || "").replace(/:/g, ":\n"),
                     time: Formatter.clock(time),
                     position: i + 1
                 })
@@ -93,7 +91,7 @@ export class Formatter implements utils.Formatter {
                 subCaption: vs,
                 description: "Rewards:",
                 start: invasion.activation,
-                time: invasion.eta === "Infinityd" ? "" : invasion.eta,
+                time: (invasion.eta || "").toUpperCase().includes("INF") ? "" : invasion.eta,
                 list: rewards
             });
         }
@@ -304,13 +302,19 @@ export class Formatter implements utils.Formatter {
         if (!warframe) return "Warframe not found!";
         return Formatter.format({
             caption: Formatter.warframeTitle(warframe),
+            text: warframe.health.toString().code().start("Health:".bold()).nl()
+                + warframe.shield.toString().code().start("Shield:".bold()).nl()
+                + warframe.armor.toString().code().start("Armor:".bold()).nl()
+                + warframe.power.toString().code().start("Power:".bold()).nl()
+                + warframe.sprintSpeed.toString().code().start("Sprint Speed:".bold()).nl()
+                + "Abilities:".bold().nl()
+                + (warframe.abilities || [])
+                    .map((ab, i) =>
+                        `|${i + 1}| ${ab.abilityName.bold()}:\n`
+                        + `${ab.description.replace(/[\r\n]+/g, "").clean()}`.indent(6, "|"))
+                    .join("\n")
+                    .indent(3).nl(),
             description: warframe.description || "",
-            subCaption: warframe.health.toString().start("HEALTH:").nl()
-                + warframe.shield.toString().start("SHIELD:").nl()
-                + warframe.armor.toString().start("ARMOR:").nl()
-                + warframe.power.toString().start("POWER:").nl()
-                + warframe.sprintSpeed.toString().start("SPRINT SPEED:").nl(),
-            list: (warframe.abilities || []).map(ab => ab.abilityName)
         })
     }
 
@@ -474,10 +478,16 @@ export class Formatter implements utils.Formatter {
     }
 
     static clock(seconds?: number): string {
-        if (!seconds) return "00m 00s";
-        const min = Math.floor(seconds / 60);
-        const sec = Math.round(seconds - Math.floor(min) * 60);
-        return `${min}m ${sec}s`
+        if (seconds === undefined) return "--m --s";
+        const v = seconds > 0 ? "" : "-"
+        const min = Math.floor(Math.abs(seconds) / 60);
+        const sec = Math.round(Math.abs(seconds) - Math.floor(min) * 60);
+        if (min) {
+            return `${v}${min}m ${sec}s`
+        } else if (sec) {
+            return `${v}${sec}s`
+        }
+        return "0s"
     }
 
     static position(position?: string | number): string {
@@ -735,13 +745,13 @@ String.prototype.space = function (this: string) {
     return str.concat(" ");
 }
 
-String.prototype.indent = function (this: string, tabs?: number) {
+String.prototype.indent = function (this: string, tabs?: number, start?: string) {
     const str = this;
     if (!str) return "";
     return str
         .split("\n")
         .clean()
-        .map(s => "\t".repeat(tabs || 1) + s)
+        .map(s => (start || "") + "\t".repeat(tabs || 1) + s)
         .join("\n");
 }
 

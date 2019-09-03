@@ -13,11 +13,12 @@ declare namespace keyboard {
     }
 
     interface Button {
-        id?: command.ID;
+        callback_data?: command.ID;
         text?: string;
-        search?: string;
+        switch_inline_query_current_chat?: string;
         url?: string;
-        args?: string[]
+        alwaysShow?: boolean;
+        args?: (string | number)[];
     }
 
 }

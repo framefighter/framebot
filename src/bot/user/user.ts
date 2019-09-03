@@ -1,37 +1,48 @@
 
 import TelegramBot from "node-telegram-bot-api";
+import { Active } from '../active/active';
 
-export class User implements user.User, TelegramBot.User {
+export class User implements user.User {
+    from: user.From;
     id: number;
     admin: boolean;
-    is_bot: boolean;
-    first_name: string;
-    last_name?: string | undefined;
-    username?: string | undefined;
-    language_code?: string | undefined;
-    settings: user.Settings;
-    constructor(userConstructor: Readonly<user.Constructor & TelegramBot.User>) {
-        this.id = userConstructor.id;
-        this.admin = userConstructor.admin;
-        this.is_bot = userConstructor.is_bot;
-        this.first_name = userConstructor.first_name;
-        this.last_name = userConstructor.last_name;
-        this.username = userConstructor.username;
-        this.language_code = userConstructor.language_code;
-        this.settings = {
+    _settings: user.Settings;
+    lastActive?: Active;
+    static default = {
+        settings: {
             alert: {},
             filter: [],
             menu: [],
             arbitration: [],
-        };
+        }
+    }
+    username?: string;
+
+    constructor(from: user.From) {
+        this.from = from;
+        this.id = this.from.id;
+        this.username = this.from.username;
+        this.admin = this.from.admin;
+        this._settings = this.from.settings;
+    }
+
+    get settings(): user.Settings {
+        return this._settings;
+    }
+
+    set settings(settings: user.Settings) {
+        console.log("setting")
+        this.from.settings = settings;
+        this._settings = settings;
     }
 }
 
 export const noUser = new User({
-    admin: false,
     first_name: "Dummy",
     last_name: "User",
     id: -1,
     is_bot: true,
     language_code: "none",
+    admin: false,
+    settings: User.default.settings,
 });

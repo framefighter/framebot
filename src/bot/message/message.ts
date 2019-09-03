@@ -20,7 +20,7 @@ export class Message implements message.Message {
         if (this.title) {
             let msg = (this.title.toUpperCase()
                 .bold().concat(user && this.showUser
-                    ? " from @" + (user.username || user.first_name).clean()
+                    ? " from @" + (user.username || user.from.first_name).clean()
                     : "")
                 .nl().nl()
                 + (this.text || "").concat("⠀"))

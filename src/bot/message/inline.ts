@@ -2,7 +2,6 @@ import { InlineQueryResultArticle, InlineKeyboardMarkup } from 'node-telegram-bo
 import { BOT } from '../..';
 import { Message } from './message';
 import { Keyboard } from '../keyboard/keyboard';
-import { suffix, sep } from '../command/definitions';
 import { Generator } from '../../utils/generator';
 import { Active } from '../active/active';
 
@@ -11,6 +10,7 @@ export class Inline implements message.Inline {
     showUser?: boolean;
     description?: string;
     thumb_url?: string;
+    keyboard?: keyboard.Board;
     url?: string;
     item?: string;
     text?: string;
@@ -22,21 +22,29 @@ export class Inline implements message.Inline {
         this.description = inlineConstructor.description;
         this.thumb_url = inlineConstructor.thumb_url;
         this.url = inlineConstructor.url;
+        this.keyboard = inlineConstructor.keyboard;
         this.item = inlineConstructor.item;
         this.id = Generator.ID();
     }
 
-    keyboard(active: Active): any {
+    toKeyboard(active: Active): InlineKeyboardMarkup {
         if (this.item) {
             return new Keyboard({
                 layout: active.command.keyboard(active).layout,
-                add: [[{ id: (this.item + suffix(sep).addItem as command.ID), text: "Save" }]]
+                add: [[{
+                    callback_data: "filter",
+                    args: [this.item],
+                    text: "Save"
+                } as keyboard.Button]]
             }).toInline(active)
+        }
+        if (this.keyboard) {
+            return this.keyboard.toInline(active)
         }
         return active.keyboard
     }
 
-    toInline(active: Active): any {
+    toInline(active: Active): InlineQueryResultArticle {
         const res: InlineQueryResultArticle = {
             id: this.id,
             title: this.title,
@@ -52,7 +60,7 @@ export class Inline implements message.Inline {
                     || "No Text",
                 parse_mode: BOT.defaults.parse_mode,
             },
-            reply_markup: this.keyboard(active)
+            reply_markup: this.toKeyboard(active)
         }
         return res;
     }
