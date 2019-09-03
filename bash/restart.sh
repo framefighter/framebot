@@ -5,7 +5,7 @@ git commit -qm "database"
 echo "Pulling new git version"
 git pull -q
 echo "Installing possible new npm modules"
-npm i
+npm i -q
 echo "Compiling new typescript build"
 tsc
 echo "Preparing to restart bot"
