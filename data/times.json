@@ -3672,6 +3672,27 @@
             "seconds": 37,
             "date": 1567442553,
             "stage": 3
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 41,
+            "date": 1567541745,
+            "stage": 1
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 19,
+            "date": 1567541745,
+            "stage": 2
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 29,
+            "date": 1567541745,
+            "stage": 3
         }
     ]
 }
