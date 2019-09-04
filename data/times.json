@@ -3693,6 +3693,27 @@
             "seconds": 29,
             "date": 1567541745,
             "stage": 3
+        },
+        {
+            "mission": "Artifact",
+            "minutes": 6,
+            "seconds": 52,
+            "date": 1567625470,
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 5,
+            "seconds": 15,
+            "date": 1567625470,
+            "stage": 2
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 46,
+            "date": 1567625470,
+            "stage": 3
         }
     ]
 }
