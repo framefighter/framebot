@@ -13,7 +13,6 @@ import { CONFIG } from '../../utils/config';
 import { Active } from '../active/active';
 import { Button } from '../keyboard/button';
 import { Converter } from '../song/converter/converter';
-import { METHODS } from 'http';
 
 export const back = "< Back"
 
@@ -163,21 +162,23 @@ export const definitions: command.Definitions = {
         count: (active) => (idx(active, _ => _.ws.news.filter(n =>
             Object.keys(n.translations || {})
                 .includes("en")).length) || 0),
-        message: (active) => new Message({
-            title: active.command.name(active),
-            text: (active.ws.news || []).length > 0
-                ? BOT.state.filteredByID<wf.News>(active.args, active.command.jsonKey)
-                    .sort((a, b) => Compare.dates(a.date, b.date))
-                    .filter(n =>
-                        Object.keys(n.translations || {})
-                            .includes("en"))
-                    .clean()
-                    .map(Formatter.newsEvent)
-                    .clean()
-                    .slice(0, 10)
-                    .join("\n")
-                : "No News found!"
-        }),
+        message: (active) => {
+            const englishNews = BOT.state.filteredByID<wf.News>(active.args, active.command.jsonKey)
+                .sort((a, b) => Compare.dates(a.date, b.date))
+                .filter(n =>
+                    Object.keys(n.translations || {})
+                        .includes("en"));
+            if (englishNews.length > 0) {
+                return new Message({
+                    title: active.command.name(active),
+                    text: englishNews.clean()
+                        .map(Formatter.newsEvent)
+                        .clean()
+                        .join("\n")
+                });
+            }
+            return new Message("")
+        },
         inline: (active) => (active.ws.news || []).length > 0
             ? (active.ws.news || [])
                 .sort((a, b) => Compare.dates(a.date, b.date))
@@ -207,21 +208,23 @@ export const definitions: command.Definitions = {
             Object.keys(n.translations || {})
                 .includes("en")
             && n.update).length) || 0),
-        message: (active) => new Message({
-            title: active.command.name(active),
-            text: (active.ws.news || []).length > 0
-                ? BOT.state.filteredByID<wf.News>(active.args, active.command.jsonKey)
-                    .sort((a, b) => Compare.dates(a.date, b.date))
-                    .filter(n =>
-                        Object.keys(n.translations || {})
-                            .includes("en")
-                        && n.update)
-                    .map(Formatter.newsEvent)
-                    .clean()
-                    .slice(0, 10)
-                    .join("\n")
-                : "No updates found!"
-        }),
+        message: (active) => {
+            const englishNews = BOT.state.filteredByID<wf.News>(active.args, active.command.jsonKey)
+                .sort((a, b) => Compare.dates(a.date, b.date))
+                .filter(n =>
+                    Object.keys(n.translations || {})
+                        .includes("en") && n.update);
+            if (englishNews.length > 0) {
+                return new Message({
+                    title: active.command.name(active),
+                    text: englishNews.clean()
+                        .map(Formatter.newsEvent)
+                        .clean()
+                        .join("\n")
+                });
+            }
+            return new Message("")
+        },
         inline: (active) => (active.ws.news || []).length > 0
             ? (active.ws.news || [])
                 .sort((a, b) => Compare.dates(a.date, b.date))
@@ -365,11 +368,7 @@ export const definitions: command.Definitions = {
                 })) || "No Cetus Information Found!"
             })
         },
-        keyboard: (active) => new Keyboard({
-            layout: [
-                [btn("cetus"), btn("vallis"), btn("earth")],
-                [menuBtn(active)]]
-        })
+        keyboard: "cycles"
     },
     "vallis": {
         alt: ["v"],
@@ -390,11 +389,7 @@ export const definitions: command.Definitions = {
                 }
             })) || "No Vallis Information Found!"
         }),
-        keyboard: (active) => new Keyboard({
-            layout: [
-                [btn("cetus"), btn("vallis"), btn("earth")],
-                [menuBtn(active)]]
-        })
+        keyboard: "cycles"
     },
     "earth": {
         alt: ["e"],
@@ -410,14 +405,10 @@ export const definitions: command.Definitions = {
                 caption: `It is currently ${_.ws.earthCycle.state.toUpperCase()} on Earth!`,
             })) || "No Earth Information Found!"
         }),
-        keyboard: (active) => new Keyboard({
-            layout: [
-                [btn("cetus"), btn("vallis"), btn("earth")],
-                [menuBtn(active)]]
-        })
+        keyboard: "cycles"
     },
     "cycles": {
-        emoji: "☀️|🌒",
+        emoji: "🌄",
         help: "Get All day/night cycle information",
         message: (active) => {
             const cetus = BOT.commands.fromID("cetus");
@@ -453,7 +444,7 @@ export const definitions: command.Definitions = {
                         text: Formatter.arbitration(BOT.extra.arbitration)
                     })
                 } else {
-                    return new Message()
+                    return new Message("")
                 }
             } else {
                 return new Message({
@@ -1469,22 +1460,36 @@ export const definitions: command.Definitions = {
         keyboard: "config"
     },
     "convert": {
-        emoji: "𝄚",
+        emoji: "🎛",
         action: (active) => {
-            const converter = new Converter(
-                active.args[0],
-                parseInt(active.args[1]),
-                parseInt(active.args[2])
-            )
-            return converter.sharable
+            if (active.args[0]) {
+                const converter = new Converter(
+                    active.args[0],
+                    parseInt(active.args[1]),
+                    parseInt(active.args[2])
+                )
+                return converter.sharable
+            }
         },
-        message: (active) => new Message({
-            title: active.command.name(active),
-            text: Formatter.format({
-                caption: `Scale: ${active.args[1] || 5} | Speed ${active.args[2] || 3}`,
-                text: active.execute_return || "Convert songs to share them/ use them in game!",
+        message: (active) => {
+            if (active.execute_return) {
+                return new Message({
+                    title: active.command.name(active),
+                    text: Formatter.format({
+                        caption: `Scale: ${active.args[1] || 5} | Speed ${active.args[2] || 3}`,
+                        text: active.execute_return,
+                    })
+                })
+            }
+            return new Message({
+                title: active.command.name(active),
+                text: Formatter.format({
+                    caption: "Usage:",
+                    text: "/convert <song> [, scale, speed]".code(),
+                    description: "For more info click on " + BOT.commands.find("convertInfo")!.name(active)
+                })
             })
-        }),
+        },
         keyboard: (active) => new Keyboard({
             layout: [[
                 new Button(backTo("songs")), btn("convertInfo")
@@ -1492,30 +1497,50 @@ export const definitions: command.Definitions = {
         })
     },
     "convertInfo": {
-        emoji: "𝄚",
-        message: () => new Message(Formatter.format({
-            caption: "Short info",
-            subCaption: "How to Create input string for conversion?",
-            description: "Above a five line staff is depicted,\n"
-                + "use the numbers and letters on the left to concatenate them to a simple string that defines which notes to play.\n"
-                + "Even numbers in spaces and odd number on lines.\n"
-                + "Simple Example:\n\n"
-                + "A----A--7----7--A----A--7----7--9--\n\n"
-                + "Dashes are pauses!",
-            text: ("Five line staff:\n"
-                + "|      C      [g]\n"
-                + "|𝄖𝄖𝄖𝄖𝄖𝄖B𝄖𝄖𝄖[f]\n"
-                + "|      A      [e]\n"
-                + "|𝄖𝄖𝄖𝄖𝄖𝄖9𝄖𝄖𝄖[d]\n"
-                + "|      8      [c]\n"
-                + "|𝄖𝄖𝄖𝄖𝄖𝄖7𝄖𝄖𝄖[b]\n"
-                + "|      6      [a]\n"
-                + "|𝄖𝄖𝄖𝄖𝄖𝄖5𝄖𝄖𝄖[g]\n"
-                + "|      4      [f]\n"
-                + "|𝄖𝄖𝄖𝄖𝄖𝄖3𝄖𝄖𝄖[e]\n"
-                + "|      2      [d]\n"
-                + "|        1     [c]").code()
-        })),
+        emoji: "🎼",
+        message: (active) => new Message({
+            title: active.command.name(active),
+            text: Formatter.format({
+                caption: "Usage:",
+                text: "/convert <song> [, scale, speed]".code(),
+                description: "Parameter description below!"
+            }) + Formatter.format({
+                caption: "Song",
+                addCaption: "(required)",
+                text: ("Five line staff:\n"
+                    + "C\n"
+                    + "𝄖B𝄖\n"
+                    + "A\n"
+                    + "𝄖9𝄖\n"
+                    + "8\n"
+                    + "𝄖7𝄖\n"
+                    + "6\n"
+                    + "𝄖5𝄖\n"
+                    + "4\n"
+                    + "𝄖3𝄖\n"
+                    + "2\n"
+                    + "-1-").code().nl()
+                    + "Simple Example of 9 notes:".nl()
+                    + "A--A-7--7--A--A-7--7-9--".link("https://raw.githubusercontent.com/framefighter/framebot/master/docs/pics/note-example.jpg").nl()
+                    + "Click to show notes or look below!".nl()
+                    + "Dashes are pauses!",
+            }) + Formatter.format({
+                caption: "Scale",
+                addCaption: "(optional)",
+                text: ("1: Pentatonic Minor\n"
+                    + "2: Pentatonic Major\n"
+                    + "3: Chromatic\n"
+                    + "4: Hexatonic\n"
+                    + "5: Major (default)\n"
+                    + "6: Minor\n"
+                    + "7: Hirajoshi\n"
+                    + "8: Phrygian").code()
+            }) + Formatter.format({
+                caption: "Speed",
+                addCaption: "(optional)",
+                description: "(default: 3)\nMultiplier for dashes, higher number means lower speed!"
+            })
+        }),
         keyboard: () => new Keyboard({
             layout: [[
                 backTo("convert")
@@ -1571,7 +1596,7 @@ export const definitions: command.Definitions = {
                 callback_data: "showSong",
                 args: [song.name],
                 text: song.name
-            })]).concat([[backTo("settings")]])
+            })]).concat([[backTo("settings"), btn("convert")]])
         }),
         inline: (active) => BOT.database.songs.list.map(song =>
             new Inline({
@@ -1617,17 +1642,3 @@ export const definitions: command.Definitions = {
                 }))
     }
 }
-
-
-export const alert_setting = (id: command.ID): command.SettingsDefinitions => ({
-    [id]: {
-        emoji: "⚙️",
-        help: "Enables/Disables notification for " + id.capitalize(),
-        action: (active) => {
-            active.user.settings.alert[id] = !active.user.settings.alert[id];
-            return active.user.settings.alert[id];
-        },
-        message: "alertSettings",
-        keyboard: "alertSettings",
-    }
-})

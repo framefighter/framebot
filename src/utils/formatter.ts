@@ -766,11 +766,12 @@ String.prototype.space = function (this: string) {
 String.prototype.indent = function (this: string, tabs?: number, start?: string) {
     const str = this;
     if (!str) return "";
-    return str
+    const f = str
         .split("\n")
         .clean()
-        .map(s => (start || "") + "\t".repeat(tabs || 1) + s)
+        .map(s => (start || "") + "\t".repeat(tabs || 0) + s)
         .join("\n");
+    return f
 }
 
 String.prototype.start = function (this: string, start?: string | number) {

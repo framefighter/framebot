@@ -1,23 +1,25 @@
 declare namespace message {
     interface Constructor {
         title: string;
-        text?: string;
+        text: string;
         showUser?: boolean;
         keyboard?: keyboard.Board;
     }
 
-    interface InlineConstructor extends Constructor {
+    interface InlineConstructor {
         title: string;
         description?: string | undefined;
         thumb_url?: string | undefined;
         url?: string | undefined;
         item?: string | undefined;
         text?: string;
+        keyboard?: keyboard.Board;
     }
 
     class Message implements Constructor {
+        constructor(c: Constructor);
         title: string;
-        text?: string | undefined;
+        text: string;
         showUser?: boolean | undefined;
         keyboard?: keyboard.Board;
         toString(user?: user.User): string;

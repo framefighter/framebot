@@ -30,7 +30,7 @@ export class Command implements command.Command {
         if (Check.id(anyMsg)) {
             this.message = (active) =>  BOT.commands.fromID(anyMsg).message(active)
         } else {
-            this.message = anyMsg || (() => new Message())
+            this.message = anyMsg || (() => new Message(""))
         }
 
         const anyBoard = c.keyboard;
@@ -50,7 +50,7 @@ export class Command implements command.Command {
                 return new Keyboard({
                     layout: [[{ callback_data: "sortie" }, { callback_data: "nightwave" }],
                     [{ callback_data: "arbitration" }, { callback_data: "news" }],
-                    [{ callback_data: "events", text: "🗞️ Happenings" }, { callback_data: "check" }],
+                    [{ callback_data: "events" }, { callback_data: "check" }],
                     [{ callback_data: "cycles" }, { callback_data: "trader" }],
                     [{ callback_data: "all" }],
                     [{ callback_data: "settings" }, { text: "🔎 Find", switch_inline_query_current_chat: "find " },

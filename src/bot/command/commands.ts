@@ -1,7 +1,6 @@
 import { Compare } from '../../utils/compare';
 import { definitions } from './definitions';
 import { Command } from './command';
-import { alert_setting } from './definitions';
 import { BOT } from '../..';
 
 export class Commands implements command.Commands {
