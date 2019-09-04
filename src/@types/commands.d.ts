@@ -50,4 +50,5 @@ declare namespace command {
         | "about"
         | "convert"
         | "convertInfo"
+        | "saveConverted"
 }
