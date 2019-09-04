@@ -1462,6 +1462,7 @@ export const definitions: command.Definitions = {
     "convert": {
         emoji: "🎛",
         action: (active) => {
+            active.user.settings.convertedSong = ""
             if (active.args[0]) {
                 const converter = new Converter(
                     active.args[0],
@@ -1520,7 +1521,7 @@ export const definitions: command.Definitions = {
                         keyboard: new Keyboard({
                             layout: [[new Button({
                                 callback_data: "songs",
-                                args: [name, convertedSong],
+                                args: [name, "convertedSong"],
                                 text: "💾 Save"
                             })],
                             [new Button({
@@ -1601,16 +1602,29 @@ export const definitions: command.Definitions = {
                 user: active.user.id
             }
             if (args.length === 2) {
-                if (found !== -1) {
-                    const updated = BOT.database.songs.update(song);
-                    if (updated) {
-                        return `Song (${song.name}) already exists, updated string!`
+                if (song.string === "convertedSong") {
+                    if (active.user.settings.convertedSong) {
+                        BOT.database.songs.add({
+                            ...song,
+                            string: active.user.settings.convertedSong
+                        })
+                        active.user.settings.convertedSong = "";
+                        return `Saved converted song with name ${song.name}`
                     } else {
-                        return `Song (${song.name}) is not your song or does not exist!`
+                        return "Cannot save song, convert a song first!"
                     }
                 } else {
-                    BOT.database.songs.add(song)
-                    return `Saved new song (${song.name})!`
+                    if (found !== -1) {
+                        const updated = BOT.database.songs.update(song);
+                        if (updated) {
+                            return `Song (${song.name}) already exists, updated string!`
+                        } else {
+                            return `Song (${song.name}) is not your song or does not exist!`
+                        }
+                    } else {
+                        BOT.database.songs.add(song)
+                        return `Saved new song (${song.name})!`
+                    }
                 }
             } else if (args.length === 1) {
                 if (found !== -1) {
