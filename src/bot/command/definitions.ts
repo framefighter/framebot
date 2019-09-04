@@ -1507,34 +1507,25 @@ export const definitions: command.Definitions = {
             }) + Formatter.format({
                 caption: "Song",
                 addCaption: "(required)",
-                text: ("Five line staff:\n"
-                    + "C\n"
-                    + "𝄖B𝄖\n"
-                    + "A\n"
-                    + "𝄖9𝄖\n"
-                    + "8\n"
-                    + "𝄖7𝄖\n"
-                    + "6\n"
-                    + "𝄖5𝄖\n"
-                    + "4\n"
-                    + "𝄖3𝄖\n"
-                    + "2\n"
-                    + "-1-").code().nl()
-                    + "Simple Example of 9 notes:".nl()
-                    + "A--A-7--7--A--A-7--7-9--".link("https://raw.githubusercontent.com/framefighter/framebot/master/docs/pics/note-example.jpg").nl()
+                subCaption: ("Simple Example of 9 notes.".nl()
                     + "Click to show notes or look below!".nl()
-                    + "Dashes are pauses!",
+                    + "Dashes are like pauses!"),
+                link: {
+                    text: "A--A-7--7--A--A-7--7-9--",
+                    url: "https://raw.githubusercontent.com/framefighter/framebot/master/docs/pics/note-example.jpg"
+                },
+                list: ["C", "𝄖B𝄖", "𝄖9𝄖", "𝄖7𝄖", "𝄖5𝄖", "𝄖3𝄖", "2"]
             }) + Formatter.format({
                 caption: "Scale",
                 addCaption: "(optional)",
-                text: ("1: Pentatonic Minor\n"
-                    + "2: Pentatonic Major\n"
-                    + "3: Chromatic\n"
-                    + "4: Hexatonic\n"
-                    + "5: Major (default)\n"
-                    + "6: Minor\n"
-                    + "7: Hirajoshi\n"
-                    + "8: Phrygian").code()
+                list: ["1: Pentatonic Minor",
+                    "2: Pentatonic Major",
+                    "3: Chromatic",
+                    "4: Hexatonic",
+                    "5: Major (default)",
+                    "6: Minor",
+                    "7: Hirajoshi",
+                    "8: Phrygian"]
             }) + Formatter.format({
                 caption: "Speed",
                 addCaption: "(optional)",

@@ -4,6 +4,8 @@ echo "Pulling new git version"
 git pull -q
 echo "Installing possible new npm modules"
 npm i -qe
+echo "Updating modules"
+npm update
 echo "Compiling new typescript build"
 set -e
 tsc
