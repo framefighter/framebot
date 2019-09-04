@@ -2,18 +2,16 @@ import { Check } from '../../utils/check';
 
 export class Message implements message.Message {
     title: string;
-    text?: string;
+    text: string;
     showUser?: boolean;
-    constructor(messageConstructor?: Readonly<message.Constructor | string>) {
+    constructor(messageConstructor: Readonly<message.Constructor | string>) {
         if (Check.string(messageConstructor)) {
             this.title = "";
             this.text = messageConstructor;
-        } else if (messageConstructor) {
+        } else {
             this.title = messageConstructor.title;
             this.text = messageConstructor.text;
             this.showUser = messageConstructor.showUser;
-        } else {
-            this.title = ""
         }
     }
     toString(user?: user.User): string {
@@ -42,7 +40,7 @@ export class Message implements message.Message {
                 }
             }
             return msg;
-        }
+        } 
         return this.text || ""
     }
 
