@@ -12,7 +12,7 @@ declare namespace keyboard {
         toInline(active: active.Active): any;
     }
 
-    interface Button {
+    class Button {
         callback_data?: command.ID;
         text?: string;
         switch_inline_query_current_chat?: string;

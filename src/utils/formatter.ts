@@ -137,14 +137,16 @@ export class Formatter implements utils.Formatter {
     }
 
     static newsEvent(newsEvent?: wf.News): string {
-        if (newsEvent) {
+        if (newsEvent
+            && newsEvent.message
+            && newsEvent.message.trim()) {
             return Formatter.format({
                 caption: newsEvent.message,
                 link: { text: "Click for more info!", url: newsEvent.link },
                 time: newsEvent.eta
             })
         }
-        return "News not found!"
+        return ""
     }
 
     static alert(alert?: wf.Alert): string {

@@ -1,7 +1,5 @@
 declare namespace command {
-
     // add new command (camelCase) to list below
-
     type ID =
         | "none"
         | "sortie"
@@ -21,7 +19,7 @@ declare namespace command {
         | "arbitration"
         | "alerts"
         | "filter"
-        | "remove"
+        | "removeItems"
         | "askRemove"
         | "settings"
         | "alertSettings"
@@ -50,18 +48,6 @@ declare namespace command {
         | "allAlertsSettingsOn"
         | "allAlertsSettingsOff"
         | "about"
-
-    type Suffix = {
-        setting: string,
-        askRemoveItem: string,
-        removeItem: string,
-        executeCheck: string,
-        arbitrationRemove: string,
-        addItem: string,
-        addMenuButton: string,
-        removeMenuButton: string,
-        selectMenuButton: string,
-        showSong: string,
-        removeSong: string
-    }
+        | "convert"
+        | "convertInfo"
 }

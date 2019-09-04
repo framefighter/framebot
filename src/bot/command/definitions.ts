@@ -11,10 +11,21 @@ import moment from 'moment';
 import { Check } from '../../utils/check';
 import { CONFIG } from '../../utils/config';
 import { Active } from '../active/active';
+import { Button } from '../keyboard/button';
+import { Converter } from '../song/converter/converter';
+import { METHODS } from 'http';
 
 export const back = "< Back"
 
-export const menuBtn = (active: Active): keyboard.Button => ({
+export const btn = (id: command.ID): Button => new Button(id)
+
+export const backTo = (id: command.ID): Button => new Button({
+    callback_data: id,
+    text: "< " + id,
+    alwaysShow: true
+})
+
+export const menuBtn = (active: Active): Button => new Button({
     callback_data: active.user.settings.menu[0]
         ? active.user.settings.menu[0][0]
         : "sortie",
@@ -22,9 +33,10 @@ export const menuBtn = (active: Active): keyboard.Button => ({
     alwaysShow: true,
 })
 
-export const moreBtn = (active: Active): keyboard.Button => ({
+export const moreBtn = (active: Active): Button => new Button({
     text: "More",
-    switch_inline_query_current_chat: active.command.id.space().concat(active.args.join(", "))
+    switch_inline_query_current_chat: active.command.id.space().concat(active.args.join(", ")),
+    alwaysShow: true
 })
 
 export const definitions: command.Definitions = {
@@ -106,7 +118,10 @@ export const definitions: command.Definitions = {
                 rewards: Formatter.invasionRewards(invasion)
             })),
         keyboard: (active) => new Keyboard({
-            layout: [[{ callback_data: "invasions" }, { callback_data: "events" }, { callback_data: "alerts" }],
+            layout: [[
+                btn("invasions"),
+                btn("events"),
+                btn("alerts")],
             [menuBtn(active)]]
         })
     },
@@ -133,7 +148,10 @@ export const definitions: command.Definitions = {
                 rewards: (event.rewards || []).map(reward => reward.asString).clean()
             })),
         keyboard: (active) => new Keyboard({
-            layout: [[{ callback_data: "invasions" }, { callback_data: "events" }, { callback_data: "alerts" }],
+            layout: [[
+                btn("invasions"),
+                btn("events"),
+                btn("alerts")],
             [menuBtn(active)]]
         })
     },
@@ -153,6 +171,7 @@ export const definitions: command.Definitions = {
                     .filter(n =>
                         Object.keys(n.translations || {})
                             .includes("en"))
+                    .clean()
                     .map(Formatter.newsEvent)
                     .clean()
                     .slice(0, 10)
@@ -176,7 +195,7 @@ export const definitions: command.Definitions = {
                 description: "Try again later!"
             })],
         keyboard: (active) => new Keyboard({
-            layout: [[{ callback_data: "updates" }], [menuBtn(active)]]
+            layout: [[btn("updates")], [menuBtn(active)]]
         })
     },
     "updates": {
@@ -221,7 +240,7 @@ export const definitions: command.Definitions = {
                 description: "Try again later"
             })],
         keyboard: (active) => new Keyboard({
-            layout: [[{ callback_data: "news" }], [menuBtn(active)]]
+            layout: [[btn("news")], [menuBtn(active)]]
         })
     },
     "trader": {
@@ -348,7 +367,7 @@ export const definitions: command.Definitions = {
         },
         keyboard: (active) => new Keyboard({
             layout: [
-                [{ callback_data: "cetus" }, { callback_data: "vallis" }, { callback_data: "earth" }],
+                [btn("cetus"), btn("vallis"), btn("earth")],
                 [menuBtn(active)]]
         })
     },
@@ -373,7 +392,7 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => new Keyboard({
             layout: [
-                [{ callback_data: "cetus" }, { callback_data: "vallis" }, { callback_data: "earth" }],
+                [btn("cetus"), btn("vallis"), btn("earth")],
                 [menuBtn(active)]]
         })
     },
@@ -393,7 +412,7 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => new Keyboard({
             layout: [
-                [{ callback_data: "cetus" }, { callback_data: "vallis" }, { callback_data: "earth" }],
+                [btn("cetus"), btn("vallis"), btn("earth")],
                 [menuBtn(active)]]
         })
     },
@@ -416,7 +435,7 @@ export const definitions: command.Definitions = {
         },
         keyboard: (active) => new Keyboard({
             layout: [
-                [{ callback_data: "cetus" }, { callback_data: "vallis" }, { callback_data: "earth" }],
+                [btn("cetus"), btn("vallis"), btn("earth")],
                 [menuBtn(active)]]
         })
     },
@@ -481,7 +500,7 @@ export const definitions: command.Definitions = {
                 rewards: idx(alert, _ => [_.mission.reward.asString]) || []
             })).clean(),
         keyboard: (active) => new Keyboard({
-            layout: [[{ callback_data: "invasions" }, { callback_data: "events" }, { callback_data: "alerts" }],
+            layout: [[btn("invasions"), btn("events"), btn("alerts")],
             [menuBtn(active)]]
         })
     },
@@ -499,12 +518,12 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => new Keyboard({
             layout: [
-                [{ callback_data: "alertSettings" }],
-                [{ callback_data: "filter" }],
-                [{ callback_data: "arbitrationFilter" }],
-                [{ callback_data: "config" }],
-                [{ callback_data: "songs" }],
-                [active.user.admin ? ({ callback_data: "restart" }) : { callback_data: "none" }],
+                [btn("alertSettings")],
+                [btn("filter")],
+                [btn("arbitrationFilter")],
+                [btn("config")],
+                [btn("songs")],
+                [active.user.admin ? (btn("restart")) : btn("none")],
                 [menuBtn(active)],
             ]
         })
@@ -539,20 +558,21 @@ export const definitions: command.Definitions = {
             }),
         }),
         keyboard: (active) => new Keyboard({
-            layout: active.user.settings.filter.map<keyboard.Button[]>(item => [{
-                callback_data: "check",
-                args: [item],
-                text: item
-            }]).concat([[{
-                callback_data: "settings",
-                text: back
-            }, { callback_data: "remove", text: "🗑️️️️ Remove Items" }]])
+            layout: active.user.settings.filter.map<keyboard.Button[]>(item => [
+                new Button({
+                    callback_data: "check",
+                    args: [item],
+                    text: item
+                })]).concat([[
+                    backTo("settings"),
+                    btn("removeItems")]])
         })
     },
-    "remove": {
-        alt: ["rm"],
+    "removeItems": {
+        alt: ["rm", "remove"],
         help: "Remove filter keywords from your storage",
         emoji: "➖",
+        name: () => "Remove Items",
         action: (active) =>
             active.args.filter(arg => {
                 if (active.user.settings.filter.includes(arg)) {
@@ -574,14 +594,12 @@ export const definitions: command.Definitions = {
             }),
         }),
         keyboard: (active) => new Keyboard({
-            layout: active.user.settings.filter.map<keyboard.Button[]>(item => [{
-                callback_data: "askRemove",
-                args: [item],
-                text: item
-            }]).concat([[{
-                callback_data: "filter",
-                text: back
-            }]])
+            layout: active.user.settings.filter.map<keyboard.Button[]>(item => [
+                new Button({
+                    callback_data: "askRemove",
+                    args: [item],
+                    text: item
+                })]).concat([[backTo("filter")]])
         })
     },
     "askRemove": {
@@ -597,15 +615,15 @@ export const definitions: command.Definitions = {
         }),
         keyboard: (active) => new Keyboard({
             layout: [[
-                {
-                    callback_data: "remove",
+                new Button({
+                    callback_data: "removeItems",
                     args: [active.args[0]],
                     text: "🗑️️️️ Remove"
-                },
-                {
-                    callback_data: "remove",
+                }),
+                new Button({
+                    callback_data: "removeItems",
                     text: "❌ Cancel"
-                }
+                })
             ]]
         })
     },
@@ -636,16 +654,20 @@ export const definitions: command.Definitions = {
                 [{ callback_data: "allAlertsSettingsOn", alwaysShow: true },
                 { callback_data: "allAlertsSettingsOff", alwaysShow: true }],
                 ...BOT.commands.list.filter(c => c.jsonKey).map<keyboard.Button[]>(cmd => {
-                    const toggleBtn: keyboard.Button = {
-                        callback_data: "alertSettings",
-                        args: [cmd.id],
-                        text: cmd.id
-                    };
+                    const toggleBtn = btn(cmd.id);
                     return active.user.settings.alert[cmd.id]
-                        ? [toggleBtn, { callback_data: "alertSettings", args: [cmd.id], text: ">" }]
-                        : [{ callback_data: "alertSettings", args: [cmd.id], text: "<" }, toggleBtn]
+                        ? [toggleBtn, new Button({
+                            callback_data: "alertSettings",
+                            args: [cmd.id],
+                            text: ">"
+                        })]
+                        : [new Button({
+                            callback_data: "alertSettings",
+                            args: [cmd.id],
+                            text: "<"
+                        }), toggleBtn]
                 }),
-                [{ callback_data: "settings", text: back }]
+                [backTo("settings")]
             ]
         })
     },
@@ -678,7 +700,7 @@ export const definitions: command.Definitions = {
         count: (active) => active.user.settings.arbitration.length,
         action: (active) =>
             active.args.map(arg => {
-                if (arg.length > 50) {
+                if (arg.clean().length > 50) {
                     return "Cannot add " + arg.clean() + " to long"
                 }
                 if (active.user.settings.arbitration.includes(arg)) {
@@ -702,14 +724,12 @@ export const definitions: command.Definitions = {
             }),
         }),
         keyboard: (active) => new Keyboard({
-            layout: active.user.settings.arbitration.map<keyboard.Button[]>(item => [{
-                callback_data: "arbitrationFilter",
-                args: [item],
-                text: item
-            }]).concat([[{
-                callback_data: "settings",
-                text: back
-            }]])
+            layout: active.user.settings.arbitration.map<keyboard.Button[]>(item => [
+                new Button({
+                    callback_data: "arbitrationFilter",
+                    args: [item],
+                    text: item
+                })]).concat([[backTo("settings")]])
         })
     },
     "sortieTimes": {
@@ -1219,9 +1239,7 @@ export const definitions: command.Definitions = {
             description: "Click to execute with /restart",
             text: "/restart",
         })],
-        keyboard: () => new Keyboard({
-            layout: [[]]
-        })
+        keyboard: () => new Keyboard()
     },
     "start": {
         alt: ["hello"],
@@ -1244,8 +1262,11 @@ export const definitions: command.Definitions = {
             })
         }),
         keyboard: (active) => new Keyboard({
-            layout: [[menuBtn(active), { callback_data: "help" }],
-            [{ callback_data: "settings" }, { text: "Inline Mode", switch_inline_query_current_chat: "find " }]]
+            layout: [[menuBtn(active), btn("help")],
+            [btn("settings"), new Button({
+                text: "Inline Mode",
+                switch_inline_query_current_chat: ""
+            })]]
         })
     },
     "help": {
@@ -1276,7 +1297,7 @@ export const definitions: command.Definitions = {
             for (let cmd of cmd_s) {
                 if (cmd.privileged(active.user.from)) {
                     const last = layout.pop()
-                    const curr: keyboard.Button = { callback_data: cmd.id };
+                    const curr = btn(cmd.id);
                     if (!last) {
                         layout.push([curr]);
                     } else if (last.length === width) {
@@ -1363,29 +1384,27 @@ export const definitions: command.Definitions = {
         keyboard: (active) => new Keyboard({
             layout: active.user.settings.menu.map((row, y) =>
                 row.map((btn, x) =>
-                    ({
+                    new Button({
                         callback_data: "config",
                         args: [btn],
                         text: "➖ | " + btn
-                    } as keyboard.Button))
-                    .concat([{
+                    }))
+                    .concat([new Button({
                         callback_data: "configSelection",
                         args: [y, row.length],
                         text: "➕"
-                    }]))
-                .concat([[{
+                    })]))
+                .concat([[new Button({
                     callback_data: "configSelection",
                     args: [active.user.settings.menu.length, 0],
                     text: "➕"
-                }], [{
-                    callback_data: "settings",
-                    text: back
-                }, (active.user.settings.menu.length > 0
-                    ? {
+                })],
+                [backTo("settings"),
+                new Button(active.user.settings.menu.length > 0 ?
+                    {
                         callback_data: "clearConfig",
                         text: "❌ Clear All"
-                    }
-                    : {})
+                    } : undefined)
                 ]])
         })
 
@@ -1419,11 +1438,11 @@ export const definitions: command.Definitions = {
             for (let cmd of cmd_s) {
                 if (cmd.privileged(active.user.from) && cmd.id !== "none") {
                     const last = layout.pop()
-                    const curr: keyboard.Button = {
+                    const curr = new Button({
                         callback_data: "config",
                         args: [cmd.id],
                         text: cmd.id
-                    };
+                    });
                     if (!last) {
                         layout.push([curr]);
                     } else if (last.length === width) {
@@ -1449,7 +1468,62 @@ export const definitions: command.Definitions = {
         message: "config",
         keyboard: "config"
     },
+    "convert": {
+        emoji: "𝄚",
+        action: (active) => {
+            const converter = new Converter(
+                active.args[0],
+                parseInt(active.args[1]),
+                parseInt(active.args[2])
+            )
+            return converter.sharable
+        },
+        message: (active) => new Message({
+            title: active.command.name(active),
+            text: Formatter.format({
+                caption: `Scale: ${active.args[1] || 5} | Speed ${active.args[2] || 3}`,
+                text: active.execute_return || "Convert songs to share them/ use them in game!",
+            })
+        }),
+        keyboard: (active) => new Keyboard({
+            layout: [[
+                new Button(backTo("songs")), btn("convertInfo")
+            ]]
+        })
+    },
+    "convertInfo": {
+        emoji: "𝄚",
+        message: () => new Message(Formatter.format({
+            caption: "Short info",
+            subCaption: "How to Create input string for conversion?",
+            description: "Above a five line staff is depicted,\n"
+                + "use the numbers and letters on the left to concatenate them to a simple string that defines which notes to play.\n"
+                + "Even numbers in spaces and odd number on lines.\n"
+                + "Simple Example:\n\n"
+                + "A----A--7----7--A----A--7----7--9--\n\n"
+                + "Dashes are pauses!",
+            text: ("Five line staff:\n"
+                + "|      C      [g]\n"
+                + "|𝄖𝄖𝄖𝄖𝄖𝄖B𝄖𝄖𝄖[f]\n"
+                + "|      A      [e]\n"
+                + "|𝄖𝄖𝄖𝄖𝄖𝄖9𝄖𝄖𝄖[d]\n"
+                + "|      8      [c]\n"
+                + "|𝄖𝄖𝄖𝄖𝄖𝄖7𝄖𝄖𝄖[b]\n"
+                + "|      6      [a]\n"
+                + "|𝄖𝄖𝄖𝄖𝄖𝄖5𝄖𝄖𝄖[g]\n"
+                + "|      4      [f]\n"
+                + "|𝄖𝄖𝄖𝄖𝄖𝄖3𝄖𝄖𝄖[e]\n"
+                + "|      2      [d]\n"
+                + "|        1     [c]").code()
+        })),
+        keyboard: () => new Keyboard({
+            layout: [[
+                backTo("convert")
+            ]]
+        })
+    },
     "songs": {
+        alt: ["saveSong", "savedSongs", "allSongs", "listSongs"],
         help: "Show list of all saved songs",
         emoji: "🎶",
         count: () => BOT.database.songs.list.length,
@@ -1493,11 +1567,11 @@ export const definitions: command.Definitions = {
             })
         }),
         keyboard: (active) => new Keyboard({
-            layout: BOT.database.songs.list.map<keyboard.Button[]>(song => [{
+            layout: BOT.database.songs.list.map<keyboard.Button[]>(song => [new Button({
                 callback_data: "showSong",
                 args: [song.name],
                 text: song.name
-            }]).concat([[{ callback_data: "settings", text: back }]])
+            })]).concat([[backTo("settings")]])
         }),
         inline: (active) => BOT.database.songs.list.map(song =>
             new Inline({
@@ -1522,14 +1596,14 @@ export const definitions: command.Definitions = {
             const found = BOT.database.songs.getByName(active.args[0]);
             let remove: keyboard.Button[] = [];
             if (found && found.user === active.user.id) {
-                remove = [{
+                remove = [new Button({
                     callback_data: "songs",
                     args: [active.args[0]],
                     text: "🗑️ Remove"
-                }]
+                })]
             };
             return new Keyboard({
-                layout: [remove, [{ callback_data: "songs", text: "< Songs" }]]
+                layout: [remove, [backTo("songs")]]
             })
         },
         inline: (active) => BOT.database.songs.list

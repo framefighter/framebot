@@ -9,9 +9,13 @@ export class Keyboard implements keyboard.Board {
     layout: keyboard.Button[][];
     add?: keyboard.Button[][];
 
-    constructor(keyboardConstructor: Readonly<keyboard.Constructor>) {
-        this.add = keyboardConstructor.add;
-        this.layout = keyboardConstructor.layout.concat(this.add || []);
+    constructor(keyboardConstructor?: Readonly<keyboard.Constructor>) {
+        if (keyboardConstructor) {
+            this.add = keyboardConstructor.add;
+            this.layout = keyboardConstructor.layout.concat(this.add || []);
+        } else {
+            this.layout = [[]]
+        }
     }
 
     buttonText(active: Active, cmd: Command): string {

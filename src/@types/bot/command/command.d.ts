@@ -33,13 +33,13 @@ declare namespace command {
         hidden: boolean;
         adminOnly: boolean;
         jsonKey?: keyof wf.Ws;
-        message: (active: active.Active) => message.Message;
-        inline: (active: active.Active) => message.Inline[];
-        keyboard: (active: active.Active) => keyboard.Board;
-        rewards: (active: active.Active) => message.Reward[];
-        action: (active: active.Active) => any;
-        name: (active: active.Active) => string;
-        count: (active: active.Active) => number;
+        message(active: active.Active): message.Message;
+        inline(active: active.Active): message.Inline[];
+        keyboard(active: active.Active): keyboard.Board;
+        rewards(active: active.Active): message.Reward[];
+        action(active: active.Active): any;
+        name(active: active.Active): string;
+        count(active: active.Active): number;
         privileged(user: user.From): boolean;
     }
 
