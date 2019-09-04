@@ -1165,7 +1165,7 @@ export const definitions: command.Definitions = {
                             layout: [[{
                                 callback_data: "time",
                                 args: args,
-                                text: "Save"
+                                text: "💾 Save"
                             }], [menuBtn(active)]]
                         })
                     }));
@@ -1196,7 +1196,7 @@ export const definitions: command.Definitions = {
                     layout: [[{
                         callback_data: "time",
                         args: active.args,
-                        text: "Save All"
+                        text: "💾 Save All"
                     }], [menuBtn(active)]]
                 })
             })
@@ -1468,7 +1468,8 @@ export const definitions: command.Definitions = {
                     parseInt(active.args[1]),
                     parseInt(active.args[2])
                 )
-                return converter.sharable
+                active.user.settings.convertedSong = converter.sharable
+                return active.user.settings.convertedSong
             }
         },
         message: (active) => {
@@ -1491,10 +1492,56 @@ export const definitions: command.Definitions = {
             })
         },
         keyboard: (active) => new Keyboard({
-            layout: [[
-                new Button(backTo("songs")), btn("convertInfo")
-            ]]
+            layout: [active.execute_return ? [new Button({
+                text: "Name and Save Song",
+                switch_inline_query_current_chat: "saveConverted "
+            })] : [],
+            [new Button(backTo("songs")), btn("convertInfo")]]
         })
+    },
+    "saveConverted": {
+        inline: (active) => {
+            const convertedSong = active.user.settings.convertedSong;
+            const name = active.args[0]
+            if (convertedSong && name) {
+                if (BOT.database.songs.exists(name)) {
+                    return [new Inline({
+                        title: "Song with this name already exists",
+                        description: name + "\nTry a different name!"
+                    })]
+                } else {
+                    return [new Inline({
+                        title: "Click here to select typed name!",
+                        description: "Clicking this will not save just yet!",
+                        text: Formatter.format({
+                            caption: "Save song with name " + name + "?",
+                            description: "This will make this song visible for everyone using this bot!"
+                        }),
+                        keyboard: new Keyboard({
+                            layout: [[new Button({
+                                callback_data: "songs",
+                                args: [name, convertedSong],
+                                text: "💾 Save"
+                            })],
+                            [new Button({
+                                callback_data: "convert",
+                                text: "❌ Cancel"
+                            })]]
+                        })
+                    })]
+                }
+            } else if (convertedSong && !name) {
+                return [new Inline({
+                    title: "Type name of song!",
+                    description: "Name must be unique!",
+                })]
+            } else {
+                return [new Inline({
+                    title: "No converted Song!",
+                    description: "Convert a song using /convert first"
+                })]
+            }
+        }
     },
     "convertInfo": {
         emoji: "🎼",

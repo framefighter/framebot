@@ -31,6 +31,7 @@ declare namespace user {
         arbitration: string[];
         filter: string[];
         menu: command.ID[][];
+        convertedSong: string;
     }
 
     interface AlertSettings {

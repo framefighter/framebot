@@ -14,6 +14,7 @@ export class User implements user.User {
             filter: [],
             menu: [],
             arbitration: [],
+            convertedSong: ""
         }
     }
     username?: string;
