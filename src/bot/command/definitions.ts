@@ -1471,6 +1471,7 @@ export const definitions: command.Definitions = {
 
     },
     "clearConfig": {
+        help: "Clear Menu Configuration",
         emoji: "❌",
         action: (active) => {
             active.user.settings.menu = []
@@ -1480,6 +1481,7 @@ export const definitions: command.Definitions = {
         keyboard: "config"
     },
     "convert": {
+        help: "Convert songs from a human readable format to a in-game usable sharable string",
         emoji: "🎛",
         action: (active) => {
             active.user.settings.convertedSong = ""
@@ -1545,6 +1547,7 @@ export const definitions: command.Definitions = {
         }
     },
     "saveConverted": {
+        help: "Save converted command to global songs database",
         inline: (active) => {
             const convertedSong = active.user.settings.convertedSong
             const name = active.args[0]
@@ -1589,6 +1592,7 @@ export const definitions: command.Definitions = {
         }
     },
     "convertInfo": {
+        help: "Show information about song conversion",
         emoji: "🎼",
         message: (active) => new Message({
             title: active.command.name(active),
