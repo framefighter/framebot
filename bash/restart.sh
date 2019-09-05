@@ -2,7 +2,6 @@
 echo "Pulling new git version"
 git pull -n
 git show --shortstat
-# BRAK ON ERROR
 set -e
 echo "Installing possible new npm modules"
 npm i
@@ -11,7 +10,6 @@ npm update
 echo "Compiling new typescript build"
 tsc
 set +e
-# DONT BREAK ON ERROR
 echo "Preparing to restart bot"
 echo "Killing sessions"
 tmux ls
