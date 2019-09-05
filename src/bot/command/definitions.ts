@@ -48,7 +48,9 @@ export const definitions: command.Definitions = {
             title: active.command.name(active),
             text: [Formatter.format({
                 caption: "Creator",
-                addCaption: "@ifyoureadthishaveagooddaysmile",
+                addCaption: BOT.database.users.list[0]
+                    ? "@" + BOT.database.users.list[0].username
+                    : "",
             }), Formatter.format({
                 caption: "Bot",
                 addCaption: "Source Code",
