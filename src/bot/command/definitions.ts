@@ -76,6 +76,15 @@ export const definitions: command.Definitions = {
                 description: mission.modifier,
             }))
     },
+    "sortieRewards": {
+        emoji: "⭐",
+        action: () => (BOT.info.places || [])
+            .find(drop => drop.place.toUpperCase().includes("SORTIES")),
+        message: (active) => new Message({
+            title: active.command.name(active),
+            text: Formatter.place(active.execute_return)
+        }),
+    },
     "fissures": {
         alt: ["fis"],
         help: "Get current Void Fissures",
@@ -1120,7 +1129,9 @@ export const definitions: command.Definitions = {
                                     ? sortie.boss
                                     : undefined,
                                 date: moment().unix(),
-                                stage: i + 1
+                                stage: i + 1,
+                                reward: Parse.sortieReward(
+                                    active.args[(sortie.variants || []).length])
                             }
                             BOT.database.times.add(time)
                             return time
@@ -1138,64 +1149,71 @@ export const definitions: command.Definitions = {
                 : active.user.admin ? "No Times to add!" : "Admin rights required!"
         }),
         inline: (active) => {
-            const missions = (idx(active, _ => _.ws.sortie.variants) || [])
+            const sortie = active.ws.sortie;
             const recorded: boolean[] = []
             const recs: Inline[] = []
-            missions.map((mission, i) => {
-                const { min, sec } = Parse.time(active.args[i])
-                const missionStr = " | "
-                    + "Stage: " + (i + 1) + ": "
-                    + mission.missionType
-                    + (Check.assassination(mission.missionType)
-                        ? idx(active, _ => " > " + _.ws.sortie.boss) || ""
-                        : "")
-                if (min || sec) {
-                    const rec: time.Record = {
-                        mission: mission.missionType,
-                        minutes: min || 0,
-                        seconds: sec || 0,
-                        boss: Check.assassination(mission.missionType)
-                            ? (idx(active, _ => _.ws.sortie.boss) || "")
-                            : undefined,
-                        date: moment().unix(),
-                        stage: i + 1
+            if (sortie) {
+                (sortie.variants || []).map((mission, i) => {
+                    const { min, sec } = Parse.time(active.args[i])
+                    const missionStr = " | "
+                        + "Stage: " + (i + 1) + ": "
+                        + mission.missionType
+                        + (Check.assassination(mission.missionType)
+                            ? idx(active, _ => " > " + _.ws.sortie.boss) || ""
+                            : "")
+                    if (min || sec) {
+                        const rec: time.Record = {
+                            mission: mission.missionType || "",
+                            minutes: min || 0,
+                            seconds: sec || 0,
+                            boss: Check.assassination(mission.missionType)
+                                ? (idx(active, _ => _.ws.sortie.boss) || "")
+                                : undefined,
+                            date: moment().unix(),
+                            stage: i + 1,
+                            reward: Parse.sortieReward(
+                                active.args[(sortie.variants || []).length])
+                        }
+                        const args: string[] = []
+                        args[i] = active.args[i]
+                        recs.push(new Inline({
+                            title: Formatter.clock(rec.seconds + rec.minutes * 60) + missionStr,
+                            description: (rec.reward
+                                ? "Reward: " + rec.reward
+                                : "")
+                                + "\nClick to save only this time!",
+                            text: Formatter.timeRecord(rec),
+                            keyboard: new Keyboard({
+                                layout: [[{
+                                    callback_data: "time",
+                                    args: args,
+                                    text: "💾 Save"
+                                }], [menuBtn(active)]]
+                            })
+                        }))
+                        recorded.push(true)
+                    } else {
+                        recs.push(new Inline({
+                            title: Formatter.clock() + missionStr,
+                            description: mission.modifier,
+                            text: `No Time for stage ${i + 1}!`,
+                            keyboard: new Keyboard({
+                                layout: [[{
+                                    switch_inline_query_current_chat: "time ",
+                                    text: "Go Again!"
+                                }]]
+                            })
+                        }))
+                        recorded.push(false)
                     }
-                    const args: string[] = []
-                    args[i] = active.args[i]
-                    recs.push(new Inline({
-                        title: Formatter.clock(rec.seconds + rec.minutes * 60) + missionStr,
-                        description: "Click to save only this time!",
-                        text: Formatter.timeRecord(rec),
-                        keyboard: new Keyboard({
-                            layout: [[{
-                                callback_data: "time",
-                                args: args,
-                                text: "💾 Save"
-                            }], [menuBtn(active)]]
-                        })
-                    }))
-                    recorded.push(true)
-                } else {
-                    recs.push(new Inline({
-                        title: Formatter.clock() + missionStr,
-                        description: mission.modifier,
-                        text: `No Time for stage ${i + 1}!`,
-                        keyboard: new Keyboard({
-                            layout: [[{
-                                switch_inline_query_current_chat: "time ",
-                                text: "Go Again!"
-                            }]]
-                        })
-                    }))
-                    recorded.push(false)
-                }
-            })
+                })
+            }
             const saveAll = new Inline({
                 title: "Save all times!",
                 description: "Click here to save all recorded times!",
                 text: Formatter.format({
                     caption: "Click below to Save these times to database!",
-                    text: recs.map(inl => inl.text).join("\n")
+                    text: recs.map(inl => inl.text).join("\n"),
                 }),
                 keyboard: new Keyboard({
                     layout: [[{

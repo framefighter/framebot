@@ -398,7 +398,7 @@ export class Formatter implements utils.Formatter {
         if (place) {
             return Formatter.format({
                 caption: Formatter.placeTitle(place),
-                list: place.group.slice(0, 5).map(Formatter.placeInfo)
+                list: place.group.map(Formatter.placeInfo)
             })
         } return "No Place found!"
     }
@@ -451,7 +451,10 @@ export class Formatter implements utils.Formatter {
             subCaption: "Avg: " + Formatter.clock(
                 BOT.database.times.missionInSeconds(
                     rec.mission, rec.boss)),
-            position: rec.stage
+            position: rec.stage,
+            list: rec.reward
+                ? ["Reward: " + rec.reward]
+                : []
         })
     }
 

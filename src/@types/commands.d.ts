@@ -51,4 +51,5 @@ declare namespace command {
         | "convert"
         | "convertInfo"
         | "saveConverted"
+        | "sortieRewards"
 }

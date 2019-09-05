@@ -6,6 +6,7 @@ declare namespace time {
         boss?: string
         date?: number
         stage?: number
+        reward?: string;
     }
 
     interface Avg {

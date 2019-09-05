@@ -31,7 +31,7 @@ export class Converter {
         "B": "i",
         "C": "k"
     }
-    maxLength: number = 64
+    charMax: number = 64
     speed: number
     scale: number
     pos: number
@@ -64,8 +64,8 @@ export class Converter {
     }
 
     posToString(pos: number): string {
-        const s2 = pos % this.maxLength
-        if (s2 > this.maxLength - 1) {
+        const s2 = pos % this.charMax
+        if (s2 > this.charMax - 1) {
             return ""
         }
         const s1 = (pos - s2) / 64

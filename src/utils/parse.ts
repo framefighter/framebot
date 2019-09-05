@@ -1,4 +1,5 @@
 import { BOT } from '..'
+import { Compare } from './compare'
 
 export class Parse implements utils.Parse {
     static time(raw: string): utils.Time {
@@ -23,5 +24,16 @@ export class Parse implements utils.Parse {
                 return BOT.info.baseUrl + entry.textureLocation.replace(/\\/g, "/")
             }
         }
+    }
+
+    static sortieReward(raw: string): string {
+        const rewards = (BOT.info.places || [])
+            .find(drop => drop.place.toUpperCase().includes("SORTIES"))
+        if (rewards) {
+            const closest = rewards.group.find((a) => Compare.loose(a.item, raw))
+            if (closest) {
+                return closest.item
+            }
+        } return ""
     }
 }
