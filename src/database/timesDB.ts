@@ -1,18 +1,18 @@
-import { Check } from '../utils/check';
-import { DB } from './db';
+import { Check } from '../utils/check'
+import { DB } from './db'
 
 export class TimesDB extends DB<time.Record[]> implements db.TimesDB {
     constructor(path: string) {
-        super(path, "times");
+        super(path, "times")
     }
 
     add(time: time.Record) {
-        this.db.push(`/${this.key}[]`, time);
+        this.db.push(`/${this.key}[]`, time)
     }
 
     get list(): time.Record[] {
         try {
-            return this.data();
+            return this.data()
         } catch (err) {
             return []
         }

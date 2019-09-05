@@ -1,14 +1,14 @@
-import { Song } from '../bot/song/song';
-import { DB } from './db';
+import { Song } from '../bot/song/song'
+import { DB } from './db'
 
 export class SongsDB extends DB<Song[]> implements db.SongsDB {
     constructor(path: string) {
-        super(path, "songs");
+        super(path, "songs")
     }
 
     get list(): Song[] {
         try {
-            return this.data();
+            return this.data()
         } catch (err) {
             return []
         }
@@ -16,9 +16,9 @@ export class SongsDB extends DB<Song[]> implements db.SongsDB {
 
     add(song: Song) {
         if (this.exists(song.name)) {
-            this.update(song);
+            this.update(song)
         } else {
-            this.db.push(`/${this.key}[]`, song);
+            this.db.push(`/${this.key}[]`, song)
         }
     }
 
@@ -33,7 +33,7 @@ export class SongsDB extends DB<Song[]> implements db.SongsDB {
     }
 
     update(song: Song): boolean {
-        const ind = this.data().findIndex(s => s.name === song.name);
+        const ind = this.data().findIndex(s => s.name === song.name)
         if (this.exists(song.name) && ind !== -1) {
             if (this.data()[ind].user === song.user) {
                 this.db.push(`/${this.key}[${ind}]`, song)
@@ -44,12 +44,12 @@ export class SongsDB extends DB<Song[]> implements db.SongsDB {
     }
 
     getByName(songname: string): song.Song | undefined {
-        return this.list.find(song => song.name === songname);
+        return this.list.find(song => song.name === songname)
     }
 
     exists(songname: string | number): boolean {
-        if (!songname) return false;
-        return this.list.findIndex(song => song.name === songname) !== -1;
+        if (!songname) return false
+        return this.list.findIndex(song => song.name === songname) !== -1
     }
 
 }

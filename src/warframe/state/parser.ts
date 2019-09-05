@@ -1,22 +1,22 @@
 import WorldState from "warframe-worldstate-parser"
-import { Check } from '../../utils/check';
-import idx from 'idx';
+import { Check } from '../../utils/check'
+import idx from 'idx'
 
 export class Parser {
     static state(state: any): wf.Ws {
         const parsed = new WorldState(JSON.stringify(state), {
             kuvaCache: { getData: (() => new Promise(() => { })) },
             locale: 'en',
-        });
+        })
         return parsed
     }
 
     static parse<T>(jsonStr: any): T {
         try {
             if (Check.string(jsonStr)) {
-                return JSON.parse(this.cleanJSON(jsonStr)) || {};
+                return JSON.parse(this.cleanJSON(jsonStr)) || {}
             } else {
-                return jsonStr || {};
+                return jsonStr || {}
             }
         } catch (error) {
             return {} as T
@@ -37,12 +37,12 @@ export class Parser {
                     arr.push({
                         item: drop.item,
                         group: [dropInfo]
-                    });
+                    })
                 } else {
                     arr[ind].group.push(dropInfo)
                 }
 
-                return arr;
+                return arr
             }, [])
     }
 
@@ -60,25 +60,25 @@ export class Parser {
                     arr.push({
                         place: drop.place.striptags(),
                         group: [dropInfo]
-                    });
+                    })
                 } else {
                     arr[ind].group.push(dropInfo)
                 }
 
-                return arr;
+                return arr
             }, [])
     }
 
     static cleanJSON(json: string): string {
-        return json.replace(/[\r\n]/g, "");
+        return json.replace(/[\r\n]/g, "")
     }
 
     static parseExtra(data: wf.extra.RawKuva[]) {
         const parsed: wf.ParsedExtra = {
             kuva: [],
             arbitration: {},
-        };
-        const now = new Date();
+        }
+        const now = new Date()
         data.forEach((mission) => {
             const p = {
                 activation: new Date(mission.start || ""),
@@ -86,25 +86,25 @@ export class Parser {
                 solnode: mission.solnode,
                 node: idx(mission, _ => `${_.solnodedata.tile} (${_.solnodedata.planet})`) || "",
                 ...mission.solnodedata,
-            };
-            p.activation.setMinutes(p.activation.getMinutes() + 5.1);
+            }
+            p.activation.setMinutes(p.activation.getMinutes() + 5.1)
             if (p.activation < now && now < p.expiry) {
                 if (mission.missiontype === 'EliteAlertMission') {
                     parsed.arbitration = {
                         ...p,
                         activation: mission.start,
                         expiry: mission.end
-                    };
+                    }
                 }
                 if (idx(mission, _ => _.missiontype.startsWith('KuvaMission'))) {
                     parsed.kuva.push({
                         ...p,
                         activation: mission.start,
                         expiry: mission.end
-                    });
+                    })
                 }
             }
-        });
-        return parsed;
+        })
+        return parsed
     }
 }

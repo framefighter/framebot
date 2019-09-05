@@ -1,18 +1,18 @@
-import { InlineKeyboardButton, InlineKeyboardMarkup } from 'node-telegram-bot-api';
-import { Compare } from '../../utils/compare';
-import { BOT } from '../..';
-import { Formatter } from '../../utils/formatter';
-import { Active } from '../active/active';
-import { Command } from '../command/command';
+import { InlineKeyboardButton, InlineKeyboardMarkup } from 'node-telegram-bot-api'
+import { Compare } from '../../utils/compare'
+import { BOT } from '../..'
+import { Formatter } from '../../utils/formatter'
+import { Active } from '../active/active'
+import { Command } from '../command/command'
 
 export class Keyboard implements keyboard.Board {
-    layout: keyboard.Button[][];
-    add?: keyboard.Button[][];
+    layout: keyboard.Button[][]
+    add?: keyboard.Button[][]
 
     constructor(keyboardConstructor?: Readonly<keyboard.Constructor>) {
         if (keyboardConstructor) {
-            this.add = keyboardConstructor.add;
-            this.layout = keyboardConstructor.layout.concat(this.add || []);
+            this.add = keyboardConstructor.add
+            this.layout = keyboardConstructor.layout.concat(this.add || [])
         } else {
             this.layout = [[]]
         }
@@ -26,24 +26,24 @@ export class Keyboard implements keyboard.Board {
     }
 
     toInline(active: Active): InlineKeyboardMarkup {
-        let inlineLayout: InlineKeyboardButton[][] = [];
+        let inlineLayout: InlineKeyboardButton[][] = []
         for (let row of this.layout) {
             let inlineRow: InlineKeyboardButton[] = []
             for (let btn of row) {
-                if (!btn) continue;
-                const cmd = BOT.commands.find(btn.callback_data || "none");
-                if (btn.callback_data && cmd && cmd.hidden && !btn.args) continue;
-                const selected = Compare.exact(btn.callback_data, active.command.id);
-                let name = Formatter.camelToString(btn.text) || "-";
+                if (!btn) continue
+                const cmd = BOT.commands.find(btn.callback_data || "none")
+                if (btn.callback_data && cmd && cmd.hidden && !btn.args) continue
+                const selected = Compare.exact(btn.callback_data, active.command.id)
+                let name = Formatter.camelToString(btn.text) || "-"
                 if (cmd && !btn.text) {
-                    if (selected && !btn.alwaysShow) continue;
-                    name = this.buttonText(active, cmd);
+                    if (selected && !btn.alwaysShow) continue
+                    name = this.buttonText(active, cmd)
                 }
-                const text = name;
-                let inlineBtn: InlineKeyboardButton;
+                const text = name
+                let inlineBtn: InlineKeyboardButton
                 if (btn.callback_data) {
                     if (btn.args && btn.args.length > 0) {
-                        const cbD = `/${btn.callback_data} ${btn.args.join(",")}`;
+                        const cbD = `/${btn.callback_data} ${btn.args.join(",")}`
                         inlineBtn = {
                             text,
                             callback_data: cbD
@@ -66,11 +66,11 @@ export class Keyboard implements keyboard.Board {
                         url: btn.url
                     }
                 } else {
-                    continue;
+                    continue
                 }
-                inlineRow.push(inlineBtn);
+                inlineRow.push(inlineBtn)
             }
-            inlineLayout.push(inlineRow);
+            inlineLayout.push(inlineRow)
         }
         return { inline_keyboard: inlineLayout }
     }

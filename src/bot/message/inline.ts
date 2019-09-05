@@ -1,30 +1,30 @@
-import { InlineQueryResultArticle, InlineKeyboardMarkup } from 'node-telegram-bot-api';
-import { BOT } from '../..';
-import { Message } from './message';
-import { Keyboard } from '../keyboard/keyboard';
-import { Generator } from '../../utils/generator';
-import { Active } from '../active/active';
+import { InlineQueryResultArticle, InlineKeyboardMarkup } from 'node-telegram-bot-api'
+import { BOT } from '../..'
+import { Message } from './message'
+import { Keyboard } from '../keyboard/keyboard'
+import { Generator } from '../../utils/generator'
+import { Active } from '../active/active'
 
 export class Inline implements message.Inline {
-    title: string;
-    showUser?: boolean;
-    description?: string;
-    thumb_url?: string;
-    keyboard?: keyboard.Board;
-    url?: string;
-    item?: string;
-    text?: string;
-    id: string;
+    title: string
+    showUser?: boolean
+    description?: string
+    thumb_url?: string
+    keyboard?: keyboard.Board
+    url?: string
+    item?: string
+    text?: string
+    id: string
 
     constructor(inlineConstructor: Readonly<message.InlineConstructor>) {
-        this.title = inlineConstructor.title;
-        this.text = inlineConstructor.text;
-        this.description = inlineConstructor.description;
-        this.thumb_url = inlineConstructor.thumb_url;
-        this.url = inlineConstructor.url;
-        this.keyboard = inlineConstructor.keyboard;
-        this.item = inlineConstructor.item;
-        this.id = Generator.ID();
+        this.title = inlineConstructor.title
+        this.text = inlineConstructor.text
+        this.description = inlineConstructor.description
+        this.thumb_url = inlineConstructor.thumb_url
+        this.url = inlineConstructor.url
+        this.keyboard = inlineConstructor.keyboard
+        this.item = inlineConstructor.item
+        this.id = Generator.ID()
     }
 
     toKeyboard(active: Active): InlineKeyboardMarkup {
@@ -62,6 +62,6 @@ export class Inline implements message.Inline {
             },
             reply_markup: this.toKeyboard(active)
         }
-        return res;
+        return res
     }
 }

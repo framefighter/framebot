@@ -9,7 +9,7 @@ declare namespace time {
     }
 
     interface Avg {
-        [key: string]: AvgTime;
+        [key: string]: AvgTime
     }
     interface AvgTime {
         mission: string,

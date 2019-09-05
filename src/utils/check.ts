@@ -1,14 +1,14 @@
-import { Compare } from './compare';
-import { definitions } from '../bot/command/definitions';
+import { Compare } from './compare'
+import { definitions } from '../bot/command/definitions'
 
 export class Check implements utils.Check {
     static string(any: any): any is string {
-        return typeof any === 'string' || any instanceof String;
+        return typeof any === 'string' || any instanceof String
     }
 
     static id(any: any): any is command.ID {
-        if (!any) return false;
-        const ids = Object.keys(definitions);
+        if (!any) return false
+        const ids = Object.keys(definitions)
         if (Check.string(any)) {
             return ids.includes(any)
         }
@@ -16,13 +16,13 @@ export class Check implements utils.Check {
     }
 
     static array(any: any): any is Array<any> {
-        return Array.isArray(any);
+        return Array.isArray(any)
     }
 
     static assassination(mission?: string): boolean {
         if (!mission) return false
         return mission.toUpperCase() === "ASSASSINATION"
-            || mission.toUpperCase() === "ASSASSINATE";
+            || mission.toUpperCase() === "ASSASSINATE"
     }
 
     static rewards(rewards: message.Reward[], items: string[]): message.Reward[] {

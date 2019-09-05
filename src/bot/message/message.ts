@@ -1,17 +1,17 @@
-import { Check } from '../../utils/check';
+import { Check } from '../../utils/check'
 
 export class Message implements message.Message {
-    title: string;
-    text: string;
-    showUser?: boolean;
+    title: string
+    text: string
+    showUser?: boolean
     constructor(messageConstructor: Readonly<message.Constructor | string>) {
         if (Check.string(messageConstructor)) {
-            this.title = "";
-            this.text = messageConstructor;
+            this.title = ""
+            this.text = messageConstructor
         } else {
-            this.title = messageConstructor.title;
-            this.text = messageConstructor.text;
-            this.showUser = messageConstructor.showUser;
+            this.title = messageConstructor.title
+            this.text = messageConstructor.text
+            this.showUser = messageConstructor.showUser
         }
     }
     toString(user?: user.User): string {
@@ -23,23 +23,23 @@ export class Message implements message.Message {
                 .nl().nl()
                 + (this.text || "").concat("⠀"))
             if (msg.length > 4096) {
-                const subS = msg.substr(0, 4090);
-                const rMsg = subS.split("").reverse().join("");
+                const subS = msg.substr(0, 4090)
+                const rMsg = subS.split("").reverse().join("")
                 for (let c of rMsg) {
                     const mc = ["*", "`", "_"]
-                    const fo = mc.indexOf(c);
+                    const fo = mc.indexOf(c)
                     if (fo !== -1) {
-                        const mcCount = (subS.split(mc[fo]).length - 1);
+                        const mcCount = (subS.split(mc[fo]).length - 1)
                         if (mcCount % 2 !== 0) {
-                            msg = subS + mc[fo] + "...";
+                            msg = subS + mc[fo] + "..."
                         } else {
-                            msg = subS + "...";
+                            msg = subS + "..."
                         }
-                        break;
+                        break
                     }
                 }
             }
-            return msg;
+            return msg
         } 
         return this.text || ""
     }

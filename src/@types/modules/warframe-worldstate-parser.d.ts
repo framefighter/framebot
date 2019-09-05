@@ -4,6 +4,6 @@ declare module "warframe-worldstate-parser" {
  * @param {Object} [deps] The options object
  */
     export default class WorldState implements wf.Ws {
-        constructor(json: string, deps?: any);
+        constructor(json: string, deps?: any)
     }
 }

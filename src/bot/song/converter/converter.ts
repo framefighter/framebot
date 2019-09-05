@@ -1,4 +1,4 @@
-import { Check } from '../../../utils/check';
+import { Check } from '../../../utils/check'
 
 /**
  * NOTES:
@@ -30,18 +30,18 @@ export class Converter {
         "A": "h",
         "B": "i",
         "C": "k"
-    };
-    maxLength: number = 64;
-    speed: number;
-    scale: number;
-    pos: number;
-    music: string;
+    }
+    maxLength: number = 64
+    speed: number
+    scale: number
+    pos: number
+    music: string
 
     constructor(music: string, scale?: number, speed?: number) {
         this.music = music
-        this.speed = speed || 3;
-        this.scale = Math.min(Math.abs(scale || 5), 8);
-        this.pos = 0;
+        this.speed = speed || 3
+        this.scale = Math.min(Math.abs(scale || 5), 8)
+        this.pos = 0
     }
 
     getNote(note: keyof song.Lookup): string {
@@ -68,46 +68,46 @@ export class Converter {
         if (s2 > this.maxLength - 1) {
             return ""
         }
-        const s1 = (pos - s2) / 64;
-        return this.toChar(s1) + this.toChar(s2);
+        const s1 = (pos - s2) / 64
+        return this.toChar(s1) + this.toChar(s2)
     }
 
     convertPos(): string {
         let res = "",
             note = "",
-            noteC = 0;
+            noteC = 0
 
         for (let c of this.music) {
-            if (c === "#" || c === "") break;
+            if (c === "#" || c === "") break
             if (c === "-") {
                 if (noteC > 0) {
-                    let i = this.getNote(note as keyof song.Lookup);
-                    res += i;
-                    note = "";
-                    noteC = 0;
+                    let i = this.getNote(note as keyof song.Lookup)
+                    res += i
+                    note = ""
+                    noteC = 0
                     res += this.posToString(this.pos)
                 }
-                this.pos += this.speed;
+                this.pos += this.speed
             } else if (c !== "|") {
-                note += c;
-                noteC++;
+                note += c
+                noteC++
             }
 
         }
         if (note !== "") {
-            res += this.getNote(note as keyof song.Lookup);
+            res += this.getNote(note as keyof song.Lookup)
             res += this.posToString(this.pos)
         }
 
-        return res;
+        return res
     }
 
     get sharable(): string {
-        let res: string = this.scale.toString();
+        let res: string = this.scale.toString()
         if (Check.string(this.music)) {
-            this.music.replace(/[\r\n]/g, "");
-            res += this.convertPos();
+            this.music.replace(/[\r\n]/g, "")
+            res += this.convertPos()
         }
-        return res;
+        return res
     }
 }

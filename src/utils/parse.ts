@@ -1,4 +1,4 @@
-import { BOT } from '..';
+import { BOT } from '..'
 
 export class Parse implements utils.Parse {
     static time(raw: string): utils.Time {
@@ -15,7 +15,7 @@ export class Parse implements utils.Parse {
     }
 
     static thumbUrl(uniqueName: string): string | undefined {
-        const manifest = BOT.info.manifest;
+        const manifest = BOT.info.manifest
         if (manifest && manifest.Manifest) {
             const entry = manifest.Manifest.find((entry: wf.searchable.ManifestEntity) =>
                 entry.uniqueName === uniqueName)

@@ -1,12 +1,12 @@
-import { Check } from './check';
-import { BOT } from '..';
-import moment from 'moment';
+import { Check } from './check'
+import { BOT } from '..'
+import moment from 'moment'
 import striptags from "striptags"
-import { Compare } from './compare';
+import { Compare } from './compare'
 
 export class Formatter implements utils.Formatter {
-    static MAX_WIDTH = 50;
-    static IDEAL_WIDTH = 40;
+    static MAX_WIDTH = 50
+    static IDEAL_WIDTH = 40
 
     static nightwave(challenge?: wf.ActiveChallenge): string {
         if (challenge) {
@@ -31,7 +31,7 @@ export class Formatter implements utils.Formatter {
         if (sortie && sortie.variants) {
             let avgT: number = 0
             const missions = sortie.variants.map((mission, i) => {
-                const time = BOT.database.times.missionInSeconds(mission.missionType, sortie.boss);
+                const time = BOT.database.times.missionInSeconds(mission.missionType, sortie.boss)
                 avgT += time
                 return Formatter.format({
                     caption: mission.node,
@@ -46,10 +46,10 @@ export class Formatter implements utils.Formatter {
                 })
             }
             ).join("\n")
-            const expiry = Formatter.end(sortie.expiry);
-            const sortieTime = Formatter.time(Formatter.clock(avgT));
-            const faction = Formatter.faction(sortie.faction);
-            return `${expiry}${sortieTime}\n${missions}\n${faction}`;
+            const expiry = Formatter.end(sortie.expiry)
+            const sortieTime = Formatter.time(Formatter.clock(avgT))
+            const faction = Formatter.faction(sortie.faction)
+            return `${expiry}${sortieTime}\n${missions}\n${faction}`
         }
         return "No Sortie found!"
     }
@@ -57,9 +57,9 @@ export class Formatter implements utils.Formatter {
     static sortieLevel(stage?: number): string {
         switch (stage) {
             case 1:
-                return "Level 50-60";
+                return "Level 50-60"
             case 2:
-                return "Level 65-80";
+                return "Level 65-80"
             case 3:
                 return "Level 80-100"
             default:
@@ -82,8 +82,8 @@ export class Formatter implements utils.Formatter {
     static invasion(invasion?: wf.Invasion): string {
         if (invasion) {
             if (invasion.completed) return ""
-            const completionAtt = (Math.round((invasion.completion || 0) * 10) / 10);
-            const completionDef = (Math.round((100 - (invasion.completion || 0)) * 10) / 10);
+            const completionAtt = (Math.round((invasion.completion || 0) * 10) / 10)
+            const completionDef = (Math.round((100 - (invasion.completion || 0)) * 10) / 10)
             const vs = `${invasion.attackingFaction} ${completionAtt}% | ${completionDef}% ${invasion.defendingFaction}`
             const rewards = Formatter.invasionRewards(invasion)
             return Formatter.format({
@@ -93,13 +93,13 @@ export class Formatter implements utils.Formatter {
                 start: invasion.activation,
                 time: (invasion.eta || "").toUpperCase().includes("INF") ? "" : invasion.eta,
                 list: rewards
-            });
+            })
         }
         return "Invasion not found!"
     }
 
     static invasionRewards(invasion?: wf.Invasion): string[] {
-        if (!invasion) return [];
+        if (!invasion) return []
         return [
             (invasion.attackerReward ? invasion.attackerReward.asString : ""),
             (invasion.defenderReward ? invasion.defenderReward.asString : "")
@@ -171,7 +171,7 @@ export class Formatter implements utils.Formatter {
     }
 
     static timesString(args?: string[]): string {
-        const filter = args || [];
+        const filter = args || []
         const avg_times = BOT.database.times.avg()
         const total_avg_sec = Object.keys(avg_times).reduce((a, t) =>
             a += avg_times[t].seconds, 0) / Object.keys(avg_times).length
@@ -296,12 +296,12 @@ export class Formatter implements utils.Formatter {
 
     static camelToString(str?: string): string {
         if (str) {
-            return str.split(/(?=[A-Z])/g).join(" ").capitalize();
+            return str.split(/(?=[A-Z])/g).join(" ").capitalize()
         } return ""
     }
 
     static warframe(warframe?: wf.searchable.ExportWarframesEntity): string {
-        if (!warframe) return "Warframe not found!";
+        if (!warframe) return "Warframe not found!"
         return Formatter.format({
             caption: Formatter.warframeTitle(warframe),
             text: warframe.health.toString().code().start("Health:".bold()).nl()
@@ -321,7 +321,7 @@ export class Formatter implements utils.Formatter {
     }
 
     static sentinel(sentinel?: wf.searchable.ExportSentinelsEntity): string {
-        if (!sentinel) return "Sentinel not found!";
+        if (!sentinel) return "Sentinel not found!"
         return Formatter.format({
             caption: Formatter.sentinelTitle(sentinel),
             description: sentinel.description || "",
@@ -333,7 +333,7 @@ export class Formatter implements utils.Formatter {
     }
 
     static mod(mod?: wf.searchable.ExportUpgradesEntity): string {
-        if (!mod) return "Mod not found!";
+        if (!mod) return "Mod not found!"
         return Formatter.format({
             caption: Formatter.modTitle(mod),
             subCaption: (mod.description || []).join("\n"),
@@ -472,7 +472,7 @@ export class Formatter implements utils.Formatter {
             time: format.time || "",
             link: format.link || {},
             text: format.text || "",
-        };
+        }
 
         return this.position(fixed.position)
             + this.caption(fixed.caption).space().concat(fixed.addCaption).nl()
@@ -491,15 +491,15 @@ export class Formatter implements utils.Formatter {
     }
 
     static link(link?: { url?: string, text?: string }): string {
-        if (!link) return "";
+        if (!link) return ""
         return (link.text || "").link(link.url).indent(6).nl()
     }
 
     static clock(seconds?: number): string {
-        if (seconds === undefined) return "--m --s";
+        if (seconds === undefined) return "--m --s"
         const v = seconds > 0 ? "" : "-"
-        const min = Math.floor(Math.abs(seconds) / 60);
-        const sec = Math.round(Math.abs(seconds) - Math.floor(min) * 60);
+        const min = Math.floor(Math.abs(seconds) / 60)
+        const sec = Math.round(Math.abs(seconds) - Math.floor(min) * 60)
         if (min) {
             return `${v}${min}m ${sec}s`
         } else if (sec) {
@@ -509,31 +509,31 @@ export class Formatter implements utils.Formatter {
     }
 
     static position(position?: string | number): string {
-        if (!position) return "";
+        if (!position) return ""
         return position
             .toString()
             .bold()
             .end(".")
-            .space();
+            .space()
     }
 
     static caption(caption?: string): string {
-        if (!caption) return "";
+        if (!caption) return ""
         return caption
-            .bold();
+            .bold()
     }
 
     static subCaption(subCaption?: string): string {
-        if (!subCaption) return "";
+        if (!subCaption) return ""
         return subCaption
             .clean()
             .limitWidth()
             .indent(6)
-            .nl();
+            .nl()
     }
 
     static description(description?: string): string {
-        if (!description) return "";
+        if (!description) return ""
         return description
             .limitWidth()
             .italics()
@@ -542,7 +542,7 @@ export class Formatter implements utils.Formatter {
     }
 
     static standing(standing?: string | number): string {
-        if (!standing) return "";
+        if (!standing) return ""
         return standing
             .toString()
             .code()
@@ -553,7 +553,7 @@ export class Formatter implements utils.Formatter {
 
 
     static chance(chance?: string | number): string {
-        if (!chance) return "";
+        if (!chance) return ""
         return chance
             .toString()
             .end("%")
@@ -562,7 +562,7 @@ export class Formatter implements utils.Formatter {
     }
 
     static faction(faction?: string): string {
-        if (!faction) return "";
+        if (!faction) return ""
         return faction
             .bold()
             .start("Faction:")
@@ -571,7 +571,7 @@ export class Formatter implements utils.Formatter {
     }
 
     static boss(boss?: string): string {
-        if (!boss) return "";
+        if (!boss) return ""
         return boss
             .bold()
             .start("Boss:")
@@ -580,7 +580,7 @@ export class Formatter implements utils.Formatter {
     }
 
     static time(time?: string | number): string {
-        if (!time) return "";
+        if (!time) return ""
         return time
             .toString()
             .start("[")
@@ -590,7 +590,7 @@ export class Formatter implements utils.Formatter {
     }
 
     static end(end?: string | number): string {
-        if (!end) return "";
+        if (!end) return ""
         return end
             .toString()
             .fromNow()
@@ -600,7 +600,7 @@ export class Formatter implements utils.Formatter {
     }
 
     static start(start?: string | number): string {
-        if (!start) return "";
+        if (!start) return ""
         return start
             .toString()
             .fromNow()
@@ -610,7 +610,7 @@ export class Formatter implements utils.Formatter {
     }
 
     static list(rs?: (string | undefined)[]): string {
-        if (!rs) return "";
+        if (!rs) return ""
         if (rs.clean().length === 0) return ""
         return rs
             .clean()
@@ -643,7 +643,7 @@ export class Formatter implements utils.Formatter {
 }
 
 String.prototype.capitalize = function (this: string) {
-    const str = this;
+    const str = this
     if (!str) return ""
     return str.split(" ").map(s =>
         s.charAt(0).toUpperCase().concat(
@@ -653,64 +653,64 @@ String.prototype.capitalize = function (this: string) {
 }
 
 String.prototype.italics = function (this: string) {
-    const str = this;
-    if (!str) return "";
+    const str = this
+    if (!str) return ""
     switch (BOT.defaults.parse_mode) {
         case "HTML":
-            return `<i>${str.clean()}</i>`;
+            return `<i>${str.clean()}</i>`
         case "Markdown":
         default:
-            return `_${str.clean()}_`;
+            return `_${str.clean()}_`
     }
 }
 
 String.prototype.code = function (this: string) {
-    const str = this;
-    if (!str) return "";
+    const str = this
+    if (!str) return ""
     switch (BOT.defaults.parse_mode) {
         case "HTML":
-            return `<code> ${str.clean()} </code>`;
+            return `<code> ${str.clean()} </code>`
         case "Markdown":
         default:
-            return `\`${str.clean()}\``;
+            return `\`${str.clean()}\``
     }
 }
 
 String.prototype.bold = function (this: string) {
-    const str = this;
-    if (!str) return "";
+    const str = this
+    if (!str) return ""
     switch (BOT.defaults.parse_mode) {
         case "HTML":
-            return `<b>${str.clean()}</b>`;
+            return `<b>${str.clean()}</b>`
         case "Markdown":
         default:
-            return `*${str.clean()}*`;
+            return `*${str.clean()}*`
     }
 }
 
 String.prototype.link = function (this: string, url?: string) {
-    const str = this;
-    if (!str) return "";
-    if (!url) return str;
+    const str = this
+    if (!str) return ""
+    if (!url) return str
     switch (BOT.defaults.parse_mode) {
         case "HTML":
-            return `<a href="${url}">${str.clean()}</a>`;
+            return `<a href="${url}">${str.clean()}</a>`
         case "Markdown":
         default:
-            return `[${str.clean()}](${url})`;
+            return `[${str.clean()}](${url})`
     }
 }
 
 String.prototype.clean = function (this: string) {
-    const str = this;
-    if (!str) return "";
+    const str = this
+    if (!str) return ""
     switch (BOT.defaults.parse_mode) {
         case "HTML":
             return str
                 .trim()
                 .replace(/</g, "˂")
                 .replace(/>/g, "˃")
-                .limitWidth();
+                .limitWidth()
         case "Markdown":
         default:
             return str
@@ -718,88 +718,88 @@ String.prototype.clean = function (this: string) {
                 .replace(/`/g, "'")
                 .replace(/_/g, "＿")
                 .trim()
-                .limitWidth();
+                .limitWidth()
     }
 }
 
 String.prototype.striptags = function (this: string) {
-    const str = this;
-    if (!str) return "";
+    const str = this
+    if (!str) return ""
     return striptags(str)
 }
 
 String.prototype.underline = function (this: string) {
-    const str = this;
-    if (!str) return "";
+    const str = this
+    if (!str) return ""
     return str.split("").map(c => c + "̲").join("")
 }
 
 String.prototype.limitWidth = function (this: string) {
-    const str = this;
-    if (!str) return "";
+    const str = this
+    if (!str) return ""
     return str
         .split("\n")
         .clean()
         .map(s => Formatter.cut(s))
         .flat()
-        .join("\n");
+        .join("\n")
 }
 
 String.prototype.alignRight = function (this: string) {
-    const str = this;
-    if (!str) return "";
-    return String.fromCharCode(0x061C) + str;
+    const str = this
+    if (!str) return ""
+    return String.fromCharCode(0x061C) + str
 }
 
 String.prototype.nl = function (this: string) {
-    const str = this;
-    if (!str) return "";
-    return str.concat("\n");
+    const str = this
+    if (!str) return ""
+    return str.concat("\n")
 }
 
 String.prototype.space = function (this: string) {
-    const str = this;
-    if (!str) return "";
-    return str.concat(" ");
+    const str = this
+    if (!str) return ""
+    return str.concat(" ")
 }
 
 String.prototype.indent = function (this: string, tabs?: number, start?: string) {
-    const str = this;
-    if (!str) return "";
+    const str = this
+    if (!str) return ""
 
     const s = str
         .split("\n")
     const c = s.clean()
     const m = c.map(s => (start || "") + "\t".repeat(tabs || 0) + s)
-    const f = m.join("\n");
+    const f = m.join("\n")
     return f
 }
 
 String.prototype.start = function (this: string, start?: string | number) {
-    const str = this;
-    if (!(str && start)) return "";
+    const str = this
+    if (!(str && start)) return ""
     return start.toString().trim().space().end(str.trim())
 }
 
 String.prototype.end = function (this: string, end?: string | number) {
-    const str = this;
-    if (!(str && end)) return "";
-    return str.trim().space().concat(end.toString().trim());
+    const str = this
+    if (!(str && end)) return ""
+    return str.trim().space().concat(end.toString().trim())
 }
 
 
 String.prototype.fromNow = function (this: string) {
-    const str = this;
-    if (!str) return "";
+    const str = this
+    if (!str) return ""
     return moment(new Date(str)).fromNow()
 }
 
 Array.prototype.diff = function (arr: any[]) {
-    return this.filter(function (i) { return arr.indexOf(i) < 0; });
-};
+    return this.filter(function (i) { return arr.indexOf(i) < 0 })
+}
 
 Array.prototype.clean = function () {
     return this.filter(e => Check.array(e)
         ? Boolean(e.length)
-        : Boolean(e));
+        : Boolean(e))
 }

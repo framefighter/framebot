@@ -1,57 +1,57 @@
 declare namespace utils {
     interface Config {
-        token: string;
-        password: string;
+        token: string
+        password: string
     }
     class Command {
-        command: command.Command;
-        matches?: command.Command[];
-        args: string[];
+        command: command.Command
+        matches?: command.Command[]
+        args: string[]
     }
 
     interface Time {
-        min: number;
-        sec: number;
+        min: number
+        sec: number
     }
 
     interface Format {
-        position: number | string;
-        caption: string;
-        addCaption: string;
-        subCaption: string;
-        description: string;
-        standing: number | string;
-        list: (string | undefined)[];
-        chance: number | string;
-        time: string | number;
-        faction: string;
-        boss: string;
-        start: string | number;
-        end: string | number;
-        link: { url?: string, text?: string };
-        text: string;
+        position: number | string
+        caption: string
+        addCaption: string
+        subCaption: string
+        description: string
+        standing: number | string
+        list: (string | undefined)[]
+        chance: number | string
+        time: string | number
+        faction: string
+        boss: string
+        start: string | number
+        end: string | number
+        link: { url?: string, text?: string }
+        text: string
     }
     class Check {
-        static string(any: any): any is string;
-        static array(any: any): any is Array<any>;
-        static assassination(mission?: string): boolean;
-        static rewards(rewards: message.Reward[], items: string[]): message.Reward[];
+        static string(any: any): any is string
+        static array(any: any): any is Array<any>
+        static assassination(mission?: string): boolean
+        static rewards(rewards: message.Reward[], items: string[]): message.Reward[]
     }
 
     class Compare {
-        static loose(a: any, b: any): boolean;
-        static exact(a: any, b: any): boolean;
-        static compare(a: any, b: any, comparator: (a: string, b: string) => boolean): boolean;
-        static includes(a: string, b: string): boolean;
+        static loose(a: any, b: any): boolean
+        static exact(a: any, b: any): boolean
+        static compare(a: any, b: any, comparator: (a: string, b: string) => boolean): boolean
+        static includes(a: string, b: string): boolean
     }
 
     class Formatter {
-        static MAX_WIDTH: number;
-        static IDEAL_WIDTH: number;
-        static nightwave(challenge?: wf.ActiveChallenge): string;
-        static nightwaveType(challenge?: wf.ActiveChallenge): string;
-        static sortie(sortie?: wf.Sortie): string;
-        static sortieLevel(stage?: number): string;
+        static MAX_WIDTH: number
+        static IDEAL_WIDTH: number
+        static nightwave(challenge?: wf.ActiveChallenge): string
+        static nightwaveType(challenge?: wf.ActiveChallenge): string
+        static sortie(sortie?: wf.Sortie): string
+        static sortieLevel(stage?: number): string
         static fissure(fissure?: wf.Fissure): string
         static invasion(invasion?: wf.Invasion): string
         static invasionRewards(invasion?: wf.Invasion): string[]
@@ -63,7 +63,7 @@ declare namespace utils {
         static sortieTime(average: time.AvgTime): string
         static trader(trader?: wf.VoidTrader): string
         static weapon(weapon?: wf.searchable.ExportWeaponsEntity): string
-        static dmgTypes(dmgTypes: number[]): string[];
+        static dmgTypes(dmgTypes: number[]): string[]
         static camelToString(str?: string): string
         static warframe(warframe?: wf.searchable.ExportWarframesEntity): string
         static sentinel(sentinel?: wf.searchable.ExportSentinelsEntity): string
@@ -82,7 +82,7 @@ declare namespace utils {
         static dropTitle(drop: wf.searchable.GroupedDrop): string
         static placeTitle(drop: wf.searchable.GroupedPlace): string
         static format(format: Partial<utils.Format>): string
-        static link(link?: string): string;
+        static link(link?: string): string
         static clock(seconds?: number): string
         static position(position?: string | number): string
         static caption(caption?: string): string
@@ -100,11 +100,11 @@ declare namespace utils {
     }
 
     class Generator {
-        static ID(): string;
+        static ID(): string
     }
 
     class Parse {
-        static time(raw: string): utils.Time;
-        static thumbUrl(uniqueName: string): string | undefined;
+        static time(raw: string): utils.Time
+        static thumbUrl(uniqueName: string): string | undefined
     }
 }

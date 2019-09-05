@@ -1,18 +1,18 @@
-import idx from 'idx';
-import { BOT } from '../..';
-import { Compare } from '../../utils/compare';
-import { Formatter } from '../../utils/formatter';
-import { Inline } from '../message/inline';
-import { Message } from '../message/message';
-import { Keyboard } from '../keyboard/keyboard';
-import { Parse } from '../../utils/parse';
-import { spawn } from 'child_process';
-import moment from 'moment';
-import { Check } from '../../utils/check';
-import { CONFIG } from '../../utils/config';
-import { Active } from '../active/active';
-import { Button } from '../keyboard/button';
-import { Converter } from '../song/converter/converter';
+import idx from 'idx'
+import { BOT } from '../..'
+import { Compare } from '../../utils/compare'
+import { Formatter } from '../../utils/formatter'
+import { Inline } from '../message/inline'
+import { Message } from '../message/message'
+import { Keyboard } from '../keyboard/keyboard'
+import { Parse } from '../../utils/parse'
+import { spawn } from 'child_process'
+import moment from 'moment'
+import { Check } from '../../utils/check'
+import { CONFIG } from '../../utils/config'
+import { Active } from '../active/active'
+import { Button } from '../keyboard/button'
+import { Converter } from '../song/converter/converter'
 
 export const back = "< Back"
 
@@ -169,7 +169,7 @@ export const definitions: command.Definitions = {
                 .sort((a, b) => Compare.dates(a.date, b.date))
                 .filter(n =>
                     Object.keys(n.translations || {})
-                        .includes("en"));
+                        .includes("en"))
             if (englishNews.length > 0) {
                 return new Message({
                     title: active.command.name(active),
@@ -177,7 +177,7 @@ export const definitions: command.Definitions = {
                         .map(Formatter.newsEvent)
                         .clean()
                         .join("\n")
-                });
+                })
             }
             return new Message("")
         },
@@ -215,7 +215,7 @@ export const definitions: command.Definitions = {
                 .sort((a, b) => Compare.dates(a.date, b.date))
                 .filter(n =>
                     Object.keys(n.translations || {})
-                        .includes("en") && n.update);
+                        .includes("en") && n.update)
             if (englishNews.length > 0) {
                 return new Message({
                     title: active.command.name(active),
@@ -223,7 +223,7 @@ export const definitions: command.Definitions = {
                         .map(Formatter.newsEvent)
                         .clean()
                         .join("\n")
-                });
+                })
             }
             return new Message("")
         },
@@ -413,12 +413,12 @@ export const definitions: command.Definitions = {
         emoji: "🌄",
         help: "Get All day/night cycle information",
         message: (active) => {
-            const cetus = BOT.commands.fromID("cetus");
-            const vallis = BOT.commands.fromID("vallis");
-            const earth = BOT.commands.fromID("earth");
-            const cetusMSg = cetus.message(active).text;
-            const vallisMSg = vallis.message(active).text;
-            const earthMSg = earth.message(active).text;
+            const cetus = BOT.commands.fromID("cetus")
+            const vallis = BOT.commands.fromID("vallis")
+            const earth = BOT.commands.fromID("earth")
+            const cetusMSg = cetus.message(active).text
+            const vallisMSg = vallis.message(active).text
+            const earthMSg = earth.message(active).text
             return new Message({
                 title: active.command.name(active),
                 text: (cetusMSg || "").nl()
@@ -534,7 +534,7 @@ export const definitions: command.Definitions = {
                 if (active.user.settings.filter.includes(arg)) {
                     return false
                 } else {
-                    active.user.settings.filter.push(arg);
+                    active.user.settings.filter.push(arg)
                     return true
                 }
             }),
@@ -629,10 +629,10 @@ export const definitions: command.Definitions = {
             .filter(c => active.user.settings.alert[c.id])
             .length,
         action: (active) => {
-            const id = active.args[0];
+            const id = active.args[0]
             if (id) {
-                active.user.settings.alert[id] = !active.user.settings.alert[id];
-                return active.user.settings.alert[id];
+                active.user.settings.alert[id] = !active.user.settings.alert[id]
+                return active.user.settings.alert[id]
             }
         },
         message: () => new Message({
@@ -647,7 +647,7 @@ export const definitions: command.Definitions = {
                 [{ callback_data: "allAlertsSettingsOn", alwaysShow: true },
                 { callback_data: "allAlertsSettingsOff", alwaysShow: true }],
                 ...BOT.commands.list.filter(c => c.jsonKey).map<keyboard.Button[]>(cmd => {
-                    const toggleBtn = btn(cmd.id);
+                    const toggleBtn = btn(cmd.id)
                     return active.user.settings.alert[cmd.id]
                         ? [toggleBtn, new Button({
                             callback_data: "alertSettings",
@@ -701,7 +701,7 @@ export const definitions: command.Definitions = {
                         active.user.settings.arbitration.filter(item => item !== arg)
                     return "Removed " + arg.clean()
                 } else {
-                    active.user.settings.arbitration.push(arg);
+                    active.user.settings.arbitration.push(arg)
                     return "Added " + arg.clean()
                 }
             }),
@@ -738,7 +738,7 @@ export const definitions: command.Definitions = {
             .filter(key => active.args.length > 0
                 ? Compare.loose(key, active.args) : true)
             .map(key => {
-                const avg = BOT.database.times.avg()[key];
+                const avg = BOT.database.times.avg()[key]
                 return new Inline({
                     title: avg.mission,
                     description: Formatter.clock(avg.seconds)
@@ -1069,15 +1069,15 @@ export const definitions: command.Definitions = {
         help: "[PASSWORD PROTECTED] Make user to admin",
         emoji: "🔒",
         action: (active) => {
-            const password = active.args[0];
-            const username = active.args[1];
+            const password = active.args[0]
+            const username = active.args[1]
             if (password && username) {
                 if (password === CONFIG.password) {
                     const userFromDB = BOT.database.users.getByName(username)
                     if (userFromDB) {
                         if (!userFromDB.admin) {
-                            userFromDB.admin = true;
-                            BOT.database.users.update(userFromDB);
+                            userFromDB.admin = true
+                            BOT.database.users.update(userFromDB)
                             return `${username} is now an admin!`
                         } else {
                             return `${username} already is an admin!`
@@ -1103,7 +1103,7 @@ export const definitions: command.Definitions = {
         adminOnly: true,
         emoji: "⏱",
         action: (active) => {
-            const sortie = active.ws.sortie;
+            const sortie = active.ws.sortie
             if (sortie) {
                 return (sortie.variants || []).map((mission, i) => {
                     if (mission.missionType) {
@@ -1119,8 +1119,8 @@ export const definitions: command.Definitions = {
                                 date: moment().unix(),
                                 stage: i + 1
                             }
-                            BOT.database.times.add(time);
-                            return time;
+                            BOT.database.times.add(time)
+                            return time
                         }
                     }
                 }).clean()
@@ -1135,7 +1135,7 @@ export const definitions: command.Definitions = {
                 : active.user.admin ? "No Times to add!" : "Admin rights required!"
         }),
         inline: (active) => {
-            const missions = (idx(active, _ => _.ws.sortie.variants) || []);
+            const missions = (idx(active, _ => _.ws.sortie.variants) || [])
             const recorded: boolean[] = []
             const recs: Inline[] = []
             missions.map((mission, i) => {
@@ -1145,7 +1145,7 @@ export const definitions: command.Definitions = {
                     + mission.missionType
                     + (Check.assassination(mission.missionType)
                         ? idx(active, _ => " > " + _.ws.sortie.boss) || ""
-                        : "");
+                        : "")
                 if (min || sec) {
                     const rec: time.Record = {
                         mission: mission.missionType,
@@ -1170,7 +1170,7 @@ export const definitions: command.Definitions = {
                                 text: "💾 Save"
                             }], [menuBtn(active)]]
                         })
-                    }));
+                    }))
                     recorded.push(true)
                 } else {
                     recs.push(new Inline({
@@ -1183,7 +1183,7 @@ export const definitions: command.Definitions = {
                                 text: "Go Again!"
                             }]]
                         })
-                    }));
+                    }))
                     recorded.push(false)
                 }
             })
@@ -1205,7 +1205,7 @@ export const definitions: command.Definitions = {
             if (recorded.every(r => r)) {
                 recs.push(saveAll)
             }
-            return recs;
+            return recs
         }
     },
     "restart": {
@@ -1215,11 +1215,11 @@ export const definitions: command.Definitions = {
         action: (active) => {
             const re = spawn(
                 `bash bash/restart.sh`,
-                { shell: true });
-            re.stdout.on("data", o => active.send(`ℹ️ INFO`.bold().nl() + `${o}`.code()));
-            re.stderr.on("data", o => active.send(`⚠️ WARNING`.bold().nl() + `${o}`.code()));
+                { shell: true })
+            re.stdout.on("data", o => active.send(`ℹ️ INFO`.bold().nl() + `${o}`.code()))
+            re.stderr.on("data", o => active.send(`⚠️ WARNING`.bold().nl() + `${o}`.code()))
             re.on("exit", () =>
-                active.send(`Finished Restarting Session!\nStarting Bot (Only takes a few seconds)`));
+                active.send(`Finished Restarting Session!\nStarting Bot (Only takes a few seconds)`))
         },
         message: (active) => new Message({
             title: active.command.name(active),
@@ -1284,21 +1284,21 @@ export const definitions: command.Definitions = {
                 .map(cmd => cmd.id).join(", /")
         }),
         keyboard: (active) => {
-            const cmd_s = BOT.commands.list;
-            const layout: keyboard.Button[][] = [];
-            const width = 3;
+            const cmd_s = BOT.commands.list
+            const layout: keyboard.Button[][] = []
+            const width = 3
             for (let cmd of cmd_s) {
                 if (cmd.privileged(active.user.from)) {
                     const last = layout.pop()
-                    const curr = btn(cmd.id);
+                    const curr = btn(cmd.id)
                     if (!last) {
-                        layout.push([curr]);
+                        layout.push([curr])
                     } else if (last.length === width) {
-                        layout.push(last);
-                        layout.push([curr]);
+                        layout.push(last)
+                        layout.push([curr])
                     } else if (last.length < width) {
-                        last.push(curr);
-                        layout.push(last);
+                        last.push(curr)
+                        layout.push(last)
                     }
                 }
             }
@@ -1337,7 +1337,7 @@ export const definitions: command.Definitions = {
         action: (active) => {
             let retStr: string[] = []
             if (active.args.length === 1) {
-                const config = active.args[0];
+                const config = active.args[0]
                 active.user.settings.menu = active.user.settings.menu.map(row =>
                     row.map(btn => {
                         if (btn === "none") {
@@ -1407,13 +1407,13 @@ export const definitions: command.Definitions = {
         emoji: "🆔",
         alt: ["select"],
         action: (active) => {
-            const args = active.args;
+            const args = active.args
             if (args.length === 2) {
-                const x = parseInt(args[0]);
-                const y = parseInt(args[1]);
+                const x = parseInt(args[0])
+                const y = parseInt(args[1])
                 for (let i = 0; i <= x; i++) {
                     if (!active.user.settings.menu[i]) {
-                        active.user.settings.menu[i] = [];
+                        active.user.settings.menu[i] = []
                     }
                 }
                 active.user.settings.menu[x][y] = "none"
@@ -1425,9 +1425,9 @@ export const definitions: command.Definitions = {
             text: "Select Button to add to row " + (parseInt(active.args[0]) + 1),
         }),
         keyboard: (active) => {
-            let cmd_s = BOT.commands.list;
+            let cmd_s = BOT.commands.list
             let layout: keyboard.Button[][] = []
-            const width = 3;
+            const width = 3
             for (let cmd of cmd_s) {
                 if (cmd.privileged(active.user.from) && cmd.id !== "none") {
                     const last = layout.pop()
@@ -1435,15 +1435,15 @@ export const definitions: command.Definitions = {
                         callback_data: "config",
                         args: [cmd.id],
                         text: cmd.id
-                    });
+                    })
                     if (!last) {
-                        layout.push([curr]);
+                        layout.push([curr])
                     } else if (last.length === width) {
-                        layout.push(last);
-                        layout.push([curr]);
+                        layout.push(last)
+                        layout.push([curr])
                     } else if (last.length < width) {
-                        last.push(curr);
-                        layout.push(last);
+                        last.push(curr)
+                        layout.push(last)
                     }
                 }
             }
@@ -1506,7 +1506,7 @@ export const definitions: command.Definitions = {
             const scale = parseInt(active.args[1])
             const speed = parseInt(active.args[2])
             if (song) {
-                const converted = new Converter(song, scale, speed).sharable;
+                const converted = new Converter(song, scale, speed).sharable
                 active.user.settings.convertedSong = converted
                 return [new Inline({
                     title: "Click to show full conversion!",
@@ -1528,7 +1528,7 @@ export const definitions: command.Definitions = {
     },
     "saveConverted": {
         inline: (active) => {
-            const convertedSong = active.user.settings.convertedSong;
+            const convertedSong = active.user.settings.convertedSong
             const name = active.args[0]
             if (convertedSong && name) {
                 if (BOT.database.songs.exists(name)) {
@@ -1618,9 +1618,9 @@ export const definitions: command.Definitions = {
         emoji: "🎶",
         count: () => BOT.database.songs.list.length,
         action: (active) => {
-            const args = active.args;
+            const args = active.args
             if (args[0] && args[0].length > 20) return "Song name to long!"
-            const songs = BOT.database.songs.list;
+            const songs = BOT.database.songs.list
             const found = songs.map(s => s.name).indexOf(args[0])
             const song = {
                 name: args[0],
@@ -1634,14 +1634,14 @@ export const definitions: command.Definitions = {
                             ...song,
                             string: active.user.settings.convertedSong
                         })
-                        active.user.settings.convertedSong = "";
+                        active.user.settings.convertedSong = ""
                         return `Saved converted song with name ${song.name}`
                     } else {
                         return "Cannot save song, convert a song first!"
                     }
                 } else {
                     if (found !== -1) {
-                        const updated = BOT.database.songs.update(song);
+                        const updated = BOT.database.songs.update(song)
                         if (updated) {
                             return `Song (${song.name}) already exists, updated string!`
                         } else {
@@ -1696,15 +1696,15 @@ export const definitions: command.Definitions = {
             })
         },
         keyboard: (active) => {
-            const found = BOT.database.songs.getByName(active.args[0]);
-            let remove: keyboard.Button[] = [];
+            const found = BOT.database.songs.getByName(active.args[0])
+            let remove: keyboard.Button[] = []
             if (found && found.user === active.user.id) {
                 remove = [new Button({
                     callback_data: "songs",
                     args: [active.args[0]],
                     text: "🗑️ Remove"
                 })]
-            };
+            }
             return new Keyboard({
                 layout: [remove, [backTo("songs")]]
             })

@@ -10,7 +10,7 @@ declare namespace wf {
     }
 
     interface ParsedExtra {
-        kuva: wf.extra.Arbitration[];
-        arbitration: wf.extra.Arbitration;
+        kuva: wf.extra.Arbitration[]
+        arbitration: wf.extra.Arbitration
     }
 }

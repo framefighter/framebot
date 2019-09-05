@@ -1,41 +1,41 @@
-import { InlineKeyboardMarkup, InlineQuery, InlineQueryResult, Message } from 'node-telegram-bot-api';
-import { BOT } from '../..';
-import { Generator } from '../../utils/generator';
-import { User } from '../user/user';
+import { InlineKeyboardMarkup, InlineQuery, InlineQueryResult, Message } from 'node-telegram-bot-api'
+import { BOT } from '../..'
+import { Generator } from '../../utils/generator'
+import { User } from '../user/user'
 
 export class Active implements active.Active {
-    user: User;
-    chatID: number | string;
-    execute_return?: any;
-    command: command.Command;
-    matches?: command.Command[];
-    args: string[];
-    ws: wf.Ws;
-    inline: InlineQueryResult[];
-    message: string;
-    keyboard: InlineKeyboardMarkup;
-    executed: boolean;
+    user: User
+    chatID: number | string
+    execute_return?: any
+    command: command.Command
+    matches?: command.Command[]
+    args: string[]
+    ws: wf.Ws
+    inline: InlineQueryResult[]
+    message: string
+    keyboard: InlineKeyboardMarkup
+    executed: boolean
 
     constructor(activeConstructor: Readonly<active.Constructor>) {
-        this.user = activeConstructor.user;
-        this.command = activeConstructor.command;
-        this.args = activeConstructor.args;
-        this.chatID = activeConstructor.chatID;
-        this.ws = BOT.ws;
-        this.executed = false;
-        this.inline = this.command.inline(this).map(result => result.toInline(this));
-        this.message = this.command.message(this).toString(this.user);
-        this.keyboard = this.command.keyboard(this).toInline(this);
+        this.user = activeConstructor.user
+        this.command = activeConstructor.command
+        this.args = activeConstructor.args
+        this.chatID = activeConstructor.chatID
+        this.ws = BOT.ws
+        this.executed = false
+        this.inline = this.command.inline(this).map(result => result.toInline(this))
+        this.message = this.command.message(this).toString(this.user)
+        this.keyboard = this.command.keyboard(this).toInline(this)
     }
 
     updateText() {
-        this.inline = this.command.inline(this).map(result => result.toInline(this));
-        this.message = this.command.message(this).toString(this.user);
-        this.keyboard = this.command.keyboard(this).toInline(this);
+        this.inline = this.command.inline(this).map(result => result.toInline(this))
+        this.message = this.command.message(this).toString(this.user)
+        this.keyboard = this.command.keyboard(this).toInline(this)
     }
 
     send(msg?: string) {
-        const message = msg || this.message;
+        const message = msg || this.message
 
         const onErr = (err: any) => { console.warn(err) }
 
@@ -47,12 +47,12 @@ export class Active implements active.Active {
                     parse_mode: BOT.defaults.parse_mode,
                     reply_markup: this.keyboard,
                 }
-            ).catch(onErr);
+            ).catch(onErr)
         }
     }
 
     edit(IDs: active.IDs, msg?: string) {
-        const message = msg || this.message;
+        const message = msg || this.message
 
         const onErr = (err: any) => { console.warn(err) }
         let options = {}
@@ -75,9 +75,9 @@ export class Active implements active.Active {
                 options = {
                     parse_mode: BOT.defaults.parse_mode,
                     reply_markup: this.keyboard,
-                };
+                }
             }
-            BOT.api.editMessageText(message, options).catch(onErr);
+            BOT.api.editMessageText(message, options).catch(onErr)
         } else if (this.keyboard) {
             if (this.chatID && IDs.msgID) {
                 BOT.api.editMessageReplyMarkup(this.keyboard, {
@@ -95,8 +95,8 @@ export class Active implements active.Active {
     execute() {
         if (this.command.action && !this.executed) {
             if (this.command.privileged(this.user.from)) {
-                this.executed = true;
-                this.execute_return = this.command.action(this);
+                this.executed = true
+                this.execute_return = this.command.action(this)
                 this.updateText()
             }
         }

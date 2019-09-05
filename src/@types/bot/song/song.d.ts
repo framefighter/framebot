@@ -1,27 +1,27 @@
 declare namespace song {
     interface Constructor {
-        name: string;
-        string: string;
-        user: user.User["id"];
+        name: string
+        string: string
+        user: user.User["id"]
     }
     class Song implements Constructor {
-        name: string;
-        string: string;
-        user: number;
+        name: string
+        string: string
+        user: number
     }
 
     interface Music {
-        name: string;
-        events: Array<Event>;
-        interpretation: Interpretation;
+        name: string
+        events: Array<Event>
+        interpretation: Interpretation
     }
 
     type Event = [number, string, number | string, number | string, number]
 
     interface Interpretation {
-        time_signature: string;
-        key: string;
-        transpose: number;
+        time_signature: string
+        key: string
+        transpose: number
     }
 
     interface Lookup {
