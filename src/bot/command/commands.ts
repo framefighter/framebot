@@ -8,7 +8,7 @@ export class Commands implements command.Commands {
     ids: command.ID[]
     list: command.Command[]
     constructor() {
-        let commands = Object.keys(definitions).map((key) =>this.fromID(key as command.ID))
+        let commands = Object.keys(definitions).map((key) => this.fromID(key as command.ID))
         this.list = commands.sort((a, b) => Compare.alphabet(a.id, b.id))
         this.ids = commands.map(cmd => cmd.id)
         this.triggers = Array.from(new Set<string>(commands.map(cmd => cmd.alt).flat()))
@@ -25,15 +25,12 @@ export class Commands implements command.Commands {
     find(cmd: string, match: true): Command[]
     find(a1: string | command.ID, a2?: boolean): Command[] | Command | undefined {
         if (!a2) {
-            return Array
-                .from(this.list.values())
-                .find(e => Compare.exact(e.id, a1)
-                    || Compare.exact(e.alt, a1))
+            console.log("FINDING " + a1)
+            return this.list.find(e => Compare.exact(e.id, a1)
+                || Compare.exact(e.alt, a1))
         }
-        const matches = Array
-            .from(this.list.values())
-            .filter(e => Compare.loose(e.id, a1)
-                || Compare.loose(e.alt, a1))
+        const matches = this.list.filter(e => Compare.loose(e.id, a1)
+            || Compare.loose(e.alt, a1))
         return matches.clean()
     }
 
