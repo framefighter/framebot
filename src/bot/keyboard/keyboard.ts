@@ -18,13 +18,6 @@ export class Keyboard implements keyboard.Board {
         }
     }
 
-    buttonText(active: Active, cmd: Command): string {
-        return cmd.emoji.space()
-            + (Formatter.camelToString(cmd.name(active)))
-            + (cmd.count(active) > 0 ? " [" + cmd.count(active) + "]" : "")
-            + (cmd.adminOnly ? " [Admin]" : "")
-    }
-
     toInline(active: Active): InlineKeyboardMarkup {
         let inlineLayout: InlineKeyboardButton[][] = []
         for (let row of this.layout) {
@@ -37,7 +30,7 @@ export class Keyboard implements keyboard.Board {
                 let name = Formatter.camelToString(btn.text) || "-"
                 if (cmd && !btn.text) {
                     if (selected && !btn.alwaysShow) continue
-                    name = this.buttonText(active, cmd)
+                    name = cmd.buttonText(active)
                 }
                 const text = name
                 let inlineBtn: InlineKeyboardButton

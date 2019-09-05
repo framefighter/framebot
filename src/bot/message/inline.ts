@@ -44,7 +44,11 @@ export class Inline implements message.Inline {
         return active.keyboard
     }
 
-    toInline(active: Active): InlineQueryResultArticle {
+    toInline(active?: Active): InlineQueryResultArticle {
+        let msg = this.text;
+        if (!msg && active && active.command.message) {
+            msg = active.command.message(active).toString(active.user)
+        }
         const res: InlineQueryResultArticle = {
             id: this.id,
             title: this.title,
@@ -53,14 +57,10 @@ export class Inline implements message.Inline {
             thumb_url: this.thumb_url,
             url: this.url,
             input_message_content: {
-                message_text: this.text
-                    || (active.command.message
-                        ? active.command.message(active).toString(active.user)
-                        : undefined)
-                    || "No Text",
+                message_text: msg || "No Text",
                 parse_mode: BOT.defaults.parse_mode,
             },
-            reply_markup: this.toKeyboard(active)
+            reply_markup: active ? this.toKeyboard(active) : undefined
         }
         return res
     }

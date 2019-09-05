@@ -10,6 +10,7 @@ import { Keyboard } from './keyboard/keyboard'
 import { Formatter } from '../utils/formatter'
 import { Searchable } from '../warframe/state/searchable'
 import { Extra } from '../warframe/state/extra'
+import { Inline } from './message/inline'
 
 
 export class Bot implements bot.Bot {
@@ -161,7 +162,7 @@ export class Bot implements bot.Bot {
                     const parsedCmd = this.commands.parse(query || "help")
                     if (parsedCmd) {
                         const { command, args } = parsedCmd
-                            if (command && !command.hidden) {
+                        if (command && !command.hidden) {
                             const active = new Active({
                                 user,
                                 command,
@@ -173,16 +174,11 @@ export class Bot implements bot.Bot {
                         }
                     } else if (offset === 0) {
                         this.api.answerInlineQuery(iq.id,
-                            [{
-                                id: iq.id,
-                                title: `No command ${iq.query} found!`,
+                            [new Inline({
+                                title: `No command "${iq.query}" found!`,
                                 description: "Please try a different query!\nIf you want to search for items type \"find\" first.",
-                                type: "article",
-                                input_message_content: {
-                                    message_text: `No command ${iq.query.clean()} found!`,
-                                    parse_mode: this.defaults.parse_mode,
-                                },
-                            }],
+                                text: `No command ${iq.query.clean()} found!`,
+                            }).toInline()],
                             {
                                 cache_time: 1,
                                 is_personal: true,

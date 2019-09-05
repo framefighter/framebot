@@ -8,7 +8,6 @@ declare namespace keyboard {
     class Board implements Constructor {
         layout: Button[][]
         add?: Button[][]
-        buttonText(active: active.Active, cmd: command.Command): string
         toInline(active: active.Active): any
     }
 

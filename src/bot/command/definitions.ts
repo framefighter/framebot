@@ -1280,8 +1280,9 @@ export const definitions: command.Definitions = {
         inline: (active) => BOT.commands.list
             .filter(cmd => !cmd.hidden)
             .map(cmd => new Inline({
-                title: cmd.id + cmd.alt.join(" | ").start(" |"),
-                description: cmd.help,
+                title: cmd.buttonText(active),
+                description: "IDs: [" + cmd.id + cmd.alt.join(" , ").start(" ,") + "]\n"
+                    + cmd.help,
                 text: Formatter.format({
                     caption: cmd.id,
                     addCaption: cmd.alt.join(" | "),

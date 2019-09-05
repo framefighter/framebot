@@ -23,7 +23,6 @@ export class Command implements command.Command {
     name: (active: Active) => string
     count: (active: Active) => number
 
-
     constructor(id: command.ID, c: Readonly<command.Constructor>) {
         this.id = id
         const anyMsg = c.message 
@@ -91,6 +90,13 @@ export class Command implements command.Command {
         if (user) {
             return !this.adminOnly || user.admin
         } return false
+    }
+
+    buttonText(active: Active): string {
+        return this.emoji.space()
+            + (Formatter.camelToString(this.name(active)))
+            + (this.count(active) > 0 ? " [" + this.count(active) + "]" : "")
+            + (this.adminOnly ? " [Admin]" : "")
     }
 }
 

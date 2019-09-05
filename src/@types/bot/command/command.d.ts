@@ -41,6 +41,7 @@ declare namespace command {
         name(active: active.Active): string
         count(active: active.Active): number
         privileged(user: user.From): boolean
+        buttonText(active: active.Active): string
     }
 
     class Commands {
