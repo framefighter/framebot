@@ -43,14 +43,13 @@ export const definitions: command.Definitions = {
         hidden: true,
     },
     "about": {
+        help: "Show information about the bot and its creator",
         emoji: "ℹ️",
         message: (active) => new Message({
             title: active.command.name(active),
             text: [Formatter.format({
                 caption: "Creator",
-                addCaption: BOT.database.users.list[0]
-                    ? "@" + BOT.database.users.list[0].username
-                    : "",
+                addCaption: "@framefighter",
             }), Formatter.format({
                 caption: "Bot",
                 addCaption: "Source Code",
@@ -665,6 +664,8 @@ export const definitions: command.Definitions = {
         })
     },
     "allAlertsSettingsOn": {
+        hidden: true,
+        help: "Turn all alert settings on",
         emoji: "🔊",
         name: () => "On",
         action: (active) => {
@@ -676,6 +677,8 @@ export const definitions: command.Definitions = {
         keyboard: "alertSettings",
     },
     "allAlertsSettingsOff": {
+        hidden: true,
+        help: "Turn all alert settings off",
         emoji: "🔈",
         name: () => "Off",
         action: (active) => {
@@ -1273,7 +1276,22 @@ export const definitions: command.Definitions = {
                     caption: ["/" + cmd.id.clean(), ...cmd.alt].join(" | /"),
                     subCaption: cmd.help
                 })).join("\n")
-        })
+        }),
+        inline: (active) => BOT.commands.list
+            .filter(cmd => !cmd.hidden)
+            .map(cmd => new Inline({
+                title: cmd.id + cmd.alt.join(" | ").start(" |"),
+                description: cmd.help,
+                text: Formatter.format({
+                    caption: cmd.id,
+                    addCaption: cmd.alt.join(" | "),
+                    subCaption: "/" + cmd.id,
+                    description: "Click below to execute!"
+                }),
+                keyboard: new Keyboard({
+                    layout: [[{ callback_data: cmd.id, text: "Execute!" }]]
+                })
+            }))
     },
     "all": {
         emoji: "📑",
@@ -1510,7 +1528,7 @@ export const definitions: command.Definitions = {
                 active.user.settings.convertedSong = converted
                 return [new Inline({
                     title: "Click to show full conversion!",
-                    description: converted.length > 100 ? converted.substr(0,50) + "\n[...]" : converted,
+                    description: converted.length > 100 ? converted.substr(0, 50) + "\n[...]" : converted,
                     text: converted,
                     keyboard: new Keyboard({
                         layout: [[new Button({

@@ -25,7 +25,6 @@ export class Commands implements command.Commands {
     find(cmd: string, match: true): Command[]
     find(a1: string | command.ID, a2?: boolean): Command[] | Command | undefined {
         if (!a2) {
-            console.log("FINDING " + a1)
             return this.list.find(e => Compare.exact(e.id, a1)
                 || Compare.exact(e.alt, a1))
         }

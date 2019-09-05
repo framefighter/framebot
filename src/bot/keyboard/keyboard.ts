@@ -32,7 +32,7 @@ export class Keyboard implements keyboard.Board {
             for (let btn of row) {
                 if (!btn) continue
                 const cmd = BOT.commands.find(btn.callback_data || "none")
-                if (btn.callback_data && cmd && cmd.hidden && !btn.args) continue
+                if (btn.callback_data && cmd && cmd.hidden && !btn.args && !btn.alwaysShow) continue
                 const selected = Compare.exact(btn.callback_data, active.command.id)
                 let name = Formatter.camelToString(btn.text) || "-"
                 if (cmd && !btn.text) {

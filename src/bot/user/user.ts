@@ -32,7 +32,6 @@ export class User implements user.User {
     }
 
     set settings(settings: user.Settings) {
-        console.log("setting")
         this.from.settings = settings
         this._settings = settings
     }

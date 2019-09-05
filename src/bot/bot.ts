@@ -158,65 +158,10 @@ export class Bot implements bot.Bot {
                     const offset = parseInt(iq.offset || "0")
                     const query = iq.query
                     const user = this.getUser(iq.from)
-                    const parsedCmd = this.commands.parse(query, true)
-
-                    const commandsGroupInline: InlineQueryResult = {
-                        id: iq.id,
-                        title: `Commands:`,
-                        type: "article",
-                        input_message_content: {
-                            message_text: `commands group header!`,
-                            parse_mode: this.defaults.parse_mode,
-                        },
-                    }
-
+                    const parsedCmd = this.commands.parse(query || "help")
                     if (parsedCmd) {
-                        const { command, args, matches } = parsedCmd
-                        if (matches && matches.length > 0) {
-                            const inlineResults: InlineQueryResult[] =
-                                matches
-                                    .slice(offset, 10 + offset)
-                                    .map(cmd => {
-                                        const active = new Active({
-                                            user,
-                                            command: cmd,
-                                            args: args,
-                                            chatID: user.id,
-                                        })
-                                        return {
-                                            id: cmd.id,
-                                            title: cmd.id + cmd.alt.join(" | ").start(" |"),
-                                            description: cmd.help,
-                                            type: "article",
-                                            input_message_content: {
-                                                message_text: Formatter.format({
-                                                    caption: cmd.id,
-                                                    addCaption: cmd.alt.join(" | "),
-                                                    subCaption: "/" + cmd.id.space() + args.join(", "),
-                                                    description: "Click below to execute!"
-                                                }),
-                                                parse_mode: this.defaults.parse_mode,
-                                            },
-                                            reply_markup: new Keyboard({
-                                                layout: [[{ callback_data: cmd.id, text: "Execute!" }]]
-                                            }).toInline(active)
-                                        }
-                                    })
-                            this.api.answerInlineQuery(iq.id,
-                                [
-                                    ...(offset === 0 ? [commandsGroupInline] : []),
-                                    ...inlineResults
-                                ],
-                                {
-                                    cache_time: 1,
-                                    next_offset: (offset
-                                        + inlineResults.length
-                                        + (offset === 0 ? 1 : 0))
-                                        .toString(),
-                                    is_personal: true,
-                                }
-                            )
-                        } else if (command) {
+                        const { command, args } = parsedCmd
+                            if (command && !command.hidden) {
                             const active = new Active({
                                 user,
                                 command,
@@ -226,52 +171,6 @@ export class Bot implements bot.Bot {
                             active.results(iq)
                             user.lastActive = active
                         }
-
-                    } else if (!query) {
-                        const inlineResults: InlineQueryResult[] =
-                            this.commands.list
-                                .slice(offset, 10 + offset)
-                                .map(cmd => {
-                                    const active = new Active({
-                                        user,
-                                        command: cmd,
-                                        args: [],
-                                        chatID: user.id,
-                                    })
-                                    return {
-                                        id: cmd.id,
-                                        title: cmd.id + cmd.alt.join(" | ").start(" |"),
-                                        description: cmd.help,
-                                        type: "article",
-                                        input_message_content: {
-                                            message_text: Formatter.format({
-                                                caption: cmd.id,
-                                                addCaption: cmd.alt.join(" | "),
-                                                subCaption: "/" + cmd.id,
-                                                description: "Click below to execute!"
-                                            }),
-                                            parse_mode: this.defaults.parse_mode,
-                                        },
-                                        reply_markup: new Keyboard({
-                                            layout: [[{ callback_data: cmd.id, text: "Execute!" }]]
-                                        }).toInline(active)
-                                    }
-                                })
-
-                        this.api.answerInlineQuery(iq.id,
-                            [
-                                ...(offset === 0 ? [commandsGroupInline] : []),
-                                ...inlineResults
-                            ],
-                            {
-                                cache_time: 1,
-                                next_offset: (offset
-                                    + inlineResults.length
-                                    + (offset === 0 ? 1 : 0))
-                                    .toString(),
-                                is_personal: true,
-                            }
-                        )
                     } else if (offset === 0) {
                         this.api.answerInlineQuery(iq.id,
                             [{
