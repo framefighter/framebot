@@ -18,7 +18,7 @@ export class Keyboard implements keyboard.Board {
         }
     }
 
-    toInline(active: Active): InlineKeyboardMarkup {
+    toInline(active?: Active): InlineKeyboardMarkup {
         let inlineLayout: InlineKeyboardButton[][] = []
         for (let row of this.layout) {
             let inlineRow: InlineKeyboardButton[] = []
@@ -26,9 +26,9 @@ export class Keyboard implements keyboard.Board {
                 if (!btn) continue
                 const cmd = BOT.commands.find(btn.callback_data || "none")
                 if (btn.callback_data && cmd && cmd.hidden && !btn.args && !btn.alwaysShow) continue
-                const selected = Compare.exact(btn.callback_data, active.command.id)
+                const selected = active ? Compare.exact(btn.callback_data, active.command.id) : false;
                 let name = Formatter.camelToString(btn.text) || "-"
-                if (cmd && !btn.text) {
+                if (cmd && !btn.text && active) {
                     if (selected && !btn.alwaysShow) continue
                     name = cmd.buttonText(active)
                 }

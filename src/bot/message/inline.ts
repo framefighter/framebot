@@ -27,8 +27,8 @@ export class Inline implements message.Inline {
         this.id = Generator.ID()
     }
 
-    toKeyboard(active: Active): InlineKeyboardMarkup {
-        if (this.item) {
+    toKeyboard(active?: Active): InlineKeyboardMarkup | undefined {
+        if (this.item && active) {
             return new Keyboard({
                 layout: active.command.keyboard(active).layout,
                 add: [[{
@@ -41,11 +41,13 @@ export class Inline implements message.Inline {
         if (this.keyboard) {
             return this.keyboard.toInline(active)
         }
-        return active.keyboard
+        if (active) {
+            return active.keyboard
+        }
     }
 
     toInline(active?: Active): InlineQueryResultArticle {
-        let msg = this.text;
+        let msg = this.text
         if (!msg && active && active.command.message) {
             msg = active.command.message(active).toString(active.user)
         }
@@ -60,7 +62,7 @@ export class Inline implements message.Inline {
                 message_text: msg || "No Text",
                 parse_mode: BOT.defaults.parse_mode,
             },
-            reply_markup: active ? this.toKeyboard(active) : undefined
+            reply_markup: this.toKeyboard(active)
         }
         return res
     }

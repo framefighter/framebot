@@ -35,8 +35,8 @@ declare namespace message {
         item?: string
         text?: string
         id: string
-        toInline(active: active.Active): any
-        toKeyboard(active: active.Active): any
+        toInline(active?: active.Active): any
+        toKeyboard(active?: active.Active): any
     }
 
     interface Reward {

@@ -11,6 +11,8 @@ import { Formatter } from '../utils/formatter'
 import { Searchable } from '../warframe/state/searchable'
 import { Extra } from '../warframe/state/extra'
 import { Inline } from './message/inline'
+import { btn } from './command/definitions'
+import { Button } from './keyboard/button'
 
 
 export class Bot implements bot.Bot {
@@ -173,16 +175,34 @@ export class Bot implements bot.Bot {
                             user.lastActive = active
                         }
                     } else if (offset === 0) {
-                        this.api.answerInlineQuery(iq.id,
-                            [new Inline({
-                                title: `No command "${iq.query}" found!`,
-                                description: "Please try a different query!\nIf you want to search for items type \"find\" first.",
-                                text: `No command ${iq.query.clean()} found!`,
-                            }).toInline()],
-                            {
-                                cache_time: 1,
-                                is_personal: true,
-                            }
+                        const results = [new Inline({
+                            title: `No command "${iq.query}" found!`,
+                            description: "Please try a different query!\nIf you want to search for items type \"find\" first.",
+                            text: `No command ${iq.query.clean()} found!`,
+                        }).toInline()]
+                        const nearest = this.commands.parse(query, true)
+                        if (nearest) {
+                            const active = new Active({
+                                user,
+                                command: nearest.command,
+                                args: nearest.args,
+                                chatID: user.id,
+                            })
+                            results.push(new Inline({
+                                title: `Did you mean "${nearest.command.id}" ?`,
+                                description: nearest.matches
+                                    ? `Others: ${nearest.matches.map(cmd => cmd.id).join(", ")}`
+                                    : undefined,
+                                text: `Click below to execute ${nearest.command.id}!`,
+                                keyboard: new Keyboard({
+                                    layout: [[new Button({
+                                        callback_data: nearest.command.id,
+                                        alwaysShow: true,
+                                    })]]
+                                })
+                            }).toInline(active))
+                        }
+                        this.api.answerInlineQuery(iq.id, results, { cache_time: 1 }
                         )
                     }
                     this.database.users.update(user.from)
