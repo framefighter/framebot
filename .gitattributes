@@ -3,7 +3,9 @@
 
 # Explicitly declare text files you want to always be normalized and converted
 # to native line endings on checkout.
-*.sh text eol=lf
+bash/restart.sh text eol=lf
+bash/setup.sh text eol=lf
+
 
 # Declare files that will always have CRLF line endings on checkout.
 *.ts text eol=crlf
