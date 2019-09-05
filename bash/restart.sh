@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Pulling new git version"
-git pull -n
-git show --shortstat
+git pull -q
+git show --shortstat --oneline
 set -e
 echo "Installing possible new npm modules"
 npm i
@@ -14,4 +14,4 @@ echo "Preparing to restart bot"
 echo "Killing sessions"
 tmux ls
 tmux new-session -d -s restart "tmux kill-session -t teleframe; tmux new -d -s teleframe 'npm start'"
-echo "Finished"
+echo "Finished Script"
