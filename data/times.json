@@ -3714,6 +3714,28 @@
             "seconds": 46,
             "date": 1567625470,
             "stage": 3
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 3,
+            "seconds": 35,
+            "date": 1567716362,
+            "stage": 1
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 4,
+            "seconds": 57,
+            "date": 1567716362,
+            "stage": 2
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 48,
+            "boss": "Alad V",
+            "date": 1567716362,
+            "stage": 3
         }
     ]
 }
