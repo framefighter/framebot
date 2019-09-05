@@ -40,7 +40,7 @@ export class Converter {
     constructor(music: string, scale?: number, speed?: number) {
         this.music = music
         this.speed = speed || 3;
-        this.scale = scale || 5;
+        this.scale = Math.min(Math.abs(scale || 5), 8);
         this.pos = 0;
     }
 

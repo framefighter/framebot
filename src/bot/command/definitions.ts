@@ -1500,7 +1500,31 @@ export const definitions: command.Definitions = {
                 switch_inline_query_current_chat: "saveConverted "
             })] : [],
             [new Button(backTo("songs")), btn("convertInfo")]]
-        })
+        }),
+        inline: (active) => {
+            const song = active.args[0]
+            const scale = parseInt(active.args[1])
+            const speed = parseInt(active.args[2])
+            if (song) {
+                const converted = new Converter(song, scale, speed).sharable;
+                active.user.settings.convertedSong = converted
+                return [new Inline({
+                    title: "Click to show full conversion!",
+                    description: converted.length > 100 ? converted.substr(0,50) + "\n[...]" : converted,
+                    text: converted,
+                    keyboard: new Keyboard({
+                        layout: [[new Button({
+                            text: "Name and Save Song",
+                            switch_inline_query_current_chat: "saveConverted "
+                        })], [new Button(backTo("songs")), btn("convertInfo")]]
+                    })
+                })]
+            }
+            return [new Inline({
+                title: "Type song to start getting conversion!",
+                description: "For more informations use /convertInfo"
+            })]
+        }
     },
     "saveConverted": {
         inline: (active) => {
