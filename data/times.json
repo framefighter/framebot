@@ -3736,6 +3736,30 @@
             "boss": "Alad V",
             "date": 1567716362,
             "stage": 3
+        },
+        {
+            "mission": "Defense",
+            "minutes": 12,
+            "seconds": 8,
+            "date": 1567801663,
+            "stage": 1,
+            "reward": "Zaw Riven Mod"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 21,
+            "date": 1567801663,
+            "stage": 2,
+            "reward": "Zaw Riven Mod"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 23,
+            "date": 1567801663,
+            "stage": 3,
+            "reward": "Zaw Riven Mod"
         }
     ]
 }
