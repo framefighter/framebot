@@ -18,18 +18,17 @@ export class Active implements active.Active {
             is_bot: true,
             first_name: "",
             admin: false,
-            settings: {
-                alert: {},
-                arbitration: [],
-                convertedSong: "",
-                filter: [],
-                menu: []
-            }
+            settings: DEFAULTS.user.settings
         })
         this.command = c.command
         this.args = c.args
         this.ws = STATE.ws || {}
         this.executed = false
+
+        if (this.user.settings.last.length > 10) {
+            this.user.settings.last.pop()
+        }
+        this.user.settings.last.unshift({ command: c.command.id, args: c.args })
     }
 
     get message(): string {

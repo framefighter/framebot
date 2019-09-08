@@ -5,7 +5,11 @@ declare namespace bot {
     }
 
     interface Defaults {
-        parse_mode: "HTML" | "Markdown"
+        parse_mode: "HTML" | "Markdown",
+        user: {
+            settings: user.Settings
+        },
+        keyboard: (active: active.Active) => keyboard.Board
     }
 
 }

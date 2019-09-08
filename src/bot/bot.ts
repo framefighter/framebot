@@ -43,7 +43,7 @@ export class Bot implements bot.Bot {
             const newUser = new User({
                 ...from,
                 admin: false,
-                settings: User.default.settings
+                settings: DEFAULTS.user.settings
             })
             this.users[newUser.id] = newUser
             DB.users.update(newUser.from)
@@ -91,9 +91,6 @@ export class Bot implements bot.Bot {
                     } else {
                         options.chat_id = user.id
                     }
-
-                    console.log(options)
-
                     const pc = COMMANDS.parse(cbq.data)
                     if (pc) {
                         const args = pc.args
@@ -147,7 +144,7 @@ export class Bot implements bot.Bot {
                         const results = [new Inline({
                             title: `No command "${iq.query}" found!`,
                             description: "Please try a different query!".nl()
-                            + "If you want to search for items type \"find\" first.",
+                                + "If you want to search for items type \"find\" first.",
                             text: `No command ${iq.query.clean()} found!`,
                         }).toInline()]
                         const nearest = COMMANDS.parse(query, true)

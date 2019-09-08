@@ -24,7 +24,7 @@ export const menuBtn = (active: Active): Button => new Button({
     callback_data: active.user.settings.menu[0]
         ? active.user.settings.menu[0][0]
         : "sortie",
-    text: "< Menu",
+    text: "< Back",
     alwaysShow: true,
 })
 
@@ -1303,8 +1303,6 @@ export const definitions: command.Definitions = {
     "search": {
         help: "Shows all inline commands",
         emoji: "📊",
-        count: (active) => COMMANDS.list
-            .filter(cmd => cmd.inline(active).length > 0).length,
         message: (active) => new Message({
             text: "/" + COMMANDS.list
                 .filter(cmd => cmd.inline(active).length > 0)

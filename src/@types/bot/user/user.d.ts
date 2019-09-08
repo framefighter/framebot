@@ -31,6 +31,7 @@ declare namespace user {
         filter: string[]
         menu: command.ID[][]
         convertedSong: string
+        last: { command: command.ID, args: string[] }[]
     }
 
     interface AlertSettings {

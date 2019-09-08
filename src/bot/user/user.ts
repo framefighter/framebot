@@ -1,17 +1,10 @@
+import { DEFAULTS } from '../static'
+
 export class User implements user.User {
     from: user.From
     id: number
     admin: boolean
     _settings: user.Settings
-    static default = {
-        settings: {
-            alert: {},
-            filter: [],
-            menu: [],
-            arbitration: [],
-            convertedSong: ""
-        }
-    }
     username?: string
 
     constructor(from: user.From) {
@@ -39,5 +32,5 @@ export const noUser = new User({
     is_bot: true,
     language_code: "none",
     admin: false,
-    settings: User.default.settings,
+    settings: DEFAULTS.user.settings,
 })

@@ -1,5 +1,4 @@
 import { InlineQueryResultArticle, InlineKeyboardMarkup } from 'node-telegram-bot-api'
-import { Message } from './message'
 import { Keyboard } from '../keyboard/keyboard'
 import { Generator } from '../../utils/generator'
 import { Active } from '../active/active'
