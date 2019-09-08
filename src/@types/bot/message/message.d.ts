@@ -1,6 +1,6 @@
 declare namespace message {
     interface Constructor {
-        title: string
+        title?: string
         text: string
         showUser?: boolean
         keyboard?: keyboard.Board

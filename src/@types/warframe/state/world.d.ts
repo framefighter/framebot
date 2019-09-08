@@ -28,9 +28,25 @@ declare namespace wf {
         constructionProgress?: ConstructionProgress
         vallisCycle?: VallisCycle
         nightwave?: Nightwave
-        // kuva?: Arbitration[]
-        // arbitration?: Arbitration
+        kuva?: Arbitration[]
+        arbitration?: Arbitration
     }
+
+    interface Arbitration {
+        activation?: string;
+        expiry?: string;
+        solnode?: string;
+        node?: string;
+        name?: string;
+        tile?: string;
+        planet?: string;
+        enemy?: string;
+        type?: string;
+        node_type?: string;
+        archwing?: boolean;
+        sharkwing?: boolean;
+    }
+
 
     interface Alert {
         mission?: Mission

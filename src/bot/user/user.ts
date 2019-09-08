@@ -1,13 +1,8 @@
-
-import TelegramBot from "node-telegram-bot-api"
-import { Active } from '../active/active'
-
 export class User implements user.User {
     from: user.From
     id: number
     admin: boolean
     _settings: user.Settings
-    lastActive?: Active
     static default = {
         settings: {
             alert: {},

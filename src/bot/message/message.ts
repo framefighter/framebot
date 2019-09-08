@@ -1,17 +1,21 @@
 import { Check } from '../../utils/check'
+import { Active } from '../active/active'
 
 export class Message implements message.Message {
     title: string
     text: string
     showUser?: boolean
-    constructor(messageConstructor: Readonly<message.Constructor | string>) {
+    constructor(messageConstructor: Readonly<message.Constructor | string>, active?: Active) {
         if (Check.string(messageConstructor)) {
             this.title = ""
             this.text = messageConstructor
         } else {
-            this.title = messageConstructor.title
+            this.title = messageConstructor.title || ""
             this.text = messageConstructor.text
             this.showUser = messageConstructor.showUser
+        }
+        if (active) {
+            this.title = active.command.buttonText(active)
         }
     }
     toString(user?: user.User): string {

@@ -56,7 +56,7 @@ declare namespace utils {
         static invasion(invasion?: wf.Invasion): string
         static invasionRewards(invasion?: wf.Invasion): string[]
         static event(event?: wf.Event): string
-        static arbitration(arbitration?: wf.extra.Arbitration): string
+        static arbitration(arbitration?: wf.Arbitration): string
         static newsEvent(newsEvent?: wf.News): string
         static alert(alert?: wf.Alert): string
         static timesString(args?: string[]): string

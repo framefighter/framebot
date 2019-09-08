@@ -1,5 +1,5 @@
-import { BOT } from '..'
 import { Compare } from './compare'
+import { INFO } from '../bot/static'
 
 export class Parse implements utils.Parse {
     static time(raw: string): utils.Time {
@@ -16,18 +16,18 @@ export class Parse implements utils.Parse {
     }
 
     static thumbUrl(uniqueName: string): string | undefined {
-        const manifest = BOT.info.manifest
+        const manifest = INFO.manifest
         if (manifest && manifest.Manifest) {
             const entry = manifest.Manifest.find((entry: wf.searchable.ManifestEntity) =>
                 entry.uniqueName === uniqueName)
             if (entry) {
-                return BOT.info.baseUrl + entry.textureLocation.replace(/\\/g, "/")
+                return INFO.baseUrl + entry.textureLocation.replace(/\\/g, "/")
             }
         }
     }
 
     static sortieReward(raw: string): string {
-        const rewards = (BOT.info.places || [])
+        const rewards = (INFO.places || [])
             .find(drop => drop.place.toUpperCase().includes("SORTIES"))
         if (rewards) {
             const closest = rewards.group.find((a) => Compare.loose(a.item, raw))

@@ -11,7 +11,6 @@ declare namespace user {
         admin: boolean
         _settings: Settings
         settings: Settings
-        lastActive?: active.Active
         from: From
     }
 

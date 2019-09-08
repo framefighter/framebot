@@ -1,7 +1,7 @@
 import { Compare } from '../../utils/compare'
 import { definitions } from './definitions'
 import { Command } from './command'
-import { BOT } from '../..'
+import { COMMANDS } from '../static'
 
 export class Commands implements command.Commands {
     triggers: string[]
@@ -43,12 +43,12 @@ export class Commands implements command.Commands {
                     const commandID = firstWord.split("@")[0]
                     const bot = firstWord.split("@")[1]
                     const rest = removedSlash.replace(commandID, "").trim()
-                    const command = BOT.commands.find(commandID as command.ID)
+                    const command = COMMANDS.find(commandID as command.ID)
                     const args = rest.split(",").map(e => e.trim()).clean()
                     if (command) {
                         return { command, args }
                     } else if (match) {
-                        const commandArr = BOT.commands.find(commandID, true)
+                        const commandArr = COMMANDS.find(commandID, true)
                         if (commandArr && commandArr.length > 0) {
                             return {
                                 command: commandArr[0],

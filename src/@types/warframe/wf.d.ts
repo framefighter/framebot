@@ -1,16 +1,16 @@
 
 declare namespace wf {
     class Parser {
-        static state(state: any): wf.Ws
+        static state(state: any): Ws
         static parse(jsonStr: any): any
-        static groupDrops(drops?: wf.searchable.Drop[]): wf.searchable.GroupedDrop[]
-        static groupPlaces(drops?: wf.searchable.Drop[]): wf.searchable.GroupedPlace[]
+        static groupDrops(drops?: searchable.Drop[]): searchable.GroupedDrop[]
+        static groupPlaces(drops?: searchable.Drop[]): searchable.GroupedPlace[]
         static cleanJSON(json: string): string
-        static parseExtra(data: wf.extra.RawKuva[]): ParsedExtra
+        static parseExtra(data: extra.RawKuva[]): ParsedExtra
     }
 
     interface ParsedExtra {
-        kuva: wf.extra.Arbitration[]
-        arbitration: wf.extra.Arbitration
+        kuva: Arbitration[]
+        arbitration: Arbitration
     }
 }

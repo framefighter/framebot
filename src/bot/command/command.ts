@@ -1,11 +1,11 @@
 import { Keyboard } from '../keyboard/keyboard'
 import { Inline } from '../message/inline'
 import { Message } from '../message/message'
-import { BOT } from '../..'
 import { Check } from '../../utils/check'
 import { Formatter } from '../../utils/formatter'
 import { Active } from '../active/active'
 import { menuBtn } from './definitions'
+import { COMMANDS, STATE } from '../static'
 
 export class Command implements command.Command {
     emoji: string
@@ -27,14 +27,14 @@ export class Command implements command.Command {
         this.id = id
         const anyMsg = c.message 
         if (Check.id(anyMsg)) {
-            this.message = (active) =>  BOT.commands.fromID(anyMsg).message(active)
+            this.message = (active) =>  COMMANDS.fromID(anyMsg).message(active)
         } else {
             this.message = anyMsg || (() => new Message(""))
         }
 
         const anyBoard = c.keyboard
         if (Check.id(anyBoard)) {
-            this.keyboard = (active) => BOT.commands.fromID(anyBoard).keyboard(active)
+            this.keyboard = (active) => COMMANDS.fromID(anyBoard).keyboard(active)
         } else {
             this.keyboard = ((active) => {
                 if (anyBoard && menuBtn(active) !== active.command.id) {
@@ -74,7 +74,7 @@ export class Command implements command.Command {
             ? c.count
             : (() => {
                 if (this.jsonKey) {
-                    const obj = BOT.ws[this.jsonKey]
+                    const obj = STATE.ws[this.jsonKey]
                     if (obj && Check.array(obj)) {
                         return obj.length || 0
                     }

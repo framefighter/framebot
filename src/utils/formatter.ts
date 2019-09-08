@@ -1,8 +1,8 @@
 import { Check } from './check'
-import { BOT } from '..'
 import moment from 'moment'
 import striptags from "striptags"
 import { Compare } from './compare'
+import { DB, DEFAULTS } from '../bot/static'
 
 export class Formatter implements utils.Formatter {
     static MAX_WIDTH = 50
@@ -31,7 +31,7 @@ export class Formatter implements utils.Formatter {
         if (sortie && sortie.variants) {
             let avgT: number = 0
             const missions = sortie.variants.map((mission, i) => {
-                const time = BOT.database.times.missionInSeconds(mission.missionType, sortie.boss)
+                const time = DB.times.missionInSeconds(mission.missionType, sortie.boss)
                 avgT += time
                 return Formatter.format({
                     caption: mission.node,
@@ -121,7 +121,7 @@ export class Formatter implements utils.Formatter {
         return "Event not found!"
     }
 
-    static arbitration(arbitration?: wf.extra.Arbitration): string {
+    static arbitration(arbitration?: wf.Arbitration): string {
         if (arbitration) {
             return Formatter.format({
                 caption: arbitration.node,
@@ -172,7 +172,7 @@ export class Formatter implements utils.Formatter {
 
     static timesString(args?: string[]): string {
         const filter = args || []
-        const avg_times = BOT.database.times.avg()
+        const avg_times = DB.times.avg()
         const total_avg_sec = Object.keys(avg_times).reduce((a, t) =>
             a += avg_times[t].seconds, 0) / Object.keys(avg_times).length
         const total_mis_avg = Formatter.clock(total_avg_sec)
@@ -445,11 +445,11 @@ export class Formatter implements utils.Formatter {
             addCaption: Formatter.clock(rec.minutes * 60 + rec.seconds)
                 .end(("[" + Formatter.clock(
                     (rec.minutes * 60 + rec.seconds)
-                    - BOT.database.times.missionInSeconds(rec.mission, rec.boss)) + "]")
+                    - DB.times.missionInSeconds(rec.mission, rec.boss)) + "]")
                     .code()),
             boss: rec.boss,
             subCaption: "Avg: " + Formatter.clock(
-                BOT.database.times.missionInSeconds(
+                DB.times.missionInSeconds(
                     rec.mission, rec.boss)),
             position: rec.stage,
             list: rec.reward
@@ -658,7 +658,7 @@ String.prototype.capitalize = function (this: string) {
 String.prototype.italics = function (this: string) {
     const str = this
     if (!str) return ""
-    switch (BOT.defaults.parse_mode) {
+    switch (DEFAULTS.parse_mode) {
         case "HTML":
             return `<i>${str.clean()}</i>`
         case "Markdown":
@@ -670,7 +670,7 @@ String.prototype.italics = function (this: string) {
 String.prototype.code = function (this: string) {
     const str = this
     if (!str) return ""
-    switch (BOT.defaults.parse_mode) {
+    switch (DEFAULTS.parse_mode) {
         case "HTML":
             return `<code> ${str.clean()} </code>`
         case "Markdown":
@@ -682,7 +682,7 @@ String.prototype.code = function (this: string) {
 String.prototype.bold = function (this: string) {
     const str = this
     if (!str) return ""
-    switch (BOT.defaults.parse_mode) {
+    switch (DEFAULTS.parse_mode) {
         case "HTML":
             return `<b>${str.clean()}</b>`
         case "Markdown":
@@ -695,7 +695,7 @@ String.prototype.link = function (this: string, url?: string) {
     const str = this
     if (!str) return ""
     if (!url) return str
-    switch (BOT.defaults.parse_mode) {
+    switch (DEFAULTS.parse_mode) {
         case "HTML":
             return `<a href="${url}">${str.clean()}</a>`
         case "Markdown":
@@ -707,7 +707,7 @@ String.prototype.link = function (this: string, url?: string) {
 String.prototype.clean = function (this: string) {
     const str = this
     if (!str) return ""
-    switch (BOT.defaults.parse_mode) {
+    switch (DEFAULTS.parse_mode) {
         case "HTML":
             return str
                 .trim()
@@ -756,7 +756,7 @@ String.prototype.alignRight = function (this: string) {
 
 String.prototype.nl = function (this: string) {
     const str = this
-    if (!str) return ""
+    if (str === undefined) return ""
     return str.concat("\n")
 }
 
