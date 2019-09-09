@@ -50,7 +50,7 @@ export class Inline implements message.Inline {
         if (!msg && active && active.command.message) {
             msg = active.command.message(active).toString(active.user)
         }
-        const res: InlineQueryResultArticle = {
+        return {
             id: this.id,
             title: this.title,
             description: this.description,
@@ -63,6 +63,5 @@ export class Inline implements message.Inline {
             },
             reply_markup: this.toKeyboard(active)
         }
-        return res
     }
 }

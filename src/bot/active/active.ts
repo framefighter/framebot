@@ -1,7 +1,7 @@
-import { InlineKeyboardMarkup, InlineQuery, InlineQueryResult, Message } from 'node-telegram-bot-api'
-import { Generator } from '../../utils/generator'
+import { InlineKeyboardMarkup, InlineQueryResult } from 'node-telegram-bot-api'
 import { User } from '../user/user'
 import { STATE, DEFAULTS } from '../static'
+import { Inline } from '../message/inline'
 
 export class Active implements active.Active {
     user: User
@@ -43,29 +43,19 @@ export class Active implements active.Active {
         let inline = this.command.inline(this).map(result => result.toInline(this))
         if (offset === 0 && inline.length === 0) {
             if (this.args.length > 0) {
-                inline = [{
-                    id: Generator.ID(),
+                inline = [new Inline({
                     title: this.command.id + " | No inline results!",
                     description: "Click to execute command!",
-                    type: "article",
-                    input_message_content: {
-                        message_text: this.message || "No Text",
-                        parse_mode: DEFAULTS.parse_mode,
-                    },
-                    reply_markup: this.keyboard
-                }]
+                    text: this.message || "No Text",
+                    keyboard: this.command.keyboard(this)
+                })]
             } else {
-                inline = [{
-                    id: Generator.ID(),
+                inline = [new Inline({
                     title: this.command.id + " | Start typing to get results!",
                     description: "Or click to execute command!",
-                    type: "article",
-                    input_message_content: {
-                        message_text: this.message || "No Text",
-                        parse_mode: DEFAULTS.parse_mode,
-                    },
-                    reply_markup: this.keyboard
-                }]
+                    text: this.message || "No Text",
+                    keyboard: this.command.keyboard(this)
+                })]
             }
         }
         return inline
@@ -79,5 +69,4 @@ export class Active implements active.Active {
             }
         }
     }
-
 }
