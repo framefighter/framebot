@@ -3760,6 +3760,55 @@
             "date": 1567801663,
             "stage": 3,
             "reward": "Zaw Riven Mod"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 16,
+            "date": 1567898525,
+            "stage": 1,
+            "reward": "Zaw Riven Mod"
+        },
+        {
+            "mission": "Assault",
+            "minutes": 6,
+            "seconds": 2,
+            "date": 1567898525,
+            "stage": 2,
+            "reward": "Zaw Riven Mod"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 12,
+            "date": 1567898525,
+            "stage": 3,
+            "reward": "Zaw Riven Mod"
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 3,
+            "seconds": 6,
+            "date": 1567972599,
+            "stage": 1,
+            "reward": "Orokin Catalyst Blueprint"
+        },
+        {
+            "mission": "Disruption",
+            "minutes": 10,
+            "seconds": 11,
+            "date": 1567972599,
+            "stage": 2,
+            "reward": "Orokin Catalyst Blueprint"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 1,
+            "seconds": 54,
+            "boss": "Jackal",
+            "date": 1567972599,
+            "stage": 3,
+            "reward": "Orokin Catalyst Blueprint"
         }
     ]
 }
