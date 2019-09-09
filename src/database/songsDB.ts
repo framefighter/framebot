@@ -8,7 +8,7 @@ export class SongsDB extends DB<Song[]> implements db.SongsDB {
 
     get list(): Song[] {
         try {
-            return this.data()
+            return this.data
         } catch (err) {
             return []
         }
@@ -23,19 +23,19 @@ export class SongsDB extends DB<Song[]> implements db.SongsDB {
     }
 
     remove(song: Song) {
-        const ind = this.data().map(s => s.name).indexOf(song.name)
+        const ind = this.data.map(s => s.name).indexOf(song.name)
         if (ind !== -1) {
-            if (this.data()[ind].user === song.user) {
-                this.data().splice(ind, 1)
+            if (this.data[ind].user === song.user) {
+                this.data.splice(ind, 1)
             }
         }
         this.db.save()
     }
 
     update(song: Song): boolean {
-        const ind = this.data().findIndex(s => s.name === song.name)
+        const ind = this.data.findIndex(s => s.name === song.name)
         if (this.exists(song.name) && ind !== -1) {
-            if (this.data()[ind].user === song.user) {
+            if (this.data[ind].user === song.user) {
                 this.db.push(`/${this.key}[${ind}]`, song)
                 return true
             }

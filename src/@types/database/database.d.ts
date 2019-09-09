@@ -9,13 +9,14 @@ declare namespace db {
     class DB {
         db: any
         key: string
-        data(): any
+        get data(): any
     }
 
     class UsersDB extends DB {
         list: user.From[]
         update(user: user.From): void
         getByName(username: string): user.From | undefined
+        getByID(userID: user.ID): user.From | undefined
     }
 
     class SongsDB extends DB {

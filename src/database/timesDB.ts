@@ -12,7 +12,7 @@ export class TimesDB extends DB<time.Record[]> implements db.TimesDB {
 
     get list(): time.Record[] {
         try {
-            return this.data()
+            return this.data
         } catch (err) {
             return []
         }

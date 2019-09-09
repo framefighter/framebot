@@ -7,7 +7,7 @@ export class UsersDB extends DB<{ [key: string]: user.From }> implements db.User
 
     get list(): user.From[] {
         try {
-            const users = this.data()
+            const users = this.data
             return Object.keys(users).map(key => users[key])
         } catch (err) {
             return []
@@ -24,6 +24,10 @@ export class UsersDB extends DB<{ [key: string]: user.From }> implements db.User
 
     getByName(username: string): user.From | undefined {
         return this.list.find(user => user.username === username)
+    }
+
+    getByID(userID: user.ID): user.From | undefined {
+        return this.data[userID.toString()]
     }
 
 }

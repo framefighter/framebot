@@ -7,7 +7,7 @@ export abstract class DB<T> implements db.DB {
         this.db = new JsonDB(`${path}/${name}`, true, true)
         this.key = name
     }
-    data(): T {
+    get data(): T {
         return this.db.getData(`/${this.key}`)
     }
 }

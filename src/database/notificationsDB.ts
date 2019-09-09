@@ -21,7 +21,7 @@ export class NotificationsDB extends DB<string[]> implements db.NotificationsDB 
 
     get list(): (string | number)[] {
         try {
-            return this.data()
+            return this.data
         } catch (err) {
             return []
         }
