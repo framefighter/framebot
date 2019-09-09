@@ -1,9 +1,8 @@
 import { InlineQueryResultArticle, InlineKeyboardMarkup } from 'node-telegram-bot-api'
-import { BOT } from '../..'
-import { Message } from './message'
 import { Keyboard } from '../keyboard/keyboard'
 import { Generator } from '../../utils/generator'
 import { Active } from '../active/active'
+import { DEFAULTS } from '../static'
 
 export class Inline implements message.Inline {
     title: string
@@ -51,7 +50,7 @@ export class Inline implements message.Inline {
         if (!msg && active && active.command.message) {
             msg = active.command.message(active).toString(active.user)
         }
-        const res: InlineQueryResultArticle = {
+        return {
             id: this.id,
             title: this.title,
             description: this.description,
@@ -60,10 +59,9 @@ export class Inline implements message.Inline {
             url: this.url,
             input_message_content: {
                 message_text: msg || "No Text",
-                parse_mode: BOT.defaults.parse_mode,
+                parse_mode: DEFAULTS.parse_mode,
             },
             reply_markup: this.toKeyboard(active)
         }
-        return res
     }
 }

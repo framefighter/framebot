@@ -1,22 +1,27 @@
 import { Active } from '../active/active'
 import { Check } from '../../utils/check'
-import { BOT } from '../..'
 import { User } from '../user/user'
-import { fromJSON } from 'tough-cookie'
+import { COMMANDS, DB, STATE, DEFAULTS } from '../static'
+import TelegramBot = require('node-telegram-bot-api')
+import { Keyboard } from '../keyboard/keyboard'
+import { menuBtn } from '../command/definitions'
 
 export default class StateCheck implements checker.StateCheck {
-    check() {
-        BOT.commands.list
-            .forEach(cmd => {
-                if (cmd.jsonKey) {
-                    this.checkCmd(cmd.id, BOT.ws[cmd.jsonKey])
-                }
-            })
+    api: TelegramBot
+
+    constructor(api: TelegramBot, interval?: number) {
+        this.api = api
+        setInterval(() => this.check(), interval || 10000)
+        this.check()
     }
 
-    checkExtra() {
-        this.checkCmd("arbitration", BOT.extra.arbitration)
-        // this.checkCmd("kuva", BOT.extra.kuva)
+    check() {
+        COMMANDS.list
+            .forEach(cmd => {
+                if (cmd.jsonKey) {
+                    this.checkCmd(cmd.id, STATE.ws[cmd.jsonKey])
+                }
+            })
     }
 
     checkCmd<T extends any>(command: command.ID, obj?: T | null) {
@@ -25,15 +30,15 @@ export default class StateCheck implements checker.StateCheck {
             if (Array.isArray(obj)) {
                 const arrObj = obj as Array<any>
                 arrObj.map((n: any) => {
-                    if (BOT.database.notifications.add(
-                        BOT.database.notifications.generateID(n, command)
+                    if (DB.notifications.add(
+                        DB.notifications.generateID(n, command)
                     )) {
                         newObject.push(n)
                     }
                 })
             } else {
-                if (BOT.database.notifications.add(
-                    BOT.database.notifications.generateID(obj, command))) {
+                if (DB.notifications.add(
+                    DB.notifications.generateID(obj, command))) {
                     newObject.push(obj)
                 }
             }
@@ -42,30 +47,34 @@ export default class StateCheck implements checker.StateCheck {
     }
 
     sendToUser(commandID: command.ID, newObject: any[]) {
-        BOT.database.users.list.forEach(user => {
+        DB.users.list.forEach(user => {
             if (user.settings
                 && user.settings.alert
                 && user.settings.alert[commandID]) {
-                const command = BOT.commands.find(commandID)
+                const command = COMMANDS.find(commandID)
                 if (command) {
                     const active = new Active({
                         user: new User(user),
                         command,
                         args: newObject.map(o => o.id),
-                        chatID: user.id,
                     })
                     const possibleRewards = command.rewards(active).filter(rew =>
                         newObject.map(o => o.id).includes(rew.id))
-                    let message = undefined
+                    let message = active.message
                     if (possibleRewards.length > 0) {
                         message = Check.rewards(possibleRewards, user.settings.filter)
                             .map(reward => command.name(active)
                                 .nl()
                                 .concat(reward.text))
                             .clean()
-                            .join("\n")
+                            .join("".nl())
                     }
-                    active.send(message)
+                    this.api.sendMessage(user.id, message, {
+                        parse_mode: DEFAULTS.parse_mode,
+                        reply_markup: new Keyboard({
+                            layout: [[menuBtn(active)]]
+                        }).toInline(active)
+                    })
                 }
             }
         })

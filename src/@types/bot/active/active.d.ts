@@ -3,8 +3,7 @@ declare namespace active {
     interface Constructor {
         command: command.Command
         args: string[]
-        user: user.User
-        chatID: number | string
+        user?: user.User
     }
 
     class Active {
@@ -12,20 +11,15 @@ declare namespace active {
         user: user.User
         command: command.Command
         ws: wf.Ws
-        chatID: number | string
         execute_return?: any
         matches?: command.Command[]
         args: string[]
         keyboard: any
         alreadySend?: any
         message: string
-        inline: any[]
+        inline(offset: number): any[]
         executed: boolean
-        send(msg?: string): void
-        edit(IDs: active.IDs, msg?: string): void
         execute(): void
-        results(iq: any): void
-        updateText(): void
     }
 
     interface IDs {

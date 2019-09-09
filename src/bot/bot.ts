@@ -1,57 +1,31 @@
-import TelegramBot, { InlineQueryResult, InlineQuery } from "node-telegram-bot-api"
+import TelegramBot, { EditMessageReplyMarkupOptions, EditMessageTextOptions } from "node-telegram-bot-api"
 import { Active } from './active/active'
-import { Database } from '../database/database'
 import { User } from "./user/user"
-import { CONFIG } from '../utils/config'
-import { World } from '../warframe/state/world'
-import StateCheck from './checker/stateCheck'
-import { Commands } from './command/commands'
 import { Keyboard } from './keyboard/keyboard'
-import { Formatter } from '../utils/formatter'
-import { Searchable } from '../warframe/state/searchable'
-import { Extra } from '../warframe/state/extra'
 import { Inline } from './message/inline'
-import { btn } from './command/definitions'
 import { Button } from './keyboard/button'
+import { DB, COMMANDS, DEFAULTS } from './static'
+import { CONFIG } from '../utils/config'
+import StateCheck from './checker/stateCheck'
+
 
 
 export class Bot implements bot.Bot {
-    token: string
-    api: TelegramBot
-    commands: Commands
-    database: Database
-    state: World
-    ws: wf.Ws
-    info: Searchable
-    extra: Extra
-    defaults: bot.Defaults
-    checker: StateCheck
+    api = new TelegramBot(CONFIG.token, { polling: true })
+    checker = new StateCheck(this.api, 60000);
     users: { [key: number]: User }
 
-    constructor(botConstructor: bot.Constructor) {
-        this.token = CONFIG.token
-        this.api = new TelegramBot(this.token, { polling: true })
-        this.commands = botConstructor.commands
-        this.database = new Database("./data")
-        this.state = new World(60000)
-        this.extra = new Extra(61000)
-        this.info = new Searchable(602000)
-        this.ws = {}
-        this.defaults = {
-            parse_mode: "Markdown",
-        }
+    constructor() {
         this.initEmitters()
-        this.database.users.list.forEach(user => {
+        DB.users.list.forEach(user => {
             if (user.admin) {
                 this.api.sendMessage(user.id, "Bot started and ready!")
             }
         })
-        this.checker = new StateCheck()
         this.users = {}
     }
 
     private initEmitters() {
-        this.stateEmitter()
         this.initMessageEmitter()
         this.initCallbackQueryEmitter()
         this.initInlineQueryEmitter()
@@ -60,8 +34,8 @@ export class Bot implements bot.Bot {
     private getUser(from: TelegramBot.User): User {
         if (this.users[from.id]) {
             return this.users[from.id]
-        } else if (this.database.users.db.exists(`/users/${from.id}`)) {
-            const fromDB = this.database.users.db.getData(`/users/${from.id}`)
+        } else if (DB.users.db.exists(`/users/${from.id}`)) {
+            const fromDB = DB.users.db.getData(`/users/${from.id}`)
             const user = new User(fromDB)
             this.users[user.id] = user
             return user
@@ -69,24 +43,12 @@ export class Bot implements bot.Bot {
             const newUser = new User({
                 ...from,
                 admin: false,
-                settings: User.default.settings
+                settings: DEFAULTS.user.settings
             })
             this.users[newUser.id] = newUser
-            this.database.users.update(newUser.from)
+            DB.users.update(newUser.from)
             return newUser
         }
-    }
-
-    private stateEmitter() {
-        this.state.on("state",
-            (data) => {
-                this.ws = data
-                this.checker.check()
-            })
-        this.extra.on("extra",
-            data => {
-                this.checker.checkExtra()
-            })
     }
 
     private initMessageEmitter() {
@@ -96,20 +58,17 @@ export class Bot implements bot.Bot {
                     && msg.chat
                     && msg.text
                     && msg.text.charAt(0) === "/") {
-                    const parsedCmd = this.commands.parse(msg.text)
+                    const parsedCmd = COMMANDS.parse(msg.text)
                     if (parsedCmd) {
                         const { command, args } = parsedCmd
                         const user = this.getUser(msg.from)
-                        const active = new Active({
-                            user,
-                            command,
-                            args,
-                            chatID: msg.chat.id,
-                        })
+                        const active = new Active({ user, command, args })
                         active.execute()
-                        active.send()
-                        user.lastActive = active
-                        this.database.users.update(user.from)
+                        this.api.sendMessage(msg.chat.id, active.message, {
+                            parse_mode: DEFAULTS.parse_mode,
+                            reply_markup: active.keyboard
+                        })
+                        DB.users.update(user.from)
                     }
                 }
             }
@@ -121,31 +80,35 @@ export class Bot implements bot.Bot {
             async cbq => {
                 if (cbq.from && cbq.data) {
                     const user = this.getUser(cbq.from)
-                    const ids = {
-                        CbqID: cbq.id,
-                        inlineMsgID: cbq.inline_message_id,
-                        chatID: cbq.message
-                            ? cbq.message.chat.id
-                            : user.id,
-                        msgID: cbq.message
-                            ? cbq.message.message_id
-                            : undefined
+                    let options: EditMessageTextOptions = {
+                        parse_mode: DEFAULTS.parse_mode
                     }
-
-                    const pc = this.commands.parse(cbq.data)
+                    if (cbq.inline_message_id) {
+                        options.inline_message_id = cbq.inline_message_id
+                    } else if (cbq.message) {
+                        options.chat_id = cbq.message.chat.id
+                        options.message_id = cbq.message.message_id
+                    } else {
+                        options.chat_id = user.id
+                    }
+                    const pc = COMMANDS.parse(cbq.data)
                     if (pc) {
                         const args = pc.args
                         const find = pc.command.id
-                        const command = this.commands.find(find)
+                        const command = COMMANDS.find(find)
                         if (command) {
-                            const active = new Active({
-                                user, command, args, chatID: ids.chatID,
-                            })
+                            const active = new Active({ user, command, args })
                             active.execute()
-                            active.edit(ids)
-                            user.lastActive = active
+                            if (active.message) {
+                                this.api.editMessageText(active.message, {
+                                    ...options,
+                                    reply_markup: active.keyboard,
+                                })
+                            } else if (active.keyboard) {
+                                this.api.editMessageReplyMarkup(active.keyboard, options)
+                            }
                         }
-                        this.database.users.update(user.from)
+                        DB.users.update(user.from)
                     }
 
                 }
@@ -161,32 +124,35 @@ export class Bot implements bot.Bot {
                     const offset = parseInt(iq.offset || "0")
                     const query = iq.query
                     const user = this.getUser(iq.from)
-                    const parsedCmd = this.commands.parse(query || "help")
+                    const parsedCmd = COMMANDS.parse(query || "help")
                     if (parsedCmd) {
                         const { command, args } = parsedCmd
                         if (command && !command.hidden) {
-                            const active = new Active({
-                                user,
-                                command,
-                                args,
-                                chatID: user.id,
-                            })
-                            active.results(iq)
-                            user.lastActive = active
+                            const active = new Active({ user, command, args })
+                            const results = active.inline(offset).slice(offset, 10 + offset)
+                            this.api.answerInlineQuery(iq.id,
+                                results,
+                                {
+                                    cache_time: 1,
+                                    next_offset: (offset + results.length)
+                                        .toString(),
+                                    is_personal: true,
+                                }
+                            )
                         }
                     } else if (offset === 0) {
                         const results = [new Inline({
                             title: `No command "${iq.query}" found!`,
-                            description: "Please try a different query!\nIf you want to search for items type \"find\" first.",
+                            description: "Please try a different query!".nl()
+                                + "If you want to search for items type \"find\" first.",
                             text: `No command ${iq.query.clean()} found!`,
                         }).toInline()]
-                        const nearest = this.commands.parse(query, true)
+                        const nearest = COMMANDS.parse(query, true)
                         if (nearest) {
                             const active = new Active({
                                 user,
                                 command: nearest.command,
                                 args: nearest.args,
-                                chatID: user.id,
                             })
                             results.push(new Inline({
                                 title: `Did you mean "${nearest.command.id}" ?`,
@@ -205,7 +171,7 @@ export class Bot implements bot.Bot {
                         this.api.answerInlineQuery(iq.id, results, { cache_time: 1 }
                         )
                     }
-                    this.database.users.update(user.from)
+                    DB.users.update(user.from)
                 }
             }
         )

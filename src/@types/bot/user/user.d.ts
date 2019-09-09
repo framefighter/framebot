@@ -11,7 +11,6 @@ declare namespace user {
         admin: boolean
         _settings: Settings
         settings: Settings
-        lastActive?: active.Active
         from: From
     }
 
@@ -32,6 +31,7 @@ declare namespace user {
         filter: string[]
         menu: command.ID[][]
         convertedSong: string
+        last: { command: command.ID, args: string[] }[]
     }
 
     interface AlertSettings {

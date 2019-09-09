@@ -2,10 +2,11 @@
   "name": "framebot",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/index.ts",
+  "main": "./src/index.js",
   "types": "./src/@types/index.d.ts",
   "scripts": {
-    "start": "node ./build/src/index.js"
+    "start": "node ./src/index.js",
+    "gui": "electron ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "@types/striptags": "^3.1.1",
     "axios": "^0.19.0",
     "babel-plugin-idx": "^2.4.0",
+    "electron": "^6.0.7",
     "idx": "^2.5.6",
     "nexushub-client": "^1.2.0",
     "node-json-db": "^1.0.1",

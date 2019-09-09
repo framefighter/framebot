@@ -3,7 +3,7 @@
 !.gitattributes
 !README.md
 !/src/
-!/src/**
+!/src/**/*.ts
 !/docs/
 !/docs/**
 !/icons/

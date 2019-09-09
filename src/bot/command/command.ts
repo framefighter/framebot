@@ -1,11 +1,11 @@
 import { Keyboard } from '../keyboard/keyboard'
 import { Inline } from '../message/inline'
 import { Message } from '../message/message'
-import { BOT } from '../..'
 import { Check } from '../../utils/check'
 import { Formatter } from '../../utils/formatter'
 import { Active } from '../active/active'
 import { menuBtn } from './definitions'
+import { COMMANDS, STATE, DEFAULTS } from '../static'
 
 export class Command implements command.Command {
     emoji: string
@@ -27,34 +27,21 @@ export class Command implements command.Command {
         this.id = id
         const anyMsg = c.message 
         if (Check.id(anyMsg)) {
-            this.message = (active) =>  BOT.commands.fromID(anyMsg).message(active)
+            this.message = (active) =>  COMMANDS.fromID(anyMsg).message(active)
         } else {
             this.message = anyMsg || (() => new Message(""))
         }
 
         const anyBoard = c.keyboard
         if (Check.id(anyBoard)) {
-            this.keyboard = (active) => BOT.commands.fromID(anyBoard).keyboard(active)
+            this.keyboard = (active) =>
+                COMMANDS.fromID(anyBoard).keyboard(active)
         } else {
             this.keyboard = ((active) => {
                 if (anyBoard && menuBtn(active) !== active.command.id) {
                     return anyBoard(active)
                 }
-                if (active.user.settings.menu.length > 0) {
-                    return new Keyboard({
-                        layout: active.user.settings.menu.map(row =>
-                            row.map(config => ({ callback_data: config })))
-                    })
-                }
-                return new Keyboard({
-                    layout: [[{ callback_data: "sortie" }, { callback_data: "nightwave" }],
-                    [{ callback_data: "arbitration" }, { callback_data: "news" }],
-                    [{ callback_data: "events" }, { callback_data: "check" }],
-                    [{ callback_data: "cycles" }, { callback_data: "trader" }],
-                    [{ callback_data: "all" }],
-                    [{ callback_data: "settings" }, { text: "🔎 Find", switch_inline_query_current_chat: "find " },
-                    ...(active.user.admin ? [{ text: "⏱️ Time", switch_inline_query_current_chat: "time " }] : []),]],
-                })
+                return DEFAULTS.keyboard(active)
             })
         }
 
@@ -74,7 +61,7 @@ export class Command implements command.Command {
             ? c.count
             : (() => {
                 if (this.jsonKey) {
-                    const obj = BOT.ws[this.jsonKey]
+                    const obj = STATE.ws[this.jsonKey]
                     if (obj && Check.array(obj)) {
                         return obj.length || 0
                     }

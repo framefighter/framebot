@@ -4,13 +4,28 @@
       {
         "type": "node",
         "request": "launch",
+        "name": "Electron",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/src/gui/index.ts",
+        "runtimeExecutable": "electron",
+        "args": ["."],
+        "outputCapture": "std",
+        "cwd": "${workspaceFolder}",
+        "protocol": "inspector",
+        "outFiles": [
+          "${workspaceFolder}/**/*.js"
+        ]
+      },
+      {
+        "type": "node",
+        "request": "launch",
         "name": "Debug",
         "preLaunchTask": "build",
         "program": "${workspaceFolder}/src/index.ts",
         "cwd": "${workspaceFolder}",
         "protocol": "inspector",
         "outFiles": [
-          "${workspaceFolder}/build/**/*.js"
+          "${workspaceFolder}/**/*.js"
         ]
       }
     ]

@@ -1,9 +1,8 @@
 import { InlineKeyboardButton, InlineKeyboardMarkup } from 'node-telegram-bot-api'
 import { Compare } from '../../utils/compare'
-import { BOT } from '../..'
 import { Formatter } from '../../utils/formatter'
 import { Active } from '../active/active'
-import { Command } from '../command/command'
+import { COMMANDS } from '../static'
 
 export class Keyboard implements keyboard.Board {
     layout: keyboard.Button[][]
@@ -24,7 +23,7 @@ export class Keyboard implements keyboard.Board {
             let inlineRow: InlineKeyboardButton[] = []
             for (let btn of row) {
                 if (!btn) continue
-                const cmd = BOT.commands.find(btn.callback_data || "none")
+                const cmd = COMMANDS.find(btn.callback_data || "none")
                 if (btn.callback_data && cmd && cmd.hidden && !btn.args && !btn.alwaysShow) continue
                 const selected = active ? Compare.exact(btn.callback_data, active.command.id) : false;
                 let name = Formatter.camelToString(btn.text) || "-"
