@@ -1,22 +1,18 @@
 *
-!.gitignore
-!.gitattributes
-!README.md
-!/src/
+## folders
+!*/
 !/src/**/*.ts
-!/docs/
 !/docs/**
-!/icons/
 !/icons/**
-!package.json
-!package-lock.json
-!tsconfig.json
-!/.vscode/
-!/.vscode/**
-!/bash/
 !/bash/**
-!/data/
+## files
+!/package.json
+!/package-lock.json
+!/tsconfig.json
+!/.vscode/launch.json
+!/.vscode/tasks.json
 !/data/times.json
 !/data/songs.json
-.vscode/framebot.code-workspace
-.vscode/settings.json
+!.gitignore
+!.gitattributes
+!/README.md
