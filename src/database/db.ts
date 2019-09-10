@@ -19,6 +19,7 @@ export abstract class DB<T> implements db.DB {
                 console.log("PUSHING")
                 const spw = spawn("bash bash/push.sh", { shell: true })
                 spw.stdout.on("data", (data) => console.log(data))
+                this.timeout = undefined;
             }
             this.timeout = setTimeout(spawnPush, 6000)
         }
