@@ -79,7 +79,7 @@ export class Parser {
             arbitration: {},
         }
         const now = new Date()
-        data.forEach((mission) => {
+        data.forEach(mission => {
             const p = {
                 activation: new Date(mission.start || ""),
                 expiry: new Date(mission.end || ""),
@@ -94,14 +94,14 @@ export class Parser {
                         ...p,
                         activation: mission.start,
                         expiry: mission.end
-                    }
+                    } as wf.Arbitration
                 }
                 if (idx(mission, _ => _.missiontype.startsWith('KuvaMission'))) {
                     parsed.kuva.push({
                         ...p,
                         activation: mission.start,
                         expiry: mission.end
-                    })
+                    } as wf.Arbitration)
                 }
             }
         })

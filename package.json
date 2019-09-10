@@ -26,7 +26,6 @@
     "@types/striptags": "^3.1.1",
     "axios": "^0.19.0",
     "babel-plugin-idx": "^2.4.0",
-    "electron": "^6.0.7",
     "idx": "^2.5.6",
     "nexushub-client": "^1.2.0",
     "node-json-db": "^1.0.1",
