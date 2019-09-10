@@ -8,6 +8,7 @@ export class TimesDB extends DB<time.Record[]> implements db.TimesDB {
 
     add(time: time.Record) {
         this.db.push(`/${this.key}[]`, time)
+        this.push()
     }
 
     get list(): time.Record[] {

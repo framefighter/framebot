@@ -1,6 +1,5 @@
 import { Song } from '../bot/song/song'
 import { DB } from './db'
-import { spawn } from 'child_process'
 
 export class SongsDB extends DB<Song[]> implements db.SongsDB {
     constructor(path: string) {
@@ -20,6 +19,7 @@ export class SongsDB extends DB<Song[]> implements db.SongsDB {
             this.update(song)
         } else {
             this.db.push(`/${this.key}[]`, song)
+            this.push()
         }
     }
 
@@ -28,6 +28,7 @@ export class SongsDB extends DB<Song[]> implements db.SongsDB {
         if (ind !== -1) {
             if (this.data()[ind].user === song.user) {
                 this.data().splice(ind, 1)
+                this.push()
             }
         }
         this.db.save()
@@ -38,6 +39,7 @@ export class SongsDB extends DB<Song[]> implements db.SongsDB {
         if (this.exists(song.name) && ind !== -1) {
             if (this.data()[ind].user === song.user) {
                 this.db.push(`/${this.key}[${ind}]`, song)
+                this.push()
                 return true
             }
         }

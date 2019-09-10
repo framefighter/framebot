@@ -10,7 +10,7 @@ export const DB = new Database("./data")
 export const STATE = new World(60000)
 export const INFO = new Searchable(602000)
 export const DEFAULTS: bot.Defaults = {
-    parse_mode: "HTML",
+    parse_mode: "Markdown",
     user: {
         settings: {
             alert: {},

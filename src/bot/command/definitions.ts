@@ -99,7 +99,7 @@ export const definitions: command.Definitions = {
         }, active),
         inline: (active) => ((idx(active, _ => _.ws.fissures) || []) as wf.Fissure[]).map(mission =>
             new Inline({
-                title: mission.missionType  || "",
+                title: mission.missionType || "",
                 description: mission.tier,
             }))
     },
@@ -1202,8 +1202,7 @@ export const definitions: command.Definitions = {
         adminOnly: true,
         emoji: "🔄",
         action: () => {
-            spawn(
-                `bash bash/restart.sh`,
+            spawn(`bash bash/restart.sh`,
                 { shell: true })
         },
         message: (active) => new Message({

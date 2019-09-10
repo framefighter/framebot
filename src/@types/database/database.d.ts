@@ -10,6 +10,8 @@ declare namespace db {
         db: any
         key: string
         data(): any
+        push(): void
+        timeout?: NodeJS.Timeout
     }
 
     class UsersDB extends DB {
