@@ -3809,6 +3809,31 @@
             "date": 1567972599,
             "stage": 3,
             "reward": "Orokin Catalyst Blueprint"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 14,
+            "date": 1568055264,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 10,
+            "seconds": 24,
+            "date": 1568055264,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 20,
+            "boss": "Councilor Vay Hek",
+            "date": 1568055264,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture"
         }
     ]
 }
