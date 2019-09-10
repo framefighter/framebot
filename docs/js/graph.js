@@ -124,12 +124,14 @@ window.addEventListener('DOMContentLoaded', () => {
                         const copyBtn = document.createElement("button")
                         copyBtn.innerText = "Copy"
                         copyBtn.onclick = () => {
+                            input.disabled = false
                             input.select()
                             input.setSelectionRange(0, 999999)
                             document.execCommand("copy")
                             window.getSelection().removeAllRanges()
                             input.value = `Copied ${song.name}!`
                             setTimeout(() => input.value = song.string, 1000)
+                            input.disabled = true
                         }
                         songsRoot.appendChild(songName)
                         songsRoot.appendChild(copyBtn)
