@@ -1,5 +1,4 @@
 window.addEventListener('DOMContentLoaded', () => {
-    console.log("hi")
     const root = document.getElementById("root")
     const timesRoot = document.getElementById("keyboard")
     const songsRoot = document.getElementById("content")
