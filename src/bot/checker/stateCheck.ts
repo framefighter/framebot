@@ -26,7 +26,7 @@ export default class StateCheck implements checker.StateCheck {
 
     checkCmd<T extends any>(command: command.ID, obj?: T | null) {
         if (obj) {
-            let newObject = []
+            let newObject: any[] = []
             if (Array.isArray(obj)) {
                 const arrObj = obj as Array<any>
                 arrObj.map((n: any) => {

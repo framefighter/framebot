@@ -60,11 +60,17 @@ export const definitions: command.Definitions = {
         help: "Get current Sortie with average completion time",
         jsonKey: "sortie",
         emoji: "💢",
-        count: (active) => (idx(active, _ => _.ws.sortie.variants.length) || 0),
+        count: (active) => {
+            const n = (idx(active, _ => _.ws.sortie.variants) || []) as any
+            if (n.length) {
+                return n.length
+            }
+            return 0
+        },
         message: (active) => new Message({
             text: Formatter.sortie(active.ws.sortie)
         }, active),
-        inline: (active) => (idx(active, _ => _.ws.sortie.variants) || []).map(mission =>
+        inline: (active) => ((idx(active, _ => _.ws.sortie.variants) || []) as wf.Variant[]).map(mission =>
             new Inline({
                 title: mission.missionType || mission.boss || "",
                 description: mission.modifier,
@@ -91,10 +97,10 @@ export const definitions: command.Definitions = {
                     .join("".nl())
                 : "No Fissures found!"
         }, active),
-        inline: (active) => (idx(active, _ => _.ws.sortie.variants) || []).map(mission =>
+        inline: (active) => ((idx(active, _ => _.ws.fissures) || []) as wf.Fissure[]).map(mission =>
             new Inline({
-                title: mission.missionType || mission.boss || "",
-                description: mission.modifier,
+                title: mission.missionType  || "",
+                description: mission.tier,
             }))
     },
     "invasions": {
@@ -161,7 +167,7 @@ export const definitions: command.Definitions = {
         emoji: "💬",
         count: (active) => (idx(active, _ => _.ws.news.filter(n =>
             Object.keys(n.translations || {})
-                .includes("en")).length) || 0),
+                .includes("en")).length) || 0) as number,
         message: (active) => {
             const englishNews = STATE.filteredByID<wf.News>(active.args, active.command.jsonKey)
                 .sort((a, b) => Compare.dates(a.date, b.date))
@@ -206,7 +212,7 @@ export const definitions: command.Definitions = {
         count: (active) => (idx(active, _ => _.ws.news.filter(n =>
             Object.keys(n.translations || {})
                 .includes("en")
-            && n.update).length) || 0),
+            && n.update).length) || 0) as number,
         message: (active) => {
             const englishNews = STATE.filteredByID<wf.News>(active.args, active.command.jsonKey)
                 .sort((a, b) => Compare.dates(a.date, b.date))
@@ -249,11 +255,11 @@ export const definitions: command.Definitions = {
         help: "Get Baro Ki'Teer status",
         jsonKey: "voidTrader",
         emoji: "💱",
-        count: (active) => (idx(active, _ => _.ws.voidTrader.inventory.length) || 0),
+        count: (active) => (idx(active, _ => _.ws.voidTrader.inventory.length) || 0) as number,
         message: (active) => new Message({
             text: Formatter.trader(active.ws.voidTrader)
         }, active),
-        inline: active => idx(active, _ =>
+        inline: active => (idx(active, _ =>
             [new Inline({
                 title: _.ws.voidTrader.character
                     .end(_.ws.voidTrader.active ? "is at" : "will be at")
@@ -268,14 +274,14 @@ export const definitions: command.Definitions = {
                     description: `${inv.ducats}d | ${inv.credits}c`,
                     text: Formatter.trader(active.ws.voidTrader)
                 })))
-        ) || [],
-        rewards: (active) => idx(active, _ =>
+        ) || []) as Inline[],
+        rewards: (active) => (idx(active, _ =>
             [{
                 id: _.ws.voidTrader.id,
                 text: Formatter.trader(active.ws.voidTrader),
                 rewards: (_.ws.voidTrader.inventory || []).map(inv => inv.item),
             }]
-        ) || []
+        ) || []) as message.Reward[]
     },
     "boosters": {
         alt: ["boost"],
@@ -317,10 +323,10 @@ export const definitions: command.Definitions = {
         jsonKey: "nightwave",
         emoji: "🌊",
         count: (active) => (idx(active, _ =>
-            _.ws.nightwave.activeChallenges.length) || 0),
+            _.ws.nightwave.activeChallenges.length) || 0) as number,
         message: (active) =>
             new Message({
-                text: idx(active, _ => ("Season:".end(
+                text: (idx(active, _ => ("Season:".end(
                     _.ws.nightwave.season.toString()
                         .concat(".")
                         .concat(_.ws.nightwave.phase.toString())
@@ -334,12 +340,12 @@ export const definitions: command.Definitions = {
                             ? active.args.includes(challenge.id)
                             : true)
                         .map(Formatter.nightwave).join("".nl())))
-                    || "No Nightwave found!"
+                    || "No Nightwave found!") as string
             }, active),
-        inline: (active) => (idx(active, _ => _.ws.nightwave.activeChallenges) || [])
+        inline: (active) => ((idx(active, _ => _.ws.nightwave.activeChallenges) || []) as wf.ActiveChallenge[])
             .map(ch => new Inline({
                 title: Formatter.nightwaveType(ch).start("[" + ch.reputation + "]") + ch.title,
-                description: ch.desc.nl() + ch.expiry.toString().fromNow().start("Ends"),
+                description: (ch.desc || "").nl() + (ch.expiry || "").toString().fromNow().start("Ends"),
                 text: Formatter.nightwave(ch)
             }))
     },
@@ -352,14 +358,14 @@ export const definitions: command.Definitions = {
             : "🌙 Cetus",
         message: (active) => {
             return new Message({
-                text: idx(active, _ => Formatter.format({
+                text: (idx(active, _ => Formatter.format({
                     caption: `It is currently ${_.ws.cetusCycle.state.toUpperCase()} on the Plains of Eidolon!`,
                     subCaption: _.ws.cetusCycle.shortString,
                     link: {
                         text: "Fishing Map",
                         url: "https://vignette.wikia.nocookie.net/warframe/images/4/4b/Fishingmap.png/revision/latest?cb=20181111120029"
                     }
-                })) || "No Cetus Information Found!"
+                })) || "No Cetus Information Found!") as string
             }, active)
         },
         keyboard: "cycles"
@@ -373,14 +379,14 @@ export const definitions: command.Definitions = {
             ? "🔥 Vallis"
             : "❄️ Vallis",
         message: (active) => new Message({
-            text: idx(active, _ => Formatter.format({
+            text: (idx(active, _ => Formatter.format({
                 caption: `It is currently ${_.ws.vallisCycle.state.toUpperCase()} in Orb Vallis!`,
                 subCaption: _.ws.vallisCycle.shortString,
                 link: {
                     text: "Fishing Map",
                     url: "https://vignette.wikia.nocookie.net/warframe/images/6/6f/FortunaFishingMap.jpg/revision/latest?cb=20181113071342"
                 }
-            })) || "No Vallis Information Found!"
+            })) || "No Vallis Information Found!") as string
         }, active),
         keyboard: "cycles"
     },
@@ -393,9 +399,9 @@ export const definitions: command.Definitions = {
             ? "☀️️ Earth"
             : "🌙 Earth",
         message: (active) => new Message({
-            text: idx(active, _ => Formatter.format({
+            text: (idx(active, _ => Formatter.format({
                 caption: `It is currently ${_.ws.earthCycle.state.toUpperCase()} on Earth!`,
-            })) || "No Earth Information Found!"
+            })) || "No Earth Information Found!") as string
         }, active),
         keyboard: "cycles"
     },
@@ -445,7 +451,7 @@ export const definitions: command.Definitions = {
         rewards: (active) => [{
             id: DB.notifications.generateID(STATE.ws.arbitration, active.command.id),
             text: Formatter.arbitration(STATE.ws.arbitration),
-            rewards: [idx(STATE.ws, _ => _.arbitration.type),
+            rewards: [idx(STATE.ws, _ => _.arbitration.type) as string,
                 "Credits",
                 "vitus essence"].clean()
         }]
@@ -465,7 +471,7 @@ export const definitions: command.Definitions = {
             ? (active.ws.alerts || [])
                 .map(alert =>
                     new Inline({
-                        title: idx(alert, _ => _.mission.type) || "",
+                        title: idx(alert, _ => _.mission.type) as string || "",
                         text: Formatter.alert(alert),
                     }))
             : [new Inline({
@@ -476,7 +482,7 @@ export const definitions: command.Definitions = {
             ({
                 id: alert.id || DB.notifications.generateID(alert),
                 text: Formatter.alert(alert),
-                rewards: idx(alert, _ => [_.mission.reward.asString]) || []
+                rewards: idx(alert, _ => [_.mission.reward.asString]) as string[] || []
             })).clean(),
         keyboard: (active) => new Keyboard({
             layout: [[btn("invasions"), btn("events"), btn("alerts")],
@@ -1129,7 +1135,7 @@ export const definitions: command.Definitions = {
                             minutes: min || 0,
                             seconds: sec || 0,
                             boss: Check.assassination(mission.missionType)
-                                ? (idx(active, _ => _.ws.sortie.boss) || "")
+                                ? (idx(active, _ => _.ws.sortie.boss) as string || "")
                                 : undefined,
                             date: moment().unix(),
                             stage: i + 1,

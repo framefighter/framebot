@@ -9,7 +9,7 @@ declare namespace db {
     class DB {
         db: any
         key: string
-        get data(): any
+        data(): any
     }
 
     class UsersDB extends DB {
