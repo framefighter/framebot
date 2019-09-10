@@ -1100,7 +1100,8 @@ export const definitions: command.Definitions = {
                                 date: moment().unix(),
                                 stage: i + 1,
                                 reward: Parse.sortieReward(
-                                    active.args[(sortie.variants || []).length])
+                                    active.args[(sortie.variants || []).length]),
+                                mod: mission.modifier
                             }
                             DB.times.add(time)
                             return time
@@ -1140,7 +1141,8 @@ export const definitions: command.Definitions = {
                             date: moment().unix(),
                             stage: i + 1,
                             reward: Parse.sortieReward(
-                                active.args[(sortie.variants || []).length])
+                                active.args[(sortie.variants || []).length]),
+                            mod: mission.modifier
                         }
                         const args: string[] = []
                         args[i] = active.args[i]

@@ -7,6 +7,7 @@ declare namespace time {
         date?: number
         stage?: number
         reward?: string;
+        mod?: string;
     }
 
     interface Avg {
