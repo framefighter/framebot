@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Framebot</title>
+    <style>
+        body {
+            background-color: #202020;
+            color: rgb(235, 235, 235);
+            font-family: Roboto;
+            display: grid;
+            grid-template-rows: 1fr auto;
+        }
+
+        b {
+            color: #AAAAAA;
+        }
+
+        code {
+            color: rgb(60, 172, 206);
+        }
+
+        a {
+            color: #ffffff;
+        }
+
+        span {
+            padding: 5px;
+        }
+
+        #content {
+            place-self: start;
+            padding: 10px;
+            margin: 2px;
+            border-radius: 5px;
+            display: grid;
+            grid-template-columns: 1.5fr 0.2fr 1.3fr;
+            grid-row-gap: 1px;
+        }
+
+        #keyboard {
+            place-self: start;
+            padding: 10px;
+            margin: 2px;
+            border-radius: 5px;
+            display: grid;
+            grid-template-columns: 1.5fr 0.2fr 1.3fr;
+            grid-row-gap: 1px;
+        }
+
+
+        #root {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+        }
+
+        .rowName {
+            padding: 5px;
+            text-align: right;
+        }
+
+        .gridHead {
+            border-bottom: 1px solid white
+        }
+
+        button {
+            padding: 5px;
+            background: #404040;
+            color: white;
+            border: none;
+            border-radius: 5px
+        }
+
+        button:hover {
+            background: #ffffff40
+        }
+
+        input {
+            margin-left: 5px;
+            padding: 5px;
+            background: #303030;
+            color: #CCCCCC;
+            border: none;
+            border-radius: 5px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <h1>Songs</h1>
+        <div id="content"></div>
+        <h1>Times</h1>
+        <div id="keyboard"></div>
+    </div>
+    <script src="js/graph.js"></script>
+</body>
+
+</html>

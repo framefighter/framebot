@@ -2,6 +2,7 @@
 ## folders
 !*/
 !/src/**/*.ts
+!/src/**/*.html
 !/docs/**
 !/icons/**
 !/bash/**
