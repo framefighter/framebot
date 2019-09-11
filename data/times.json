@@ -3861,6 +3861,33 @@
             "stage": 3,
             "reward": "Shotgun Riven Mod",
             "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Disruption",
+            "minutes": 7,
+            "seconds": 15,
+            "date": 1568229117,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Impact"
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 4,
+            "seconds": 17,
+            "date": 1568229117,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Elemental Enhancement: Blast"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 29,
+            "date": 1568229117,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Sniper Only"
         }
     ]
 }
