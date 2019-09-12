@@ -3888,6 +3888,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Weapon Restriction: Sniper Only"
+        },
+        {
+            "mission": "Hive",
+            "minutes": 2,
+            "seconds": 37,
+            "date": 1568316532,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 15,
+            "date": 1568316532,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 11,
+            "seconds": 2,
+            "date": 1568316532,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Weapon Restriction: Shotgun Only"
         }
     ]
 }
