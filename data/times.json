@@ -3943,6 +3943,34 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Enemy Physical Enhancement: Impact"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 3,
+            "date": 1568487153,
+            "stage": 1,
+            "reward": "Rifle Riven Mod",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 11,
+            "seconds": 42,
+            "date": 1568487153,
+            "stage": 2,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 19,
+            "boss": "Raptor",
+            "date": 1568487153,
+            "stage": 3,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Corrosive"
         }
     ]
 }
