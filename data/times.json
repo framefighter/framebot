@@ -3998,6 +3998,34 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Weapon Restriction: Melee Only"
+        },
+        {
+            "mission": "Survival",
+            "minutes": 11,
+            "seconds": 10,
+            "date": 1568658623,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Elemental Enhancement: Toxin"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 33,
+            "date": 1568658623,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 5,
+            "seconds": 29,
+            "boss": "Lephantis",
+            "date": 1568658623,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Energy Reduction"
         }
     ]
 }
