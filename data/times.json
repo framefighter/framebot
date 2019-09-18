@@ -4054,6 +4054,33 @@
             "stage": 3,
             "reward": "6000X Kuva",
             "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 9,
+            "seconds": 8,
+            "date": 1568834743,
+            "stage": 1,
+            "reward": "Pistol Riven Mod",
+            "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 4,
+            "seconds": 9,
+            "date": 1568834743,
+            "stage": 2,
+            "reward": "Pistol Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Corrosive"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 48,
+            "date": 1568834743,
+            "stage": 3,
+            "reward": "Pistol Riven Mod",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
