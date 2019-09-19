@@ -4090,6 +4090,15 @@
             "stage": 1,
             "reward": "",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 3,
+            "seconds": 57,
+            "date": 1568915892,
+            "stage": 1,
+            "reward": "",
+            "mod": "Energy Reduction"
         }
     ]
 }
