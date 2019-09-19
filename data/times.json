@@ -4081,6 +4081,15 @@
             "stage": 3,
             "reward": "Pistol Riven Mod",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 12,
+            "seconds": 27,
+            "date": 1568915870,
+            "stage": 1,
+            "reward": "",
+            "mod": "Energy Reduction"
         }
     ]
 }
