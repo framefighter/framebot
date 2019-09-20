@@ -4099,6 +4099,34 @@
             "stage": 1,
             "reward": "",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 45,
+            "date": 1568996772,
+            "stage": 1,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 55,
+            "date": 1568996772,
+            "stage": 2,
+            "reward": "Rifle Riven Mod",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 2,
+            "boss": "General Sargas Ruk",
+            "date": 1568996772,
+            "stage": 3,
+            "reward": "Rifle Riven Mod",
+            "mod": "Environmental Effect: Cryogenic Leakage"
         }
     ]
 }
