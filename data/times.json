@@ -3834,6 +3834,299 @@
             "date": 1568055264,
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 56,
+            "date": 1568149579,
+            "stage": 1,
+            "reward": "Shotgun Riven Mod",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 37,
+            "date": 1568149579,
+            "stage": 2,
+            "reward": "Shotgun Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Radiation"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 11,
+            "seconds": 37,
+            "date": 1568149579,
+            "stage": 3,
+            "reward": "Shotgun Riven Mod",
+            "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Disruption",
+            "minutes": 7,
+            "seconds": 15,
+            "date": 1568229117,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Impact"
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 4,
+            "seconds": 17,
+            "date": 1568229117,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Elemental Enhancement: Blast"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 29,
+            "date": 1568229117,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Sniper Only"
+        },
+        {
+            "mission": "Hive",
+            "minutes": 2,
+            "seconds": 37,
+            "date": 1568316532,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 15,
+            "date": 1568316532,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 11,
+            "seconds": 2,
+            "date": 1568316532,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Weapon Restriction: Shotgun Only"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 2,
+            "date": 1568418425,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Pistol Only"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 32,
+            "date": 1568418425,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Elemental Enhancement: Magnetic"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 4,
+            "seconds": 28,
+            "boss": "Tyl Regor",
+            "date": 1568418425,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Impact"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 3,
+            "date": 1568487153,
+            "stage": 1,
+            "reward": "Rifle Riven Mod",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 11,
+            "seconds": 42,
+            "date": 1568487153,
+            "stage": 2,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 19,
+            "boss": "Raptor",
+            "date": 1568487153,
+            "stage": 3,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Corrosive"
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 37,
+            "date": 1568576278,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 12,
+            "date": 1568576278,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 29,
+            "date": 1568576278,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Melee Only"
+        },
+        {
+            "mission": "Survival",
+            "minutes": 11,
+            "seconds": 10,
+            "date": 1568658623,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Elemental Enhancement: Toxin"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 33,
+            "date": 1568658623,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 5,
+            "seconds": 29,
+            "boss": "Lephantis",
+            "date": 1568658623,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 55,
+            "date": 1568754630,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 14,
+            "seconds": 14,
+            "date": 1568754630,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Elemental Enhancement: Viral"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 30,
+            "boss": "Alad V",
+            "date": 1568754630,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 9,
+            "seconds": 8,
+            "date": 1568834743,
+            "stage": 1,
+            "reward": "Pistol Riven Mod",
+            "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 4,
+            "seconds": 9,
+            "date": 1568834743,
+            "stage": 2,
+            "reward": "Pistol Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Corrosive"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 48,
+            "date": 1568834743,
+            "stage": 3,
+            "reward": "Pistol Riven Mod",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 12,
+            "seconds": 27,
+            "date": 1568915870,
+            "stage": 1,
+            "reward": "",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 3,
+            "seconds": 57,
+            "date": 1568915892,
+            "stage": 1,
+            "reward": "",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 45,
+            "date": 1568996772,
+            "stage": 1,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 55,
+            "date": 1568996772,
+            "stage": 2,
+            "reward": "Rifle Riven Mod",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 2,
+            "boss": "General Sargas Ruk",
+            "date": 1568996772,
+            "stage": 3,
+            "reward": "Rifle Riven Mod",
+            "mod": "Environmental Effect: Cryogenic Leakage"
         }
     ]
 }
