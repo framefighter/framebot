@@ -45,6 +45,7 @@ declare namespace wf {
         node_type?: string;
         archwing?: boolean;
         sharkwing?: boolean;
+        id?: string;
     }
 
 
