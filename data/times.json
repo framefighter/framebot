@@ -4209,6 +4209,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 35,
+            "date": 1569342238,
+            "stage": 1,
+            "reward": "Zaw Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Toxin"
+        },
+        {
+            "mission": "Disruption",
+            "minutes": 8,
+            "seconds": 35,
+            "date": 1569342238,
+            "stage": 2,
+            "reward": "Zaw Riven Mod",
+            "mod": "Environmental Hazard: Fire"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 46,
+            "date": 1569342238,
+            "stage": 3,
+            "reward": "Zaw Riven Mod",
+            "mod": "Enemy Physical Enhancement: Puncture"
         }
     ]
 }
