@@ -756,7 +756,7 @@ String.prototype.alignRight = function (this: string) {
 
 String.prototype.nl = function (this: string) {
     const str = this
-    if (str === undefined) return ""
+    if (!str) return ""
     return str.concat("\n")
 }
 

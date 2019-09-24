@@ -52,7 +52,7 @@ export const definitions: command.Definitions = {
             }), Formatter.format({
                 caption: "Feedback",
                 link: { url: "https://github.com/framefighter/framebot/issues", text: "Report Issues" }
-            })].join("".nl())
+            })].join("\n")
         }, active)
     },
     "sortie": {
@@ -94,7 +94,7 @@ export const definitions: command.Definitions = {
                 ? STATE.filteredByID<wf.Fissure>(active.args, active.command.jsonKey)
                     .sort((a, b) => (a.tierNum || 0) - (b.tierNum || 0))
                     .map(Formatter.fissure)
-                    .join("".nl())
+                    .join("\n")
                 : "No Fissures found!"
         }, active),
         inline: (active) => ((idx(active, _ => _.ws.fissures) || []) as wf.Fissure[]).map(mission =>
@@ -113,7 +113,7 @@ export const definitions: command.Definitions = {
                 ? STATE.filteredByID<wf.Invasion>(active.args, active.command.jsonKey)
                     .map(Formatter.invasion)
                     .clean()
-                    .join("".nl().nl())
+                    .join("\n".nl())
                 : "No Invasions found!"
         }, active),
         rewards: (active) => (active.ws.invasions || [])
@@ -141,7 +141,7 @@ export const definitions: command.Definitions = {
                 ? STATE.filteredByID<wf.Event>(active.args, active.command.jsonKey)
                     .map(Formatter.event)
                     .clean()
-                    .join("".nl().nl())
+                    .join("\n".nl())
                 : "No Events found!"
         }, active),
         rewards: (active) => (active.ws.events || [])
@@ -179,7 +179,7 @@ export const definitions: command.Definitions = {
                     text: englishNews.clean()
                         .map(Formatter.newsEvent)
                         .clean()
-                        .join("".nl())
+                        .join("\n")
                 }, active)
             }
             return new Message("")
@@ -224,7 +224,7 @@ export const definitions: command.Definitions = {
                     text: englishNews.clean()
                         .map(Formatter.newsEvent)
                         .clean()
-                        .join("".nl())
+                        .join("\n")
                 }, active)
             }
             return new Message("")
@@ -299,7 +299,7 @@ export const definitions: command.Definitions = {
                                 .end(boost.upgrade),
                             description: boost.desc,
                             end: boost.end
-                        })).join("".nl())
+                        })).join("\n")
                 : "No Boosters found!"
         }, active),
         inline: (active) => (active.ws.globalUpgrades || []).length > 0
@@ -339,7 +339,7 @@ export const definitions: command.Definitions = {
                         .filter(challenge => active.args.length > 0
                             ? active.args.includes(challenge.id)
                             : true)
-                        .map(Formatter.nightwave).join("".nl())))
+                        .map(Formatter.nightwave).join("\n")))
                     || "No Nightwave found!") as string
             }, active),
         inline: (active) => ((idx(active, _ => _.ws.nightwave.activeChallenges) || []) as wf.ActiveChallenge[])
@@ -451,7 +451,7 @@ export const definitions: command.Definitions = {
         rewards: (active) => [{
             id: DB.notifications.generateID(STATE.ws.arbitration, active.command.id),
             text: Formatter.arbitration(STATE.ws.arbitration),
-            rewards: [idx(STATE.ws, _ => _.arbitration.type) as string,
+            rewards: [idx(STATE.ws, _ => _.arbitration.type) + "",
                 "Credits",
                 "vitus essence"].clean()
         }]
@@ -464,7 +464,7 @@ export const definitions: command.Definitions = {
         message: (active) => new Message({
             text: (active.ws.alerts || []).length > 0
                 ? STATE.filteredByID<wf.Alert>(active.args, active.command.jsonKey)
-                    .map(Formatter.alert).join("".nl())
+                    .map(Formatter.alert).join("\n")
                 : "No Alerts found!"
         }, active),
         inline: (active) => (active.ws.alerts || []).length > 0
@@ -748,9 +748,9 @@ export const definitions: command.Definitions = {
                             weapon.name.toUpperCase().includes(arg.toUpperCase()))
                         .slice(0, 2)
                         .map(Formatter.weapon)
-                        .join("".nl())
+                        .join("\n")
                     : ""
-            ).slice(0, 2).join("".nl()) || "No Weapons found!"
+            ).slice(0, 2).join("\n") || "No Weapons found!"
         }, active),
         inline: (active) => active.args.map(arg =>
             INFO.weapons
@@ -782,9 +782,9 @@ export const definitions: command.Definitions = {
                             warframe.name.toUpperCase().includes(arg.toUpperCase()))
                         .slice(0, 2)
                         .map(Formatter.warframe)
-                        .join("".nl())
+                        .join("\n")
                     : ""
-            ).slice(0, 2).join("".nl()) || "No Warframes found!"
+            ).slice(0, 2).join("\n") || "No Warframes found!"
         }, active),
         inline: (active) => active.args.map(arg =>
             INFO.warframes
@@ -816,9 +816,9 @@ export const definitions: command.Definitions = {
                             mod.name.toUpperCase().includes(arg.toUpperCase()))
                         .slice(0, 2)
                         .map(Formatter.mod)
-                        .join("".nl())
+                        .join("\n")
                     : ""
-            ).slice(0, 2).join("".nl()) || "No Mods found!"
+            ).slice(0, 2).join("\n") || "No Mods found!"
         }, active),
         inline: (active) => active.args.map(arg =>
             INFO.mods
@@ -850,9 +850,9 @@ export const definitions: command.Definitions = {
                             sentinel.name.toUpperCase().includes(arg.toUpperCase()))
                         .slice(0, 2)
                         .map(Formatter.sentinel)
-                        .join("".nl())
+                        .join("\n")
                     : ""
-            ).slice(0, 2).join("".nl()) || "No Sentinels found!"
+            ).slice(0, 2).join("\n") || "No Sentinels found!"
         }, active),
         inline: (active) => active.args.map(arg =>
             INFO.sentinels
@@ -883,8 +883,8 @@ export const definitions: command.Definitions = {
                         price.Title.toUpperCase().includes(arg.toUpperCase()))
                     .slice(0, 2)
                     .map(Formatter.price)
-                    .join("".nl())
-            ).slice(0, 2).join("".nl()) || "No Prices found!"
+                    .join("\n")
+            ).slice(0, 2).join("\n") || "No Prices found!"
         }, active),
         inline: (active) => active.args.map(arg =>
             (INFO.prices || [])
@@ -914,8 +914,8 @@ export const definitions: command.Definitions = {
                         drop.item.toUpperCase().includes(arg.toUpperCase()))
                     .slice(0, 2)
                     .map(Formatter.drop)
-                    .join("".nl())
-            ).slice(0, 2).join("".nl()) || "No Drops found!"
+                    .join("\n")
+            ).slice(0, 2).join("\n") || "No Drops found!"
         }, active),
         inline: (active) => active.args.map(arg =>
             (INFO.drops || [])
@@ -924,7 +924,7 @@ export const definitions: command.Definitions = {
                 )
                 .map(drop => new Inline({
                     title: Formatter.dropTitle(drop),
-                    description: drop.group.slice(0, 1).map(Formatter.dropInfo).join("".nl()),
+                    description: drop.group.slice(0, 1).map(Formatter.dropInfo).join("\n"),
                     text: Formatter.drop(drop),
                     item: drop.item
                 }))
@@ -944,8 +944,8 @@ export const definitions: command.Definitions = {
                         drop.place.toUpperCase().includes(arg.toUpperCase()))
                     .slice(0, 2)
                     .map(Formatter.place)
-                    .join("".nl())
-            ).slice(0, 2).join("".nl()) || "No Places found!"
+                    .join("\n")
+            ).slice(0, 2).join("\n") || "No Places found!"
         }, active),
         inline: (active) => active.args.map(arg =>
             (INFO.places || [])
@@ -954,7 +954,7 @@ export const definitions: command.Definitions = {
                 )
                 .map(place => new Inline({
                     title: Formatter.placeTitle(place),
-                    description: place.group.slice(0, 1).map(Formatter.placeInfo).join("".nl()),
+                    description: place.group.slice(0, 1).map(Formatter.placeInfo).join("\n"),
                     text: Formatter.place(place),
                     item: place.place
                 }))
@@ -1008,10 +1008,10 @@ export const definitions: command.Definitions = {
                         .nl()
                         .concat(reward.text))
                     .clean()
-                    .join("".nl())
+                    .join("\n")
                 )
                 .clean()
-                .join("".nl().nl())
+                .join("\n".nl())
                 || Formatter.format({
                     caption: "Nothing found with active filter!",
                     list: (active.args.length > 0
@@ -1114,7 +1114,7 @@ export const definitions: command.Definitions = {
             text: (active.execute_return as time.Record[] || []).length > 0
                 ? (active.execute_return as time.Record[] || [])
                     .map(Formatter.timeRecord)
-                    .join("".nl())
+                    .join("\n")
                 : active.user.admin ? "No Times to add!" : "Admin rights required!"
         }, active),
         inline: (active) => {
@@ -1183,7 +1183,7 @@ export const definitions: command.Definitions = {
                 description: "Click here to save all recorded times!",
                 text: Formatter.format({
                     caption: "Click below to Save these times to database!",
-                    text: recs.map(inl => inl.text).join("".nl()),
+                    text: recs.map(inl => inl.text).join("\n"),
                 }),
                 keyboard: new Keyboard({
                     layout: [[{
@@ -1256,7 +1256,7 @@ export const definitions: command.Definitions = {
                 .map(cmd => Formatter.format({
                     caption: ["/" + cmd.id.clean(), ...cmd.alt].join(" | /"),
                     subCaption: cmd.help
-                })).join("".nl())
+                })).join("\n")
         }, active),
         inline: (active) => COMMANDS.list
             .filter(cmd => !cmd.hidden)
@@ -1360,7 +1360,7 @@ export const definitions: command.Definitions = {
                         }
                     }).clean()).clean()
             }
-            return retStr.join("".nl())
+            return retStr.join("\n")
 
         },
         message: (active) => new Message({
@@ -1369,7 +1369,7 @@ export const definitions: command.Definitions = {
                 text: ("Editing this will change your menu buttons.".nl()
                     + "Use with caution if you don't know how to navigate the bot without buttons!".nl().nl()
                     + "No duplicates allowed!".bold()),
-                subCaption: "".nl() + "➕ to add new buttons.".nl() + "➖ to remove this button.",
+                subCaption: "\n" + "➕ to add new buttons.".nl() + "➖ to remove this button.",
                 description: active.execute_return
             })
         }, active),
@@ -1509,7 +1509,7 @@ export const definitions: command.Definitions = {
                 active.user.settings.convertedSong = converted
                 return [new Inline({
                     title: "Click to show full conversion!",
-                    description: converted.length > 100 ? converted.substr(0, 50) + "".nl() + "[...]" : converted,
+                    description: converted.length > 100 ? converted.substr(0, 50) + "\n" + "[...]" : converted,
                     text: converted,
                     keyboard: new Keyboard({
                         layout: [[new Button({
@@ -1535,7 +1535,7 @@ export const definitions: command.Definitions = {
                 if (DB.songs.exists(name)) {
                     return [new Inline({
                         title: "Song with this name already exists",
-                        description: name + "".nl() + "Try a different name!"
+                        description: name + "\n" + "Try a different name!"
                     })]
                 } else {
                     return [new Inline({

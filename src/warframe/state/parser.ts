@@ -93,14 +93,16 @@ export class Parser {
                     parsed.arbitration = {
                         ...p,
                         activation: mission.start,
-                        expiry: mission.end
+                        expiry: mission.end,
+                        id: mission.missiontype + mission.start
                     } as wf.Arbitration
                 }
-                if (idx(mission, _ => _.missiontype.startsWith('KuvaMission'))) {
+                if (mission.missiontype && mission.missiontype.startsWith('KuvaMission')) {
                     parsed.kuva.push({
                         ...p,
                         activation: mission.start,
-                        expiry: mission.end
+                        expiry: mission.end,
+                        id: mission.missiontype + mission.start
                     } as wf.Arbitration)
                 }
             }
