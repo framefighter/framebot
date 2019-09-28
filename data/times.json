@@ -4318,6 +4318,34 @@
             "stage": 3,
             "reward": "Orokin Catalyst Blueprint",
             "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 26,
+            "date": 1569701602,
+            "stage": 1,
+            "reward": "Forma",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 9,
+            "date": 1569701602,
+            "stage": 2,
+            "reward": "Forma",
+            "mod": "Weapon Restriction: Melee Only"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 3,
+            "boss": "Hyena Pack",
+            "date": 1569701602,
+            "stage": 3,
+            "reward": "Forma",
+            "mod": "Enemy Physical Enhancement: Slash"
         }
     ]
 }
