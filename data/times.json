@@ -4346,6 +4346,34 @@
             "stage": 3,
             "reward": "Forma",
             "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Survival",
+            "minutes": 11,
+            "seconds": 40,
+            "date": 1569786510,
+            "stage": 1,
+            "reward": "Shotgun Riven Mod",
+            "mod": "Weapon Restriction: Melee Only"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 30,
+            "date": 1569786510,
+            "stage": 2,
+            "reward": "Shotgun Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Blast"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 44,
+            "boss": "General Sargas Ruk",
+            "date": 1569786510,
+            "stage": 3,
+            "reward": "Shotgun Riven Mod",
+            "mod": "Enemy Physical Enhancement: Slash"
         }
     ]
 }
