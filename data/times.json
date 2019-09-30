@@ -4374,6 +4374,33 @@
             "stage": 3,
             "reward": "Shotgun Riven Mod",
             "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 46,
+            "date": 1569868046,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Survival",
+            "minutes": 10,
+            "seconds": 22,
+            "date": 1569868046,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 56,
+            "date": 1569868046,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Energy Reduction"
         }
     ]
 }
