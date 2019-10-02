@@ -4401,6 +4401,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 4,
+            "date": 1570058342,
+            "stage": 1,
+            "reward": "Rifle Riven Mod",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 37,
+            "date": 1570058342,
+            "stage": 2,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Corrosive"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 33,
+            "date": 1570058342,
+            "stage": 3,
+            "reward": "Rifle Riven Mod",
+            "mod": "Weapon Restriction: Assault Rifle Only"
         }
     ]
 }
