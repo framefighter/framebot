@@ -4428,6 +4428,33 @@
             "stage": 3,
             "reward": "Rifle Riven Mod",
             "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Hive",
+            "minutes": 3,
+            "seconds": 3,
+            "date": 1570130334,
+            "stage": 1,
+            "reward": "Melee Riven Mod",
+            "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 53,
+            "date": 1570130334,
+            "stage": 2,
+            "reward": "Melee Riven Mod",
+            "mod": "Weapon Restriction: Sniper Only"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 34,
+            "date": 1570130334,
+            "stage": 3,
+            "reward": "Melee Riven Mod",
+            "mod": "Energy Reduction"
         }
     ]
 }
