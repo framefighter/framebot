@@ -4455,6 +4455,33 @@
             "stage": 3,
             "reward": "Melee Riven Mod",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 4,
+            "seconds": 57,
+            "date": 1570219844,
+            "stage": 1,
+            "reward": "Affinity Booster",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 52,
+            "date": 1570219844,
+            "stage": 2,
+            "reward": "Affinity Booster",
+            "mod": "Enemy Physical Enhancement: Impact"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 53,
+            "date": 1570219844,
+            "stage": 3,
+            "reward": "Affinity Booster",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
