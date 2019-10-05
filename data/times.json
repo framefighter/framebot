@@ -4482,6 +4482,34 @@
             "stage": 3,
             "reward": "Affinity Booster",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 5,
+            "seconds": 18,
+            "date": 1570301375,
+            "stage": 1,
+            "reward": "Orokin Catalyst Blueprint",
+            "mod": "Enemy Elemental Enhancement: Corrosive"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 9,
+            "date": 1570301375,
+            "stage": 2,
+            "reward": "Orokin Catalyst Blueprint",
+            "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 28,
+            "boss": "Councilor Vay Hek",
+            "date": 1570301375,
+            "stage": 3,
+            "reward": "Orokin Catalyst Blueprint",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
