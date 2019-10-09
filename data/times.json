@@ -4592,6 +4592,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Free Roam",
+            "minutes": 4,
+            "seconds": 9,
+            "date": 1570646988,
+            "stage": 1,
+            "reward": "Rifle Riven Mod",
+            "mod": "Weapon Restriction: Pistol Only"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 10,
+            "seconds": 55,
+            "date": 1570646988,
+            "stage": 2,
+            "reward": "Rifle Riven Mod",
+            "mod": "Environmental Hazard: Electromagnetic Anomalies"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 16,
+            "date": 1570646988,
+            "stage": 3,
+            "reward": "Rifle Riven Mod",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
