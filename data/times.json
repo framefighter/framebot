@@ -4628,6 +4628,15 @@
             "stage": 1,
             "reward": "",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 5,
+            "seconds": 20,
+            "date": 1570737075,
+            "stage": 1,
+            "reward": "",
+            "mod": "Energy Reduction"
         }
     ]
 }
