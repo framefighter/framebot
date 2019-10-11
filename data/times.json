@@ -4637,6 +4637,33 @@
             "stage": 1,
             "reward": "",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 39,
+            "date": 1570836958,
+            "stage": 1,
+            "reward": "Melee Riven Mod",
+            "mod": "Environmental Hazard: Electromagnetic Anomalies"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 23,
+            "date": 1570836958,
+            "stage": 2,
+            "reward": "Melee Riven Mod",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 11,
+            "seconds": 36,
+            "date": 1570836958,
+            "stage": 3,
+            "reward": "Melee Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Cold"
         }
     ]
 }
