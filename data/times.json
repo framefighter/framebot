@@ -4664,6 +4664,33 @@
             "stage": 3,
             "reward": "Melee Riven Mod",
             "mod": "Enemy Elemental Enhancement: Cold"
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 13,
+            "date": 1570906296,
+            "stage": 1,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Heat"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 36,
+            "date": 1570906296,
+            "stage": 2,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enemy Physical Enhancement: Impact"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 6,
+            "date": 1570906296,
+            "stage": 3,
+            "reward": "Rifle Riven Mod",
+            "mod": "Energy Reduction"
         }
     ]
 }
