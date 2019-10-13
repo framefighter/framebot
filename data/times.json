@@ -4691,6 +4691,33 @@
             "stage": 3,
             "reward": "Rifle Riven Mod",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 32,
+            "date": 1571000729,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 57,
+            "date": 1571000729,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 3,
+            "seconds": 33,
+            "date": 1571000729,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Bow Only"
         }
     ]
 }
