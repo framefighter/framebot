@@ -4718,6 +4718,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Weapon Restriction: Bow Only"
+        },
+        {
+            "mission": "Disruption",
+            "minutes": 8,
+            "seconds": 16,
+            "date": 1571082863,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 14,
+            "date": 1571082863,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 24,
+            "date": 1571082863,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Environmental Hazard: Radiation Pockets"
         }
     ]
 }
