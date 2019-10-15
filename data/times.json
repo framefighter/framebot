@@ -4745,6 +4745,33 @@
             "stage": 3,
             "reward": "6000X Kuva",
             "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 56,
+            "date": 1571171612,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 37,
+            "date": 1571171612,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Elemental Enhancement: Corrosive"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 20,
+            "date": 1571171612,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Energy Reduction"
         }
     ]
 }
