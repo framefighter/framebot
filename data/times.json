@@ -4772,6 +4772,15 @@
             "stage": 3,
             "reward": "6000X Kuva",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 49,
+            "date": 1571254933,
+            "stage": 1,
+            "reward": "",
+            "mod": "Energy Reduction"
         }
     ]
 }
