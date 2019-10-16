@@ -4781,6 +4781,15 @@
             "stage": 1,
             "reward": "",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 6,
+            "date": 1571254979,
+            "stage": 1,
+            "reward": "",
+            "mod": "Energy Reduction"
         }
     ]
 }
