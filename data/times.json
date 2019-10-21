@@ -4899,6 +4899,15 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Weapon Restriction: Bow Only"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 9,
+            "seconds": 41,
+            "date": 1571689593,
+            "stage": 1,
+            "reward": "",
+            "mod": "Enemy Elemental Enhancement: Cold"
         }
     ]
 }
