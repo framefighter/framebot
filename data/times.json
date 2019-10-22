@@ -4908,6 +4908,34 @@
             "stage": 1,
             "reward": "",
             "mod": "Enemy Elemental Enhancement: Cold"
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 4,
+            "seconds": 3,
+            "date": 1571776869,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 3,
+            "seconds": 5,
+            "date": 1571776869,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 51,
+            "boss": "General Sargas Ruk",
+            "date": 1571776869,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Enemy Elemental Enhancement: Blast"
         }
     ]
 }
