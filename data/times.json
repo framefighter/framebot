@@ -4936,6 +4936,34 @@
             "stage": 3,
             "reward": "4000 Endo",
             "mod": "Enemy Elemental Enhancement: Blast"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 43,
+            "date": 1571857575,
+            "stage": 1,
+            "reward": "Forma",
+            "mod": "Weapon Restriction: Shotgun Only"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 9,
+            "seconds": 2,
+            "date": 1571857575,
+            "stage": 2,
+            "reward": "Forma",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 4,
+            "seconds": 57,
+            "boss": "Lephantis",
+            "date": 1571857575,
+            "stage": 3,
+            "reward": "Forma",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
