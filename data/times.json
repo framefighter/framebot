@@ -5047,6 +5047,34 @@
             "stage": 3,
             "reward": "Pistol Riven Mod",
             "mod": "Enemy Elemental Enhancement: Viral"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 40,
+            "date": 1572295692,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Survival",
+            "minutes": 10,
+            "seconds": 36,
+            "date": 1572295692,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 12,
+            "seconds": 18,
+            "boss": "Ambulas",
+            "date": 1572295692,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Elemental Enhancement: Magnetic"
         }
     ]
 }
