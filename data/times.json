@@ -5102,6 +5102,34 @@
             "stage": 3,
             "reward": "Pistol Riven Mod",
             "mod": "Weapon Restriction: Pistol Only"
+        },
+        {
+            "mission": "Survival",
+            "minutes": 10,
+            "seconds": 29,
+            "date": 1572553743,
+            "stage": 1,
+            "reward": "Zaw Riven Mod",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 26,
+            "date": 1572553743,
+            "stage": 2,
+            "reward": "Zaw Riven Mod",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 31,
+            "boss": "Mutalist Alad V",
+            "date": 1572553743,
+            "stage": 3,
+            "reward": "Zaw Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Viral"
         }
     ]
 }
