@@ -5185,6 +5185,34 @@
             "stage": 3,
             "reward": "Resource Drop Chance Booster",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 45,
+            "date": 1573226576,
+            "stage": 1,
+            "reward": "Melee Riven Mod",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 15,
+            "date": 1573226576,
+            "stage": 2,
+            "reward": "Melee Riven Mod",
+            "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 6,
+            "seconds": 45,
+            "boss": "Kela De Thaym",
+            "date": 1573226576,
+            "stage": 3,
+            "reward": "Melee Riven Mod",
+            "mod": "Environmental Hazard: Radiation Pockets"
         }
     ]
 }
