@@ -5213,6 +5213,33 @@
             "stage": 3,
             "reward": "Melee Riven Mod",
             "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 12,
+            "date": 1573238184,
+            "stage": 1,
+            "reward": "Kitgun Riven Mod",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 20,
+            "date": 1573238184,
+            "stage": 2,
+            "reward": "Kitgun Riven Mod",
+            "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 9,
+            "seconds": 31,
+            "date": 1573238184,
+            "stage": 3,
+            "reward": "Kitgun Riven Mod",
+            "mod": "Energy Reduction"
         }
     ]
 }
