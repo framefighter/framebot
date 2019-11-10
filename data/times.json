@@ -5240,6 +5240,33 @@
             "stage": 3,
             "reward": "Kitgun Riven Mod",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Survival",
+            "minutes": 11,
+            "seconds": 21,
+            "date": 1573414169,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Environmental Hazard: Fire"
+        },
+        {
+            "mission": "Assault",
+            "minutes": 6,
+            "seconds": 4,
+            "date": 1573414169,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 41,
+            "date": 1573414169,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Energy Reduction"
         }
     ]
 }
