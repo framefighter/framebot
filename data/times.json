@@ -5267,6 +5267,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 18,
+            "date": 1573502522,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 42,
+            "date": 1573502522,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 38,
+            "date": 1573502522,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Environmental Hazard: Electromagnetic Anomalies"
         }
     ]
 }
