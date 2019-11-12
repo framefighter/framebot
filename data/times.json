@@ -5294,6 +5294,34 @@
             "stage": 3,
             "reward": "6000X Kuva",
             "mod": "Environmental Hazard: Electromagnetic Anomalies"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 4,
+            "seconds": 15,
+            "date": 1573593816,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 46,
+            "date": 1573593816,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 42,
+            "boss": "Councilor Vay Hek",
+            "date": 1573593816,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Impact"
         }
     ]
 }
