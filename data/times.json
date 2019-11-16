@@ -5349,6 +5349,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 26,
+            "date": 1573862711,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 35,
+            "date": 1573862711,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Melee Only"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 11,
+            "seconds": 15,
+            "date": 1573862711,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Impact"
         }
     ]
 }
