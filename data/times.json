@@ -5404,6 +5404,34 @@
             "stage": 3,
             "reward": "Resource Drop Chance Booster",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 53,
+            "date": 1574021133,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 33,
+            "date": 1574021133,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 4,
+            "seconds": 9,
+            "boss": "Raptor",
+            "date": 1574021133,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Elemental Enhancement: Corrosive"
         }
     ]
 }
