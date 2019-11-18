@@ -5432,6 +5432,34 @@
             "stage": 3,
             "reward": "6000X Kuva",
             "mod": "Enemy Elemental Enhancement: Corrosive"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 4,
+            "seconds": 13,
+            "date": 1574107334,
+            "stage": 1,
+            "reward": "Orokin Catalyst Blueprint",
+            "mod": "Enemy Elemental Enhancement: Toxin"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 30,
+            "date": 1574107334,
+            "stage": 2,
+            "reward": "Orokin Catalyst Blueprint",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 1,
+            "seconds": 32,
+            "boss": "Captain Vor",
+            "date": 1574107334,
+            "stage": 3,
+            "reward": "Orokin Catalyst Blueprint",
+            "mod": "Weapon Restriction: Shotgun Only"
         }
     ]
 }
