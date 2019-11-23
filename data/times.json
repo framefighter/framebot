@@ -5514,6 +5514,34 @@
             "stage": 3,
             "reward": "Rifle Riven Mod",
             "mod": "Environmental Hazard: Electromagnetic Anomalies"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 41,
+            "date": 1574550787,
+            "stage": 1,
+            "reward": "Pistol Riven Mod",
+            "mod": "Weapon Restriction: Melee Only"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 20,
+            "date": 1574550787,
+            "stage": 2,
+            "reward": "Pistol Riven Mod",
+            "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 10,
+            "boss": "General Sargas Ruk",
+            "date": 1574550787,
+            "stage": 3,
+            "reward": "Pistol Riven Mod",
+            "mod": "Enemy Physical Enhancement: Slash"
         }
     ]
 }
