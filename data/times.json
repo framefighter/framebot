@@ -5542,6 +5542,34 @@
             "stage": 3,
             "reward": "Pistol Riven Mod",
             "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 54,
+            "date": 1574626035,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Elemental Enhancement: Electricity"
+        },
+        {
+            "mission": "Excavation",
+            "minutes": 8,
+            "seconds": 44,
+            "date": 1574626035,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 19,
+            "boss": "Hyena Pack",
+            "date": 1574626035,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Energy Reduction"
         }
     ]
 }
