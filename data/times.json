@@ -5597,6 +5597,34 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 44,
+            "date": 1575210207,
+            "stage": 1,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Radiation"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 9,
+            "seconds": 15,
+            "date": 1575210208,
+            "stage": 2,
+            "reward": "Rifle Riven Mod",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 24,
+            "boss": "Phorid",
+            "date": 1575210208,
+            "stage": 3,
+            "reward": "Rifle Riven Mod",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
