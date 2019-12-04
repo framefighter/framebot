@@ -5625,6 +5625,33 @@
             "stage": 3,
             "reward": "Rifle Riven Mod",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 18,
+            "date": 1575490769,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Environmental Hazard: Fire"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 42,
+            "date": 1575490769,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Weapon Restriction: Melee Only"
+        },
+        {
+            "mission": "Defection",
+            "minutes": 9,
+            "seconds": 59,
+            "date": 1575490769,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Elemental Enhancement: Electricity"
         }
     ]
 }
