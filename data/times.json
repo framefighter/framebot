@@ -5652,6 +5652,33 @@
             "stage": 3,
             "reward": "6000X Kuva",
             "mod": "Enemy Elemental Enhancement: Electricity"
+        },
+        {
+            "mission": "Hive",
+            "minutes": 3,
+            "seconds": 3,
+            "date": 1575668458,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 7,
+            "seconds": 21,
+            "date": 1575668458,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 57,
+            "date": 1575668458,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Elemental Enhancement: Viral"
         }
     ]
 }
