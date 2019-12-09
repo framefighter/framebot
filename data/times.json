@@ -5733,6 +5733,33 @@
             "stage": 3,
             "reward": "Resource Drop Chance Booster",
             "mod": "Enemy Elemental Enhancement: Electricity"
+        },
+        {
+            "mission": "Excavation",
+            "minutes": 6,
+            "seconds": 54,
+            "date": 1575929003,
+            "stage": 1,
+            "reward": "Rifle Riven Mod",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 52,
+            "date": 1575929003,
+            "stage": 2,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 4,
+            "seconds": 56,
+            "date": 1575929003,
+            "stage": 3,
+            "reward": "Rifle Riven Mod",
+            "mod": "Environmental Hazard: Radiation Pockets"
         }
     ]
 }
