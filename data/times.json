@@ -5760,6 +5760,33 @@
             "stage": 3,
             "reward": "Rifle Riven Mod",
             "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 20,
+            "date": 1576015041,
+            "stage": 1,
+            "reward": "Melee Riven Mod",
+            "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Free Roam",
+            "minutes": 6,
+            "seconds": 10,
+            "date": 1576015041,
+            "stage": 2,
+            "reward": "Melee Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Viral"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 17,
+            "date": 1576015042,
+            "stage": 3,
+            "reward": "Melee Riven Mod",
+            "mod": "Environmental Hazard: Electromagnetic Anomalies"
         }
     ]
 }
