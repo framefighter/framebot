@@ -5787,6 +5787,33 @@
             "stage": 3,
             "reward": "Melee Riven Mod",
             "mod": "Environmental Hazard: Electromagnetic Anomalies"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 53,
+            "date": 1576101131,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 7,
+            "date": 1576101131,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 20,
+            "date": 1576101131,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Impact"
         }
     ]
 }
