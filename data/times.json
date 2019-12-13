@@ -5842,6 +5842,33 @@
             "stage": 3,
             "reward": "6000X Kuva",
             "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 3,
+            "seconds": 35,
+            "date": 1576274384,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 4,
+            "date": 1576274384,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 13,
+            "date": 1576274384,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
