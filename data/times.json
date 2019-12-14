@@ -5869,6 +5869,34 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 3,
+            "seconds": 8,
+            "date": 1576354766,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Bow Only"
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 3,
+            "seconds": 47,
+            "date": 1576354766,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 4,
+            "boss": "Hyena Pack",
+            "date": 1576354766,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Slash"
         }
     ]
 }
