@@ -5897,6 +5897,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 29,
+            "date": 1576528360,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 54,
+            "date": 1576528360,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Shotgun Only"
+        },
+        {
+            "mission": "Disruption",
+            "minutes": 12,
+            "seconds": 52,
+            "date": 1576528360,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enhanced Enemy Shields"
         }
     ]
 }
