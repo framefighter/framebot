@@ -5951,6 +5951,33 @@
             "stage": 3,
             "reward": "Melee Riven Mod",
             "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Hive",
+            "minutes": 2,
+            "seconds": 41,
+            "date": 1576792446,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Pistol Only"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 39,
+            "date": 1576792446,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Defection",
+            "minutes": 11,
+            "seconds": 18,
+            "date": 1576792446,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Environmental Hazard: Radiation Pockets"
         }
     ]
 }
