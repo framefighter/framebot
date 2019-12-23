@@ -6032,6 +6032,33 @@
             "stage": 3,
             "reward": "Zaw Riven Mod",
             "mod": "Enemy Elemental Enhancement: Cold"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 29,
+            "date": 1577131149,
+            "stage": 1,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Electricity"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 5,
+            "seconds": 16,
+            "date": 1577131149,
+            "stage": 2,
+            "reward": "Rifle Riven Mod",
+            "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 17,
+            "seconds": 54,
+            "date": 1577131149,
+            "stage": 3,
+            "reward": "Rifle Riven Mod",
+            "mod": "Weapon Restriction: Assault Rifle Only"
         }
     ]
 }
