@@ -6086,6 +6086,34 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 48,
+            "date": 1577396792,
+            "stage": 1,
+            "reward": "Resource Drop Chance Booster",
+            "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 26,
+            "date": 1577396792,
+            "stage": 2,
+            "reward": "Resource Drop Chance Booster",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 6,
+            "seconds": 20,
+            "boss": "Lephantis",
+            "date": 1577396792,
+            "stage": 3,
+            "reward": "Resource Drop Chance Booster",
+            "mod": "Enemy Elemental Enhancement: Heat"
         }
     ]
 }
