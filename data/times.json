@@ -6141,6 +6141,33 @@
             "stage": 3,
             "reward": "6000X Kuva",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 22,
+            "date": 1577571163,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 39,
+            "date": 1577571163,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 32,
+            "date": 1577571163,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Environmental Hazard: Radiation Pockets"
         }
     ]
 }
