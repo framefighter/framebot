@@ -6195,6 +6195,33 @@
             "stage": 3,
             "reward": "Pistol Riven Mod",
             "mod": "Enemy Elemental Enhancement: Cold"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 48,
+            "date": 1577816844,
+            "stage": 1,
+            "reward": "Affinity Booster",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 8,
+            "seconds": 30,
+            "date": 1577816844,
+            "stage": 2,
+            "reward": "Affinity Booster",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 29,
+            "date": 1577816844,
+            "stage": 3,
+            "reward": "Affinity Booster",
+            "mod": "Weapon Restriction: Sniper Only"
         }
     ]
 }
