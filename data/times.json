@@ -6277,6 +6277,33 @@
             "stage": 3,
             "reward": "Exilus Warframe Adapter",
             "mod": "Environmental Hazard: Electromagnetic Anomalies"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 13,
+            "date": 1578080498,
+            "stage": 1,
+            "reward": "Pistol Riven Mod",
+            "mod": "Weapon Restriction: Bow Only"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 12,
+            "date": 1578080498,
+            "stage": 2,
+            "reward": "Pistol Riven Mod",
+            "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 25,
+            "date": 1578080498,
+            "stage": 3,
+            "reward": "Pistol Riven Mod",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
