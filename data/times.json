@@ -6359,6 +6359,33 @@
             "stage": 3,
             "reward": "Affinity Booster",
             "mod": "Environmental Hazard: Fire"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 17,
+            "date": 1578338713,
+            "stage": 1,
+            "reward": "Mod Drop Chance Booster",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 59,
+            "date": 1578338713,
+            "stage": 2,
+            "reward": "Mod Drop Chance Booster",
+            "mod": "Enemy Elemental Enhancement: Heat"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 3,
+            "seconds": 13,
+            "date": 1578338713,
+            "stage": 3,
+            "reward": "Mod Drop Chance Booster",
+            "mod": "Environmental Hazard: Electromagnetic Anomalies"
         }
     ]
 }
