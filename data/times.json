@@ -6386,6 +6386,34 @@
             "stage": 3,
             "reward": "Mod Drop Chance Booster",
             "mod": "Environmental Hazard: Electromagnetic Anomalies"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 46,
+            "date": 1578418703,
+            "stage": 1,
+            "reward": "Melee Riven Mod",
+            "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 20,
+            "date": 1578418703,
+            "stage": 2,
+            "reward": "Melee Riven Mod",
+            "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 17,
+            "boss": "Hyena Pack",
+            "date": 1578418703,
+            "stage": 3,
+            "reward": "Melee Riven Mod",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
