@@ -6634,6 +6634,34 @@
             "stage": 3,
             "reward": "4000 Endo",
             "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 47,
+            "date": 1579367897,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 42,
+            "date": 1579367897,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 23,
+            "boss": "Mutalist Alad V",
+            "date": 1579367897,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Enemy Elemental Enhancement: Magnetic"
         }
     ]
 }
