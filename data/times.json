@@ -6689,6 +6689,34 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 25,
+            "date": 1579549869,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 44,
+            "date": 1579549869,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Enemy Elemental Enhancement: Heat"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 15,
+            "boss": "Raptor",
+            "date": 1579549869,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Environmental Effect: Extreme Cold"
         }
     ]
 }
