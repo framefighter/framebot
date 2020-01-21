@@ -6717,6 +6717,34 @@
             "stage": 3,
             "reward": "4000 Endo",
             "mod": "Environmental Effect: Extreme Cold"
+        },
+        {
+            "mission": "Free Roam",
+            "minutes": 3,
+            "seconds": 8,
+            "date": 1579641024,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 10,
+            "date": 1579641024,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 29,
+            "boss": "Captain Vor",
+            "date": 1579641024,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Enemy Elemental Enhancement: Electricity"
         }
     ]
 }
