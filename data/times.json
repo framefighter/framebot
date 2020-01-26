@@ -6773,6 +6773,34 @@
             "stage": 3,
             "reward": "Orokin Catalyst Blueprint",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 36,
+            "date": 1580062230,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 4,
+            "date": 1580062230,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 1,
+            "boss": "General Sargas Ruk",
+            "date": 1580062230,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
