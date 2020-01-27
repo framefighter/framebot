@@ -6801,6 +6801,33 @@
             "stage": 3,
             "reward": "4000 Endo",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 27,
+            "date": 1580152601,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Enemy Elemental Enhancement: Viral"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 33,
+            "date": 1580152601,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 9,
+            "seconds": 52,
+            "date": 1580152601,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Energy Reduction"
         }
     ]
 }
