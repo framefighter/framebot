@@ -6828,6 +6828,34 @@
             "stage": 3,
             "reward": "4000 Endo",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 28,
+            "date": 1580246308,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 3,
+            "date": 1580246309,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 9,
+            "boss": "Nef Anyo",
+            "date": 1580246309,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Energy Reduction"
         }
     ]
 }
