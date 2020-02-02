@@ -6938,6 +6938,34 @@
             "stage": 3,
             "reward": "Zaw Riven Mod",
             "mod": "Enemy Physical Enhancement: Impact"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 28,
+            "date": 1580673807,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Elemental Enhancement: Magnetic"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 54,
+            "date": 1580673807,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Shotgun Only"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 39,
+            "boss": "Phorid",
+            "date": 1580673807,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
