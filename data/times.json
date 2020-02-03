@@ -6966,6 +6966,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 55,
+            "date": 1580764645,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 48,
+            "date": 1580764645,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Elemental Enhancement: Viral"
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 3,
+            "seconds": 33,
+            "date": 1580764645,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Sniper Only"
         }
     ]
 }
