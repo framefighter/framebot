@@ -6993,6 +6993,34 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Weapon Restriction: Sniper Only"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 25,
+            "date": 1580855717,
+            "stage": 1,
+            "reward": "Kitgun Riven Mod",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 58,
+            "date": 1580855717,
+            "stage": 2,
+            "reward": "Kitgun Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Blast"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 6,
+            "boss": "General Sargas Ruk",
+            "date": 1580855717,
+            "stage": 3,
+            "reward": "Kitgun Riven Mod",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
