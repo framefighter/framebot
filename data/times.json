@@ -7076,6 +7076,34 @@
             "stage": 3,
             "reward": "6000X Kuva",
             "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 6,
+            "date": 1581111095,
+            "stage": 1,
+            "reward": "Melee Riven Mod",
+            "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Survival",
+            "minutes": 10,
+            "seconds": 8,
+            "date": 1581111095,
+            "stage": 2,
+            "reward": "Melee Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Heat"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 1,
+            "seconds": 39,
+            "boss": "Jackal",
+            "date": 1581111095,
+            "stage": 3,
+            "reward": "Melee Riven Mod",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
