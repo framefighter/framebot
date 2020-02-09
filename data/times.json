@@ -7132,6 +7132,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 12,
+            "seconds": 9,
+            "date": 1581278291,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 4,
+            "seconds": 46,
+            "date": 1581278291,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Weapon Restriction: Bow Only"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 6,
+            "date": 1581278291,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Environmental Hazard: Radiation Pockets"
         }
     ]
 }
