@@ -7186,6 +7186,34 @@
             "stage": 3,
             "reward": "4000 Endo",
             "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 19,
+            "date": 1581457432,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Environmental Effect: Cryogenic Leakage"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 3,
+            "seconds": 12,
+            "date": 1581457432,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 12,
+            "seconds": 50,
+            "boss": "Ambulas",
+            "date": 1581457432,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Energy Reduction"
         }
     ]
 }
