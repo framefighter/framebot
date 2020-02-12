@@ -7214,6 +7214,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 6,
+            "date": 1581539945,
+            "stage": 1,
+            "reward": "Affinity Booster",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 50,
+            "date": 1581539945,
+            "stage": 2,
+            "reward": "Affinity Booster",
+            "mod": "Environmental Effect: Cryogenic Leakage"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 40,
+            "date": 1581539945,
+            "stage": 3,
+            "reward": "Affinity Booster",
+            "mod": "Enemy Elemental Enhancement: Electricity"
         }
     ]
 }
