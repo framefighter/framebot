@@ -7268,6 +7268,33 @@
             "stage": 3,
             "reward": "Affinity Booster",
             "mod": "Weapon Restriction: Bow Only"
+        },
+        {
+            "mission": "Free Roam",
+            "minutes": 3,
+            "seconds": 59,
+            "date": 1581718685,
+            "stage": 1,
+            "reward": "Mod Drop Chance Booster",
+            "mod": "Weapon Restriction: Shotgun Only"
+        },
+        {
+            "mission": "Defection",
+            "minutes": 10,
+            "seconds": 16,
+            "date": 1581718685,
+            "stage": 2,
+            "reward": "Mod Drop Chance Booster",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 38,
+            "date": 1581718685,
+            "stage": 3,
+            "reward": "Mod Drop Chance Booster",
+            "mod": "Weapon Restriction: Sniper Only"
         }
     ]
 }
