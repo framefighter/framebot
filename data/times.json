@@ -7322,6 +7322,33 @@
             "stage": 3,
             "reward": "Pistol Riven Mod",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 21,
+            "date": 1582059992,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Enemy Elemental Enhancement: Magnetic"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 4,
+            "seconds": 20,
+            "date": 1582059992,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 2,
+            "date": 1582059992,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
