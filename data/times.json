@@ -7349,6 +7349,34 @@
             "stage": 3,
             "reward": "4000 Endo",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 30,
+            "date": 1582142263,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 17,
+            "seconds": 59,
+            "date": 1582142263,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 1,
+            "seconds": 49,
+            "boss": "Captain Vor",
+            "date": 1582142263,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Environmental Hazard: Radiation Pockets"
         }
     ]
 }
