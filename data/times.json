@@ -7377,6 +7377,34 @@
             "stage": 3,
             "reward": "4000 Endo",
             "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 46,
+            "date": 1583876235,
+            "stage": 1,
+            "reward": "Kitgun Riven Mod",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 12,
+            "date": 1583876235,
+            "stage": 2,
+            "reward": "Kitgun Riven Mod",
+            "mod": "Weapon Restriction: Shotgun Only"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 30,
+            "boss": "Councilor Vay Hek",
+            "date": 1583876235,
+            "stage": 3,
+            "reward": "Kitgun Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Cold"
         }
     ]
 }
