@@ -7433,6 +7433,33 @@
             "stage": 3,
             "reward": "Rifle Riven Mod",
             "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Survival",
+            "minutes": 11,
+            "seconds": 0,
+            "date": 1584030495,
+            "stage": 1,
+            "reward": "Melee Riven Mod",
+            "mod": "Enemy Physical Enhancement: Impact"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 19,
+            "date": 1584030495,
+            "stage": 2,
+            "reward": "Melee Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Toxin"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 32,
+            "date": 1584030495,
+            "stage": 3,
+            "reward": "Melee Riven Mod",
+            "mod": "Energy Reduction"
         }
     ]
 }
