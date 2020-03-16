@@ -7460,6 +7460,33 @@
             "stage": 3,
             "reward": "Melee Riven Mod",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Hive",
+            "minutes": 3,
+            "seconds": 0,
+            "date": 1584385829,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Disruption",
+            "minutes": 9,
+            "seconds": 39,
+            "date": 1584385829,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Bow Only"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 47,
+            "date": 1584385829,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Environmental Hazard: Electromagnetic Anomalies"
         }
     ]
 }
