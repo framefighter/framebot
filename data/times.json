@@ -7487,6 +7487,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Environmental Hazard: Electromagnetic Anomalies"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 6,
+            "date": 1584557391,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Impact"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 58,
+            "date": 1584557391,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Elemental Enhancement: Corrosive"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 27,
+            "date": 1584557391,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
