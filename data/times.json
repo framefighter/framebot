@@ -7514,6 +7514,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 0,
+            "date": 1584648266,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 3,
+            "seconds": 23,
+            "date": 1584648266,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 26,
+            "date": 1584648266,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Puncture"
         }
     ]
 }
