@@ -7541,6 +7541,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 58,
+            "date": 1584984436,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 39,
+            "date": 1584984436,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 53,
+            "date": 1584984436,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Enemy Elemental Enhancement: Toxin"
         }
     ]
 }
