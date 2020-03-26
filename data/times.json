@@ -7595,6 +7595,33 @@
             "stage": 3,
             "reward": "Melee Riven Mod",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Hive",
+            "minutes": 4,
+            "seconds": 4,
+            "date": 1585250161,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Weapon Restriction: Sniper Only"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 9,
+            "seconds": 3,
+            "date": 1585250161,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 24,
+            "date": 1585250161,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Environmental Hazard: Radiation Pockets"
         }
     ]
 }
