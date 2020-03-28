@@ -7622,6 +7622,33 @@
             "stage": 3,
             "reward": "4000 Endo",
             "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 38,
+            "date": 1585422513,
+            "stage": 1,
+            "reward": "Pistol Riven Mod",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 16,
+            "seconds": 49,
+            "date": 1585422513,
+            "stage": 2,
+            "reward": "Pistol Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Cold"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 2,
+            "seconds": 26,
+            "date": 1585422513,
+            "stage": 3,
+            "reward": "Pistol Riven Mod",
+            "mod": "Energy Reduction"
         }
     ]
 }
