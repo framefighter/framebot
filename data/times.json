@@ -7677,6 +7677,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Enemy Elemental Enhancement: Radiation"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 30,
+            "date": 1585592371,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Enemy Elemental Enhancement: Cold"
+        },
+        {
+            "mission": "Defection",
+            "minutes": 8,
+            "seconds": 55,
+            "date": 1585592371,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 10,
+            "date": 1585592371,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Enemy Physical Enhancement: Impact"
         }
     ]
 }
