@@ -7704,6 +7704,34 @@
             "stage": 3,
             "reward": "4000 Endo",
             "mod": "Enemy Physical Enhancement: Impact"
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 3,
+            "seconds": 27,
+            "date": 1585680228,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Physical Enhancement: Impact"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 59,
+            "date": 1585680228,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 34,
+            "boss": "Hyena Pack",
+            "date": 1585680228,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Weapon Restriction: Assault Rifle Only"
         }
     ]
 }
