@@ -7732,6 +7732,33 @@
             "stage": 3,
             "reward": "6000X Kuva",
             "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Defection",
+            "minutes": 10,
+            "seconds": 6,
+            "date": 1585855473,
+            "stage": 1,
+            "reward": "Resource Drop Chance Booster",
+            "mod": "Enemy Elemental Enhancement: Magnetic"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 5,
+            "date": 1585855473,
+            "stage": 2,
+            "reward": "Resource Drop Chance Booster",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 2,
+            "date": 1585855473,
+            "stage": 3,
+            "reward": "Resource Drop Chance Booster",
+            "mod": "Weapon Restriction: Sniper Only"
         }
     ]
 }
