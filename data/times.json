@@ -7759,6 +7759,34 @@
             "stage": 3,
             "reward": "Resource Drop Chance Booster",
             "mod": "Weapon Restriction: Sniper Only"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 54,
+            "date": 1585931746,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 18,
+            "date": 1585931746,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 5,
+            "seconds": 19,
+            "boss": "Tyl Regor",
+            "date": 1585931746,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Elemental Enhancement: Viral"
         }
     ]
 }
