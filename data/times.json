@@ -7787,6 +7787,34 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Enemy Elemental Enhancement: Viral"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 24,
+            "date": 1586029442,
+            "stage": 1,
+            "reward": "Pistol Riven Mod",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 4,
+            "seconds": 21,
+            "date": 1586029442,
+            "stage": 2,
+            "reward": "Pistol Riven Mod",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 13,
+            "boss": "Alad V",
+            "date": 1586029442,
+            "stage": 3,
+            "reward": "Pistol Riven Mod",
+            "mod": "Enemy Physical Enhancement: Slash"
         }
     ]
 }
