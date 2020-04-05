@@ -7815,6 +7815,34 @@
             "stage": 3,
             "reward": "Pistol Riven Mod",
             "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 9,
+            "seconds": 53,
+            "date": 1586104048,
+            "stage": 1,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 20,
+            "date": 1586104048,
+            "stage": 2,
+            "reward": "Rifle Riven Mod",
+            "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 28,
+            "boss": "Captain Vor",
+            "date": 1586104048,
+            "stage": 3,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Electricity"
         }
     ]
 }
