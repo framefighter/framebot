@@ -7843,6 +7843,33 @@
             "stage": 3,
             "reward": "Rifle Riven Mod",
             "mod": "Enemy Elemental Enhancement: Electricity"
+        },
+        {
+            "mission": "Hive",
+            "minutes": 3,
+            "seconds": 19,
+            "date": 1586198506,
+            "stage": 1,
+            "reward": "Melee Riven Mod",
+            "mod": "Environmental Hazard: Electromagnetic Anomalies"
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 34,
+            "date": 1586198506,
+            "stage": 2,
+            "reward": "Melee Riven Mod",
+            "mod": "Weapon Restriction: Sniper Only"
+        },
+        {
+            "mission": "Survival",
+            "minutes": 11,
+            "seconds": 29,
+            "date": 1586198506,
+            "stage": 3,
+            "reward": "Melee Riven Mod",
+            "mod": "Augmented Enemy Armor"
         }
     ]
 }
