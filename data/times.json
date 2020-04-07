@@ -7870,6 +7870,33 @@
             "stage": 3,
             "reward": "Melee Riven Mod",
             "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 3,
+            "date": 1586282125,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 43,
+            "date": 1586282125,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 48,
+            "date": 1586282125,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Enhanced Enemy Shields"
         }
     ]
 }
