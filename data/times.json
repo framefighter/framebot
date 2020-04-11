@@ -7924,6 +7924,33 @@
             "stage": 3,
             "reward": "Mod Drop Chance Booster",
             "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 6,
+            "seconds": 33,
+            "date": 1586630620,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 5,
+            "seconds": 48,
+            "date": 1586630621,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 38,
+            "date": 1586630621,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
