@@ -7951,6 +7951,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Hive",
+            "minutes": 2,
+            "seconds": 9,
+            "date": 1586715292,
+            "stage": 1,
+            "reward": "Melee Riven Mod",
+            "mod": "Environmental Hazard: Electromagnetic Anomalies"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 9,
+            "seconds": 39,
+            "date": 1586715292,
+            "stage": 2,
+            "reward": "Melee Riven Mod",
+            "mod": "Enemy Physical Enhancement: Impact"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 20,
+            "date": 1586715292,
+            "stage": 3,
+            "reward": "Melee Riven Mod",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
