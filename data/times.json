@@ -7978,6 +7978,33 @@
             "stage": 3,
             "reward": "Melee Riven Mod",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Free Roam",
+            "minutes": 3,
+            "seconds": 57,
+            "date": 1586888645,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 38,
+            "date": 1586888645,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 35,
+            "date": 1586888645,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Enemy Elemental Enhancement: Heat"
         }
     ]
 }
