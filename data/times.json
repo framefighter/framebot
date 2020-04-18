@@ -8005,6 +8005,33 @@
             "stage": 3,
             "reward": "4000 Endo",
             "mod": "Enemy Elemental Enhancement: Heat"
+        },
+        {
+            "mission": "Free Roam",
+            "minutes": 7,
+            "seconds": 8,
+            "date": 1587234771,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Enemy Elemental Enhancement: Corrosive"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 24,
+            "date": 1587234772,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 5,
+            "seconds": 23,
+            "date": 1587234772,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Weapon Restriction: Bow Only"
         }
     ]
 }
