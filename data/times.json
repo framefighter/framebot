@@ -8060,6 +8060,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 33,
+            "date": 1587406142,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 43,
+            "date": 1587406142,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 3,
+            "seconds": 36,
+            "date": 1587406142,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Weapon Restriction: Sniper Only"
         }
     ]
 }
