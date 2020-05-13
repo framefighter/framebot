@@ -8114,6 +8114,33 @@
             "stage": 3,
             "reward": "4000 Endo",
             "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Disruption",
+            "minutes": 6,
+            "seconds": 21,
+            "date": 1589400678,
+            "stage": 1,
+            "reward": "6000X Kuva",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 54,
+            "date": 1589400678,
+            "stage": 2,
+            "reward": "6000X Kuva",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Hijack",
+            "minutes": 4,
+            "seconds": 29,
+            "date": 1589400678,
+            "stage": 3,
+            "reward": "6000X Kuva",
+            "mod": "Augmented Enemy Armor"
         }
     ]
 }
