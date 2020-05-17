@@ -8168,6 +8168,33 @@
             "stage": 3,
             "reward": "Rifle Riven Mod",
             "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 44,
+            "date": 1589739014,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Environmental Hazard: Electromagnetic Anomalies"
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 4,
+            "date": 1589739014,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 55,
+            "date": 1589739014,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
