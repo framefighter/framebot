@@ -8195,6 +8195,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 39,
+            "date": 1589825670,
+            "stage": 1,
+            "reward": "Kitgun Riven Mod",
+            "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 3,
+            "seconds": 6,
+            "date": 1589825670,
+            "stage": 2,
+            "reward": "Kitgun Riven Mod",
+            "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 9,
+            "seconds": 17,
+            "date": 1589825670,
+            "stage": 3,
+            "reward": "Kitgun Riven Mod",
+            "mod": "Enemy Elemental Enhancement: Blast"
         }
     ]
 }
