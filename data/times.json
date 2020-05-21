@@ -8222,6 +8222,33 @@
             "stage": 3,
             "reward": "Kitgun Riven Mod",
             "mod": "Enemy Elemental Enhancement: Blast"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 3,
+            "seconds": 4,
+            "date": 1590096702,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Weapon Restriction: Sniper Only"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 54,
+            "date": 1590096702,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Environmental Effect: Cryogenic Leakage"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 35,
+            "date": 1590096702,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Enemy Elemental Enhancement: Electricity"
         }
     ]
 }
