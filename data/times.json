@@ -8303,6 +8303,33 @@
             "stage": 3,
             "reward": "Affinity Booster",
             "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 3,
+            "seconds": 26,
+            "date": 1590344436,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Enemy Physical Enhancement: Slash"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 3,
+            "seconds": 46,
+            "date": 1590344436,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 13,
+            "date": 1590344436,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Augmented Enemy Armor"
         }
     ]
 }
