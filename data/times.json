@@ -8330,6 +8330,33 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Augmented Enemy Armor"
+        },
+        {
+            "mission": "Sabotage",
+            "minutes": 2,
+            "seconds": 14,
+            "date": 1591210341,
+            "stage": 1,
+            "reward": "Affinity Booster",
+            "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 28,
+            "date": 1591210341,
+            "stage": 2,
+            "reward": "Affinity Booster",
+            "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 1,
+            "seconds": 56,
+            "date": 1591210341,
+            "stage": 3,
+            "reward": "Affinity Booster",
+            "mod": "Enemy Physical Enhancement: Impact"
         }
     ]
 }
