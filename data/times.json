@@ -8384,6 +8384,33 @@
             "stage": 3,
             "reward": "Forma",
             "mod": "Enhanced Enemy Shields"
+        },
+        {
+            "mission": "Hive",
+            "minutes": 2,
+            "seconds": 31,
+            "date": 1591387647,
+            "stage": 1,
+            "reward": "Rifle Riven Mod",
+            "mod": "Environmental Hazard: Electromagnetic Anomalies"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 18,
+            "date": 1591387647,
+            "stage": 2,
+            "reward": "Rifle Riven Mod",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 36,
+            "date": 1591387648,
+            "stage": 3,
+            "reward": "Rifle Riven Mod",
+            "mod": "Enemy Physical Enhancement: Puncture"
         }
     ]
 }
