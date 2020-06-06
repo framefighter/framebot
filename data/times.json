@@ -8411,6 +8411,34 @@
             "stage": 3,
             "reward": "Rifle Riven Mod",
             "mod": "Enemy Physical Enhancement: Puncture"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 56,
+            "date": 1591467080,
+            "stage": 1,
+            "reward": "Exilus Warframe Adapter",
+            "mod": "Energy Reduction"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 38,
+            "date": 1591467080,
+            "stage": 2,
+            "reward": "Exilus Warframe Adapter",
+            "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 3,
+            "seconds": 54,
+            "boss": "Tyl Regor",
+            "date": 1591467080,
+            "stage": 3,
+            "reward": "Exilus Warframe Adapter",
+            "mod": "Enemy Physical Enhancement: Impact"
         }
     ]
 }
