@@ -8439,6 +8439,33 @@
             "stage": 3,
             "reward": "Exilus Warframe Adapter",
             "mod": "Enemy Physical Enhancement: Impact"
+        },
+        {
+            "mission": "Defense",
+            "minutes": 14,
+            "seconds": 17,
+            "date": 1592601402,
+            "stage": 1,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Weapon Restriction: Assault Rifle Only"
+        },
+        {
+            "mission": "Extermination",
+            "minutes": 6,
+            "seconds": 20,
+            "date": 1592601402,
+            "stage": 2,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Environmental Hazard: Radiation Pockets"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 1,
+            "seconds": 58,
+            "date": 1592601402,
+            "stage": 3,
+            "reward": "Ayatan Anasa Sculpture",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
