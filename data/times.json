@@ -8466,6 +8466,34 @@
             "stage": 3,
             "reward": "Ayatan Anasa Sculpture",
             "mod": "Eximus Stronghold"
+        },
+        {
+            "mission": "Rescue",
+            "minutes": 2,
+            "seconds": 38,
+            "date": 1592678877,
+            "stage": 1,
+            "reward": "4000 Endo",
+            "mod": "Enemy Elemental Enhancement: Toxin"
+        },
+        {
+            "mission": "Spy",
+            "minutes": 2,
+            "seconds": 17,
+            "date": 1592678877,
+            "stage": 2,
+            "reward": "4000 Endo",
+            "mod": "Weapon Restriction: Shotgun Only"
+        },
+        {
+            "mission": "Assassination",
+            "minutes": 2,
+            "seconds": 25,
+            "boss": "Mutalist Alad V",
+            "date": 1592678877,
+            "stage": 3,
+            "reward": "4000 Endo",
+            "mod": "Environmental Hazard: Fire"
         }
     ]
 }
