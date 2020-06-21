@@ -8494,6 +8494,33 @@
             "stage": 3,
             "reward": "4000 Endo",
             "mod": "Environmental Hazard: Fire"
+        },
+        {
+            "mission": "Free Roam",
+            "minutes": 6,
+            "seconds": 22,
+            "date": 1592764314,
+            "stage": 1,
+            "reward": "Mod Drop Chance Booster",
+            "mod": "Weapon Restriction: Pistol Only"
+        },
+        {
+            "mission": "Mobile Defense",
+            "minutes": 5,
+            "seconds": 29,
+            "date": 1592764314,
+            "stage": 2,
+            "reward": "Mod Drop Chance Booster",
+            "mod": "Enemy Elemental Enhancement: Heat"
+        },
+        {
+            "mission": "Interception",
+            "minutes": 8,
+            "seconds": 15,
+            "date": 1592764314,
+            "stage": 3,
+            "reward": "Mod Drop Chance Booster",
+            "mod": "Eximus Stronghold"
         }
     ]
 }
