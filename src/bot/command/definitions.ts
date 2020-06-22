@@ -75,7 +75,7 @@ export const definitions: command.Definitions = {
                 description: mission.modifier,
             })),
         keyboard: (active) => new Keyboard({
-            layout: [[btn("time")],
+            layout: [[...(active.user.admin ? [{ text: "⏱️ Record Time", switch_inline_query_current_chat: "time " }] : [])],
             [menuBtn(active)]]
         })
     },
