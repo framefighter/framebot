@@ -1,6 +1,5 @@
 import WorldState from "warframe-worldstate-parser"
 import { Check } from '../../utils/check'
-import idx from 'idx'
 
 export class Parser {
     static state(state: any): wf.Ws {
@@ -84,7 +83,7 @@ export class Parser {
                 activation: new Date(mission.start || ""),
                 expiry: new Date(mission.end || ""),
                 solnode: mission.solnode,
-                node: idx(mission, _ => `${_.solnodedata.tile} (${_.solnodedata.planet})`) || "",
+                node: `${mission?.solnodedata?.tile} (${mission?.solnodedata?.planet})`,
                 ...mission.solnodedata,
             }
             p.activation.setMinutes(p.activation.getMinutes() + 5.1)
