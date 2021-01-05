@@ -24,7 +24,7 @@
     "@types/node": "^12.12.6",
     "@types/node-telegram-bot-api": "^0.31.1",
     "@types/striptags": "^3.1.1",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel-plugin-idx": "^2.4.0",
     "idx": "^2.5.6",
     "nexushub-client": "^1.2.0",
